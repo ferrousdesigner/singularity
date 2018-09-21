@@ -13,7 +13,7 @@
   height: 40rem;
   text-align: center;
   position: relative;
-  background-color: #111;
+  background-color: #000;
   border-radius: 50%; }
 
 .HUI__presentor--banner::before, .HUI__presentor--banner::after {
@@ -28,10 +28,7 @@
   height: calc(100% + 0.2rem);
   filter: blur(3rem);
   border-radius: 50%;
-  animation: moveBackground 20s linear infinite; }
-
-.HUI__presentor--banner::after {
-  filter: blur(0rem); }
+  animation: moveBackground 10s linear infinite; }
 
 .HUI__presentor--banner > div:first-child {
   display: block;
@@ -43,7 +40,7 @@
   font-weight: 200;
   font-size: 6rem;
   margin-bottom: 1rem;
-  animation: moveBackground 20s ease-in-out infinite; }
+  animation: moveBackground 10s ease-in-out infinite; }
 
 @keyframes moveBackground {
   0% {
@@ -56,3 +53,15 @@
 .HUI__presentor--banner > div:last-child {
   font-weight: 100;
   font-size: 2rem; }
+
+.HUI__presentor--simple, .HUI__presentor--simple-full {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.HUI__presentor--simple-full {
+  padding: 2rem;
+  height: 100vh;
+  width: 100vw; }

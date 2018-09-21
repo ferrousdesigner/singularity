@@ -34,6 +34,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
+    "react-flexbox-grid": "^2.1.2",
     "stylemaker": "0.0.4-beta-1"
   }
 }

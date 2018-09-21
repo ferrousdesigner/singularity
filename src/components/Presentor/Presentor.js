@@ -15,16 +15,36 @@ export class Presentor extends Component {
                         <div>{settings.bannerSubText}</div>
                     </div>
                 );
+                case 'scroll':
+                return (
+                    <div className='HUI__presentor--on-scroll'>
+                        {this.props.children || 'No Child Supplied'}
+                    </div>
+                );
+                case 'simple':
+                    if (settings.full) {
+                        return (
+                            <div className='HUI__presentor--simple-full'>
+                                {this.props.children || 'No Child Supplied'}
+                            </div>
+                        );
+                    } else {
+                        return (
+                            <div className='HUI__presentor--simple'>
+                                {this.props.children || 'No Child Supplied'}
+                            </div>
+                        );
+                    }
             }
         }
        
     }
     render () {
-        const { settings } = this.props;
+        const { settings, style } = this.props;
         return (
             <div>
                 {settings && 
-                <div className='HUI__presentor'>
+                <div className='HUI__presentor' style={style}>
                     {this.renderPresentor(settings)}
                 </div>}
                 {!settings && 

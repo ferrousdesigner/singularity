@@ -1,13 +1,84 @@
-.HUI__button-primary {
-  border: none;
-  border-radius: 4px;
-  background: linear-gradient(to right, #5ea3fa, blue);
-  color: white;
-  font-size: 1rem;
-  height: 40px;
-  padding: 0 2rem;
+.HUI__button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  white-space: nowrap;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  border: none;
+  height: 40px;
+  padding: 0 3rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: transparent; }
+
+.HUI__button:hover {
+  transform: scale(1.1); }
+
+.HUI__button::before {
+  content: '';
+  border-radius: 0.5rem;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: #026fc8;
+  background: linear-gradient(315deg, #bababa 0%, #e7e7e7 55%, white 100%);
   transition: all 0.2s ease; }
 
-.HUI__button-primary:hover {
-  opacity: 0.9; }
+.HUI__button:hover::before {
+  filter: brightness(1.1); }
+
+.HUI__button--primary {
+  color: #fff; }
+
+.HUI__button--primary::before {
+  background: #004aac;
+  background: linear-gradient(315deg, #004aac 0%, #0474bf 46%, #0393d4 64%, #02ace5 82%, #00d4ff 100%); }
+
+.HUI__button--success {
+  color: #fff; }
+
+.HUI__button--success::before {
+  background: #00b65d;
+  background: linear-gradient(315deg, #00b65d 0%, #02c683 59%, #00ffb1 100%); }
+
+.HUI__button--danger {
+  color: #fff; }
+
+.HUI__button--danger::before {
+  background: #9f0000;
+  background: linear-gradient(315deg, #9f0000 0%, #c7071a 59%, #ff7724 100%); }
+
+.HUI__button--warning {
+  color: #fff; }
+
+.HUI__button--warning::before {
+  background: #ad5901;
+  background: linear-gradient(315deg, #ad5901 0%, #e69d06 59%, #ffb436 100%); }
+
+.HUI__button--info {
+  color: #fff; }
+
+.HUI__button--info::before {
+  background: #0191ad;
+  background: linear-gradient(315deg, #0191ad 0%, #06e6c0 51%, #36f2ff 100%); }
+
+@keyframes animate-background {
+  0% {
+    transform: translate(0, 0); }
+  50% {
+    transform: translate(-50%, 0); }
+  100% {
+    transform: translate(0, 0); } }

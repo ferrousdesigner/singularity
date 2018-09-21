@@ -1,0 +1,26 @@
+.HUI__header {
+  margin: 1rem 0; }
+
+.HUI__header--xxlg {
+  font-size: 6rem;
+  margin: 2rem 0; }
+
+.HUI__header--xlg {
+  font-size: 5rem;
+  margin: 1.8rem 0; }
+
+.HUI__header--lg {
+  font-size: 4rem;
+  margin: 1.6rem 0; }
+
+.HUI__header--md {
+  font-size: 3rem;
+  margin: 1.4rem 0; }
+
+.HUI__header--sm {
+  font-size: 2rem;
+  margin: 1.2rem 0; }
+
+.HUI__header--xs {
+  font-size: 1.8rem;
+  margin: 1rem 0; }

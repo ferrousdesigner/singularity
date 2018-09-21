@@ -2,6 +2,7 @@ import StyleMaker from 'stylemaker';
 import { Button } from './components/Button';
 import { Nav } from  './components/Nav';
 import { Presentor } from './components/Presentor';
+import { Header } from './components/Header';
 
 const settings = (setting) => {
 
@@ -34,5 +35,6 @@ export {
     settings,
     Button,
     Nav,
-    Presentor
+    Presentor,
+    Header
 };
