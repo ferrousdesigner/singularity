@@ -19,10 +19,14 @@
   position: relative;
   cursor: pointer;
   transition: all 0.2s ease;
+  transform-origin: center;
   background-color: transparent; }
 
 .HUI__button:hover {
   transform: scale(1.1); }
+
+.HUI__button:active {
+  transform: scale(0.9); }
 
 .HUI__button::before {
   content: '';
@@ -72,6 +76,36 @@
   color: #fff; }
 
 .HUI__button--info::before {
+  background: #0191ad;
+  background: linear-gradient(315deg, #0191ad 0%, #06e6c0 51%, #36f2ff 100%); }
+
+.HUI__button--modern {
+  color: #fff;
+  background-size: 1000% 1000%;
+  animation: button-background-animation 10s ease infinite; }
+
+.HUI__button--modern::before {
+  background: transparent; }
+
+@-webkit-keyframes button-background-animation {
+  0% {
+    background-position: 0% 82%; }
+  50% {
+    background-position: 99% 19%; }
+  100% {
+    background-position: 0% 82%; } }
+
+.HUI__button--clear {
+  color: #fff;
+  border: 0.2rem solid #fff; }
+
+.HUI__button--clear::before {
+  background: transparent; }
+
+.HUI__button--clear-dark {
+  color: #fff; }
+
+.HUI__button--clear-dark::before {
   background: #0191ad;
   background: linear-gradient(315deg, #0191ad 0%, #06e6c0 51%, #36f2ff 100%); }
 

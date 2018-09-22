@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import { Button, Nav, Presentor, Header } from './HumaneUI';
+const GradientText = (props) => {
+    return (
+        <span className='gradient-text'>
+            {props.children}
+        </span>
+    )
+}
 import { Row, Col, Grid } from 'react-flexbox-grid';
 export default class ShowRoom extends Component {
     render () {
@@ -8,9 +15,10 @@ export default class ShowRoom extends Component {
                 <Presentor settings={{type: 'banner', bannerText: 'Humane UI', bannerSubText: 'An Elegant & Modern UI Library'}} />
                 <Presentor settings={{type: 'simple', full: true}}>
                     <Grid>
-                        <Row center='xs' middle='xs'>
-                        <Col xs={12}>
-                            <Header type='lg' light={true}>Buttons</Header>
+                        <Row center='xs' middle='xs' style={{marginTop: '14rem'}}>
+                        <Col xs={7}>
+                            <Header type='lg'>Buttons</Header>
+                            <Header type='xxlg' weight={600}>Beautifully crafted <GradientText>gradient</GradientText> buttons.</Header>
                         </Col>
                         <Col xs={12}>
                             <Row center='xs' middle='xs'>
@@ -45,6 +53,21 @@ export default class ShowRoom extends Component {
                                     <Header type='sm'>Info</Header>
                                     <br />
                                     <Button type='info' label={'Info'} />
+                                </Col>
+                            </Row>
+                            <Row center='xs' middle='xs'>
+                                <Col xs={12}>
+                                  <Header type='md'>Special Buttons</Header>
+                                </Col>
+                                <Col xs={12} md={4} style={{padding: '3rem 2rem'}}>
+                                    <Header type='sm'>Modern</Header>
+                                    <br />
+                                    <Button type='modern' colors={['purple', '#ff0000aa', 'blue']} label={'Modern'} />
+                                </Col>
+                                <Col xs={12} md={4} style={{padding: '3rem 2rem'}}>
+                                    <Header type='sm'>Clear</Header>
+                                    <br />
+                                    <Button type='clear' label={'Warning'} />
                                 </Col>
                             </Row>
                         </Col>

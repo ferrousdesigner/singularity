@@ -2,7 +2,7 @@
   margin: 1rem 0; }
 
 .HUI__header--xxlg {
-  font-size: 6rem;
+  font-size: 8rem;
   margin: 2rem 0; }
 
 .HUI__header--xlg {
@@ -24,3 +24,12 @@
 .HUI__header--xs {
   font-size: 1.8rem;
   margin: 1rem 0; }
+
+.gradient-text {
+  color: white;
+  -webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient(transparent, transparent), url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYAbU53k3T4mEbN19XbgGjE3NWPioOAwT9ck7DxpdwH3IaEAz-) repeat;
+  background: -o-linear-gradient(transparent, transparent);
+  -webkit-background-clip: text;
+  animation: moveBackground 10s ease-in-out infinite;
+  letter-spacing: 0.2rem; }

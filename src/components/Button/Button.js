@@ -18,9 +18,24 @@ let css = `
         opacity: 0.8;
     }
 `
-StyleMaker(css)
+// StyleMaker(css)
 export class Button extends Component {
-    renderButton (type, label) {
+    renderButton (type, label, labelColor, colors) {
+        const getBackground = (colors) => {
+            if(colors && colors.length > 0) {
+                let s = ''
+                for (let i = 0 ; i < colors.length; i++) {
+                    i < (colors.length - 1) ? s = s + colors[i] + ', ' : s = s + colors[i]
+                }
+                s = 'linear-gradient(124deg, ' + s + ')'
+                return s
+            } else {
+                return (
+                    'linear-gradient(124deg, green, blue)'
+                 )
+            }
+            
+        }
         switch (type) {
             case 'primary': 
             return (
@@ -44,11 +59,11 @@ export class Button extends Component {
             );
             case 'modern': 
             return (
-                <div><button className='HUI__button HUI__button--modern'>{label}</button></div>
+                <div><button style={{backgroundSize: colors && colors.length > 1 ? colors.length * 80 + '%' : '100%', backgroundColor: colors[0], backgroundImage: getBackground(colors), color: labelColor || 'inherit'}} className='HUI__button HUI__button--modern'>{label}</button></div>
             );
-            case 'transparent': 
+            case 'clear': 
             return (
-                <div><button className='HUI__button HUI__button--transparent'>{label}</button></div>
+                <div><button className='HUI__button HUI__button--clear'>{label}</button></div>
             );
             default: 
             return (
@@ -57,10 +72,10 @@ export class Button extends Component {
         }
     }
     render () {
-        const { type, label } = this.props
+        const { type, label, labelColor, colors } = this.props
         return (
             <div>
-                {this.renderButton(type, label)}
+                {this.renderButton(type, label, labelColor, colors)}
             </div>
         );
     }
