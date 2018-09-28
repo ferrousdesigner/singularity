@@ -9,6 +9,7 @@ const settings = (setting) => {
 }
 const cssReset = `
     @import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,700');
+    @import url('https://use.fontawesome.com/releases/v5.3.1/css/all.css');
 
     :root {
         font-size: 10px;
@@ -26,6 +27,11 @@ const cssReset = `
         font-family: 'Roboto',sans-serif;
         color: #fff;
         font-size: 1.6rem;
+    }
+    @media only screen and (max-width: 480px) {
+        :root {
+            font-size: 7px;
+        } 
     }
 `
 //Initial Reset Styling 

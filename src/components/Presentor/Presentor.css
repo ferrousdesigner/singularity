@@ -1,8 +1,7 @@
 .HUI__presentor {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 80vh; }
+  align-items: center; }
 
 .HUI__presentor--banner {
   display: flex;
@@ -10,6 +9,7 @@
   align-items: center;
   flex-direction: column;
   width: 40rem;
+  margin: calc((100vh - 40rem)/2) auto;
   height: 40rem;
   text-align: center;
   position: relative;
@@ -41,6 +41,37 @@
   font-size: 6rem;
   margin-bottom: 1rem;
   animation: moveBackground 10s ease-in-out infinite; }
+
+.HUI__presentor--scroll {
+  perspective-origin: center; }
+
+div[class^=HUI__animate--] {
+  opacity: 0;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease-in-out; }
+
+div[class^=HUI__animate--right-] {
+  transform: rotate(5deg) translateX(6rem) translateZ(-10rem) scale(0.9); }
+
+div[class^=HUI__animate--left-] {
+  transform: rotate(-5deg) translateX(-6rem) translateZ(-10rem) scale(0.9); }
+
+div[class^=HUI__animate--top-] {
+  transform: rotate(-5deg) translateY(-6rem) translateZ(-10rem) scale(0.9); }
+
+div[class^=HUI__animate--bottom-] {
+  transform: rotate(5deg) translateY(6rem) translateZ(-10rem) scale(0.9); }
+
+div[class^=HUI__animate--back-] {
+  transform: rotate(0deg) translateZ(-10rem) scale(0.9); }
+
+div[class^=HUI__animate--front-] {
+  transform: rotate(0deg) translateZ(20rem) scale(0.9); }
+
+div[class^=HUI__animate--].animate {
+  opacity: 1;
+  transform: rotate(0deg) translateX(0rem) translateY(0rem) translateZ(0rem) scale(1); }
 
 @keyframes moveBackground {
   0% {

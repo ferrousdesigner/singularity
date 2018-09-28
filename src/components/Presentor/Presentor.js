@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import StyleMaker from 'stylemaker';
 import PropTypes from 'prop-types';
+import { ScrollBasedPresentor } from './ScrollBasedPresentor'
 import './Presentor.css'
 
 // StyleMaker(css)
@@ -17,9 +18,9 @@ export class Presentor extends Component {
                 );
                 case 'scroll':
                 return (
-                    <div className='HUI__presentor--on-scroll'>
-                        {this.props.children || 'No Child Supplied'}
-                    </div>
+                    <ScrollBasedPresentor time={settings.time} easing={settings.easing} direction={settings.direction}>
+                        {this.props.children || 'No Child'}
+                    </ScrollBasedPresentor>
                 );
                 case 'simple':
                     if (settings.full) {

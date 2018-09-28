@@ -20,7 +20,7 @@ let css = `
 `
 // StyleMaker(css)
 export class Button extends Component {
-    renderButton (type, label, labelColor, colors) {
+    renderButton (type, label, labelColor, colors, round, disabled) {
         const getBackground = (colors) => {
             if(colors && colors.length > 0) {
                 let s = ''
@@ -39,43 +39,43 @@ export class Button extends Component {
         switch (type) {
             case 'primary': 
             return (
-                <div><button className='HUI__button HUI__button--primary'>{label}</button></div>
+                <div><button className={round ? 'HUI__button HUI__button--primary HUI__button--round' : 'HUI__button HUI__button--primary'}>{label}</button></div>
             );
             case 'success': 
             return (
-                <div><button className='HUI__button HUI__button--success'>{label}</button></div>
+                <div><button className={round ? 'HUI__button HUI__button--success HUI__button--round' : 'HUI__button HUI__button--success'}>{label}</button></div>
             );
             case 'info': 
             return (
-                <div><button className='HUI__button HUI__button--info'>{label}</button></div>
+                <div><button className={round ? 'HUI__button HUI__button--info HUI__button--round' : 'HUI__button HUI__button--info'}>{label}</button></div>
             );
             case 'warning': 
             return (
-                <div><button className='HUI__button HUI__button--warning'>{label}</button></div>
+                <div><button className={round ? 'HUI__button HUI__button--warning HUI__button--round' : 'HUI__button HUI__button--warning'}>{label}</button></div>
             );
             case 'danger': 
             return (
-                <div><button className='HUI__button HUI__button--danger'>{label}</button></div>
+                <div><button className={round ? 'HUI__button HUI__button--danger HUI__button--round' : 'HUI__button HUI__button--danger'}>{label}</button></div>
             );
             case 'modern': 
             return (
-                <div><button style={{backgroundSize: colors && colors.length > 1 ? colors.length * 80 + '%' : '100%', backgroundColor: colors[0], backgroundImage: getBackground(colors), color: labelColor || 'inherit'}} className='HUI__button HUI__button--modern'>{label}</button></div>
+                <div><button style={{backgroundSize: colors && colors.length > 1 ? colors.length * 80 + '%' : '100%', backgroundColor: colors[0], backgroundImage: getBackground(colors), color: labelColor || 'inherit'}} className={round ? 'HUI__button HUI__button--modern HUI__button--round' : 'HUI__button HUI__button--modern'}>{label}</button></div>
             );
             case 'clear': 
             return (
-                <div><button className='HUI__button HUI__button--clear'>{label}</button></div>
+                <div><button className={round ? 'HUI__button HUI__button--clear HUI__button--round' : 'HUI__button HUI__button--clear'}>{label}</button></div>
             );
             default: 
             return (
-                <div><button className='HUI__button'>{label}</button></div>
+                <div><button className={round ? 'HUI__button HUI__button--round' : 'HUI__button'}>{label}</button></div>
             );
         }
     }
     render () {
-        const { type, label, labelColor, colors } = this.props
+        const { type, label, labelColor, colors, round, disabled} = this.props
         return (
             <div>
-                {this.renderButton(type, label, labelColor, colors)}
+                {this.renderButton(type, label, labelColor, colors, round, disabled)}
             </div>
         );
     }

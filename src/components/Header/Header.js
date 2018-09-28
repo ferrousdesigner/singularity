@@ -22,7 +22,6 @@ let css = `
 // StyleMaker(css)
 export class Header extends Component {
     renderHeader (type, color, light, weight, text) {
-        console.log('Light', light)
         switch (type) {
             case 'xxlg': 
             return (
@@ -47,6 +46,14 @@ export class Header extends Component {
             case 'xs': 
             return (
                 <div><h6 className='HUI__header HUI__header--xs' style={{fontWeight: light ? 'lighter' : weight, color: color}}>{text}</h6></div>
+            );
+            case 'spaced': 
+            return (
+                <div><h6 className='HUI__header HUI__header--spaced' style={{fontWeight: light ? 'lighter' : weight, color: color}}>{text}</h6></div>
+            );
+            default: 
+            return (
+                <div><h6 className='HUI__header HUI__header--md' style={{fontWeight: light ? 'lighter' : weight, color: color}}>{text}</h6></div>
             );
         }
     }
