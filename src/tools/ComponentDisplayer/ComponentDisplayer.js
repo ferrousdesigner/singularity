@@ -83,6 +83,7 @@ export default class ComponentDisplayer extends React.Component {
         )
     }
     getCode (name, appliedProps) {
+        console.log('name', name)
         let propsString = ''
         if(Object.keys(appliedProps)) {
             Object.keys(appliedProps).forEach((prop, key) => {
@@ -120,6 +121,7 @@ export default class ComponentDisplayer extends React.Component {
                     <Col xs={12} sm={8} style={{textAlign: 'left'}}>
                         <Presentor settings={{type: 'smooth'}} show={showCode}>
                             <Code>
+                                {console.log(child)}
                                 {this.getCode(child.type.name, appliedProps)}
                             </Code>
                         </Presentor>
