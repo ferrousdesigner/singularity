@@ -21,7 +21,8 @@
   cursor: pointer;
   transition: all 0.2s ease;
   transform-origin: center;
-  background-color: transparent; }
+  background-color: transparent;
+  z-index: 1; }
 
 .HUI__button:hover {
   transform: scale(1.1); }
@@ -44,6 +45,26 @@
 
 .HUI__button:hover::before {
   filter: brightness(1.1); }
+
+.HUI__button .done {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(50%); }
+  100% {
+    opacity: 1;
+    transform: translateX(0%); } }
+
+.HUI__button .done span {
+  font-size: 1.4rem;
+  color: white;
+  margin-left: 0.5rem;
+  opacity: 0;
+  animation: slide-in 0.2s ease-in-out .4s forwards; }
 
 .HUI__button--round, .HUI__button--round::before {
   border-radius: 5rem; }
@@ -112,6 +133,45 @@
 .HUI__button--clear-dark::before {
   background: #0191ad;
   background: linear-gradient(315deg, #0191ad 0%, #06e6c0 51%, #36f2ff 100%); }
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: transparent;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }
+
+.checkmark {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 5;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  animation: fill .2s ease-in-out .2s forwards, scale .2s ease-in-out .4s both; }
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0; } }
+
+@keyframes scale {
+  0%, 100% {
+    transform: none; }
+  50% {
+    transform: scale3d(1.1, 1.1, 1); } }
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }
 
 @keyframes animate-background {
   0% {

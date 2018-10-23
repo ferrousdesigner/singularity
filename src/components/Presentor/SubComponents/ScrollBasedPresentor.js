@@ -36,7 +36,6 @@ export class ScrollBasedPresentor extends Component {
     getCalculatedPostions () {
         this.classArray.forEach((classname, i) => {
             let element = document.getElementsByClassName(classname)[0]
-            console.log(element)
             this.elementCalculatedObject[classname] = this.getElemDistance(element) - window.innerHeight
         })
     }
@@ -111,7 +110,6 @@ export class ScrollBasedPresentor extends Component {
     }
     render () {
         const { children, time, direction, easing, intensity } =  this.props
-        console.log(this.props)
         return (
             <div className='HUI__presentor--scroll' style={{perspective: this.getPerspective(intensity)}}>
                 {this.renderChildrenWithAnimationWrapper(children, time, direction, easing)}

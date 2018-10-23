@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import StyleMaker from 'stylemaker';
 import PropTypes from 'prop-types';
-import { ScrollBasedPresentor } from './ScrollBasedPresentor'
+import { ScrollBasedPresentor } from './SubComponents/ScrollBasedPresentor'
+import { SmoothPresentor } from './SubComponents/SmoothPresentor'
 import './Presentor.css'
 
 // StyleMaker(css)
@@ -21,6 +22,12 @@ export class Presentor extends Component {
                     <ScrollBasedPresentor time={settings.time} easing={settings.easing} direction={settings.direction}>
                         {this.props.children || 'No Child'}
                     </ScrollBasedPresentor>
+                );
+                case 'smooth':
+                return (
+                    <SmoothPresentor show={this.props.show}>
+                        {this.props.children || 'No Child'}
+                    </SmoothPresentor>
                 );
                 case 'simple':
                     if (settings.full) {

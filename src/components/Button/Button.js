@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import StyleMaker from 'stylemaker'
 import './Button.css'
+
+const loader = () => {
+    let number = [1,2,3,4,5,6,7,8,9,10,11,12]
+    return (
+        <div className="loader-spinner">
+            {number.map((key) => (<div key={key} />)
+            )}
+        </div>
+    )
+}
+const check = (doneMessage) => {
+    return (<div className='done'><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle className="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+    {doneMessage && <span>{doneMessage}</span>}
+    </div>)
+}
 
 let css = `
     .HUI__button-primary{
@@ -19,8 +35,11 @@ let css = `
     }
 `
 // StyleMaker(css)
+/**
+ * A button with the touch of humanity.
+ */
 export class Button extends Component {
-    renderButton (type, label, labelColor, colors, round, disabled) {
+    renderButton (type, label, labelColor, colors, round, doing, done, doneMessage, disabled, onClick, style) {
         const getBackground = (colors) => {
             if(colors && colors.length > 0) {
                 let s = ''
@@ -36,47 +55,44 @@ export class Button extends Component {
             }
             
         }
-        switch (type) {
-            case 'primary': 
-            return (
-                <div><button className={round ? 'HUI__button HUI__button--primary HUI__button--round' : 'HUI__button HUI__button--primary'}>{label}</button></div>
-            );
-            case 'success': 
-            return (
-                <div><button className={round ? 'HUI__button HUI__button--success HUI__button--round' : 'HUI__button HUI__button--success'}>{label}</button></div>
-            );
-            case 'info': 
-            return (
-                <div><button className={round ? 'HUI__button HUI__button--info HUI__button--round' : 'HUI__button HUI__button--info'}>{label}</button></div>
-            );
-            case 'warning': 
-            return (
-                <div><button className={round ? 'HUI__button HUI__button--warning HUI__button--round' : 'HUI__button HUI__button--warning'}>{label}</button></div>
-            );
-            case 'danger': 
-            return (
-                <div><button className={round ? 'HUI__button HUI__button--danger HUI__button--round' : 'HUI__button HUI__button--danger'}>{label}</button></div>
-            );
-            case 'modern': 
-            return (
-                <div><button style={{backgroundSize: colors && colors.length > 1 ? colors.length * 80 + '%' : '100%', backgroundColor: colors[0], backgroundImage: getBackground(colors), color: labelColor || 'inherit'}} className={round ? 'HUI__button HUI__button--modern HUI__button--round' : 'HUI__button HUI__button--modern'}>{label}</button></div>
-            );
-            case 'clear': 
-            return (
-                <div><button className={round ? 'HUI__button HUI__button--clear HUI__button--round' : 'HUI__button HUI__button--clear'}>{label}</button></div>
-            );
-            default: 
-            return (
-                <div><button className={round ? 'HUI__button HUI__button--round' : 'HUI__button'}>{label}</button></div>
-            );
-        }
+        let cases = ['primary', 'success', 'info', 'warning', 'danger', 'modern', 'clear']
+        let styleTwo = type === 'modern' ? {backgroundSize: colors && colors.length > 1 ? colors.length * 80 + '%' : '100%', backgroundColor: colors[0], backgroundImage: getBackground(colors), color: labelColor || 'inherit'} : null
+        return cases.includes(type) ?  (
+            <div><button onClick={onClick} style={{...styleTwo, ...style}} className={round ? `HUI__button HUI__button--${type} HUI__button--round` : `HUI__button HUI__button--${type}`}>{doing && !done ? loader() : (done ? check(doneMessage) : label)}</button></div>
+        ) :  (
+            <div><button onClick={onClick} style={{...style}} className={round ? 'HUI__button HUI__button--round' : 'HUI__button'}>{doing ? loader() : (done ? check(doneMessage) : label)}</button></div>
+        )
     }
     render () {
-        const { type, label, labelColor, colors, round, disabled} = this.props
+        const { type, label, labelColor, colors, round, doing, done, doneMessage, disabled, onClick, style} = this.props
         return (
             <div>
-                {this.renderButton(type, label, labelColor, colors, round, disabled)}
+                {this.renderButton(type, label, labelColor, colors, round, doing, done, doneMessage, disabled, onClick)}
             </div>
         );
     }
+}
+Button.defaultProps = {
+    type: '',
+    label: 'Submit',
+    labelColor: '',
+    colors: ['purple', 'white', 'blue'],
+    round: false,
+    disabled: false,
+    doing: false,
+    done: false,
+    doneMessage: 'Done',
+    icon: null
+}
+Button.propTypes = {
+    type: PropTypes.string,
+    label: PropTypes.string,
+    labelColor: PropTypes.string,
+    colors: PropTypes.array,
+    doing: PropTypes.bool,
+    done: PropTypes.bool,
+    doneMessage: PropTypes.string,
+    round: PropTypes.bool,
+    disabled: PropTypes.bool,
+    icon: PropTypes.node
 }
