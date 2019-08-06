@@ -1,39 +1,39 @@
-.HUI__header{
+.SNG__header{
     margin: 1rem 0;
 }
 
-.HUI__header--xxlg {
+.SNG__header--xxlg {
     font-size: 8rem;
     margin: 2rem 0;
 }
-.HUI__header--xlg {
+.SNG__header--xlg {
     font-size: 5rem;
     margin: 1.8rem 0;
 }
-.HUI__header--lg {
+.SNG__header--lg {
     font-size: 4rem;
     margin: 1.6rem 0;
 }
-.HUI__header--md {
+.SNG__header--md {
     font-size: 3rem;
     margin: 1.4rem 0;
 }
-.HUI__header--sm {
+.SNG__header--sm {
     font-size: 2rem;
     margin: 1.2rem 0;
 }
-.HUI__header--xs {
+.SNG__header--xs {
     font-size: 1.8rem;
     margin: 1rem 0;
 }
-.HUI__header--spaced {
+.SNG__header--spaced {
     font-size: 2.8rem;
     margin: 1rem 0;
     text-transform: uppercase;
     letter-spacing: 1rem;
 }
 
-.HUI__text--gradient, .HUI__text--gradient-animated{
+.SNG__text--gradient, .SNG__text--gradient-animated{
     color: rgb(255, 255, 255);
     -webkit-text-fill-color: transparent;
     background: -webkit-linear-gradient(transparent, transparent),
@@ -42,6 +42,6 @@
     -webkit-background-clip: text;
     letter-spacing: 0.2rem;
 }
-.HUI__text--gradient-animated {
+.SNG__text--gradient-animated {
     animation: moveBackground 10s ease-in-out infinite;
 }

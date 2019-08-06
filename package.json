@@ -1,7 +1,7 @@
 {
-  "name": "humane-ui",
-  "version": "0.0.2-beta-04",
-  "description": "A humane UI library of react components",
+  "name": "singularity-ui",
+  "version": "0.0.1-alpha-01",
+  "description": "A minimal UI library of react components",
   "main": "lib/index.js",
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
@@ -12,7 +12,7 @@
     "build": "npm-run-all build-css build-js",
     "tr-button-index": "node_modules/.bin/babel ./src/components/Button/index.js --presets @babel/preset-env,@babel/preset-react --out-file lib/components/Button/index.js",
     "tr-button": "npm run tr-button-index && node_modules/.bin/babel ./src/components/Button/Button.js --presets @babel/preset-env,@babel/preset-react --out-file lib/components/Button/Button.js",
-    "transpile": "npm run tr-button && node_modules/.bin/babel ./src/HumaneUI.js --presets @babel/preset-env,@babel/preset-react --out-file lib/index.js"
+    "transpile": "npm run tr-button && node_modules/.bin/babel ./src/SingularityUI.js --presets @babel/preset-env,@babel/preset-react --out-file lib/index.js"
   },
   "author": "ferrousdesigner",
   "license": "ISC",

@@ -10,7 +10,7 @@ export class SmoothPresentor extends Component {
         this.randomHash = this.generateRandomId()
     }
     componentDidMount () {
-        this.height = document.querySelector(`.HUI__presentor--smooth--${this.randomHash}`).getBoundingClientRect().height
+        this.height = document.querySelector(`.SNG__presentor--smooth--${this.randomHash}`).getBoundingClientRect().height
         this.computeHeight(this.props)
     }
     computeHeight (props) {
@@ -33,7 +33,7 @@ export class SmoothPresentor extends Component {
     render () {
         const { children } =  this.props
         return (
-            <div className={`HUI__presentor--smooth--${this.randomHash}`} style={{height: this.state.height}}>
+            <div className={`SNG__presentor--smooth--${this.randomHash}`} style={{height: this.state.height}}>
             {children}
             </div>
         )

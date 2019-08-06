@@ -12,18 +12,18 @@ export class Nav extends Component {
     }
     render () {
         let logoSrc = ''
-        let brandName = 'Humane'
-        let logoAlt = 'Hui_logo'
+        let brandName = 'Singularity'
+        let logoAlt = 'SNG_logo'
         let links = [
             {label: 'Home', link: '/'},
-            {label: 'Why Humane UI', link: '/#why_us'},
+            {label: 'Why Singularity UI', link: '/#why_us'},
             {label: 'Components', link: '/#components'},
             {label: 'Documentation', link: '/#docs'}
         ]
         return (
-            <div className='HUI__nav'>
+            <div className='SNG__nav'>
                 <nav>
-                    <div className='HUI__nav--logo'>
+                    <div className='SNG__nav--logo'>
                         <a href={'/'}>
                             {logoSrc.length > 0 ?
                                 <img src={logoSrc} alt={logoAlt} /> : <div>{brandName}</div>
@@ -31,7 +31,7 @@ export class Nav extends Component {
                             }
                         </a>
                     </div>
-                    <div className='HUI__nav--links'>
+                    <div className='SNG__nav--links'>
                         {this.renderLinks(links)}
                     </div>
                 </nav>

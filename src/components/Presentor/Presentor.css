@@ -1,23 +1,39 @@
-.HUI__presentor {
+.SNG__presentor {
   display: flex;
   justify-content: center;
   align-items: center; }
 
-.HUI__presentor--banner {
+.SNG__presentor--banner {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 40rem;
-  margin: calc((100vh - 40rem)/2) auto;
+  margin: calc((100vh - 40rem) / 2) auto;
   height: 40rem;
   text-align: center;
   position: relative;
   background-color: #000;
-  border-radius: 50%; }
+  border-radius: 50%;
+  animation: float 20s linear infinite; }
 
-.HUI__presentor--banner::before, .HUI__presentor--banner::after {
-  content: '';
+@keyframes float {
+  0% {
+    width: 60vmin;
+    margin: calc((100vh - 60vmin) / 2) auto;
+    height: 60vmin; }
+  50% {
+    width: 40vmin;
+    margin: calc((100vh - 40vmin) / 2) auto;
+    height: 40vmin; }
+  100% {
+    width: 60vmin;
+    margin: calc((100vh - 60vmin) / 2) auto;
+    height: 60vmin; } }
+
+.SNG__presentor--banner::before,
+.SNG__presentor--banner::after {
+  content: "";
   position: absolute;
   left: -0.1rem;
   top: -0.1rem;
@@ -26,50 +42,50 @@
   z-index: -1;
   width: calc(100% + 0.2rem);
   height: calc(100% + 0.2rem);
-  filter: blur(3rem);
+  filter: blur(6rem);
   border-radius: 50%;
   animation: moveBackground 10s linear infinite; }
 
-.HUI__presentor--banner > div:first-child {
+.SNG__presentor--banner > div:first-child {
   display: block;
+  width: 100vw;
+  letter-spacing: 4rem;
+  margin-left: 2rem;
   color: white;
-  -webkit-text-fill-color: transparent;
-  background: -webkit-linear-gradient(transparent, transparent), url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYAbU53k3T4mEbN19XbgGjE3NWPioOAwT9ck7DxpdwH3IaEAz-) repeat;
-  background: -o-linear-gradient(transparent, transparent);
-  -webkit-background-clip: text;
-  font-weight: 200;
+  font-weight: 400;
   font-size: 6rem;
   margin-bottom: 1rem;
-  animation: moveBackground 10s ease-in-out infinite; }
+  animation: floatText 20s linear infinite; }
 
-.HUI__presentor--scroll {
-  perspective-origin: center; }
+.SNG__presentor--scroll {
+  perspective-origin: center;
+  width: 100%; }
 
-div[class^=HUI__animate--] {
+div[class^="SNG__animate--"] {
   opacity: 0;
   transform-origin: center;
   transform-style: preserve-3d;
   transition: all 0.3s ease-in-out; }
 
-div[class^=HUI__animate--right-] {
+div[class^="SNG__animate--right-"] {
   transform: rotate(5deg) translateX(6rem) translateZ(-10rem) scale(0.9); }
 
-div[class^=HUI__animate--left-] {
+div[class^="SNG__animate--left-"] {
   transform: rotate(-5deg) translateX(-6rem) translateZ(-10rem) scale(0.9); }
 
-div[class^=HUI__animate--top-] {
+div[class^="SNG__animate--top-"] {
   transform: rotate(-5deg) translateY(-6rem) translateZ(-10rem) scale(0.9); }
 
-div[class^=HUI__animate--bottom-] {
+div[class^="SNG__animate--bottom-"] {
   transform: rotate(5deg) translateY(6rem) translateZ(-10rem) scale(0.9); }
 
-div[class^=HUI__animate--back-] {
+div[class^="SNG__animate--back-"] {
   transform: rotate(0deg) translateZ(-10rem) scale(0.9); }
 
-div[class^=HUI__animate--front-] {
+div[class^="SNG__animate--front-"] {
   transform: rotate(0deg) translateZ(20rem) scale(0.9); }
 
-div[class^=HUI__animate--].animate {
+div[class^="SNG__animate--"].animate {
   opacity: 1;
   transform: rotate(0deg) translateX(0rem) translateY(0rem) translateZ(0rem) scale(1); }
 
@@ -81,23 +97,33 @@ div[class^=HUI__animate--].animate {
   100% {
     background-position-y: 0; } }
 
-.HUI__presentor--banner > div:last-child {
-  font-weight: 100;
-  font-size: 2rem; }
+@keyframes floatText {
+  0% {
+    letter-spacing: 4rem; }
+  50% {
+    letter-spacing: 3rem; }
+  100% {
+    letter-spacing: 4rem; } }
 
-.HUI__presentor--simple, .HUI__presentor--simple-full {
+.SNG__presentor--banner > div:last-child {
+  font-weight: 300;
+  font-size: 2rem;
+  width: 100vw; }
+
+.SNG__presentor--simple,
+.SNG__presentor--simple-full {
   width: 100%;
   padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center; }
 
-.HUI__presentor--simple-full {
+.SNG__presentor--simple-full {
   padding: 2rem;
   height: 100vh;
   width: 100vw; }
 
-div[class^=HUI__presentor--smooth-] {
+div[class^="SNG__presentor--smooth-"] {
   overflow-y: hidden;
   width: 100%;
   transition: height 0.25s ease-in-out; }

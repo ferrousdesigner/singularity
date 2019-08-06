@@ -80,7 +80,7 @@ export class ScrollBasedPresentor extends Component {
         if(!children.length) children = [children]
         return children.map((child, i) => {
             if(this.classArray.length < children.length) {
-                let classname = 'HUI__animate--' + direction + '-' + this.generateRandomId()
+                let classname = 'SNG__animate--' + direction + '-' + this.generateRandomId()
                 this.classArray.push(classname)  
                 return (
                     <div className={classname} style={{transitionDuration: time, transitionTimingFunction: easing}}>
@@ -111,7 +111,7 @@ export class ScrollBasedPresentor extends Component {
     render () {
         const { children, time, direction, easing, intensity } =  this.props
         return (
-            <div className='HUI__presentor--scroll' style={{perspective: this.getPerspective(intensity)}}>
+            <div className='SNG__presentor--scroll' style={{perspective: this.getPerspective(intensity)}}>
                 {this.renderChildrenWithAnimationWrapper(children, time, direction, easing)}
             </div>
         )

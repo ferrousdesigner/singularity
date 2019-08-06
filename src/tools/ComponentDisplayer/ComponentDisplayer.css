@@ -103,26 +103,26 @@
   border-radius: 50%;
   cursor: pointer; }
 
-.HUI__code {
+.SNG__code {
   background: #333;
   width: 100%;
   padding: 1rem;
   border-radius: 1rem; }
 
-.HUI__code div:last-child {
+.SNG__code div:last-child {
   background: #111;
   border-radius: 1rem;
   padding: 1rem;
   font-size: 2rem;
   color: #48c3e2; }
 
-.HUI__code--option {
+.SNG__code--option {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
   align-items: center; }
 
-.HUI__code button, .HUI__code a:link, .HUI__code a:visited {
+.SNG__code button, .SNG__code a:link, .SNG__code a:visited {
   background: #111;
   border: none;
   color: #fff;
@@ -130,5 +130,5 @@
   padding: 0.5rem 1.5rem;
   border-radius: 4rem; }
 
-.HUI__code a:link {
+.SNG__code a:link {
   background: #111; }

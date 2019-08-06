@@ -1,4 +1,4 @@
-.HUI__button {
+.SNG__button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -24,13 +24,13 @@
   background-color: transparent;
   z-index: 1; }
 
-.HUI__button:hover {
+.SNG__button:hover {
   transform: scale(1.1); }
 
-.HUI__button:active {
+.SNG__button:active {
   transform: scale(0.9); }
 
-.HUI__button::before {
+.SNG__button::before {
   content: '';
   border-radius: 0.5rem;
   position: absolute;
@@ -43,10 +43,10 @@
   background: linear-gradient(315deg, #bababa 0%, #e7e7e7 55%, white 100%);
   transition: all 0.2s ease; }
 
-.HUI__button:hover::before {
+.SNG__button:hover::before {
   filter: brightness(1.1); }
 
-.HUI__button .done {
+.SNG__button .done {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -59,57 +59,57 @@
     opacity: 1;
     transform: translateX(0%); } }
 
-.HUI__button .done span {
+.SNG__button .done span {
   font-size: 1.4rem;
   color: white;
   margin-left: 0.5rem;
   opacity: 0;
   animation: slide-in 0.2s ease-in-out .4s forwards; }
 
-.HUI__button--round, .HUI__button--round::before {
+.SNG__button--round, .SNG__button--round::before {
   border-radius: 5rem; }
 
-.HUI__button--primary {
+.SNG__button--primary {
   color: #fff; }
 
-.HUI__button--primary::before {
+.SNG__button--primary::before {
   background: #004aac;
   background: linear-gradient(315deg, #004aac 0%, #0474bf 46%, #0393d4 64%, #02ace5 82%, #00d4ff 100%); }
 
-.HUI__button--success {
+.SNG__button--success {
   color: #fff; }
 
-.HUI__button--success::before {
+.SNG__button--success::before {
   background: #00b65d;
   background: linear-gradient(315deg, #00b65d 0%, #02c683 59%, #00ffb1 100%); }
 
-.HUI__button--danger {
+.SNG__button--danger {
   color: #fff; }
 
-.HUI__button--danger::before {
+.SNG__button--danger::before {
   background: #9f0000;
   background: linear-gradient(315deg, #9f0000 0%, #c7071a 59%, #ff7724 100%); }
 
-.HUI__button--warning {
+.SNG__button--warning {
   color: #fff; }
 
-.HUI__button--warning::before {
+.SNG__button--warning::before {
   background: #ad5901;
   background: linear-gradient(315deg, #ad5901 0%, #e69d06 59%, #ffb436 100%); }
 
-.HUI__button--info {
+.SNG__button--info {
   color: #fff; }
 
-.HUI__button--info::before {
+.SNG__button--info::before {
   background: #0191ad;
   background: linear-gradient(315deg, #0191ad 0%, #06e6c0 51%, #36f2ff 100%); }
 
-.HUI__button--modern {
+.SNG__button--modern {
   color: #fff;
   background-size: 1000% 1000%;
   animation: button-background-animation 10s ease infinite; }
 
-.HUI__button--modern::before {
+.SNG__button--modern::before {
   background: transparent; }
 
 @-webkit-keyframes button-background-animation {
@@ -120,17 +120,17 @@
   100% {
     background-position: 0% 82%; } }
 
-.HUI__button--clear {
+.SNG__button--clear {
   color: #fff;
   border: 0.2rem solid #fff; }
 
-.HUI__button--clear::before {
+.SNG__button--clear::before {
   background: transparent; }
 
-.HUI__button--clear-dark {
+.SNG__button--clear-dark {
   color: #fff; }
 
-.HUI__button--clear-dark::before {
+.SNG__button--clear-dark::before {
   background: #0191ad;
   background: linear-gradient(315deg, #0191ad 0%, #06e6c0 51%, #36f2ff 100%); }
 

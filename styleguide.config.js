@@ -19,7 +19,7 @@ module.exports = {
             ribbonText: '#fff',
         },
         fontFamily: {
-          base: '"Open Sans", sans-serif'
+          base: '"Poppins", sans-serif'
         }
       },
     styles: {

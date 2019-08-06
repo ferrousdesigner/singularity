@@ -8,7 +8,7 @@ const settings = (setting) => {
 
 }
 const cssReset = `
-    @import url('https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,700');
+    @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,700');
     @import url('https://use.fontawesome.com/releases/v5.3.1/css/all.css');
 
     :root {
@@ -27,7 +27,7 @@ const cssReset = `
     }
     body {
         background: black;
-        font-family: 'Open Sans',sans-serif;
+        font-family: 'Poppins',sans-serif;
         color: #eee;
         font-size: 1.6rem;
         line-height: 1.5;

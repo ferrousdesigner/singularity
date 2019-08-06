@@ -1,5 +1,5 @@
 
-.HUI__button{
+.SNG__button{
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -25,13 +25,13 @@
     background-color: transparent;
     z-index: 1;
 }
-.HUI__button:hover {
+.SNG__button:hover {
     transform: scale(1.1);
 }
-.HUI__button:active {
+.SNG__button:active {
     transform: scale(0.9);
 }
-.HUI__button::before{
+.SNG__button::before{
     content: '';
     border-radius: 0.5rem;
     position: absolute;
@@ -44,10 +44,10 @@
     background: linear-gradient(315deg, rgba(186,186,186,1) 0%, rgba(231,231,231,1) 55%, rgba(255,255,255,1) 100%);   
     transition: all 0.2s ease; 
 }   
- .HUI__button:hover::before {
+ .SNG__button:hover::before {
     filter: brightness(1.1);
 }
-.HUI__button .done {
+.SNG__button .done {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,7 +62,7 @@
         transform: translateX(00%)
     }
 }
-.HUI__button .done span  {
+.SNG__button .done span  {
     font-size: 1.4rem;
     color: white;
     margin-left: 0.5rem;
@@ -70,54 +70,54 @@
     animation: slide-in 0.2s ease-in-out .4s forwards;
 }
 
-.HUI__button--round, .HUI__button--round::before {
+.SNG__button--round, .SNG__button--round::before {
     border-radius: 5rem;
 }
 //Colors and background
 
-.HUI__button--primary {
+.SNG__button--primary {
     color: #fff;
 }
-.HUI__button--primary::before{
+.SNG__button--primary::before{
     background:rgba(0,74,172,1);
     background: linear-gradient(315deg, rgba(0,74,172,1) 0%, rgba(4,116,191,1) 46%, rgba(3,147,212,1) 64%, rgba(2,172,229,1) 82%, rgba(0,212,255,1) 100%);
 }
 
-.HUI__button--success {
+.SNG__button--success {
     color: #fff;
 }
-.HUI__button--success::before{
+.SNG__button--success::before{
     background: rgba(0,182,93,1);
     background: linear-gradient(315deg, rgba(0,182,93,1) 0%, rgba(2,198,131,1) 59%, rgba(0,255,177,1) 100%);
 }
-.HUI__button--danger {
+.SNG__button--danger {
     color: #fff;
 }
-.HUI__button--danger::before{
+.SNG__button--danger::before{
     background:  rgba(159,0,0,1);
     background: linear-gradient(315deg, rgba(159,0,0,1) 0%, rgba(199,7,26,1) 59%, rgba(255,119,36,1) 100%);
 }
-.HUI__button--warning {
+.SNG__button--warning {
     color: #fff;
 }
-.HUI__button--warning::before{
+.SNG__button--warning::before{
     background: rgba(173,89,1,1);
     background: linear-gradient(315deg, rgba(173,89,1,1) 0%, rgba(230,157,6,1) 59%, rgba(255,180,54,1) 100%);
 }
-.HUI__button--info {
+.SNG__button--info {
     color: #fff;
 }
-.HUI__button--info::before{
+.SNG__button--info::before{
     background: rgba(1,145,173,1);
     background: linear-gradient(315deg, rgba(1,145,173,1) 0%, rgba(6,230,192,1) 51%, rgba(54,242,255,1) 100%);
 }
 
-.HUI__button--modern{
+.SNG__button--modern{
     color: #fff;
     background-size: 1000% 1000%;
     animation: button-background-animation 10s ease infinite;
 }
-.HUI__button--modern::before{
+.SNG__button--modern::before{
     background: transparent;
 }
 @-webkit-keyframes button-background-animation {
@@ -125,17 +125,17 @@
     50%{background-position:99% 19%}
     100%{background-position:0% 82%}
 }
-.HUI__button--clear {
+.SNG__button--clear {
     color: #fff;
     border: 0.2rem solid #fff;
 }
-.HUI__button--clear::before{
+.SNG__button--clear::before{
     background: transparent;
 }
-.HUI__button--clear-dark {
+.SNG__button--clear-dark {
     color: #fff;
 }
-.HUI__button--clear-dark::before{
+.SNG__button--clear-dark::before{
     background: rgba(1,145,173,1);
     background: linear-gradient(315deg, rgba(1,145,173,1) 0%, rgba(6,230,192,1) 51%, rgba(54,242,255,1) 100%);
 }

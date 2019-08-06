@@ -13,8 +13,8 @@ export default class Code extends Component {
     render () {
         const { children, linktoDocs } =  this.props
         return (
-            <div className={'HUI__code'}>
-                <div className='HUI__code--option'>
+            <div className={'SNG__code'}>
+                <div className='SNG__code--option'>
                     <button onClick={() => this.copy()}>Copy</button>
                     <a target='_blank' href={linktoDocs || '#'}>Go to Documention</a>
                 </div>

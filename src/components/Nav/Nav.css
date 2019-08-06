@@ -1,4 +1,4 @@
-.HUI__nav > nav {
+.SNG__nav > nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,16 +9,16 @@
   background: rgba(0, 0, 0, 0.9);
   z-index: 9999; }
 
-.HUI__nav .HUI__nav--logo {
+.SNG__nav .SNG__nav--logo {
   padding: 1rem;
   font-size: 2rem;
   font-weight: 100;
   color: white; }
 
-.HUI__nav .HUI__nav--logo a {
+.SNG__nav .SNG__nav--logo a {
   color: #fff; }
 
-.HUI__nav .HUI__nav--links a:link {
+.SNG__nav .SNG__nav--links a:link {
   color: #fff;
   padding: 0.5rem 0;
   margin: 0 1rem;
@@ -26,16 +26,16 @@
   overflow-x: hidden;
   z-index: 10001; }
 
-.HUI__nav .HUI__nav--links a:hover {
+.SNG__nav .SNG__nav--links a:hover {
   color: #fff; }
 
-.HUI__nav .HUI__nav--links a:active {
+.SNG__nav .SNG__nav--links a:active {
   color: #fff; }
 
-.HUI__nav .HUI__nav--links a:visited {
+.SNG__nav .SNG__nav--links a:visited {
   color: #fff; }
 
-.HUI__nav .HUI__nav--links a::before, .HUI__nav .HUI__nav--links a::after {
+.SNG__nav .SNG__nav--links a::before, .SNG__nav .SNG__nav--links a::after {
   content: "";
   position: absolute;
   bottom: -0.2rem;
@@ -50,17 +50,17 @@
   transition: transform 200ms ease-in, opacity 200ms ease-in;
   z-index: -1; }
 
-.HUI__nav .HUI__nav--links a::before {
+.SNG__nav .SNG__nav--links a::before {
   transform-origin: left;
   right: 0;
   top: -0.2rem; }
 
-.HUI__nav .HUI__nav--links a:hover::after {
+.SNG__nav .SNG__nav--links a:hover::after {
   transform-origin: left;
   transform: scale(1);
   opacity: 1; }
 
-.HUI__nav .HUI__nav--links a:hover::before {
+.SNG__nav .SNG__nav--links a:hover::before {
   transform-origin: right;
   transform: scale(1);
   opacity: 1; }

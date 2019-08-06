@@ -1,6 +1,6 @@
 import React from 'react'
 import { Row, Col } from 'react-flexbox-grid'
-import { Button, Presentor } from '../../HumaneUI'
+import { Button, Presentor } from '../../SingularityUI'
 import './ComponentDisplayer.css'
 import Code from './Code'
 

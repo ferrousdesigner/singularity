@@ -19,7 +19,7 @@ const check = (doneMessage) => {
 }
 
 let css = `
-    .HUI__button-primary{
+    .SNG__button-primary{
         border: none;
         border-radius: 4px;
         background: linear-gradient(to right, #5ea3fa, blue);
@@ -30,7 +30,7 @@ let css = `
         cursor: pointer;
         transition: all 0.2s ease;
     }
-    .HUI__button-primary:hover{
+    .SNG__button-primary:hover{
         opacity: 0.8;
     }
 `
@@ -58,9 +58,9 @@ export class Button extends Component {
         let cases = ['primary', 'success', 'info', 'warning', 'danger', 'modern', 'clear']
         let styleTwo = type === 'modern' ? {backgroundSize: colors && colors.length > 1 ? colors.length * 80 + '%' : '100%', backgroundColor: colors[0], backgroundImage: getBackground(colors), color: labelColor || 'inherit'} : null
         return cases.includes(type) ?  (
-            <div><button onClick={onClick} style={{...styleTwo, ...style}} className={round ? `HUI__button HUI__button--${type} HUI__button--round` : `HUI__button HUI__button--${type}`}>{doing && !done ? loader() : (done ? check(doneMessage) : label)}</button></div>
+            <div><button onClick={onClick} style={{...styleTwo, ...style}} className={round ? `SNG__button SNG__button--${type} SNG__button--round` : `SNG__button SNG__button--${type}`}>{doing && !done ? loader() : (done ? check(doneMessage) : label)}</button></div>
         ) :  (
-            <div><button onClick={onClick} style={{...style}} className={round ? 'HUI__button HUI__button--round' : 'HUI__button'}>{doing ? loader() : (done ? check(doneMessage) : label)}</button></div>
+            <div><button onClick={onClick} style={{...style}} className={round ? 'SNG__button SNG__button--round' : 'SNG__button'}>{doing ? loader() : (done ? check(doneMessage) : label)}</button></div>
         )
     }
     render () {
