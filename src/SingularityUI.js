@@ -26,6 +26,7 @@ const cssReset = `
         text-decoration: none;
     }
     body {
+        overflow-x: hidden;
         background: black;
         font-family: 'Poppins',sans-serif;
         color: #eee;

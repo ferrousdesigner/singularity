@@ -14,6 +14,7 @@ export class Presentor extends Component {
           return (
             <div className='SNG__presentor--banner'>
               <div>{settings.bannerText}</div>
+              <span />
               <div>{settings.bannerSubText}</div>
             </div>
           )
