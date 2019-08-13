@@ -62,10 +62,10 @@ export default class ShowRoom extends Component {
           <Grid>
             <Row center='xs' middle='xs' style={{ marginTop: '4rem' }}>
               <Col xs={12} sm={8}>
-                <Header type='spaced' align={'center'} weight={200}>
+                <Header type='spaced' weight={200}>
                   Buttons
                 </Header>
-                <Header type='xlg' align={'center'} weight={400} capital>
+                <Header type='xlg'  weight={400} capital>
                   {' '}
                   Interactive
                   <br />

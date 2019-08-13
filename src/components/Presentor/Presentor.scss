@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
 }
 .SNG__presentor--banner {
   display: flex;
@@ -40,13 +41,13 @@
   content: "";
   position: absolute;
   background: -webkit-linear-gradient(transparent, transparent),
-    url(https://blenderartists.org/uploads/default/original/4X/8/2/f/82f5428b634da863a23666e50f296fe77906dc42.jpg)
+    url(https://assets.pcmag.com/media/images/457693-interstellar-black-hole.jpg?thumb=y&width=810&height=456)
       repeat;
   background: -o-linear-gradient(transparent, transparent);
-  left: -5%;
-  top: -5%;
-  width: 110%;
-  height: 110%;
+  left: -25%;
+  top: -25%;
+  width: 150%;
+  height: 150%;
   filter: blur(5rem);
   z-index: -3;
   border-radius: 50%;
@@ -68,7 +69,7 @@
   width: calc(100%);
   height: calc(100%);
   opacity: 1;
-  animation: moveBackground 300s linear infinite;
+  // animation: moveBackground 300s linear infinite;
   z-index: 0;
 }
 
@@ -80,7 +81,7 @@
   color: rgb(255, 255, 255);
   z-index: 2;
   font-weight: 400;
-  font-size: 6rem;
+  font-size: 6vmin;
   margin-bottom: 1rem;
   animation: floatText 10s linear infinite;
 }
@@ -130,13 +131,13 @@ div[class^="SNG__animate--"].animate {
 }
 @keyframes floatText {
   0% {
-    letter-spacing: 4rem;
+    letter-spacing: 5vmin;
   }
   50% {
-    letter-spacing: 5rem;
+    letter-spacing: 4vmin;
   }
   100% {
-    letter-spacing: 4rem;
+    letter-spacing: 5vmin;
   }
 }
 
