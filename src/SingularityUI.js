@@ -1,8 +1,10 @@
 import StyleMaker from 'stylemaker';
-import { Button } from './components/Button';
-import { Nav } from  './components/Nav';
-import { Presentor } from './components/Presentor';
-import { Header } from './components/Header';
+export { Button } from './components/Button';
+export { Nav } from  './components/Nav';
+export { Presentor } from './components/Presentor';
+export { Header } from './components/Header';
+export { Spacer } from './components/Spacer';
+
 
 const settings = (setting) => {
 
@@ -19,7 +21,7 @@ const cssReset = `
         padding: 0;
         box-sizing: border-box;
     }
-    *{
+    *,  *::after,  *::before{
       box-sizing: border-box;
     }
     a{
@@ -122,11 +124,3 @@ const cssReset = `
 `
 //Initial Reset Styling 
 StyleMaker(cssReset)
-
-export {
-    settings,
-    Button,
-    Nav,
-    Presentor,
-    Header
-};

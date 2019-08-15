@@ -1,30 +1,25 @@
 .SNG__header{
     margin: 1rem 0;
+    cursor: default;
 }
 
 .SNG__header--xxlg {
-    font-size: 8rem;
-    margin: 2rem 0;
+    font-size: 7rem;
 }
 .SNG__header--xlg {
     font-size: 5rem;
-    margin: 1.8rem 0;
 }
 .SNG__header--lg {
     font-size: 4rem;
-    margin: 1.6rem 0;
 }
 .SNG__header--md {
     font-size: 3rem;
-    margin: 1.4rem 0;
 }
 .SNG__header--sm {
     font-size: 2rem;
-    margin: 1.2rem 0;
 }
 .SNG__header--xs {
     font-size: 1.8rem;
-    margin: 1rem 0;
 }
 .SNG__header--spaced {
     font-size: 2.8rem;
@@ -36,8 +31,7 @@
 .SNG__text--gradient, .SNG__text--gradient-animated{
     color: rgb(255, 255, 255);
     -webkit-text-fill-color: transparent;
-    background: -webkit-linear-gradient(transparent, transparent),
-                url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYAbU53k3T4mEbN19XbgGjE3NWPioOAwT9ck7DxpdwH3IaEAz-) repeat;
+    background: -webkit-linear-gradient(#888, #111) repeat;
     background: -o-linear-gradient(transparent, transparent);
     -webkit-background-clip: text;
     letter-spacing: 0.2rem;

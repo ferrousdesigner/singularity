@@ -39,36 +39,20 @@ let css = `
  * A button with the touch of humanity.
  */
 export class Button extends Component {
-    renderButton (type, label, labelColor, colors, round, doing, done, doneMessage, disabled, onClick, style) {
-        const getBackground = (colors) => {
-            if(colors && colors.length > 0) {
-                let s = ''
-                for (let i = 0 ; i < colors.length; i++) {
-                    i < (colors.length - 1) ? s = s + colors[i] + ', ' : s = s + colors[i]
-                }
-                s = 'linear-gradient(124deg, ' + s + ')'
-                return s
-            } else {
-                return (
-                    'linear-gradient(124deg, green, blue)'
-                 )
-            }
-            
-        }
-        let cases = ['primary', 'success', 'info', 'warning', 'danger', 'modern', 'clear']
-        let styleTwo = type === 'modern' ? {backgroundSize: colors && colors.length > 1 ? colors.length * 80 + '%' : '100%', backgroundColor: colors[0], backgroundImage: getBackground(colors), color: labelColor || 'inherit'} : null
-        return cases.includes(type) ?  (
-            <div><button onClick={onClick} style={{...styleTwo, ...style}} className={round ? `SNG__button SNG__button--${type} SNG__button--round` : `SNG__button SNG__button--${type}`}>{doing && !done ? loader() : (done ? check(doneMessage) : label)}</button></div>
-        ) :  (
-            <div><button onClick={onClick} style={{...style}} className={round ? 'SNG__button SNG__button--round' : 'SNG__button'}>{doing ? loader() : (done ? check(doneMessage) : label)}</button></div>
-        )
+    getClass (props) {
+     const { round, light, style, type, variant } = this.props
+     let classString = 'SNG__button'
+     if(round) classString+= ' SNG__button--round'
+     if(type === 'link') classString+= ' SNG__button--link'
+     if(variant === 'alt') classString+= ' SNG__button--alt'
+     return classString
     }
     render () {
-        const { type, label, labelColor, colors, round, doing, done, doneMessage, disabled, onClick, style} = this.props
+        const { done, busy, children, doneMessage, style, icon } = this.props
         return (
-            <div>
-                {this.renderButton(type, label, labelColor, colors, round, doing, done, doneMessage, disabled, onClick)}
-            </div>
+            <button className={this.getClass(this.props)} style={style}>
+                {icon && <span className='SNG__button--icon'>{icon}</span>}{done ? check(doneMessage) : busy ? loader() : children}
+            </button>
         );
     }
 }
@@ -82,7 +66,9 @@ Button.defaultProps = {
     doing: false,
     done: false,
     doneMessage: 'Done',
-    icon: null
+    icon: null,
+    children: 'No Label',
+    variant: ''
 }
 Button.propTypes = {
     type: PropTypes.string,
@@ -94,5 +80,6 @@ Button.propTypes = {
     doneMessage: PropTypes.string,
     round: PropTypes.bool,
     disabled: PropTypes.bool,
-    icon: PropTypes.node
+    icon: PropTypes.node,
+    variant: PropTypes.string
 }

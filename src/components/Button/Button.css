@@ -11,7 +11,6 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  border-radius: 0.5rem;
   font-size: 1.6rem;
   border: none;
   height: 4.8rem;
@@ -19,32 +18,20 @@
   min-width: 13.6rem;
   position: relative;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.14s ease;
   transform-origin: center;
-  background-color: transparent;
-  z-index: 1; }
+  z-index: 1;
+  color: #fff;
+  margin-right: 1rem;
+  background: linear-gradient(#222, #111);
+  vertical-align: top;
+  box-sizing: border-box; }
 
 .SNG__button:hover {
-  transform: scale(1.1); }
+  transform: scale(1.05); }
 
 .SNG__button:active {
-  transform: scale(0.9); }
-
-.SNG__button::before {
-  content: '';
-  border-radius: 0.5rem;
-  position: absolute;
-  left: 0%;
-  top: 0%;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-  background: #026fc8;
-  background: linear-gradient(315deg, #bababa 0%, #e7e7e7 55%, white 100%);
-  transition: all 0.2s ease; }
-
-.SNG__button:hover::before {
-  filter: brightness(1.1); }
+  transform: scale(0.96); }
 
 .SNG__button .done {
   display: flex;
@@ -64,75 +51,45 @@
   color: white;
   margin-left: 0.5rem;
   opacity: 0;
-  animation: slide-in 0.2s ease-in-out .4s forwards; }
+  animation: slide-in 0.2s ease-in-out 0.4s forwards; }
 
-.SNG__button--round, .SNG__button--round::before {
+.SNG__button--round,
+.SNG__button--round::before {
   border-radius: 5rem; }
 
 .SNG__button--primary {
   color: #fff; }
 
-.SNG__button--primary::before {
-  background: #004aac;
-  background: linear-gradient(315deg, #004aac 0%, #0474bf 46%, #0393d4 64%, #02ace5 82%, #00d4ff 100%); }
+.SNG__button--alt {
+  border: 0.2rem solid #fff;
+  background-color: transparent;
+  background: none; }
 
-.SNG__button--success {
-  color: #fff; }
+.SNG__button--link {
+  padding: 0;
+  height: auto;
+  line-height: 1.5;
+  justify-content: flex-start;
+  min-width: auto;
+  color: #ffffffaa;
+  font-size: 1.5rem;
+  background-color: transparent;
+  background: none;
+  transition: all 0.2s ease; }
 
-.SNG__button--success::before {
-  background: #00b65d;
-  background: linear-gradient(315deg, #00b65d 0%, #02c683 59%, #00ffb1 100%); }
-
-.SNG__button--danger {
-  color: #fff; }
-
-.SNG__button--danger::before {
-  background: #9f0000;
-  background: linear-gradient(315deg, #9f0000 0%, #c7071a 59%, #ff7724 100%); }
-
-.SNG__button--warning {
-  color: #fff; }
-
-.SNG__button--warning::before {
-  background: #ad5901;
-  background: linear-gradient(315deg, #ad5901 0%, #e69d06 59%, #ffb436 100%); }
-
-.SNG__button--info {
-  color: #fff; }
-
-.SNG__button--info::before {
-  background: #0191ad;
-  background: linear-gradient(315deg, #0191ad 0%, #06e6c0 51%, #36f2ff 100%); }
-
-.SNG__button--modern {
+.SNG__button--link:hover {
+  transform: none;
   color: #fff;
-  background-size: 1000% 1000%;
-  animation: button-background-animation 10s ease infinite; }
+  text-decoration: underline; }
 
-.SNG__button--modern::before {
-  background: transparent; }
+.SNG__button--icon {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem; }
 
-@-webkit-keyframes button-background-animation {
-  0% {
-    background-position: 0% 82%; }
-  50% {
-    background-position: 99% 19%; }
-  100% {
-    background-position: 0% 82%; } }
-
-.SNG__button--clear {
-  color: #fff;
-  border: 0.2rem solid #fff; }
-
-.SNG__button--clear::before {
-  background: transparent; }
-
-.SNG__button--clear-dark {
-  color: #fff; }
-
-.SNG__button--clear-dark::before {
-  background: #0191ad;
-  background: linear-gradient(315deg, #0191ad 0%, #06e6c0 51%, #36f2ff 100%); }
+.SNG__button--icon * {
+  fill: inherit;
+  color: inherit; }
 
 .checkmark__circle {
   stroke-dasharray: 166;
@@ -151,7 +108,7 @@
   stroke-width: 5;
   stroke: #fff;
   stroke-miterlimit: 10;
-  animation: fill .2s ease-in-out .2s forwards, scale .2s ease-in-out .4s both; }
+  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }
 
 .checkmark__check {
   transform-origin: 50% 50%;
@@ -164,7 +121,8 @@
     stroke-dashoffset: 0; } }
 
 @keyframes scale {
-  0%, 100% {
+  0%,
+  100% {
     transform: none; }
   50% {
     transform: scale3d(1.1, 1.1, 1); } }

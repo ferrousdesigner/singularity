@@ -1,146 +1,106 @@
-
-.SNG__button{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0;
-    white-space: nowrap;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border-radius: 0.5rem;
-    font-size: 1.6rem;
-    border: none;
-    height: 4.8rem;
-    padding: 0 3.8rem;
-    min-width: 13.6rem;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.2s ease; 
-    transform-origin: center;
-    background-color: transparent;
-    z-index: 1;
+.SNG__button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  white-space: nowrap;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 1.6rem;
+  border: none;
+  height: 4.8rem;
+  padding: 0 3.8rem;
+  min-width: 13.6rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.14s ease;
+  transform-origin: center;
+  z-index: 1;
+  color: #fff;
+  margin-right: 1rem;
+  background: linear-gradient(#222, #111);
+  vertical-align: top;
+  box-sizing: border-box;
 }
 .SNG__button:hover {
-    transform: scale(1.1);
+  transform: scale(1.05);
 }
 .SNG__button:active {
-    transform: scale(0.9);
-}
-.SNG__button::before{
-    content: '';
-    border-radius: 0.5rem;
-    position: absolute;
-    left: 0%;
-    top: 0%;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    background: rgb(2,111,200);
-    background: linear-gradient(315deg, rgba(186,186,186,1) 0%, rgba(231,231,231,1) 55%, rgba(255,255,255,1) 100%);   
-    transition: all 0.2s ease; 
-}   
- .SNG__button:hover::before {
-    filter: brightness(1.1);
-}
-.SNG__button .done {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-@keyframes slide-in {
-    0% {
-        opacity: 0;
-        transform: translateX(50%)
-    }
-    100%{
-        opacity: 1;
-        transform: translateX(00%)
-    }
-}
-.SNG__button .done span  {
-    font-size: 1.4rem;
-    color: white;
-    margin-left: 0.5rem;
-    opacity: 0;
-    animation: slide-in 0.2s ease-in-out .4s forwards;
+  transform: scale(0.96);
 }
 
-.SNG__button--round, .SNG__button--round::before {
-    border-radius: 5rem;
+.SNG__button .done {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(00%);
+  }
+}
+.SNG__button .done span {
+  font-size: 1.4rem;
+  color: white;
+  margin-left: 0.5rem;
+  opacity: 0;
+  animation: slide-in 0.2s ease-in-out 0.4s forwards;
+}
+
+.SNG__button--round,
+.SNG__button--round::before {
+  border-radius: 5rem;
 }
 //Colors and background
 
 .SNG__button--primary {
-    color: #fff;
+  color: #fff;
 }
-.SNG__button--primary::before{
-    background:rgba(0,74,172,1);
-    background: linear-gradient(315deg, rgba(0,74,172,1) 0%, rgba(4,116,191,1) 46%, rgba(3,147,212,1) 64%, rgba(2,172,229,1) 82%, rgba(0,212,255,1) 100%);
-}
-
-.SNG__button--success {
-    color: #fff;
-}
-.SNG__button--success::before{
-    background: rgba(0,182,93,1);
-    background: linear-gradient(315deg, rgba(0,182,93,1) 0%, rgba(2,198,131,1) 59%, rgba(0,255,177,1) 100%);
-}
-.SNG__button--danger {
-    color: #fff;
-}
-.SNG__button--danger::before{
-    background:  rgba(159,0,0,1);
-    background: linear-gradient(315deg, rgba(159,0,0,1) 0%, rgba(199,7,26,1) 59%, rgba(255,119,36,1) 100%);
-}
-.SNG__button--warning {
-    color: #fff;
-}
-.SNG__button--warning::before{
-    background: rgba(173,89,1,1);
-    background: linear-gradient(315deg, rgba(173,89,1,1) 0%, rgba(230,157,6,1) 59%, rgba(255,180,54,1) 100%);
-}
-.SNG__button--info {
-    color: #fff;
-}
-.SNG__button--info::before{
-    background: rgba(1,145,173,1);
-    background: linear-gradient(315deg, rgba(1,145,173,1) 0%, rgba(6,230,192,1) 51%, rgba(54,242,255,1) 100%);
+.SNG__button--alt {
+  border: 0.2rem solid #fff;
+  background-color: transparent;
+  background: none;
 }
 
-.SNG__button--modern{
-    color: #fff;
-    background-size: 1000% 1000%;
-    animation: button-background-animation 10s ease infinite;
-}
-.SNG__button--modern::before{
-    background: transparent;
-}
-@-webkit-keyframes button-background-animation {
-    0%{background-position:0% 82%}
-    50%{background-position:99% 19%}
-    100%{background-position:0% 82%}
-}
-.SNG__button--clear {
-    color: #fff;
-    border: 0.2rem solid #fff;
-}
-.SNG__button--clear::before{
-    background: transparent;
-}
-.SNG__button--clear-dark {
-    color: #fff;
-}
-.SNG__button--clear-dark::before{
-    background: rgba(1,145,173,1);
-    background: linear-gradient(315deg, rgba(1,145,173,1) 0%, rgba(6,230,192,1) 51%, rgba(54,242,255,1) 100%);
+.SNG__button--link {
+  padding: 0;
+  height: auto;
+  line-height: 1.5;
+  justify-content: flex-start;
+  min-width: auto;
+  color: #ffffffaa;
+  font-size: 1.5rem;
+  background-color: transparent;
+  background: none;
+  transition: all 0.2s ease;
 }
 
-$curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
+.SNG__button--link:hover {
+  transform: none;
+  color: #fff;
+  text-decoration: underline;
+}
+.SNG__button--icon {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+}
+.SNG__button--icon * {
+  fill: inherit;
+  color: inherit;
+}
+
+$curve: cubic-bezier(0.65, 0, 0.45, 1);
 
 .checkmark__circle {
   stroke-dasharray: 166;
@@ -149,7 +109,7 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
   stroke-miterlimit: 10;
   stroke: transparent;
   fill: none;
-  animation: stroke .6s $curve forwards;
+  animation: stroke 0.6s $curve forwards;
 }
 
 .checkmark {
@@ -160,14 +120,15 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
   stroke-width: 5;
   stroke: #fff;
   stroke-miterlimit: 10;
-  animation: fill .2s ease-in-out .2s forwards, scale .2s ease-in-out .4s both;
+  animation: fill 0.2s ease-in-out 0.2s forwards,
+    scale 0.2s ease-in-out 0.4s both;
 }
 
 .checkmark__check {
   transform-origin: 50% 50%;
   stroke-dasharray: 48;
   stroke-dashoffset: 48;
-  animation: stroke .2s $curve .6s forwards;
+  animation: stroke 0.2s $curve 0.6s forwards;
 }
 
 @keyframes stroke {
@@ -177,7 +138,8 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
 }
 
 @keyframes scale {
-  0%, 100% {
+  0%,
+  100% {
     transform: none;
   }
   50% {
@@ -191,13 +153,14 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
   }
 }
 
-    
 @keyframes animate-background {
   0% {
-   transform: translate(0, 0); }
+    transform: translate(0, 0);
+  }
   50% {
-    transform: translate(-50%, 0);}
+    transform: translate(-50%, 0);
+  }
   100% {
-    transform: translate(0, 0);} 
+    transform: translate(0, 0);
+  }
 }
-

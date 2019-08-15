@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Nav, Presentor, Header } from './SingularityUI'
-import ComponentDisplayer from './tools/ComponentDisplayer'
+import { Button, Nav, Presentor, Header, Spacer } from './SingularityUI'
+import { HalfPic, ComponentDisplayer } from './tools'
 import { Row, Col, Grid } from 'react-flexbox-grid'
 
 const ButtonProps = {
@@ -58,97 +58,32 @@ export default class ShowRoom extends Component {
             bannerSubText: 'A React UI Component Library'
           }}
         />
-        <Presentor settings={{ type: 'simple' }}>
+        <Presentor settings={{ type: 'simple', full: true }}>
           <Grid>
-            <Row center='xs' middle='xs' style={{ marginTop: '4rem' }}>
-              <Col xs={12} sm={8}>
-                <Header type='spaced' weight={200}>
-                  Buttons
+            <Row middle='xs' style={{ marginTop: '4rem' }}>
+              <Col xs={12}>
+                <Header type='spaced' weight={400}>
+                  New Age
                 </Header>
-                <Header type='xlg'  weight={400} capital>
-                  {' '}
-                  Interactive
-                  <br />
-                  <GradientText>gradient</GradientText> buttons.
+                <Header type='xxlg'  weight={100} capital>
+                  <GradientText>Minimal</GradientText> buttons.
                 </Header>
+                <Spacer />
               </Col>
               <Col xs={12} sm={10}>
-                <Presentor settings={{ type: 'scroll', direction: 'front' }}>
-                  <ComponentDisplayer
-                    childProps={ButtonProps}
-                    propsDesc={ButtonPropsDesc}
-                  >
-                    <Button type={'primary'} />
-                  </ComponentDisplayer>
-                </Presentor>
+                <Button round icon={<span className='fa fa-home' />}>I'm a button</Button>
+                <Button round icon={<span className='fa fa-home' />} variant={'alt'}>I'm a button</Button>
+                <Button round busy />
+                <Button round done>I'm a button</Button>
               </Col>
-              <Col xs={12}>
-                {true && (
-                  <Presentor settings={{ type: 'scroll', direction: 'left' }}>
-                    <Row center='xs' middle='xs'>
-                      <Col xs={6} md={3} style={{ padding: '2rem 2rem' }}>
-                        <Button
-                          type='primary'
-                          round={roundButtons}
-                          label={'Primary'}
-                        />
-                      </Col>
-                      <Col xs={6} md={3} style={{ padding: '2rem 2rem' }}>
-                        <Button
-                          type='success'
-                          round={roundButtons}
-                          label={'Success'}
-                        />
-                      </Col>
-                      <Col xs={6} md={3} style={{ padding: '2rem 2rem' }}>
-                        <Button
-                          type='danger'
-                          round={roundButtons}
-                          label={'Danger'}
-                        />
-                      </Col>
-                      <Col xs={6} md={3} style={{ padding: '2rem 2rem' }}>
-                        <Button
-                          type='modern'
-                          round={roundButtons}
-                          doing
-                          colors={['purple', '#ff0000aa', 'blue']}
-                          label={'Animated'}
-                        />
-                      </Col>
-                    </Row>
-                    <Row center='xs' middle='xs'>
-                      <Col xs={6} md={3} style={{ padding: '2rem 2rem' }}>
-                        <Button round={roundButtons} label={'Default'} />
-                      </Col>
-                      <Col xs={6} md={3} style={{ padding: '2rem 2rem' }}>
-                        <Button
-                          round={roundButtons}
-                          type='warning'
-                          label={'Warning'}
-                        />
-                      </Col>
-                      <Col xs={6} md={3} style={{ padding: '2rem 2rem' }}>
-                        <Button
-                          round={roundButtons}
-                          type='info'
-                          label={'Info'}
-                        />
-                      </Col>
-                      <Col xs={6} md={3} style={{ padding: '2rem 2rem' }}>
-                        <Button
-                          round={roundButtons}
-                          type='clear'
-                          label={'Clear'}
-                        />
-                      </Col>
-                    </Row>
-                  </Presentor>
-                )}
+              <Col xs={12} sm={10}>
+                <Spacer />
+                <Button to={'#'} type='link'>Play with it</Button> 
+                <Button to={'#'} type='link'>See Docs</Button> 
+                <HalfPic right>
+                  <Button round>Buttons</Button> 
+                </HalfPic>
               </Col>
-              <Col xs={12} sm={3} />
-              <Col xs={12} sm={3} />
-              <Col xs={12} sm={3} />
             </Row>
           </Grid>
         </Presentor>
@@ -156,7 +91,7 @@ export default class ShowRoom extends Component {
           style={{
             marginTop: '10rem',
             background:
-              'linear-gradient(315deg, #9f0000 0%, #c7071a 59%, #ff7724 100%)',
+              'linear-gradient(315deg, rgb(81, 81, 81) 0%, rgb(52, 52, 52) 59%, rgb(42, 42, 42) 100%)',
             height: '10rem',
             display: 'flex',
             padding: '0 1rem',
@@ -167,11 +102,11 @@ export default class ShowRoom extends Component {
           <div
             style={{
               fontWeight: 'lighter',
-              fontSize: '3rem',
+              fontSize: '2rem',
               marginLeft: '1rem'
             }}
           >
-            Singularity UI 2018.
+            Singularity UI 2018
           </div>
           <div
             style={{
