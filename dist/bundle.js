@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 35);
+/******/ 	return __webpack_require__(__webpack_require__.s = 37);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -100,50 +100,6 @@ if (true) {
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getColumnProps = exports.Col = exports.getRowProps = exports.Row = exports.Grid = undefined;
-
-var _Row2 = __webpack_require__(28);
-
-Object.defineProperty(exports, 'getRowProps', {
-  enumerable: true,
-  get: function get() {
-    return _Row2.getRowProps;
-  }
-});
-
-var _Col2 = __webpack_require__(31);
-
-Object.defineProperty(exports, 'getColumnProps', {
-  enumerable: true,
-  get: function get() {
-    return _Col2.getColumnProps;
-  }
-});
-
-var _Grid2 = __webpack_require__(32);
-
-var _Grid3 = _interopRequireDefault(_Grid2);
-
-var _Row3 = _interopRequireDefault(_Row2);
-
-var _Col3 = _interopRequireDefault(_Col2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.Grid = _Grid3.default;
-exports.Row = _Row3.default;
-exports.Col = _Col3.default;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -159,7 +115,71 @@ if (false) { var throwOnDirectAccess, ReactIs; } else {
 
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getColumnProps = exports.Col = exports.getRowProps = exports.Row = exports.Grid = undefined;
+
+var _Row2 = __webpack_require__(30);
+
+Object.defineProperty(exports, 'getRowProps', {
+  enumerable: true,
+  get: function get() {
+    return _Row2.getRowProps;
+  }
+});
+
+var _Col2 = __webpack_require__(33);
+
+Object.defineProperty(exports, 'getColumnProps', {
+  enumerable: true,
+  get: function get() {
+    return _Col2.getColumnProps;
+  }
+});
+
+var _Grid2 = __webpack_require__(34);
+
+var _Grid3 = _interopRequireDefault(_Grid2);
+
+var _Row3 = _interopRequireDefault(_Row2);
+
+var _Col3 = _interopRequireDefault(_Col2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.Grid = _Grid3.default;
+exports.Row = _Row3.default;
+exports.Col = _Col3.default;
+
+/***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _StyleMaker = _interopRequireDefault(__webpack_require__(16));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = _StyleMaker.default;
+exports.default = _default;
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports) {
 
 /*
@@ -241,7 +261,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -645,26 +665,6 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _StyleMaker = _interopRequireDefault(__webpack_require__(16));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _default = _StyleMaker.default;
-exports.default = _default;
-
-
-/***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -676,7 +676,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = getClass;
 
-var _flexboxgrid = __webpack_require__(29);
+var _flexboxgrid = __webpack_require__(31);
 
 var _flexboxgrid2 = _interopRequireDefault(_flexboxgrid);
 
@@ -821,7 +821,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ViewportSizeType = exports.ColumnSizeType = undefined;
 
-var _propTypes = __webpack_require__(2);
+var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -1385,7 +1385,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1395,12 +1395,12 @@ if(false) {}
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  border-radius: 0.5rem;\n  font-size: 1.6rem;\n  border: none;\n  height: 4.8rem;\n  padding: 0 3.8rem;\n  min-width: 13.6rem;\n  position: relative;\n  cursor: pointer;\n  transition: all 0.2s ease;\n  transform-origin: center;\n  background-color: transparent;\n  z-index: 1; }\n\n.SNG__button:hover {\n  transform: scale(1.1); }\n\n.SNG__button:active {\n  transform: scale(0.9); }\n\n.SNG__button::before {\n  content: '';\n  border-radius: 0.5rem;\n  position: absolute;\n  left: 0%;\n  top: 0%;\n  height: 100%;\n  width: 100%;\n  z-index: -1;\n  background: #026fc8;\n  background: linear-gradient(315deg, #bababa 0%, #e7e7e7 55%, white 100%);\n  transition: all 0.2s ease; }\n\n.SNG__button:hover::before {\n  filter: brightness(1.1); }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 1.4rem;\n  color: white;\n  margin-left: 0.5rem;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out .4s forwards; }\n\n.SNG__button--round, .SNG__button--round::before {\n  border-radius: 5rem; }\n\n.SNG__button--primary {\n  color: #fff; }\n\n.SNG__button--primary::before {\n  background: #004aac;\n  background: linear-gradient(315deg, #004aac 0%, #0474bf 46%, #0393d4 64%, #02ace5 82%, #00d4ff 100%); }\n\n.SNG__button--success {\n  color: #fff; }\n\n.SNG__button--success::before {\n  background: #00b65d;\n  background: linear-gradient(315deg, #00b65d 0%, #02c683 59%, #00ffb1 100%); }\n\n.SNG__button--danger {\n  color: #fff; }\n\n.SNG__button--danger::before {\n  background: #9f0000;\n  background: linear-gradient(315deg, #9f0000 0%, #c7071a 59%, #ff7724 100%); }\n\n.SNG__button--warning {\n  color: #fff; }\n\n.SNG__button--warning::before {\n  background: #ad5901;\n  background: linear-gradient(315deg, #ad5901 0%, #e69d06 59%, #ffb436 100%); }\n\n.SNG__button--info {\n  color: #fff; }\n\n.SNG__button--info::before {\n  background: #0191ad;\n  background: linear-gradient(315deg, #0191ad 0%, #06e6c0 51%, #36f2ff 100%); }\n\n.SNG__button--modern {\n  color: #fff;\n  background-size: 1000% 1000%;\n  animation: button-background-animation 10s ease infinite; }\n\n.SNG__button--modern::before {\n  background: transparent; }\n\n@-webkit-keyframes button-background-animation {\n  0% {\n    background-position: 0% 82%; }\n  50% {\n    background-position: 99% 19%; }\n  100% {\n    background-position: 0% 82%; } }\n\n.SNG__button--clear {\n  color: #fff;\n  border: 0.2rem solid #fff; }\n\n.SNG__button--clear::before {\n  background: transparent; }\n\n.SNG__button--clear-dark {\n  color: #fff; }\n\n.SNG__button--clear-dark::before {\n  background: #0191ad;\n  background: linear-gradient(315deg, #0191ad 0%, #06e6c0 51%, #36f2ff 100%); }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 3rem;\n  height: 3rem;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill .2s ease-in-out .2s forwards, scale .2s ease-in-out .4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%, 100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n", ""]);
+exports.push([module.i, ".SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  font-size: 1.6rem;\n  border: none;\n  height: 4.8rem;\n  padding: 0 3.8rem;\n  min-width: 13.6rem;\n  position: relative;\n  cursor: pointer;\n  transition: all 0.14s ease;\n  transform-origin: center;\n  z-index: 1;\n  color: #fff;\n  margin-right: 1rem;\n  background: linear-gradient(#222, #111);\n  vertical-align: top;\n  box-sizing: border-box; }\n\n.SNG__button:hover {\n  transform: scale(1.05); }\n\n.SNG__button:active {\n  transform: scale(0.96); }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 1.4rem;\n  color: white;\n  margin-left: 0.5rem;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out 0.4s forwards; }\n\n.SNG__button--round,\n.SNG__button--round::before {\n  border-radius: 5rem; }\n\n.SNG__button--primary {\n  color: #fff; }\n\n.SNG__button--alt {\n  border: 0.2rem solid #fff;\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--link {\n  padding: 0;\n  height: auto;\n  line-height: 1.5;\n  justify-content: flex-start;\n  min-width: auto;\n  color: #ffffffaa;\n  font-size: 1.5rem;\n  background-color: transparent;\n  background: none;\n  transition: all 0.2s ease; }\n\n.SNG__button--link:hover {\n  transform: none;\n  color: #fff;\n  text-decoration: underline; }\n\n.SNG__button--icon {\n  width: 2rem;\n  height: 2rem;\n  margin-right: 0.5rem; }\n\n.SNG__button--icon * {\n  fill: inherit;\n  color: inherit; }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 3rem;\n  height: 3rem;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%,\n  100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n", ""]);
 
 // exports
 
@@ -1519,7 +1519,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1529,7 +1529,7 @@ if(false) {}
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -1558,7 +1558,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1568,12 +1568,12 @@ if(false) {}
 /* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".SNG__presentor {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  overflow-x: hidden; }\n\n.SNG__presentor--banner {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 40rem;\n  margin: calc((100vh - 40rem) / 2) auto;\n  height: 40rem;\n  text-align: center;\n  position: relative;\n  background-color: #000;\n  border-radius: 50%; }\n\n@keyframes float {\n  0% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; }\n  50% {\n    width: 40vmin;\n    margin: calc((100vh - 40vmin) / 2) auto;\n    height: 40vmin; }\n  100% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; } }\n\n.SNG__presentor--banner::before,\n.SNG__presentor--banner::after,\n.SNG__presentor--banner > span {\n  content: \"\";\n  position: absolute;\n  background: -webkit-linear-gradient(transparent, transparent), url(https://assets.pcmag.com/media/images/457693-interstellar-black-hole.jpg?thumb=y&width=810&height=456) repeat;\n  background: -o-linear-gradient(transparent, transparent);\n  left: -25%;\n  top: -25%;\n  width: 150%;\n  height: 150%;\n  filter: blur(5rem);\n  z-index: -3;\n  border-radius: 50%;\n  animation: moveBackground 3000s linear infinite; }\n\n.SNG__presentor--banner::before {\n  filter: blur(1rem);\n  background: white;\n  left: -0.5rem;\n  top: -0.5rem;\n  z-index: -1;\n  width: calc(100% + 1rem);\n  height: calc(100% + 1rem); }\n\n.SNG__presentor--banner > span {\n  transform: skewX(60deg);\n  left: 0;\n  top: 0;\n  width: calc(100%);\n  height: calc(100%);\n  opacity: 1;\n  z-index: 0; }\n\n.SNG__presentor--banner > div:first-child {\n  display: block;\n  width: 100vw;\n  letter-spacing: 4rem;\n  margin-left: 2rem;\n  color: white;\n  z-index: 2;\n  font-weight: 400;\n  font-size: 6vmin;\n  margin-bottom: 1rem;\n  animation: floatText 10s linear infinite; }\n\n.SNG__presentor--scroll {\n  perspective-origin: center;\n  width: 100%; }\n\ndiv[class^=\"SNG__animate--\"] {\n  opacity: 0;\n  transform-origin: center;\n  transform-style: preserve-3d;\n  transition: all 0.3s ease-in-out; }\n\ndiv[class^=\"SNG__animate--right-\"] {\n  transform: rotate(5deg) translateX(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--left-\"] {\n  transform: rotate(-5deg) translateX(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--top-\"] {\n  transform: rotate(-5deg) translateY(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--bottom-\"] {\n  transform: rotate(5deg) translateY(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--back-\"] {\n  transform: rotate(0deg) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--front-\"] {\n  transform: rotate(0deg) translateZ(20rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--\"].animate {\n  opacity: 1;\n  transform: rotate(0deg) translateX(0rem) translateY(0rem) translateZ(0rem) scale(1); }\n\n@keyframes moveBackground {\n  0% {\n    background-position-y: 0; }\n  50% {\n    background-position-y: 10000%; }\n  100% {\n    background-position-y: 0; } }\n\n@keyframes floatText {\n  0% {\n    letter-spacing: 5vmin; }\n  50% {\n    letter-spacing: 4vmin; }\n  100% {\n    letter-spacing: 5vmin; } }\n\n.SNG__presentor--banner > div:last-child {\n  font-weight: 300;\n  font-size: 2rem;\n  width: 100vw;\n  z-index: 2; }\n\n.SNG__presentor--simple,\n.SNG__presentor--simple-full {\n  width: 100%;\n  padding: 2rem;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n.SNG__presentor--simple-full {\n  padding: 2rem;\n  height: 100vh;\n  width: 100vw; }\n\ndiv[class^=\"SNG__presentor--smooth-\"] {\n  overflow-y: hidden;\n  width: 100%;\n  transition: height 0.25s ease-in-out; }\n", ""]);
+exports.push([module.i, ".SNG__presentor {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  overflow-x: hidden;\n  position: relative; }\n\n.SNG__presentor--banner {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 40rem;\n  margin: calc((100vh - 40rem) / 2) auto;\n  height: 40rem;\n  text-align: center;\n  position: relative;\n  background-color: #000;\n  border-radius: 50%; }\n\n@keyframes float {\n  0% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; }\n  50% {\n    width: 40vmin;\n    margin: calc((100vh - 40vmin) / 2) auto;\n    height: 40vmin; }\n  100% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; } }\n\n.SNG__presentor--banner::before,\n.SNG__presentor--banner::after,\n.SNG__presentor--banner > span {\n  content: \"\";\n  position: absolute;\n  background: -webkit-linear-gradient(transparent, transparent), url(https://assets.pcmag.com/media/images/457693-interstellar-black-hole.jpg?thumb=y&width=810&height=456) repeat;\n  background: -o-linear-gradient(transparent, transparent);\n  left: -25%;\n  top: -25%;\n  width: 150%;\n  height: 150%;\n  filter: blur(5rem);\n  z-index: -3;\n  border-radius: 50%;\n  animation: moveBackground 3000s linear infinite; }\n\n.SNG__presentor--banner::before {\n  filter: blur(1rem);\n  background: white;\n  left: -0.5rem;\n  top: -0.5rem;\n  z-index: -1;\n  width: calc(100% + 1rem);\n  height: calc(100% + 1rem); }\n\n.SNG__presentor--banner > span {\n  transform: skewX(60deg);\n  left: 0;\n  top: 0;\n  width: calc(100%);\n  height: calc(100%);\n  opacity: 1;\n  z-index: 0; }\n\n.SNG__presentor--banner > div:first-child {\n  display: block;\n  width: 100vw;\n  letter-spacing: 4rem;\n  margin-left: 2rem;\n  color: white;\n  z-index: 2;\n  font-weight: 400;\n  font-size: 6vmin;\n  margin-bottom: 1rem;\n  animation: floatText 10s linear infinite; }\n\n.SNG__presentor--scroll {\n  perspective-origin: center;\n  width: 100%; }\n\ndiv[class^=\"SNG__animate--\"] {\n  opacity: 0;\n  transform-origin: center;\n  transform-style: preserve-3d;\n  transition: all 0.3s ease-in-out; }\n\ndiv[class^=\"SNG__animate--right-\"] {\n  transform: rotate(5deg) translateX(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--left-\"] {\n  transform: rotate(-5deg) translateX(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--top-\"] {\n  transform: rotate(-5deg) translateY(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--bottom-\"] {\n  transform: rotate(5deg) translateY(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--back-\"] {\n  transform: rotate(0deg) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--front-\"] {\n  transform: rotate(0deg) translateZ(20rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--\"].animate {\n  opacity: 1;\n  transform: rotate(0deg) translateX(0rem) translateY(0rem) translateZ(0rem) scale(1); }\n\n@keyframes moveBackground {\n  0% {\n    background-position-y: 0; }\n  50% {\n    background-position-y: 10000%; }\n  100% {\n    background-position-y: 0; } }\n\n@keyframes floatText {\n  0% {\n    letter-spacing: 5vmin; }\n  50% {\n    letter-spacing: 4vmin; }\n  100% {\n    letter-spacing: 5vmin; } }\n\n.SNG__presentor--banner > div:last-child {\n  font-weight: 300;\n  font-size: 2rem;\n  width: 100vw;\n  z-index: 2; }\n\n.SNG__presentor--simple,\n.SNG__presentor--simple-full {\n  width: 100%;\n  padding: 2rem;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n.SNG__presentor--simple-full {\n  padding: 2rem;\n  height: 100vh;\n  width: 100vw; }\n\ndiv[class^=\"SNG__presentor--smooth-\"] {\n  overflow-y: hidden;\n  width: 100%;\n  transition: height 0.25s ease-in-out; }\n", ""]);
 
 // exports
 
@@ -1597,7 +1597,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1607,18 +1607,57 @@ if(false) {}
 /* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".SNG__header {\n  margin: 1rem 0; }\n\n.SNG__header--xxlg {\n  font-size: 8rem;\n  margin: 2rem 0; }\n\n.SNG__header--xlg {\n  font-size: 5rem;\n  margin: 1.8rem 0; }\n\n.SNG__header--lg {\n  font-size: 4rem;\n  margin: 1.6rem 0; }\n\n.SNG__header--md {\n  font-size: 3rem;\n  margin: 1.4rem 0; }\n\n.SNG__header--sm {\n  font-size: 2rem;\n  margin: 1.2rem 0; }\n\n.SNG__header--xs {\n  font-size: 1.8rem;\n  margin: 1rem 0; }\n\n.SNG__header--spaced {\n  font-size: 2.8rem;\n  margin: 1rem 0;\n  text-transform: uppercase;\n  letter-spacing: 1rem; }\n\n.SNG__text--gradient, .SNG__text--gradient-animated {\n  color: white;\n  -webkit-text-fill-color: transparent;\n  background: -webkit-linear-gradient(transparent, transparent), url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYAbU53k3T4mEbN19XbgGjE3NWPioOAwT9ck7DxpdwH3IaEAz-) repeat;\n  background: -o-linear-gradient(transparent, transparent);\n  -webkit-background-clip: text;\n  letter-spacing: 0.2rem; }\n\n.SNG__text--gradient-animated {\n  animation: moveBackground 10s ease-in-out infinite; }\n", ""]);
+exports.push([module.i, ".SNG__header {\n  margin: 1rem 0;\n  cursor: default; }\n\n.SNG__header--xxlg {\n  font-size: 7rem; }\n\n.SNG__header--xlg {\n  font-size: 5rem; }\n\n.SNG__header--lg {\n  font-size: 4rem; }\n\n.SNG__header--md {\n  font-size: 3rem; }\n\n.SNG__header--sm {\n  font-size: 2rem; }\n\n.SNG__header--xs {\n  font-size: 1.8rem; }\n\n.SNG__header--spaced {\n  font-size: 2.8rem;\n  margin: 1rem 0;\n  text-transform: uppercase;\n  letter-spacing: 1rem; }\n\n.SNG__text--gradient, .SNG__text--gradient-animated {\n  color: white;\n  -webkit-text-fill-color: transparent;\n  background: -webkit-linear-gradient(#888, #111) repeat;\n  background: -o-linear-gradient(transparent, transparent);\n  -webkit-background-clip: text;\n  letter-spacing: 0.2rem; }\n\n.SNG__text--gradient-animated {\n  animation: moveBackground 10s ease-in-out infinite; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(29);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(5)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".SNG__spacer {\n  height: 2rem; }\n\n.SNG__spacer--lg {\n  height: 4rem; }\n\n.SNG__spacer--md {\n  height: 2rem; }\n\n.SNG__spacer--sm {\n  height: 1rem; }\n\n.SNG__spacer--xs {\n  height: 0.5rem; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1638,7 +1677,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(2);
+var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -1696,11 +1735,11 @@ function Row(props) {
 Row.propTypes = propTypes;
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(30);
+var content = __webpack_require__(32);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1714,17 +1753,17 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -1735,7 +1774,7 @@ exports.push([module.i, ".container {\n  box-sizing: border-box;\n  margin-left:
 
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1751,7 +1790,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(2);
+var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -1840,7 +1879,7 @@ function Col(props) {
 Col.propTypes = propTypes;
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1855,7 +1894,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(2);
+var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -1886,11 +1925,11 @@ function Grid(props) {
 Grid.propTypes = propTypes;
 
 /***/ }),
-/* 33 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(34);
+var content = __webpack_require__(36);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1904,17 +1943,17 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
 
 /***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -1925,7 +1964,7 @@ exports.push([module.i, ".key-selector, .value-selector {\n  width: 100%;\n  hei
 
 
 /***/ }),
-/* 35 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1940,11 +1979,11 @@ var react_dom = __webpack_require__(10);
 var react_dom_default = /*#__PURE__*/__webpack_require__.n(react_dom);
 
 // EXTERNAL MODULE: ./node_modules/stylemaker/lib/index.js
-var lib = __webpack_require__(5);
+var lib = __webpack_require__(3);
 var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
 
 // EXTERNAL MODULE: ./node_modules/prop-types/index.js
-var prop_types = __webpack_require__(2);
+var prop_types = __webpack_require__(1);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./src/components/Button/Button.css
@@ -1952,12 +1991,6 @@ var Button_Button = __webpack_require__(19);
 
 // CONCATENATED MODULE: ./src/components/Button/Button.js
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2029,56 +2062,36 @@ function (_Component) {
   }
 
   _createClass(Button, [{
-    key: "renderButton",
-    value: function renderButton(type, label, labelColor, colors, round, doing, done, doneMessage, disabled, onClick, style) {
-      var getBackground = function getBackground(colors) {
-        if (colors && colors.length > 0) {
-          var s = '';
-
-          for (var i = 0; i < colors.length; i++) {
-            i < colors.length - 1 ? s = s + colors[i] + ', ' : s = s + colors[i];
-          }
-
-          s = 'linear-gradient(124deg, ' + s + ')';
-          return s;
-        } else {
-          return 'linear-gradient(124deg, green, blue)';
-        }
-      };
-
-      var cases = ['primary', 'success', 'info', 'warning', 'danger', 'modern', 'clear'];
-      var styleTwo = type === 'modern' ? {
-        backgroundSize: colors && colors.length > 1 ? colors.length * 80 + '%' : '100%',
-        backgroundColor: colors[0],
-        backgroundImage: getBackground(colors),
-        color: labelColor || 'inherit'
-      } : null;
-      return cases.includes(type) ? react_default.a.createElement("div", null, react_default.a.createElement("button", {
-        onClick: onClick,
-        style: _objectSpread({}, styleTwo, {}, style),
-        className: round ? "SNG__button SNG__button--".concat(type, " SNG__button--round") : "SNG__button SNG__button--".concat(type)
-      }, doing && !done ? Button_loader() : done ? Button_check(doneMessage) : label)) : react_default.a.createElement("div", null, react_default.a.createElement("button", {
-        onClick: onClick,
-        style: _objectSpread({}, style),
-        className: round ? 'SNG__button SNG__button--round' : 'SNG__button'
-      }, doing ? Button_loader() : done ? Button_check(doneMessage) : label));
+    key: "getClass",
+    value: function getClass(props) {
+      var _this$props = this.props,
+          round = _this$props.round,
+          light = _this$props.light,
+          style = _this$props.style,
+          type = _this$props.type,
+          variant = _this$props.variant;
+      var classString = 'SNG__button';
+      if (round) classString += ' SNG__button--round';
+      if (type === 'link') classString += ' SNG__button--link';
+      if (variant === 'alt') classString += ' SNG__button--alt';
+      return classString;
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          type = _this$props.type,
-          label = _this$props.label,
-          labelColor = _this$props.labelColor,
-          colors = _this$props.colors,
-          round = _this$props.round,
-          doing = _this$props.doing,
-          done = _this$props.done,
-          doneMessage = _this$props.doneMessage,
-          disabled = _this$props.disabled,
-          onClick = _this$props.onClick,
-          style = _this$props.style;
-      return react_default.a.createElement("div", null, this.renderButton(type, label, labelColor, colors, round, doing, done, doneMessage, disabled, onClick));
+      var _this$props2 = this.props,
+          done = _this$props2.done,
+          busy = _this$props2.busy,
+          children = _this$props2.children,
+          doneMessage = _this$props2.doneMessage,
+          style = _this$props2.style,
+          icon = _this$props2.icon;
+      return react_default.a.createElement("button", {
+        className: this.getClass(this.props),
+        style: style
+      }, icon && react_default.a.createElement("span", {
+        className: "SNG__button--icon"
+      }, icon), done ? Button_check(doneMessage) : busy ? Button_loader() : children);
     }
   }]);
 
@@ -2094,7 +2107,9 @@ Button_Button_Button.defaultProps = {
   doing: false,
   done: false,
   doneMessage: 'Done',
-  icon: null
+  icon: null,
+  children: 'No Label',
+  variant: ''
 };
 Button_Button_Button.propTypes = {
   type: prop_types_default.a.string,
@@ -2106,7 +2121,8 @@ Button_Button_Button.propTypes = {
   doneMessage: prop_types_default.a.string,
   round: prop_types_default.a.bool,
   disabled: prop_types_default.a.bool,
-  icon: prop_types_default.a.node
+  icon: prop_types_default.a.node,
+  variant: prop_types_default.a.string
 };
 // CONCATENATED MODULE: ./src/components/Button/index.js
 
@@ -2756,7 +2772,70 @@ Header_Header_Header.defaultProps = {
 // CONCATENATED MODULE: ./src/components/Header/index.js
 
 
+// EXTERNAL MODULE: ./src/components/Spacer/Spacer.css
+var Spacer_Spacer = __webpack_require__(28);
+
+// CONCATENATED MODULE: ./src/components/Spacer/Spacer.js
+function Spacer_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Spacer_typeof = function _typeof(obj) { return typeof obj; }; } else { Spacer_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Spacer_typeof(obj); }
+
+function Spacer_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function Spacer_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function Spacer_createClass(Constructor, protoProps, staticProps) { if (protoProps) Spacer_defineProperties(Constructor.prototype, protoProps); if (staticProps) Spacer_defineProperties(Constructor, staticProps); return Constructor; }
+
+function Spacer_possibleConstructorReturn(self, call) { if (call && (Spacer_typeof(call) === "object" || typeof call === "function")) { return call; } return Spacer_assertThisInitialized(self); }
+
+function Spacer_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function Spacer_getPrototypeOf(o) { Spacer_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return Spacer_getPrototypeOf(o); }
+
+function Spacer_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) Spacer_setPrototypeOf(subClass, superClass); }
+
+function Spacer_setPrototypeOf(o, p) { Spacer_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return Spacer_setPrototypeOf(o, p); }
+
+
+
+
+
+var Spacer_Spacer_Spacer =
+/*#__PURE__*/
+function (_Component) {
+  Spacer_inherits(Spacer, _Component);
+
+  function Spacer() {
+    Spacer_classCallCheck(this, Spacer);
+
+    return Spacer_possibleConstructorReturn(this, Spacer_getPrototypeOf(Spacer).apply(this, arguments));
+  }
+
+  Spacer_createClass(Spacer, [{
+    key: "getClass",
+    value: function getClass(props) {
+      var size = props.size;
+      var classes = 'SNG__spacer';
+      if (size === 'lg') classes += ' SNG__spacer--lg';
+      if (size === 'md') classes += ' SNG__spacer--md';
+      if (size === 'sm') classes += ' SNG__spacer--sm';
+      return classes;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react_default.a.createElement("div", {
+        className: this.getClass(this.props)
+      });
+    }
+  }]);
+
+  return Spacer;
+}(react["Component"]);
+
+/* harmony default export */ var components_Spacer_Spacer = (Spacer_Spacer_Spacer);
+// CONCATENATED MODULE: ./src/components/Spacer/index.js
+
 // CONCATENATED MODULE: ./src/SingularityUI.js
+
 
 
 
@@ -2765,15 +2844,74 @@ Header_Header_Header.defaultProps = {
 
 var SingularityUI_settings = function settings(setting) {};
 
-var cssReset = "\n    @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,700');\n    @import url('https://use.fontawesome.com/releases/v5.3.1/css/all.css');\n\n    :root {\n        font-size: 10px;\n    }\n    body, html, h1, h2, h3, h4, h5, h6, section {\n        margin: 0;\n        padding: 0;\n        box-sizing: border-box;\n    }\n    *{\n      box-sizing: border-box;\n    }\n    a{\n        text-decoration: none;\n    }\n    body {\n        overflow-x: hidden;\n        background: black;\n        font-family: 'Poppins',sans-serif;\n        color: #eee;\n        font-size: 1.6rem;\n        line-height: 1.5;\n        font-weight: lighter;\n    }\n    .loader-spinner {\n        color: white;\n        display: inline-block;\n        position: relative;\n        margin: 0 auto;\n        vertical-align: middle;\n        width: 20%;\n        height: 100%;\n      }\n      .loader-spinner div {\n        transform-origin: center;\n        animation: loader-spinner 1.2s linear infinite;\n      }\n      .loader-spinner div:after {\n        content: \" \";\n        display: block;\n        position: absolute;\n        top: 0.4rem;\n        left: 0rem;\n        width: 0.2rem;\n        height: 0.8rem;\n        border-radius: 20%;\n        background: #fff;\n      }\n      .loader-spinner div:nth-child(1) {\n        transform: rotate(0deg);\n        animation-delay: -1.1s;\n      }\n      .loader-spinner div:nth-child(2) {\n        transform: rotate(30deg);\n        animation-delay: -1s;\n      }\n      .loader-spinner div:nth-child(3) {\n        transform: rotate(60deg);\n        animation-delay: -0.9s;\n      }\n      .loader-spinner div:nth-child(4) {\n        transform: rotate(90deg);\n        animation-delay: -0.8s;\n      }\n      .loader-spinner div:nth-child(5) {\n        transform: rotate(120deg);\n        animation-delay: -0.7s;\n      }\n      .loader-spinner div:nth-child(6) {\n        transform: rotate(150deg);\n        animation-delay: -0.6s;\n      }\n      .loader-spinner div:nth-child(7) {\n        transform: rotate(180deg);\n        animation-delay: -0.5s;\n      }\n      .loader-spinner div:nth-child(8) {\n        transform: rotate(210deg);\n        animation-delay: -0.4s;\n      }\n      .loader-spinner div:nth-child(9) {\n        transform: rotate(240deg);\n        animation-delay: -0.3s;\n      }\n      .loader-spinner div:nth-child(10) {\n        transform: rotate(270deg);\n        animation-delay: -0.2s;\n      }\n      .loader-spinner div:nth-child(11) {\n        transform: rotate(300deg);\n        animation-delay: -0.1s;\n      }\n      .loader-spinner div:nth-child(12) {\n        transform: rotate(330deg);\n        animation-delay: 0s;\n      }\n      @keyframes loader-spinner {\n        0% {\n          opacity: 1;\n        }\n        100% {\n          opacity: 0;\n        }\n      }\n    @media only screen and (max-width: 480px) {\n        :root {\n            font-size: 7px;\n        } \n    }\n"; //Initial Reset Styling 
+var cssReset = "\n    @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,700');\n    @import url('https://use.fontawesome.com/releases/v5.3.1/css/all.css');\n\n    :root {\n        font-size: 10px;\n    }\n    body, html, h1, h2, h3, h4, h5, h6, section {\n        margin: 0;\n        padding: 0;\n        box-sizing: border-box;\n    }\n    *,  *::after,  *::before{\n      box-sizing: border-box;\n    }\n    a{\n        text-decoration: none;\n    }\n    body {\n        overflow-x: hidden;\n        background: black;\n        font-family: 'Poppins',sans-serif;\n        color: #eee;\n        font-size: 1.6rem;\n        line-height: 1.5;\n        font-weight: lighter;\n    }\n    .loader-spinner {\n        color: white;\n        display: inline-block;\n        position: relative;\n        margin: 0 auto;\n        vertical-align: middle;\n        width: 20%;\n        height: 100%;\n      }\n      .loader-spinner div {\n        transform-origin: center;\n        animation: loader-spinner 1.2s linear infinite;\n      }\n      .loader-spinner div:after {\n        content: \" \";\n        display: block;\n        position: absolute;\n        top: 0.4rem;\n        left: 0rem;\n        width: 0.2rem;\n        height: 0.8rem;\n        border-radius: 20%;\n        background: #fff;\n      }\n      .loader-spinner div:nth-child(1) {\n        transform: rotate(0deg);\n        animation-delay: -1.1s;\n      }\n      .loader-spinner div:nth-child(2) {\n        transform: rotate(30deg);\n        animation-delay: -1s;\n      }\n      .loader-spinner div:nth-child(3) {\n        transform: rotate(60deg);\n        animation-delay: -0.9s;\n      }\n      .loader-spinner div:nth-child(4) {\n        transform: rotate(90deg);\n        animation-delay: -0.8s;\n      }\n      .loader-spinner div:nth-child(5) {\n        transform: rotate(120deg);\n        animation-delay: -0.7s;\n      }\n      .loader-spinner div:nth-child(6) {\n        transform: rotate(150deg);\n        animation-delay: -0.6s;\n      }\n      .loader-spinner div:nth-child(7) {\n        transform: rotate(180deg);\n        animation-delay: -0.5s;\n      }\n      .loader-spinner div:nth-child(8) {\n        transform: rotate(210deg);\n        animation-delay: -0.4s;\n      }\n      .loader-spinner div:nth-child(9) {\n        transform: rotate(240deg);\n        animation-delay: -0.3s;\n      }\n      .loader-spinner div:nth-child(10) {\n        transform: rotate(270deg);\n        animation-delay: -0.2s;\n      }\n      .loader-spinner div:nth-child(11) {\n        transform: rotate(300deg);\n        animation-delay: -0.1s;\n      }\n      .loader-spinner div:nth-child(12) {\n        transform: rotate(330deg);\n        animation-delay: 0s;\n      }\n      @keyframes loader-spinner {\n        0% {\n          opacity: 1;\n        }\n        100% {\n          opacity: 0;\n        }\n      }\n    @media only screen and (max-width: 480px) {\n        :root {\n            font-size: 7px;\n        } \n    }\n"; //Initial Reset Styling 
 
 lib_default()(cssReset);
+// CONCATENATED MODULE: ./src/tools/HalfPic.js
+function HalfPic_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { HalfPic_typeof = function _typeof(obj) { return typeof obj; }; } else { HalfPic_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return HalfPic_typeof(obj); }
 
+function HalfPic_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function HalfPic_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function HalfPic_createClass(Constructor, protoProps, staticProps) { if (protoProps) HalfPic_defineProperties(Constructor.prototype, protoProps); if (staticProps) HalfPic_defineProperties(Constructor, staticProps); return Constructor; }
+
+function HalfPic_possibleConstructorReturn(self, call) { if (call && (HalfPic_typeof(call) === "object" || typeof call === "function")) { return call; } return HalfPic_assertThisInitialized(self); }
+
+function HalfPic_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function HalfPic_getPrototypeOf(o) { HalfPic_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return HalfPic_getPrototypeOf(o); }
+
+function HalfPic_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) HalfPic_setPrototypeOf(subClass, superClass); }
+
+function HalfPic_setPrototypeOf(o, p) { HalfPic_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return HalfPic_setPrototypeOf(o, p); }
+
+
+
+var HalfPic_style = "\n.SNG__half--pic {\n    position: absolute;\n    z-index: 4;\n    top: 50%;\n    transform: translateY(-50%) scale(4);\n    pointer-events: none;\n    width: 20vmin;\n    height: 20vmin;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    // border-radius: 50%;\n    \n} \n.SNG__half--pic:before {\n    content: \"\";\n    position: absolute;\n    background: -webkit-linear-gradient(transparent, transparent),\n    url(https://assets.pcmag.com/media/images/457693-interstellar-black-hole.jpg?thumb=y&width=810&height=456)\n      repeat;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    filter: blur(2rem);\n    background-position: right;\n    z-index: -5;\n    border-radius: 50%;\n    animation: moveBackground 3000s linear infinite;\n}\n.SNG__half--pic:after {\n    content: \"\";\n    position: absolute;\n    background: black;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    z-index: -5;\n    border-radius: 50%;\n}\n\n";
+
+var HalfPic_HalfPic =
+/*#__PURE__*/
+function (_Component) {
+  HalfPic_inherits(HalfPic, _Component);
+
+  function HalfPic() {
+    HalfPic_classCallCheck(this, HalfPic);
+
+    return HalfPic_possibleConstructorReturn(this, HalfPic_getPrototypeOf(HalfPic).apply(this, arguments));
+  }
+
+  HalfPic_createClass(HalfPic, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      lib_default()(HalfPic_style);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          right = _this$props.right,
+          left = _this$props.left,
+          children = _this$props.children;
+      return react_default.a.createElement("div", {
+        className: "SNG__half--pic",
+        style: {
+          left: left ? '0px' : 'unset',
+          right: right ? '0' : 'unset'
+        }
+      }, children);
+    }
+  }]);
+
+  return HalfPic;
+}(react["Component"]);
+
+/* harmony default export */ var tools_HalfPic = (HalfPic_HalfPic);
 // EXTERNAL MODULE: ./node_modules/react-flexbox-grid/lib/index.js
-var react_flexbox_grid_lib = __webpack_require__(1);
+var react_flexbox_grid_lib = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./src/tools/ComponentDisplayer/ComponentDisplayer.css
-var ComponentDisplayer_ComponentDisplayer = __webpack_require__(33);
+var ComponentDisplayer_ComponentDisplayer = __webpack_require__(35);
 
 // CONCATENATED MODULE: ./src/tools/ComponentDisplayer/Code.js
 function Code_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Code_typeof = function _typeof(obj) { return typeof obj; }; } else { Code_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Code_typeof(obj); }
@@ -2849,11 +2987,11 @@ function (_Component) {
 // CONCATENATED MODULE: ./src/tools/ComponentDisplayer/ComponentDisplayer.js
 function ComponentDisplayer_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { ComponentDisplayer_typeof = function _typeof(obj) { return typeof obj; }; } else { ComponentDisplayer_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return ComponentDisplayer_typeof(obj); }
 
-function ComponentDisplayer_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function ComponentDisplayer_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ComponentDisplayer_ownKeys(source, true).forEach(function (key) { ComponentDisplayer_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ComponentDisplayer_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function ComponentDisplayer_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function ComponentDisplayer_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2909,7 +3047,7 @@ function (_React$Component) {
     key: "loopDisplay",
     value: function loopDisplay(child, childProps) {
       if (Object.keys(this.state.appliedProps).length) {
-        child.props = ComponentDisplayer_objectSpread({}, child.props, {}, this.state.appliedProps);
+        child.props = _objectSpread({}, child.props, {}, this.state.appliedProps);
       } else {}
 
       return react_default.a.createElement("div", {
@@ -2937,7 +3075,7 @@ function (_React$Component) {
   }, {
     key: "applyProps",
     value: function applyProps() {
-      var tempProps = ComponentDisplayer_objectSpread({}, this.state.appliedProps);
+      var tempProps = _objectSpread({}, this.state.appliedProps);
 
       tempProps[this.state.selectedProp] = this.state.selectedValue;
       this.setState({
@@ -3160,6 +3298,9 @@ ComponentDisplayer_ComponentDisplayer_ComponentDisplayer.defaultProps = {
 };
 // CONCATENATED MODULE: ./src/tools/ComponentDisplayer/index.js
 
+// CONCATENATED MODULE: ./src/tools/index.js
+
+
 // CONCATENATED MODULE: ./src/Showroom.js
 function Showroom_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Showroom_typeof = function _typeof(obj) { return typeof obj; }; } else { Showroom_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Showroom_typeof(obj); }
 
@@ -3245,144 +3386,60 @@ function (_Component) {
         }
       }), react_default.a.createElement(Presentor_Presentor_Presentor, {
         settings: {
-          type: 'simple'
+          type: 'simple',
+          full: true
         }
       }, react_default.a.createElement(react_flexbox_grid_lib["Grid"], null, react_default.a.createElement(react_flexbox_grid_lib["Row"], {
-        center: "xs",
         middle: "xs",
         style: {
           marginTop: '4rem'
         }
       }, react_default.a.createElement(react_flexbox_grid_lib["Col"], {
-        xs: 12,
-        sm: 8
+        xs: 12
       }, react_default.a.createElement(Header_Header_Header, {
         type: "spaced",
-        weight: 200
-      }, "Buttons"), react_default.a.createElement(Header_Header_Header, {
-        type: "xlg",
-        weight: 400,
+        weight: 400
+      }, "New Age"), react_default.a.createElement(Header_Header_Header, {
+        type: "xxlg",
+        weight: 100,
         capital: true
-      }, ' ', "Interactive", react_default.a.createElement("br", null), react_default.a.createElement(Showroom_GradientText, null, "gradient"), " buttons.")), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
+      }, react_default.a.createElement(Showroom_GradientText, null, "Minimal"), " buttons."), react_default.a.createElement(components_Spacer_Spacer, null)), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
         xs: 12,
         sm: 10
-      }, react_default.a.createElement(Presentor_Presentor_Presentor, {
-        settings: {
-          type: 'scroll',
-          direction: 'front'
-        }
-      }, react_default.a.createElement(ComponentDisplayer_ComponentDisplayer_ComponentDisplayer, {
-        childProps: ButtonProps,
-        propsDesc: ButtonPropsDesc
       }, react_default.a.createElement(Button_Button_Button, {
-        type: 'primary'
-      })))), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
-        xs: 12
-      },  true && react_default.a.createElement(Presentor_Presentor_Presentor, {
-        settings: {
-          type: 'scroll',
-          direction: 'left'
-        }
-      }, react_default.a.createElement(react_flexbox_grid_lib["Row"], {
-        center: "xs",
-        middle: "xs"
-      }, react_default.a.createElement(react_flexbox_grid_lib["Col"], {
-        xs: 6,
-        md: 3,
-        style: {
-          padding: '2rem 2rem'
-        }
-      }, react_default.a.createElement(Button_Button_Button, {
-        type: "primary",
-        round: roundButtons,
-        label: 'Primary'
-      })), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
-        xs: 6,
-        md: 3,
-        style: {
-          padding: '2rem 2rem'
-        }
-      }, react_default.a.createElement(Button_Button_Button, {
-        type: "success",
-        round: roundButtons,
-        label: 'Success'
-      })), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
-        xs: 6,
-        md: 3,
-        style: {
-          padding: '2rem 2rem'
-        }
-      }, react_default.a.createElement(Button_Button_Button, {
-        type: "danger",
-        round: roundButtons,
-        label: 'Danger'
-      })), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
-        xs: 6,
-        md: 3,
-        style: {
-          padding: '2rem 2rem'
-        }
-      }, react_default.a.createElement(Button_Button_Button, {
-        type: "modern",
-        round: roundButtons,
-        doing: true,
-        colors: ['purple', '#ff0000aa', 'blue'],
-        label: 'Animated'
-      }))), react_default.a.createElement(react_flexbox_grid_lib["Row"], {
-        center: "xs",
-        middle: "xs"
-      }, react_default.a.createElement(react_flexbox_grid_lib["Col"], {
-        xs: 6,
-        md: 3,
-        style: {
-          padding: '2rem 2rem'
-        }
-      }, react_default.a.createElement(Button_Button_Button, {
-        round: roundButtons,
-        label: 'Default'
-      })), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
-        xs: 6,
-        md: 3,
-        style: {
-          padding: '2rem 2rem'
-        }
-      }, react_default.a.createElement(Button_Button_Button, {
-        round: roundButtons,
-        type: "warning",
-        label: 'Warning'
-      })), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
-        xs: 6,
-        md: 3,
-        style: {
-          padding: '2rem 2rem'
-        }
-      }, react_default.a.createElement(Button_Button_Button, {
-        round: roundButtons,
-        type: "info",
-        label: 'Info'
-      })), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
-        xs: 6,
-        md: 3,
-        style: {
-          padding: '2rem 2rem'
-        }
-      }, react_default.a.createElement(Button_Button_Button, {
-        round: roundButtons,
-        type: "clear",
-        label: 'Clear'
-      }))))), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
+        round: true,
+        icon: react_default.a.createElement("span", {
+          className: "fa fa-home"
+        })
+      }, "I'm a button"), react_default.a.createElement(Button_Button_Button, {
+        round: true,
+        icon: react_default.a.createElement("span", {
+          className: "fa fa-home"
+        }),
+        variant: 'alt'
+      }, "I'm a button"), react_default.a.createElement(Button_Button_Button, {
+        round: true,
+        busy: true
+      }), react_default.a.createElement(Button_Button_Button, {
+        round: true,
+        done: true
+      }, "I'm a button")), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
         xs: 12,
-        sm: 3
-      }), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
-        xs: 12,
-        sm: 3
-      }), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
-        xs: 12,
-        sm: 3
-      })))), react_default.a.createElement("div", {
+        sm: 10
+      }, react_default.a.createElement(components_Spacer_Spacer, null), react_default.a.createElement(Button_Button_Button, {
+        to: '#',
+        type: "link"
+      }, "Play with it"), react_default.a.createElement(Button_Button_Button, {
+        to: '#',
+        type: "link"
+      }, "See Docs"), react_default.a.createElement(tools_HalfPic, {
+        right: true
+      }, react_default.a.createElement(Button_Button_Button, {
+        round: true
+      }, "Buttons")))))), react_default.a.createElement("div", {
         style: {
           marginTop: '10rem',
-          background: 'linear-gradient(315deg, #9f0000 0%, #c7071a 59%, #ff7724 100%)',
+          background: 'linear-gradient(315deg, rgb(81, 81, 81) 0%, rgb(52, 52, 52) 59%, rgb(42, 42, 42) 100%)',
           height: '10rem',
           display: 'flex',
           padding: '0 1rem',
@@ -3392,10 +3449,10 @@ function (_Component) {
       }, react_default.a.createElement("div", {
         style: {
           fontWeight: 'lighter',
-          fontSize: '3rem',
+          fontSize: '2rem',
           marginLeft: '1rem'
         }
-      }, "Singularity UI 2018."), react_default.a.createElement("div", {
+      }, "Singularity UI 2018"), react_default.a.createElement("div", {
         style: {
           display: 'flex',
           justifyContent: 'space-around',
