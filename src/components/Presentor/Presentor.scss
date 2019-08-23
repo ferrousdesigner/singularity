@@ -4,6 +4,16 @@
   align-items: center;
   overflow-x: hidden;
   position: relative;
+  animation: appear 5s ease-in-out forwards;
+
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .SNG__presentor--banner {
   display: flex;
@@ -17,8 +27,8 @@
   position: relative;
   background-color: #000;
   border-radius: 50%;
-  // animation: float 20s linear infinite;
 }
+
 @keyframes float {
   0% {
     width: 60vmin;
@@ -132,13 +142,13 @@ div[class^="SNG__animate--"].animate {
 }
 @keyframes floatText {
   0% {
-    letter-spacing: 5vmin;
+    transform: scale(1);
   }
   50% {
-    letter-spacing: 4vmin;
+    transform: scale(1.2);
   }
   100% {
-    letter-spacing: 5vmin;
+    transform: scale(1);
   }
 }
 

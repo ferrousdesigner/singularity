@@ -43,6 +43,11 @@ let style = `
     z-index: -5;
     border-radius: 50%;
 }
+@media only screen and (max-width: 480px) {
+  .SNG__half--pic {
+      display: none;
+  } 
+}
 
 `
 

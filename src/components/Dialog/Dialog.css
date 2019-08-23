@@ -1,0 +1,109 @@
+.SNG__dialog {
+  position: fixed;
+  width: 100vw;
+  background: #000000bb;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  font-weight: normal;
+  z-index: 1;
+  perspective: 100vw; }
+
+.SNG__dialog--content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateZ(-40px) translateX(-50%) translateY(-50%);
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  min-height: 50vh;
+  width: 50vw;
+  z-index: 3;
+  opacity: 0;
+  background: #111;
+  box-shadow: 0 5px 20px #00000044; }
+
+.SNG__dialog--title {
+  padding: 15px;
+  font-size: 20px;
+  background: #222;
+  position: relative;
+  font-weight: normal; }
+
+.SNG__dialog--children {
+  padding: 15px;
+  opacity: 0; }
+
+.SNG__dialog--title .SNG__dialog--close-button {
+  position: absolute;
+  width: 40px;
+  font-size: 20px;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: 0.15s;
+  background: transparent;
+  color: #fff;
+  border: none; }
+
+.SNG__dialog--title .SNG__dialog--close-button:hover {
+  background: #ffffff11; }
+
+.dialog-show {
+  animation: showDialog 0.3s ease-in-out forwards; }
+
+.dialog-show .SNG__dialog--content {
+  animation: showDialogContent 0.2s ease-in-out 0.3s forwards; }
+
+.dialog-show .SNG__dialog--children {
+  animation: showChildren 0.5s ease-in-out 1s forwards; }
+
+.dialog-hide {
+  animation: hideDialog 0.3s ease-in-out 0.1s forwards; }
+
+.dialog-hide .SNG__dialog--content {
+  animation: hideDialogContent 0.2s ease-in-out forwards; }
+
+@keyframes showChildren {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes showDialog {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes showDialogContent {
+  from {
+    opacity: 0;
+    transform: translateZ(-40px) translateX(-50%) translateY(-50%); }
+  to {
+    opacity: 1;
+    transform: translateZ(0px) translateX(-50%) translateY(-50%); } }
+
+@keyframes hideDialog {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@keyframes hideDialogContent {
+  from {
+    opacity: 1;
+    transform: translateZ(0px) translateX(-50%) translateY(-50%); }
+  to {
+    opacity: 0;
+    transform: translateZ(-20px) translateX(-50%) translateY(-50%); } }
+
+@media only screen and (max-width: 480px) {
+  .SNG__dialog--content {
+    width: 90vw; } }

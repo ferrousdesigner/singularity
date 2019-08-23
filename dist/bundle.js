@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 37);
+/******/ 	return __webpack_require__(__webpack_require__.s = 39);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -126,7 +126,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getColumnProps = exports.Col = exports.getRowProps = exports.Row = exports.Grid = undefined;
 
-var _Row2 = __webpack_require__(30);
+var _Row2 = __webpack_require__(32);
 
 Object.defineProperty(exports, 'getRowProps', {
   enumerable: true,
@@ -135,7 +135,7 @@ Object.defineProperty(exports, 'getRowProps', {
   }
 });
 
-var _Col2 = __webpack_require__(33);
+var _Col2 = __webpack_require__(35);
 
 Object.defineProperty(exports, 'getColumnProps', {
   enumerable: true,
@@ -144,7 +144,7 @@ Object.defineProperty(exports, 'getColumnProps', {
   }
 });
 
-var _Grid2 = __webpack_require__(34);
+var _Grid2 = __webpack_require__(36);
 
 var _Grid3 = _interopRequireDefault(_Grid2);
 
@@ -160,26 +160,6 @@ exports.Col = _Col3.default;
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _StyleMaker = _interopRequireDefault(__webpack_require__(16));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _default = _StyleMaker.default;
-exports.default = _default;
-
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports) {
 
 /*
@@ -261,7 +241,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -665,7 +645,61 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _StyleMaker = _interopRequireDefault(__webpack_require__(16));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = _StyleMaker.default;
+exports.default = _default;
+
+
+/***/ }),
 /* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function checkDCE() {
+  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
+  if (
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
+  ) {
+    return;
+  }
+  if (false) {}
+  try {
+    // Verify that the code above has been dead code eliminated (DCE'd).
+    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
+  } catch (err) {
+    // DevTools shouldn't crash React, no matter what.
+    // We should still report in case we break this code.
+    console.error(err);
+  }
+}
+
+if (true) {
+  // DCE check should happen before ReactDOM bundle executes so that
+  // DevTools can report bad minification during injection.
+  checkDCE();
+  module.exports = __webpack_require__(12);
+} else {}
+
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -676,7 +710,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = getClass;
 
-var _flexboxgrid = __webpack_require__(31);
+var _flexboxgrid = __webpack_require__(33);
 
 var _flexboxgrid2 = _interopRequireDefault(_flexboxgrid);
 
@@ -687,7 +721,7 @@ function getClass(className) {
 }
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -713,7 +747,7 @@ function createProps(propTypes, props, classNames) {
 }
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -810,7 +844,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -831,40 +865,6 @@ var ColumnSizeType = exports.ColumnSizeType = _propTypes2.default.oneOfType([_pr
 var ViewportSizeType = exports.ViewportSizeType = _propTypes2.default.oneOf(['xs', 'sm', 'md', 'lg', 'xl']);
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function checkDCE() {
-  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
-  if (
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
-  ) {
-    return;
-  }
-  if (false) {}
-  try {
-    // Verify that the code above has been dead code eliminated (DCE'd).
-    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
-  } catch (err) {
-    // DevTools shouldn't crash React, no matter what.
-    // We should still report in case we break this code.
-    console.error(err);
-  }
-}
-
-if (true) {
-  // DCE check should happen before ReactDOM bundle executes so that
-  // DevTools can report bad minification during injection.
-  checkDCE();
-  module.exports = __webpack_require__(12);
-} else {}
-
-
-/***/ }),
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -878,7 +878,7 @@ if (true) {
  * LICENSE file in the root directory of this source tree.
  */
 
-var k=__webpack_require__(8),n="function"===typeof Symbol&&Symbol.for,p=n?Symbol.for("react.element"):60103,q=n?Symbol.for("react.portal"):60106,r=n?Symbol.for("react.fragment"):60107,t=n?Symbol.for("react.strict_mode"):60108,u=n?Symbol.for("react.profiler"):60114,v=n?Symbol.for("react.provider"):60109,w=n?Symbol.for("react.context"):60110,x=n?Symbol.for("react.concurrent_mode"):60111,y=n?Symbol.for("react.forward_ref"):60112,z=n?Symbol.for("react.suspense"):60113,aa=n?Symbol.for("react.memo"):
+var k=__webpack_require__(9),n="function"===typeof Symbol&&Symbol.for,p=n?Symbol.for("react.element"):60103,q=n?Symbol.for("react.portal"):60106,r=n?Symbol.for("react.fragment"):60107,t=n?Symbol.for("react.strict_mode"):60108,u=n?Symbol.for("react.profiler"):60114,v=n?Symbol.for("react.provider"):60109,w=n?Symbol.for("react.context"):60110,x=n?Symbol.for("react.concurrent_mode"):60111,y=n?Symbol.for("react.forward_ref"):60112,z=n?Symbol.for("react.suspense"):60113,aa=n?Symbol.for("react.memo"):
 60115,ba=n?Symbol.for("react.lazy"):60116,A="function"===typeof Symbol&&Symbol.iterator;function ca(a,b,d,c,e,g,h,f){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[d,c,e,g,h,f],m=0;a=Error(b.replace(/%s/g,function(){return l[m++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
 function B(a){for(var b=arguments.length-1,d="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=0;c<b;c++)d+="&args[]="+encodeURIComponent(arguments[c+1]);ca(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",d)}var C={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},D={};
 function E(a,b,d){this.props=a;this.context=b;this.refs=D;this.updater=d||C}E.prototype.isReactComponent={};E.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?B("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};E.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};function F(){}F.prototype=E.prototype;function G(a,b,d){this.props=a;this.context=b;this.refs=D;this.updater=d||C}var H=G.prototype=new F;
@@ -913,7 +913,7 @@ unstable_ConcurrentMode:x,unstable_Profiler:u,__SECRET_INTERNALS_DO_NOT_USE_OR_Y
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0),n=__webpack_require__(8),r=__webpack_require__(13);function ba(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[c,d,e,f,g,h],k=0;a=Error(b.replace(/%s/g,function(){return l[k++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
+var aa=__webpack_require__(0),n=__webpack_require__(9),r=__webpack_require__(13);function ba(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[c,d,e,f,g,h],k=0;a=Error(b.replace(/%s/g,function(){return l[k++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
 function x(a){for(var b=arguments.length-1,c="https://reactjs.org/docs/error-decoder.html?invariant="+a,d=0;d<b;d++)c+="&args[]="+encodeURIComponent(arguments[d+1]);ba(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",c)}aa?void 0:x("227");function ca(a,b,c,d,e,f,g,h,l){var k=Array.prototype.slice.call(arguments,3);try{b.apply(c,k)}catch(m){this.onError(m)}}
 var da=!1,ea=null,fa=!1,ha=null,ia={onError:function(a){da=!0;ea=a}};function ja(a,b,c,d,e,f,g,h,l){da=!1;ea=null;ca.apply(ia,arguments)}function ka(a,b,c,d,e,f,g,h,l){ja.apply(this,arguments);if(da){if(da){var k=ea;da=!1;ea=null}else x("198"),k=void 0;fa||(fa=!0,ha=k)}}var la=null,ma={};
 function na(){if(la)for(var a in ma){var b=ma[a],c=la.indexOf(a);-1<c?void 0:x("96",a);if(!oa[c]){b.extractEvents?void 0:x("97",a);oa[c]=b;c=b.eventTypes;for(var d in c){var e=void 0;var f=c[d],g=b,h=d;pa.hasOwnProperty(h)?x("99",h):void 0;pa[h]=f;var l=f.phasedRegistrationNames;if(l){for(e in l)l.hasOwnProperty(e)&&qa(l[e],g,h);e=!0}else f.registrationName?(qa(f.registrationName,g,h),e=!0):e=!1;e?void 0:x("98",d,a)}}}}
@@ -1385,7 +1385,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(5)(content, options);
+var update = __webpack_require__(4)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1395,12 +1395,12 @@ if(false) {}
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  font-size: 1.6rem;\n  border: none;\n  height: 4.8rem;\n  padding: 0 3.8rem;\n  min-width: 13.6rem;\n  position: relative;\n  cursor: pointer;\n  transition: all 0.14s ease;\n  transform-origin: center;\n  z-index: 1;\n  color: #fff;\n  margin-right: 1rem;\n  background: linear-gradient(#222, #111);\n  vertical-align: top;\n  box-sizing: border-box; }\n\n.SNG__button:hover {\n  transform: scale(1.05); }\n\n.SNG__button:active {\n  transform: scale(0.96); }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 1.4rem;\n  color: white;\n  margin-left: 0.5rem;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out 0.4s forwards; }\n\n.SNG__button--round,\n.SNG__button--round::before {\n  border-radius: 5rem; }\n\n.SNG__button--primary {\n  color: #fff; }\n\n.SNG__button--alt {\n  border: 0.2rem solid #fff;\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--link {\n  padding: 0;\n  height: auto;\n  line-height: 1.5;\n  justify-content: flex-start;\n  min-width: auto;\n  color: #ffffffaa;\n  font-size: 1.5rem;\n  background-color: transparent;\n  background: none;\n  transition: all 0.2s ease; }\n\n.SNG__button--link:hover {\n  transform: none;\n  color: #fff;\n  text-decoration: underline; }\n\n.SNG__button--icon {\n  width: 2rem;\n  height: 2rem;\n  margin-right: 0.5rem; }\n\n.SNG__button--icon * {\n  fill: inherit;\n  color: inherit; }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 3rem;\n  height: 3rem;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%,\n  100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n", ""]);
+exports.push([module.i, ":root {\n  --theme-color: rgb(255, 0, 106);\n  --theme-dark-button-background: #222;\n  --theme-dark-button-background-hover: #00000044;\n  --theme-dark-button-background-disabled: #444444; }\n\n.SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  font-size: 16px;\n  border: none;\n  height: 48px;\n  padding: 0 38px;\n  min-width: 136px;\n  position: relative;\n  transition: all 0.14s ease;\n  transform-origin: center;\n  z-index: 1;\n  color: #fff;\n  background: transparent;\n  vertical-align: top;\n  box-sizing: border-box;\n  margin: 5px 10px 5px 0;\n  font-weight: normal;\n  position: relative; }\n\n.SNG__button::after {\n  content: \"\";\n  position: absolute;\n  z-index: -2;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: var(--theme-dark-button-background); }\n\n.SNG__button::before {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: transparent;\n  transition: background 0.1s ease-in-out; }\n\n.SNG__button:focus {\n  outline: var(--theme-color) auto 5px; }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 14px;\n  color: white;\n  margin-left: 5px;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out 0.4s forwards; }\n\n.SNG__button--round,\n.SNG__button--round::before {\n  border-radius: 30px; }\n\n.SNG__button--less-round,\n.SNG__button--less-round::before, .SNG__button--less-round::after {\n  border-radius: 10px; }\n\n.SNG__button--primary::after {\n  color: #fff;\n  background: var(--theme-color); }\n\n.SNG__button--alt {\n  border: 2px solid #fff;\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--alt::after {\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--link {\n  padding: 0;\n  height: auto;\n  line-height: 1.5;\n  justify-content: flex-start;\n  min-width: auto;\n  color: #ffffffaa;\n  font-size: 15px;\n  background-color: transparent;\n  background: none;\n  transition: all 0.2s ease;\n  margin-right: 10px; }\n\n.SNG__button--link + .SNG__button--link {\n  margin-left: 10px; }\n\n.SNG__button--link::after {\n  display: none; }\n\n.SNG__button--icon {\n  width: 20px;\n  height: 20px;\n  margin-right: 5px; }\n\n.SNG__button--icon * {\n  fill: inherit;\n  color: inherit; }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%,\n  100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n\n.SNG__loader {\n  border: 16px solid var(--theme-dark-button-background-hover);\n  border-top: 16px solid var(--theme-color);\n  border-radius: 50%;\n  border-width: 4px;\n  width: 25px;\n  height: 25px;\n  animation: spin 1s linear infinite; }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n.SNG__button--link:hover {\n  transform: none;\n  color: #fff;\n  text-decoration: underline; }\n\n.SNG__button:hover::before {\n  background: var(--theme-dark-button-background-hover); }\n\n.SNG__button--busy::after, .SNG__button--busy:hover:before {\n  background: var(--theme-dark-button-background-disabled);\n  cursor: default; }\n\n@media only screen and (max-width: 480px) {\n  .SNG__button.SNG__button--expand-on-mobile {\n    width: 100%;\n    margin-right: 0;\n    margin-left: 0; }\n  .SNG__button.SNG__button--link {\n    min-width: auto;\n    width: auto;\n    margin: 5px 10px 5px 0; } }\n", ""]);
 
 // exports
 
@@ -1519,7 +1519,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(5)(content, options);
+var update = __webpack_require__(4)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1529,7 +1529,7 @@ if(false) {}
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -1558,7 +1558,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(5)(content, options);
+var update = __webpack_require__(4)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1568,12 +1568,12 @@ if(false) {}
 /* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".SNG__presentor {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  overflow-x: hidden;\n  position: relative; }\n\n.SNG__presentor--banner {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 40rem;\n  margin: calc((100vh - 40rem) / 2) auto;\n  height: 40rem;\n  text-align: center;\n  position: relative;\n  background-color: #000;\n  border-radius: 50%; }\n\n@keyframes float {\n  0% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; }\n  50% {\n    width: 40vmin;\n    margin: calc((100vh - 40vmin) / 2) auto;\n    height: 40vmin; }\n  100% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; } }\n\n.SNG__presentor--banner::before,\n.SNG__presentor--banner::after,\n.SNG__presentor--banner > span {\n  content: \"\";\n  position: absolute;\n  background: -webkit-linear-gradient(transparent, transparent), url(https://assets.pcmag.com/media/images/457693-interstellar-black-hole.jpg?thumb=y&width=810&height=456) repeat;\n  background: -o-linear-gradient(transparent, transparent);\n  left: -25%;\n  top: -25%;\n  width: 150%;\n  height: 150%;\n  filter: blur(5rem);\n  z-index: -3;\n  border-radius: 50%;\n  animation: moveBackground 3000s linear infinite; }\n\n.SNG__presentor--banner::before {\n  filter: blur(1rem);\n  background: white;\n  left: -0.5rem;\n  top: -0.5rem;\n  z-index: -1;\n  width: calc(100% + 1rem);\n  height: calc(100% + 1rem); }\n\n.SNG__presentor--banner > span {\n  transform: skewX(60deg);\n  left: 0;\n  top: 0;\n  width: calc(100%);\n  height: calc(100%);\n  opacity: 1;\n  z-index: 0; }\n\n.SNG__presentor--banner > div:first-child {\n  display: block;\n  width: 100vw;\n  letter-spacing: 4rem;\n  margin-left: 2rem;\n  color: white;\n  z-index: 2;\n  font-weight: 400;\n  font-size: 6vmin;\n  margin-bottom: 1rem;\n  animation: floatText 10s linear infinite; }\n\n.SNG__presentor--scroll {\n  perspective-origin: center;\n  width: 100%; }\n\ndiv[class^=\"SNG__animate--\"] {\n  opacity: 0;\n  transform-origin: center;\n  transform-style: preserve-3d;\n  transition: all 0.3s ease-in-out; }\n\ndiv[class^=\"SNG__animate--right-\"] {\n  transform: rotate(5deg) translateX(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--left-\"] {\n  transform: rotate(-5deg) translateX(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--top-\"] {\n  transform: rotate(-5deg) translateY(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--bottom-\"] {\n  transform: rotate(5deg) translateY(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--back-\"] {\n  transform: rotate(0deg) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--front-\"] {\n  transform: rotate(0deg) translateZ(20rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--\"].animate {\n  opacity: 1;\n  transform: rotate(0deg) translateX(0rem) translateY(0rem) translateZ(0rem) scale(1); }\n\n@keyframes moveBackground {\n  0% {\n    background-position-y: 0; }\n  50% {\n    background-position-y: 10000%; }\n  100% {\n    background-position-y: 0; } }\n\n@keyframes floatText {\n  0% {\n    letter-spacing: 5vmin; }\n  50% {\n    letter-spacing: 4vmin; }\n  100% {\n    letter-spacing: 5vmin; } }\n\n.SNG__presentor--banner > div:last-child {\n  font-weight: 300;\n  font-size: 2rem;\n  width: 100vw;\n  z-index: 2; }\n\n.SNG__presentor--simple,\n.SNG__presentor--simple-full {\n  width: 100%;\n  padding: 2rem;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n.SNG__presentor--simple-full {\n  padding: 2rem;\n  height: 100vh;\n  width: 100vw; }\n\ndiv[class^=\"SNG__presentor--smooth-\"] {\n  overflow-y: hidden;\n  width: 100%;\n  transition: height 0.25s ease-in-out; }\n", ""]);
+exports.push([module.i, ".SNG__presentor {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  overflow-x: hidden;\n  position: relative;\n  animation: appear 5s ease-in-out forwards; }\n\n@keyframes appear {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n.SNG__presentor--banner {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 40rem;\n  margin: calc((100vh - 40rem) / 2) auto;\n  height: 40rem;\n  text-align: center;\n  position: relative;\n  background-color: #000;\n  border-radius: 50%; }\n\n@keyframes float {\n  0% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; }\n  50% {\n    width: 40vmin;\n    margin: calc((100vh - 40vmin) / 2) auto;\n    height: 40vmin; }\n  100% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; } }\n\n.SNG__presentor--banner::before,\n.SNG__presentor--banner::after,\n.SNG__presentor--banner > span {\n  content: \"\";\n  position: absolute;\n  background: -webkit-linear-gradient(transparent, transparent), url(https://assets.pcmag.com/media/images/457693-interstellar-black-hole.jpg?thumb=y&width=810&height=456) repeat;\n  background: -o-linear-gradient(transparent, transparent);\n  left: -25%;\n  top: -25%;\n  width: 150%;\n  height: 150%;\n  filter: blur(5rem);\n  z-index: -3;\n  border-radius: 50%;\n  animation: moveBackground 3000s linear infinite; }\n\n.SNG__presentor--banner::before {\n  filter: blur(1rem);\n  background: white;\n  left: -0.5rem;\n  top: -0.5rem;\n  z-index: -1;\n  width: calc(100% + 1rem);\n  height: calc(100% + 1rem); }\n\n.SNG__presentor--banner > span {\n  transform: skewX(60deg);\n  left: 0;\n  top: 0;\n  width: calc(100%);\n  height: calc(100%);\n  opacity: 1;\n  z-index: 0; }\n\n.SNG__presentor--banner > div:first-child {\n  display: block;\n  width: 100vw;\n  letter-spacing: 4rem;\n  margin-left: 2rem;\n  color: white;\n  z-index: 2;\n  font-weight: 400;\n  font-size: 6vmin;\n  margin-bottom: 1rem;\n  animation: floatText 10s linear infinite; }\n\n.SNG__presentor--scroll {\n  perspective-origin: center;\n  width: 100%; }\n\ndiv[class^=\"SNG__animate--\"] {\n  opacity: 0;\n  transform-origin: center;\n  transform-style: preserve-3d;\n  transition: all 0.3s ease-in-out; }\n\ndiv[class^=\"SNG__animate--right-\"] {\n  transform: rotate(5deg) translateX(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--left-\"] {\n  transform: rotate(-5deg) translateX(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--top-\"] {\n  transform: rotate(-5deg) translateY(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--bottom-\"] {\n  transform: rotate(5deg) translateY(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--back-\"] {\n  transform: rotate(0deg) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--front-\"] {\n  transform: rotate(0deg) translateZ(20rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--\"].animate {\n  opacity: 1;\n  transform: rotate(0deg) translateX(0rem) translateY(0rem) translateZ(0rem) scale(1); }\n\n@keyframes moveBackground {\n  0% {\n    background-position-y: 0; }\n  50% {\n    background-position-y: 10000%; }\n  100% {\n    background-position-y: 0; } }\n\n@keyframes floatText {\n  0% {\n    transform: scale(1); }\n  50% {\n    transform: scale(1.2); }\n  100% {\n    transform: scale(1); } }\n\n.SNG__presentor--banner > div:last-child {\n  font-weight: 300;\n  font-size: 2rem;\n  width: 100vw;\n  z-index: 2; }\n\n.SNG__presentor--simple,\n.SNG__presentor--simple-full {\n  width: 100%;\n  padding: 2rem;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n.SNG__presentor--simple-full {\n  padding: 2rem;\n  height: 100vh;\n  width: 100vw; }\n\ndiv[class^=\"SNG__presentor--smooth-\"] {\n  overflow-y: hidden;\n  width: 100%;\n  transition: height 0.25s ease-in-out; }\n", ""]);
 
 // exports
 
@@ -1597,7 +1597,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(5)(content, options);
+var update = __webpack_require__(4)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1607,7 +1607,7 @@ if(false) {}
 /* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -1636,7 +1636,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(5)(content, options);
+var update = __webpack_require__(4)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1646,7 +1646,7 @@ if(false) {}
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -1660,6 +1660,45 @@ exports.push([module.i, ".SNG__spacer {\n  height: 2rem; }\n\n.SNG__spacer--lg {
 /* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
+
+var content = __webpack_require__(31);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".SNG__dialog {\n  position: fixed;\n  width: 100vw;\n  background: #000000bb;\n  left: 0;\n  top: 0;\n  height: 100vh;\n  font-weight: normal;\n  z-index: 1;\n  perspective: 100vw; }\n\n.SNG__dialog--content {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translateZ(-40px) translateX(-50%) translateY(-50%);\n  transform-style: preserve-3d;\n  transform-origin: center center;\n  min-height: 50vh;\n  width: 50vw;\n  z-index: 3;\n  opacity: 0;\n  background: #111;\n  box-shadow: 0 5px 20px #00000044; }\n\n.SNG__dialog--title {\n  padding: 15px;\n  font-size: 20px;\n  background: #222;\n  position: relative;\n  font-weight: normal; }\n\n.SNG__dialog--children {\n  padding: 15px;\n  opacity: 0; }\n\n.SNG__dialog--title .SNG__dialog--close-button {\n  position: absolute;\n  width: 40px;\n  font-size: 20px;\n  top: 50%;\n  right: 5px;\n  transform: translateY(-50%);\n  cursor: pointer;\n  height: 40px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n  transition: 0.15s;\n  background: transparent;\n  color: #fff;\n  border: none; }\n\n.SNG__dialog--title .SNG__dialog--close-button:hover {\n  background: #ffffff11; }\n\n.dialog-show {\n  animation: showDialog 0.3s ease-in-out forwards; }\n\n.dialog-show .SNG__dialog--content {\n  animation: showDialogContent 0.2s ease-in-out 0.3s forwards; }\n\n.dialog-show .SNG__dialog--children {\n  animation: showChildren 0.5s ease-in-out 1s forwards; }\n\n.dialog-hide {\n  animation: hideDialog 0.3s ease-in-out 0.1s forwards; }\n\n.dialog-hide .SNG__dialog--content {\n  animation: hideDialogContent 0.2s ease-in-out forwards; }\n\n@keyframes showChildren {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialog {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialogContent {\n  from {\n    opacity: 0;\n    transform: translateZ(-40px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); } }\n\n@keyframes hideDialog {\n  from {\n    opacity: 1; }\n  to {\n    opacity: 0; } }\n\n@keyframes hideDialogContent {\n  from {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 0;\n    transform: translateZ(-20px) translateX(-50%) translateY(-50%); } }\n\n@media only screen and (max-width: 480px) {\n  .SNG__dialog--content {\n    width: 90vw; } }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -1669,7 +1708,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.getRowProps = getRowProps;
 exports.default = Row;
 
-var _classNames = __webpack_require__(6);
+var _classNames = __webpack_require__(7);
 
 var _classNames2 = _interopRequireDefault(_classNames);
 
@@ -1681,11 +1720,11 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _createProps = __webpack_require__(7);
+var _createProps = __webpack_require__(8);
 
 var _createProps2 = _interopRequireDefault(_createProps);
 
-var _types = __webpack_require__(9);
+var _types = __webpack_require__(10);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1735,11 +1774,11 @@ function Row(props) {
 Row.propTypes = propTypes;
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(32);
+var content = __webpack_require__(34);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1753,17 +1792,17 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(5)(content, options);
+var update = __webpack_require__(4)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -1774,7 +1813,7 @@ exports.push([module.i, ".container {\n  box-sizing: border-box;\n  margin-left:
 
 
 /***/ }),
-/* 33 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1794,15 +1833,15 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _createProps = __webpack_require__(7);
+var _createProps = __webpack_require__(8);
 
 var _createProps2 = _interopRequireDefault(_createProps);
 
-var _classNames = __webpack_require__(6);
+var _classNames = __webpack_require__(7);
 
 var _classNames2 = _interopRequireDefault(_classNames);
 
-var _types = __webpack_require__(9);
+var _types = __webpack_require__(10);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1879,7 +1918,7 @@ function Col(props) {
 Col.propTypes = propTypes;
 
 /***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1898,11 +1937,11 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _createProps = __webpack_require__(7);
+var _createProps = __webpack_require__(8);
 
 var _createProps2 = _interopRequireDefault(_createProps);
 
-var _classNames = __webpack_require__(6);
+var _classNames = __webpack_require__(7);
 
 var _classNames2 = _interopRequireDefault(_classNames);
 
@@ -1925,11 +1964,11 @@ function Grid(props) {
 Grid.propTypes = propTypes;
 
 /***/ }),
-/* 35 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(36);
+var content = __webpack_require__(38);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1943,17 +1982,17 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(5)(content, options);
+var update = __webpack_require__(4)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -1964,7 +2003,7 @@ exports.push([module.i, ".key-selector, .value-selector {\n  width: 100%;\n  hei
 
 
 /***/ }),
-/* 37 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1975,11 +2014,11 @@ var react = __webpack_require__(0);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
 // EXTERNAL MODULE: ./node_modules/react-dom/index.js
-var react_dom = __webpack_require__(10);
+var react_dom = __webpack_require__(6);
 var react_dom_default = /*#__PURE__*/__webpack_require__.n(react_dom);
 
 // EXTERNAL MODULE: ./node_modules/stylemaker/lib/index.js
-var lib = __webpack_require__(3);
+var lib = __webpack_require__(5);
 var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
 
 // EXTERNAL MODULE: ./node_modules/prop-types/index.js
@@ -2014,14 +2053,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 var Button_loader = function loader() {
-  var number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   return react_default.a.createElement("div", {
-    className: "loader-spinner"
-  }, number.map(function (key) {
-    return react_default.a.createElement("div", {
-      key: key
-    });
-  }));
+    className: "SNG__loader"
+  });
 };
 
 var Button_check = function check(doneMessage) {
@@ -2063,17 +2097,24 @@ function (_Component) {
 
   _createClass(Button, [{
     key: "getClass",
-    value: function getClass(props) {
+    value: function getClass() {
       var _this$props = this.props,
           round = _this$props.round,
           light = _this$props.light,
           style = _this$props.style,
           type = _this$props.type,
-          variant = _this$props.variant;
+          variant = _this$props.variant,
+          expandOnMobile = _this$props.expandOnMobile,
+          soft = _this$props.soft,
+          busy = _this$props.busy;
       var classString = 'SNG__button';
       if (round) classString += ' SNG__button--round';
       if (type === 'link') classString += ' SNG__button--link';
+      if (type === 'primary') classString += ' SNG__button--primary';
       if (variant === 'alt') classString += ' SNG__button--alt';
+      if (soft) classString += ' SNG__button--less-round';
+      if (busy) classString += ' SNG__button--busy';
+      if (expandOnMobile) classString += ' SNG__button--expand-on-mobile';
       return classString;
     }
   }, {
@@ -2085,10 +2126,21 @@ function (_Component) {
           children = _this$props2.children,
           doneMessage = _this$props2.doneMessage,
           style = _this$props2.style,
-          icon = _this$props2.icon;
-      return react_default.a.createElement("button", {
-        className: this.getClass(this.props),
-        style: style
+          icon = _this$props2.icon,
+          onClick = _this$props2.onClick,
+          type = _this$props2.type,
+          to = _this$props2.to;
+      return type === 'link' ? react_default.a.createElement("a", {
+        href: to,
+        className: this.getClass(),
+        style: style,
+        onClick: onClick
+      }, icon && react_default.a.createElement("span", {
+        className: "SNG__button--icon"
+      }, icon), done ? Button_check(doneMessage) : busy ? Button_loader() : children) : react_default.a.createElement("button", {
+        className: this.getClass(),
+        style: style,
+        onClick: onClick
       }, icon && react_default.a.createElement("span", {
         className: "SNG__button--icon"
       }, icon), done ? Button_check(doneMessage) : busy ? Button_loader() : children);
@@ -2109,7 +2161,8 @@ Button_Button_Button.defaultProps = {
   doneMessage: 'Done',
   icon: null,
   children: 'No Label',
-  variant: ''
+  variant: '',
+  expandOnMobile: true
 };
 Button_Button_Button.propTypes = {
   type: prop_types_default.a.string,
@@ -2122,7 +2175,8 @@ Button_Button_Button.propTypes = {
   round: prop_types_default.a.bool,
   disabled: prop_types_default.a.bool,
   icon: prop_types_default.a.node,
-  variant: prop_types_default.a.string
+  variant: prop_types_default.a.string,
+  expandOnMobile: prop_types_default.a.bool
 };
 // CONCATENATED MODULE: ./src/components/Button/index.js
 
@@ -2834,7 +2888,120 @@ function (_Component) {
 /* harmony default export */ var components_Spacer_Spacer = (Spacer_Spacer_Spacer);
 // CONCATENATED MODULE: ./src/components/Spacer/index.js
 
+// EXTERNAL MODULE: ./src/components/Dialog/Dialog.css
+var Dialog_Dialog = __webpack_require__(30);
+
+// CONCATENATED MODULE: ./src/components/Dialog/Dialog.js
+function Dialog_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Dialog_typeof = function _typeof(obj) { return typeof obj; }; } else { Dialog_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Dialog_typeof(obj); }
+
+function Dialog_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function Dialog_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function Dialog_createClass(Constructor, protoProps, staticProps) { if (protoProps) Dialog_defineProperties(Constructor.prototype, protoProps); if (staticProps) Dialog_defineProperties(Constructor, staticProps); return Constructor; }
+
+function Dialog_possibleConstructorReturn(self, call) { if (call && (Dialog_typeof(call) === "object" || typeof call === "function")) { return call; } return Dialog_assertThisInitialized(self); }
+
+function Dialog_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function Dialog_getPrototypeOf(o) { Dialog_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return Dialog_getPrototypeOf(o); }
+
+function Dialog_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) Dialog_setPrototypeOf(subClass, superClass); }
+
+function Dialog_setPrototypeOf(o, p) { Dialog_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return Dialog_setPrototypeOf(o, p); }
+
+
+
+
+
+var Dialog_MainDialog =
+/*#__PURE__*/
+function (_Component) {
+  Dialog_inherits(MainDialog, _Component);
+
+  function MainDialog(props) {
+    var _this;
+
+    Dialog_classCallCheck(this, MainDialog);
+
+    _this = Dialog_possibleConstructorReturn(this, Dialog_getPrototypeOf(MainDialog).call(this, props));
+    _this.state = {
+      animationClass: '',
+      open: false
+    };
+    return _this;
+  }
+
+  Dialog_createClass(MainDialog, [{
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps(newProps) {
+      var _this2 = this;
+
+      console.log(newProps);
+      var open = newProps.open;
+
+      if (!this.props.open && open) {
+        console.log('>>>');
+        this.setState({
+          rendered: true,
+          animationClass: 'dialog-show '
+        });
+      } else if (this.props.open && !open) {
+        console.log('>>2');
+        this.setState({
+          animationClass: this.state.animationClass + 'dialog-hide'
+        }, function () {
+          return setTimeout(function () {
+            return _this2.setState({
+              rendered: false,
+              animationClass: ''
+            });
+          }, 1300);
+        });
+      }
+    }
+  }, {
+    key: "getClass",
+    value: function getClass() {
+      var cS = 'SNG__dialog ';
+      return cS + this.state.animationClass;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          title = _this$props.title,
+          onClose = _this$props.onClose,
+          children = _this$props.children,
+          showCloseButton = _this$props.showCloseButton;
+      var rendered = this.state.rendered;
+      return rendered ? react_default.a.createElement("div", {
+        className: this.getClass()
+      }, react_default.a.createElement("div", {
+        className: "SNG__dialog--content"
+      }, title && react_default.a.createElement("div", {
+        className: "SNG__dialog--title"
+      }, title, showCloseButton && react_default.a.createElement("button", {
+        className: "fas fa-times SNG__dialog--close-button",
+        onClick: onClose
+      })), children && react_default.a.createElement("div", {
+        className: "SNG__dialog--children"
+      }, children))) : react_default.a.createElement(react["Fragment"], null);
+    }
+  }]);
+
+  return MainDialog;
+}(react["Component"]);
+
+var Dialog_Dialog_Dialog = function Dialog(props) {
+  return react_dom_default.a.createPortal(react_default.a.createElement(Dialog_MainDialog, props), document.body);
+};
+
+/* harmony default export */ var components_Dialog_Dialog = (Dialog_Dialog_Dialog);
+// CONCATENATED MODULE: ./src/components/Dialog/index.js
+
 // CONCATENATED MODULE: ./src/SingularityUI.js
+
 
 
 
@@ -2844,7 +3011,7 @@ function (_Component) {
 
 var SingularityUI_settings = function settings(setting) {};
 
-var cssReset = "\n    @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,700');\n    @import url('https://use.fontawesome.com/releases/v5.3.1/css/all.css');\n\n    :root {\n        font-size: 10px;\n    }\n    body, html, h1, h2, h3, h4, h5, h6, section {\n        margin: 0;\n        padding: 0;\n        box-sizing: border-box;\n    }\n    *,  *::after,  *::before{\n      box-sizing: border-box;\n    }\n    a{\n        text-decoration: none;\n    }\n    body {\n        overflow-x: hidden;\n        background: black;\n        font-family: 'Poppins',sans-serif;\n        color: #eee;\n        font-size: 1.6rem;\n        line-height: 1.5;\n        font-weight: lighter;\n    }\n    .loader-spinner {\n        color: white;\n        display: inline-block;\n        position: relative;\n        margin: 0 auto;\n        vertical-align: middle;\n        width: 20%;\n        height: 100%;\n      }\n      .loader-spinner div {\n        transform-origin: center;\n        animation: loader-spinner 1.2s linear infinite;\n      }\n      .loader-spinner div:after {\n        content: \" \";\n        display: block;\n        position: absolute;\n        top: 0.4rem;\n        left: 0rem;\n        width: 0.2rem;\n        height: 0.8rem;\n        border-radius: 20%;\n        background: #fff;\n      }\n      .loader-spinner div:nth-child(1) {\n        transform: rotate(0deg);\n        animation-delay: -1.1s;\n      }\n      .loader-spinner div:nth-child(2) {\n        transform: rotate(30deg);\n        animation-delay: -1s;\n      }\n      .loader-spinner div:nth-child(3) {\n        transform: rotate(60deg);\n        animation-delay: -0.9s;\n      }\n      .loader-spinner div:nth-child(4) {\n        transform: rotate(90deg);\n        animation-delay: -0.8s;\n      }\n      .loader-spinner div:nth-child(5) {\n        transform: rotate(120deg);\n        animation-delay: -0.7s;\n      }\n      .loader-spinner div:nth-child(6) {\n        transform: rotate(150deg);\n        animation-delay: -0.6s;\n      }\n      .loader-spinner div:nth-child(7) {\n        transform: rotate(180deg);\n        animation-delay: -0.5s;\n      }\n      .loader-spinner div:nth-child(8) {\n        transform: rotate(210deg);\n        animation-delay: -0.4s;\n      }\n      .loader-spinner div:nth-child(9) {\n        transform: rotate(240deg);\n        animation-delay: -0.3s;\n      }\n      .loader-spinner div:nth-child(10) {\n        transform: rotate(270deg);\n        animation-delay: -0.2s;\n      }\n      .loader-spinner div:nth-child(11) {\n        transform: rotate(300deg);\n        animation-delay: -0.1s;\n      }\n      .loader-spinner div:nth-child(12) {\n        transform: rotate(330deg);\n        animation-delay: 0s;\n      }\n      @keyframes loader-spinner {\n        0% {\n          opacity: 1;\n        }\n        100% {\n          opacity: 0;\n        }\n      }\n    @media only screen and (max-width: 480px) {\n        :root {\n            font-size: 7px;\n        } \n    }\n"; //Initial Reset Styling 
+var cssReset = "\n    @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,700');\n    @import url('https://use.fontawesome.com/releases/v5.3.1/css/all.css');\n\n    :root {\n        font-size: 10px;\n    }\n    body, html, h1, h2, h3, h4, h5, h6, section {\n        margin: 0;\n        padding: 0;\n        box-sizing: border-box;\n        font-weight: 300;\n    }\n    *,  *::after,  *::before{\n      box-sizing: border-box;\n    }\n    a{\n        text-decoration: none;\n    }\n    body {\n        overflow-x: hidden;\n        background: black;\n        font-family: 'Poppins',sans-serif;\n        color: #eee;\n        font-size: 1.6rem;\n        line-height: 1.5;\n        font-weight: lighter;\n    }\n    .loader-spinner {\n        color: white;\n        display: inline-block;\n        position: relative;\n        margin: 0 auto;\n        vertical-align: middle;\n        width: 20%;\n        height: 100%;\n      }\n      .loader-spinner div {\n        transform-origin: center;\n        animation: loader-spinner 1.2s linear infinite;\n      }\n      .loader-spinner div:after {\n        content: \" \";\n        display: block;\n        position: absolute;\n        top: 0.4rem;\n        left: 0rem;\n        width: 0.2rem;\n        height: 0.8rem;\n        border-radius: 20%;\n        background: #fff;\n      }\n      .loader-spinner div:nth-child(1) {\n        transform: rotate(0deg);\n        animation-delay: -1.1s;\n      }\n      .loader-spinner div:nth-child(2) {\n        transform: rotate(30deg);\n        animation-delay: -1s;\n      }\n      .loader-spinner div:nth-child(3) {\n        transform: rotate(60deg);\n        animation-delay: -0.9s;\n      }\n      .loader-spinner div:nth-child(4) {\n        transform: rotate(90deg);\n        animation-delay: -0.8s;\n      }\n      .loader-spinner div:nth-child(5) {\n        transform: rotate(120deg);\n        animation-delay: -0.7s;\n      }\n      .loader-spinner div:nth-child(6) {\n        transform: rotate(150deg);\n        animation-delay: -0.6s;\n      }\n      .loader-spinner div:nth-child(7) {\n        transform: rotate(180deg);\n        animation-delay: -0.5s;\n      }\n      .loader-spinner div:nth-child(8) {\n        transform: rotate(210deg);\n        animation-delay: -0.4s;\n      }\n      .loader-spinner div:nth-child(9) {\n        transform: rotate(240deg);\n        animation-delay: -0.3s;\n      }\n      .loader-spinner div:nth-child(10) {\n        transform: rotate(270deg);\n        animation-delay: -0.2s;\n      }\n      .loader-spinner div:nth-child(11) {\n        transform: rotate(300deg);\n        animation-delay: -0.1s;\n      }\n      .loader-spinner div:nth-child(12) {\n        transform: rotate(330deg);\n        animation-delay: 0s;\n      }\n      @keyframes loader-spinner {\n        0% {\n          opacity: 1;\n        }\n        100% {\n          opacity: 0;\n        }\n      }\n    @media only screen and (max-width: 480px) {\n        :root {\n            font-size: 7px;\n        } \n    }\n"; //Initial Reset Styling 
 
 lib_default()(cssReset);
 // CONCATENATED MODULE: ./src/tools/HalfPic.js
@@ -2868,7 +3035,7 @@ function HalfPic_setPrototypeOf(o, p) { HalfPic_setPrototypeOf = Object.setProto
 
 
 
-var HalfPic_style = "\n.SNG__half--pic {\n    position: absolute;\n    z-index: 4;\n    top: 50%;\n    transform: translateY(-50%) scale(4);\n    pointer-events: none;\n    width: 20vmin;\n    height: 20vmin;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    // border-radius: 50%;\n    \n} \n.SNG__half--pic:before {\n    content: \"\";\n    position: absolute;\n    background: -webkit-linear-gradient(transparent, transparent),\n    url(https://assets.pcmag.com/media/images/457693-interstellar-black-hole.jpg?thumb=y&width=810&height=456)\n      repeat;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    filter: blur(2rem);\n    background-position: right;\n    z-index: -5;\n    border-radius: 50%;\n    animation: moveBackground 3000s linear infinite;\n}\n.SNG__half--pic:after {\n    content: \"\";\n    position: absolute;\n    background: black;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    z-index: -5;\n    border-radius: 50%;\n}\n\n";
+var HalfPic_style = "\n.SNG__half--pic {\n    position: absolute;\n    z-index: 4;\n    top: 50%;\n    transform: translateY(-50%) scale(4);\n    pointer-events: none;\n    width: 20vmin;\n    height: 20vmin;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    // border-radius: 50%;\n    \n} \n.SNG__half--pic:before {\n    content: \"\";\n    position: absolute;\n    background: -webkit-linear-gradient(transparent, transparent),\n    url(https://assets.pcmag.com/media/images/457693-interstellar-black-hole.jpg?thumb=y&width=810&height=456)\n      repeat;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    filter: blur(2rem);\n    background-position: right;\n    z-index: -5;\n    border-radius: 50%;\n    animation: moveBackground 3000s linear infinite;\n}\n.SNG__half--pic:after {\n    content: \"\";\n    position: absolute;\n    background: black;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    z-index: -5;\n    border-radius: 50%;\n}\n@media only screen and (max-width: 480px) {\n  .SNG__half--pic {\n      display: none;\n  } \n}\n\n";
 
 var HalfPic_HalfPic =
 /*#__PURE__*/
@@ -2911,7 +3078,7 @@ function (_Component) {
 var react_flexbox_grid_lib = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./src/tools/ComponentDisplayer/ComponentDisplayer.css
-var ComponentDisplayer_ComponentDisplayer = __webpack_require__(35);
+var ComponentDisplayer_ComponentDisplayer = __webpack_require__(37);
 
 // CONCATENATED MODULE: ./src/tools/ComponentDisplayer/Code.js
 function Code_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Code_typeof = function _typeof(obj) { return typeof obj; }; } else { Code_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Code_typeof(obj); }
@@ -3367,7 +3534,7 @@ function (_Component) {
 
     _this = Showroom_possibleConstructorReturn(this, Showroom_getPrototypeOf(ShowRoom).call(this, props));
     _this.state = {
-      roundButtons: true
+      roundButtons: false
     };
     return _this;
   }
@@ -3375,16 +3542,27 @@ function (_Component) {
   Showroom_createClass(ShowRoom, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var roundButtons = this.state.roundButtons;
       return react_default.a.createElement("div", {
         className: "SNG__showroom"
-      }, react_default.a.createElement(Presentor_Presentor_Presentor, {
-        settings: {
-          type: 'banner',
-          bannerText: 'SINGULARITY',
-          bannerSubText: 'A React UI Component Library'
+      }, react_default.a.createElement(components_Dialog_Dialog, {
+        title: "Dialog",
+        showCloseButton: true,
+        open: roundButtons,
+        onClose: function onClose() {
+          return _this2.setState({
+            roundButtons: !roundButtons
+          });
         }
-      }), react_default.a.createElement(Presentor_Presentor_Presentor, {
+      }, "This is dialog"), react_default.a.createElement(Button_Button_Button, {
+        onClick: function onClick() {
+          return _this2.setState({
+            roundButtons: !roundButtons
+          });
+        }
+      }, "Change"), react_default.a.createElement(Presentor_Presentor_Presentor, {
         settings: {
           type: 'simple',
           full: true
@@ -3407,26 +3585,25 @@ function (_Component) {
         xs: 12,
         sm: 10
       }, react_default.a.createElement(Button_Button_Button, {
-        round: true,
+        type: 'primary',
         icon: react_default.a.createElement("span", {
           className: "fa fa-home"
         })
       }, "I'm a button"), react_default.a.createElement(Button_Button_Button, {
-        round: true,
         icon: react_default.a.createElement("span", {
           className: "fa fa-home"
         }),
         variant: 'alt'
       }, "I'm a button"), react_default.a.createElement(Button_Button_Button, {
-        round: true,
         busy: true
       }), react_default.a.createElement(Button_Button_Button, {
-        round: true,
         done: true
       }, "I'm a button")), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
         xs: 12,
         sm: 10
-      }, react_default.a.createElement(components_Spacer_Spacer, null), react_default.a.createElement(Button_Button_Button, {
+      }, react_default.a.createElement(components_Spacer_Spacer, {
+        lg: true
+      }), react_default.a.createElement(Button_Button_Button, {
         to: '#',
         type: "link"
       }, "Play with it"), react_default.a.createElement(Button_Button_Button, {

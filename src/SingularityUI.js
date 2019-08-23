@@ -4,6 +4,8 @@ export { Nav } from  './components/Nav';
 export { Presentor } from './components/Presentor';
 export { Header } from './components/Header';
 export { Spacer } from './components/Spacer';
+export { Dialog } from './components/Dialog';
+
 
 
 const settings = (setting) => {
@@ -20,6 +22,7 @@ const cssReset = `
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-weight: 300;
     }
     *,  *::after,  *::before{
       box-sizing: border-box;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Nav, Presentor, Header, Spacer } from './SingularityUI'
+import { Button, Nav, Presentor, Header, Spacer, Dialog } from './SingularityUI'
 import { HalfPic, ComponentDisplayer } from './tools'
 import { Row, Col, Grid } from 'react-flexbox-grid'
 
@@ -43,7 +43,7 @@ export default class ShowRoom extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      roundButtons: true
+      roundButtons: false
     }
   }
 
@@ -51,13 +51,18 @@ export default class ShowRoom extends Component {
     const { roundButtons } = this.state
     return (
       <div className='SNG__showroom'>
-        <Presentor
-          settings={{
-            type: 'banner',
-            bannerText: 'SINGULARITY',
-            bannerSubText: 'A React UI Component Library'
-          }}
-        />
+        <Dialog
+          title='Dialog'
+          showCloseButton
+          open={roundButtons}
+          onClose={() => this.setState({ roundButtons: !roundButtons })}
+        >
+          This is dialog
+        </Dialog>
+        <Button onClick={() => this.setState({ roundButtons: !roundButtons })}>
+          Change
+        </Button>
+
         <Presentor settings={{ type: 'simple', full: true }}>
           <Grid>
             <Row middle='xs' style={{ marginTop: '4rem' }}>
@@ -65,23 +70,32 @@ export default class ShowRoom extends Component {
                 <Header type='spaced' weight={400}>
                   New Age
                 </Header>
-                <Header type='xxlg'  weight={100} capital>
+                <Header type='xxlg' weight={100} capital>
                   <GradientText>Minimal</GradientText> buttons.
                 </Header>
                 <Spacer />
               </Col>
               <Col xs={12} sm={10}>
-                <Button round icon={<span className='fa fa-home' />}>I'm a button</Button>
-                <Button round icon={<span className='fa fa-home' />} variant={'alt'}>I'm a button</Button>
-                <Button round busy />
-                <Button round done>I'm a button</Button>
+                <Button type={'primary'} icon={<span className='fa fa-home' />}>
+                  I'm a button
+                </Button>
+                <Button icon={<span className='fa fa-home' />} variant={'alt'}>
+                  I'm a button
+                </Button>
+                <Button busy />
+                <Button done>I'm a button</Button>
               </Col>
               <Col xs={12} sm={10}>
-                <Spacer />
-                <Button to={'#'} type='link'>Play with it</Button> 
-                <Button to={'#'} type='link'>See Docs</Button> 
+                <Spacer lg />
+
+                <Button to={'#'} type='link'>
+                  Play with it
+                </Button>
+                <Button to={'#'} type='link'>
+                  See Docs
+                </Button>
                 <HalfPic right>
-                  <Button round>Buttons</Button> 
+                  <Button round>Buttons</Button>
                 </HalfPic>
               </Col>
             </Row>
