@@ -1,7 +1,13 @@
+:root {
+  --theme-dark-dialog-content-background: #111;
+  --theme-dark-dialog-header-background: #222;
+  --theme-dark-dialog-background: #000000bb;
+}
+
 .SNG__dialog {
   position: fixed;
   width: 100vw;
-  background: #000000bb;
+  background: var(--theme-dark-dialog-background);
   left: 0;
   top: 0;
   height: 100vh;
@@ -16,19 +22,54 @@
   transform: translateZ(-40px) translateX(-50%) translateY(-50%);
   transform-style: preserve-3d;
   transform-origin: center center;
-  min-height: 50vh;
   width: 50vw;
   z-index: 3;
   opacity: 0;
-  background: #111;
-  box-shadow: 0 5px 20px #00000044;
+  background: var(--theme-dark-dialog-content-background);
+  box-shadow: 0 5px 20px #00000099;
+  overflow-y: hidden;
+}
+.SNG__dialog--actions {
+  padding: 10px 15px;
+  background: var(--theme-dark-dialog-header-background);
+  position: relative;
 }
 .SNG__dialog--title {
   padding: 15px;
   font-size: 20px;
-  background: #222;
-  position: relative;
+  background: var(--theme-dark-dialog-header-background);
+  position: absolute;
   font-weight: normal;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  top: 0;
+  height: 60px;
+}
+.SNG__dialog--title::after,
+.SNG__dialog--actions::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  height: 20px;
+  left: 0;
+  width: 100%;
+  transform: translateY(100%);
+  background: linear-gradient(
+    to bottom,
+    var(--theme-dark-dialog-content-background),
+    transparent
+  );
+}
+.SNG__dialog--actions::after {
+  bottom: unset;
+  top: 0;
+  transform: translateY(-100%);
+  background: linear-gradient(
+    to top,
+    var(--theme-dark-dialog-content-background),
+    transparent
+  );
 }
 .SNG__dialog--children {
   padding: 15px;
@@ -55,6 +96,10 @@
 .SNG__dialog--title .SNG__dialog--close-button:hover {
   background: #ffffff11;
 }
+.SNG__dialog--title .SNG__dialog--close-button:focus {
+  outline: none;
+  box-shadow: 0 0px 0px 2px var(--theme-color);
+}
 .dialog-show {
   animation: showDialog 0.3s ease-in-out forwards;
 }
@@ -63,6 +108,9 @@
 }
 .dialog-show .SNG__dialog--children {
   animation: showChildren 0.5s ease-in-out 1s forwards;
+  margin-top: 6rem;
+  max-height: 50vh;
+  overflow-y: auto;
 }
 .dialog-hide {
   animation: hideDialog 0.3s ease-in-out 0.1s forwards;

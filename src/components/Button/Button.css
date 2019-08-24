@@ -1,6 +1,6 @@
 :root {
   --theme-color: rgb(255, 0, 106);
-  --theme-dark-button-background: #222;
+  --theme-dark-button-background: #111;
   --theme-dark-button-background-hover: #00000044;
   --theme-dark-button-background-disabled: #444444;
   --theme-dark-button-color-disabled: #666666; }
@@ -20,8 +20,8 @@
   user-select: none;
   font-size: 16px;
   border: none;
-  height: 48px;
-  padding: 0 38px;
+  height: 40px;
+  padding: 0 35px;
   min-width: 136px;
   position: relative;
   transition: all 0.14s ease;
@@ -31,7 +31,7 @@
   background: transparent;
   vertical-align: top;
   box-sizing: border-box;
-  margin: 5px 10px 5px 0;
+  margin: 5px 15px 5px 0;
   font-weight: normal;
   position: relative; }
 
@@ -85,11 +85,13 @@
   animation: slide-in 0.2s ease-in-out 0.4s forwards; }
 
 .SNG__button--round,
-.SNG__button--round::before, .SNG__button--round::after {
+.SNG__button--round::before,
+.SNG__button--round::after {
   border-radius: 30px; }
 
 .SNG__button--less-round,
-.SNG__button--less-round::before, .SNG__button--less-round::after {
+.SNG__button--less-round::before,
+.SNG__button--less-round::after {
   border-radius: 5px; }
 
 .SNG__button--primary::after {
@@ -143,8 +145,8 @@
   animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }
 
 .checkmark {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   display: block;
   stroke-width: 5;
@@ -204,10 +206,19 @@
 .SNG__button:hover::before {
   background: var(--theme-dark-button-background-hover); }
 
-.SNG__button--busy::after, .SNG__button--busy:hover:before, .SNG__button--disabled, .SNG__button--disabled::before, .SNG__button--disabled:hover::before {
+.SNG__button--busy::after,
+.SNG__button--busy:hover:before,
+.SNG__button--disabled,
+.SNG__button--disabled::before,
+.SNG__button--disabled:hover::before {
   background: var(--theme-dark-button-background-disabled);
   cursor: default;
   color: var(--theme-dark-button-color-disabled); }
+
+.SNG__button--busy:focus,
+.SNG__button--disabled:focus {
+  outline: none;
+  box-shadow: none; }
 
 @media only screen and (max-width: 480px) {
   .SNG__button.SNG__button--expand-on-mobile {

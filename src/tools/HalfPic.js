@@ -4,7 +4,7 @@ import StyleMaker from 'stylemaker'
 let style = () => (`
 .SNG__half--pic {
     position: absolute;
-    z-index: 4;
+    z-index: -1;
     top: 50%;
     transform: translateY(-50%) scale(3);
     pointer-events: none;

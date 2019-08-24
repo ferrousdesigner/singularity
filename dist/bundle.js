@@ -1400,7 +1400,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, ":root {\n  --theme-color: rgb(255, 0, 106);\n  --theme-dark-button-background: #222;\n  --theme-dark-button-background-hover: #00000044;\n  --theme-dark-button-background-disabled: #444444;\n  --theme-dark-button-color-disabled: #666666; }\n\n.SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  font-size: 16px;\n  border: none;\n  height: 48px;\n  padding: 0 38px;\n  min-width: 136px;\n  position: relative;\n  transition: all 0.14s ease;\n  transform-origin: center;\n  z-index: 1;\n  color: #fff;\n  background: transparent;\n  vertical-align: top;\n  box-sizing: border-box;\n  margin: 5px 10px 5px 0;\n  font-weight: normal;\n  position: relative; }\n\n.SNG__button::after {\n  content: \"\";\n  position: absolute;\n  z-index: -2;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: var(--theme-dark-button-background); }\n\n.SNG__button::before {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: transparent;\n  transition: background 0.1s ease-in-out; }\n\n.SNG__button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.SNG__button.SNG__button--primary:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px white; }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 16px;\n  color: white;\n  margin-left: 5px;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out 0.4s forwards; }\n\n.SNG__button--round,\n.SNG__button--round::before, .SNG__button--round::after {\n  border-radius: 30px; }\n\n.SNG__button--less-round,\n.SNG__button--less-round::before, .SNG__button--less-round::after {\n  border-radius: 5px; }\n\n.SNG__button--primary::after {\n  color: #fff;\n  background: var(--theme-color); }\n\n.SNG__button--alt {\n  border: 2px solid #fff;\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--alt::after {\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--link {\n  padding: 0;\n  height: auto;\n  line-height: 1.5;\n  justify-content: flex-start;\n  min-width: auto;\n  color: #ffffffaa;\n  font-size: 15px;\n  background-color: transparent;\n  background: none;\n  transition: all 0.2s ease;\n  margin-right: 10px; }\n\n.SNG__button--link + .SNG__button--link {\n  margin-left: 10px; }\n\n.SNG__button--link::after {\n  display: none; }\n\n.SNG__button--icon {\n  width: 20px;\n  height: 20px;\n  margin-right: 5px; }\n\n.SNG__button--icon * {\n  fill: inherit;\n  color: inherit; }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%,\n  100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n\n.SNG__loader {\n  border: 16px solid var(--theme-dark-button-background-hover);\n  border-top: 16px solid var(--theme-color);\n  border-radius: 50%;\n  border-width: 4px;\n  width: 25px;\n  height: 25px;\n  animation: spin 1s linear infinite; }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n.SNG__button--link:hover {\n  transform: none;\n  color: #fff;\n  text-decoration: underline; }\n\n.SNG__button:hover::before {\n  background: var(--theme-dark-button-background-hover); }\n\n.SNG__button--busy::after, .SNG__button--busy:hover:before, .SNG__button--disabled, .SNG__button--disabled::before, .SNG__button--disabled:hover::before {\n  background: var(--theme-dark-button-background-disabled);\n  cursor: default;\n  color: var(--theme-dark-button-color-disabled); }\n\n@media only screen and (max-width: 480px) {\n  .SNG__button.SNG__button--expand-on-mobile {\n    width: 100%;\n    font-size: 14px;\n    margin-right: 0;\n    margin-left: 0;\n    height: 40px; }\n  .SNG__button.SNG__button--link {\n    min-width: auto;\n    width: auto;\n    margin: 5px 10px 5px 0; }\n  .checkmark {\n    width: 20px;\n    height: 20px; } }\n", ""]);
+exports.push([module.i, ":root {\n  --theme-color: rgb(255, 0, 106);\n  --theme-dark-button-background: #111;\n  --theme-dark-button-background-hover: #00000044;\n  --theme-dark-button-background-disabled: #444444;\n  --theme-dark-button-color-disabled: #666666; }\n\n.SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  font-size: 16px;\n  border: none;\n  height: 40px;\n  padding: 0 35px;\n  min-width: 136px;\n  position: relative;\n  transition: all 0.14s ease;\n  transform-origin: center;\n  z-index: 1;\n  color: #fff;\n  background: transparent;\n  vertical-align: top;\n  box-sizing: border-box;\n  margin: 5px 15px 5px 0;\n  font-weight: normal;\n  position: relative; }\n\n.SNG__button::after {\n  content: \"\";\n  position: absolute;\n  z-index: -2;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: var(--theme-dark-button-background); }\n\n.SNG__button::before {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: transparent;\n  transition: background 0.1s ease-in-out; }\n\n.SNG__button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.SNG__button.SNG__button--primary:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px white; }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 16px;\n  color: white;\n  margin-left: 5px;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out 0.4s forwards; }\n\n.SNG__button--round,\n.SNG__button--round::before,\n.SNG__button--round::after {\n  border-radius: 30px; }\n\n.SNG__button--less-round,\n.SNG__button--less-round::before,\n.SNG__button--less-round::after {\n  border-radius: 5px; }\n\n.SNG__button--primary::after {\n  color: #fff;\n  background: var(--theme-color); }\n\n.SNG__button--alt {\n  border: 2px solid #fff;\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--alt::after {\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--link {\n  padding: 0;\n  height: auto;\n  line-height: 1.5;\n  justify-content: flex-start;\n  min-width: auto;\n  color: #ffffffaa;\n  font-size: 15px;\n  background-color: transparent;\n  background: none;\n  transition: all 0.2s ease;\n  margin-right: 10px; }\n\n.SNG__button--link + .SNG__button--link {\n  margin-left: 10px; }\n\n.SNG__button--link::after {\n  display: none; }\n\n.SNG__button--icon {\n  width: 20px;\n  height: 20px;\n  margin-right: 5px; }\n\n.SNG__button--icon * {\n  fill: inherit;\n  color: inherit; }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%,\n  100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n\n.SNG__loader {\n  border: 16px solid var(--theme-dark-button-background-hover);\n  border-top: 16px solid var(--theme-color);\n  border-radius: 50%;\n  border-width: 4px;\n  width: 25px;\n  height: 25px;\n  animation: spin 1s linear infinite; }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n.SNG__button--link:hover {\n  transform: none;\n  color: #fff;\n  text-decoration: underline; }\n\n.SNG__button:hover::before {\n  background: var(--theme-dark-button-background-hover); }\n\n.SNG__button--busy::after,\n.SNG__button--busy:hover:before,\n.SNG__button--disabled,\n.SNG__button--disabled::before,\n.SNG__button--disabled:hover::before {\n  background: var(--theme-dark-button-background-disabled);\n  cursor: default;\n  color: var(--theme-dark-button-color-disabled); }\n\n.SNG__button--busy:focus,\n.SNG__button--disabled:focus {\n  outline: none;\n  box-shadow: none; }\n\n@media only screen and (max-width: 480px) {\n  .SNG__button.SNG__button--expand-on-mobile {\n    width: 100%;\n    font-size: 14px;\n    margin-right: 0;\n    margin-left: 0;\n    height: 40px; }\n  .SNG__button.SNG__button--link {\n    min-width: auto;\n    width: auto;\n    margin: 5px 10px 5px 0; }\n  .checkmark {\n    width: 20px;\n    height: 20px; } }\n", ""]);
 
 // exports
 
@@ -1690,7 +1690,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, ".SNG__dialog {\n  position: fixed;\n  width: 100vw;\n  background: #000000bb;\n  left: 0;\n  top: 0;\n  height: 100vh;\n  font-weight: normal;\n  z-index: 1;\n  perspective: 100vw; }\n\n.SNG__dialog--content {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translateZ(-40px) translateX(-50%) translateY(-50%);\n  transform-style: preserve-3d;\n  transform-origin: center center;\n  min-height: 50vh;\n  width: 50vw;\n  z-index: 3;\n  opacity: 0;\n  background: #111;\n  box-shadow: 0 5px 20px #00000044; }\n\n.SNG__dialog--title {\n  padding: 15px;\n  font-size: 20px;\n  background: #222;\n  position: relative;\n  font-weight: normal; }\n\n.SNG__dialog--children {\n  padding: 15px;\n  opacity: 0; }\n\n.SNG__dialog--title .SNG__dialog--close-button {\n  position: absolute;\n  width: 40px;\n  font-size: 20px;\n  top: 50%;\n  right: 5px;\n  transform: translateY(-50%);\n  cursor: pointer;\n  height: 40px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n  transition: 0.15s;\n  background: transparent;\n  color: #fff;\n  border: none; }\n\n.SNG__dialog--title .SNG__dialog--close-button:hover {\n  background: #ffffff11; }\n\n.dialog-show {\n  animation: showDialog 0.3s ease-in-out forwards; }\n\n.dialog-show .SNG__dialog--content {\n  animation: showDialogContent 0.2s ease-in-out 0.3s forwards; }\n\n.dialog-show .SNG__dialog--children {\n  animation: showChildren 0.5s ease-in-out 1s forwards; }\n\n.dialog-hide {\n  animation: hideDialog 0.3s ease-in-out 0.1s forwards; }\n\n.dialog-hide .SNG__dialog--content {\n  animation: hideDialogContent 0.2s ease-in-out forwards; }\n\n@keyframes showChildren {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialog {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialogContent {\n  from {\n    opacity: 0;\n    transform: translateZ(-40px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); } }\n\n@keyframes hideDialog {\n  from {\n    opacity: 1; }\n  to {\n    opacity: 0; } }\n\n@keyframes hideDialogContent {\n  from {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 0;\n    transform: translateZ(-20px) translateX(-50%) translateY(-50%); } }\n\n@media only screen and (max-width: 480px) {\n  .SNG__dialog--content {\n    width: 90vw; } }\n", ""]);
+exports.push([module.i, ":root {\n  --theme-dark-dialog-content-background: #111;\n  --theme-dark-dialog-header-background: #222;\n  --theme-dark-dialog-background: #000000bb; }\n\n.SNG__dialog {\n  position: fixed;\n  width: 100vw;\n  background: var(--theme-dark-dialog-background);\n  left: 0;\n  top: 0;\n  height: 100vh;\n  font-weight: normal;\n  z-index: 1;\n  perspective: 100vw; }\n\n.SNG__dialog--content {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translateZ(-40px) translateX(-50%) translateY(-50%);\n  transform-style: preserve-3d;\n  transform-origin: center center;\n  width: 50vw;\n  z-index: 3;\n  opacity: 0;\n  background: var(--theme-dark-dialog-content-background);\n  box-shadow: 0 5px 20px #00000099;\n  overflow-y: hidden; }\n\n.SNG__dialog--actions {\n  padding: 10px 15px;\n  background: var(--theme-dark-dialog-header-background);\n  position: relative; }\n\n.SNG__dialog--title {\n  padding: 15px;\n  font-size: 20px;\n  background: var(--theme-dark-dialog-header-background);\n  position: absolute;\n  font-weight: normal;\n  left: 0;\n  width: 100%;\n  z-index: 2;\n  top: 0;\n  height: 60px; }\n\n.SNG__dialog--title::after,\n.SNG__dialog--actions::after {\n  position: absolute;\n  content: \"\";\n  bottom: 0;\n  height: 20px;\n  left: 0;\n  width: 100%;\n  transform: translateY(100%);\n  background: linear-gradient(to bottom, var(--theme-dark-dialog-content-background), transparent); }\n\n.SNG__dialog--actions::after {\n  bottom: unset;\n  top: 0;\n  transform: translateY(-100%);\n  background: linear-gradient(to top, var(--theme-dark-dialog-content-background), transparent); }\n\n.SNG__dialog--children {\n  padding: 15px;\n  opacity: 0; }\n\n.SNG__dialog--title .SNG__dialog--close-button {\n  position: absolute;\n  width: 40px;\n  font-size: 20px;\n  top: 50%;\n  right: 5px;\n  transform: translateY(-50%);\n  cursor: pointer;\n  height: 40px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n  transition: 0.15s;\n  background: transparent;\n  color: #fff;\n  border: none; }\n\n.SNG__dialog--title .SNG__dialog--close-button:hover {\n  background: #ffffff11; }\n\n.SNG__dialog--title .SNG__dialog--close-button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.dialog-show {\n  animation: showDialog 0.3s ease-in-out forwards; }\n\n.dialog-show .SNG__dialog--content {\n  animation: showDialogContent 0.2s ease-in-out 0.3s forwards; }\n\n.dialog-show .SNG__dialog--children {\n  animation: showChildren 0.5s ease-in-out 1s forwards;\n  margin-top: 6rem;\n  max-height: 50vh;\n  overflow-y: auto; }\n\n.dialog-hide {\n  animation: hideDialog 0.3s ease-in-out 0.1s forwards; }\n\n.dialog-hide .SNG__dialog--content {\n  animation: hideDialogContent 0.2s ease-in-out forwards; }\n\n@keyframes showChildren {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialog {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialogContent {\n  from {\n    opacity: 0;\n    transform: translateZ(-40px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); } }\n\n@keyframes hideDialog {\n  from {\n    opacity: 1; }\n  to {\n    opacity: 0; } }\n\n@keyframes hideDialogContent {\n  from {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 0;\n    transform: translateZ(-20px) translateX(-50%) translateY(-50%); } }\n\n@media only screen and (max-width: 480px) {\n  .SNG__dialog--content {\n    width: 90vw; } }\n", ""]);
 
 // exports
 
@@ -2916,6 +2916,7 @@ function Dialog_setPrototypeOf(o, p) { Dialog_setPrototypeOf = Object.setPrototy
 
 
 
+
 var Dialog_MainDialog =
 /*#__PURE__*/
 function (_Component) {
@@ -2929,8 +2930,10 @@ function (_Component) {
     _this = Dialog_possibleConstructorReturn(this, Dialog_getPrototypeOf(MainDialog).call(this, props));
     _this.state = {
       animationClass: '',
-      open: false
+      open: false,
+      read: false
     };
+    _this.initialBodyOverflow = '';
     return _this;
   }
 
@@ -2943,13 +2946,17 @@ function (_Component) {
       var open = newProps.open;
 
       if (!this.props.open && open) {
-        console.log('>>>');
+        if (this.initialBodyOverflow === '') {
+          this.initialBodyOverflow = document.querySelector('html').style.overflowY;
+          document.querySelector('html').style.overflowY = 'hidden';
+        }
+
         this.setState({
           rendered: true,
           animationClass: 'dialog-show '
         });
       } else if (this.props.open && !open) {
-        console.log('>>2');
+        document.querySelector('html').style.overflowY = this.initialBodyOverflow;
         this.setState({
           animationClass: this.state.animationClass + 'dialog-hide'
         }, function () {
@@ -2958,7 +2965,7 @@ function (_Component) {
               rendered: false,
               animationClass: ''
             });
-          }, 1300);
+          }, 500);
         });
       }
     }
@@ -2969,13 +2976,43 @@ function (_Component) {
       return cS + this.state.animationClass;
     }
   }, {
+    key: "handleScroll",
+    value: function handleScroll(e) {
+      var read = this.state.read;
+
+      if (e.target.offsetHeight + e.target.scrollTop >= e.target.scrollHeight && !read) {
+        this.setState({
+          read: true
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props = this.props,
           title = _this$props.title,
           onClose = _this$props.onClose,
           children = _this$props.children,
-          showCloseButton = _this$props.showCloseButton;
+          showCloseButton = _this$props.showCloseButton,
+          _this$props$enableAft = _this$props.enableAfterRead,
+          enableAfterRead = _this$props$enableAft === void 0 ? true : _this$props$enableAft,
+          _this$props$primaryAc = _this$props.primaryAction,
+          primaryAction = _this$props$primaryAc === void 0 ? {
+        label: 'Agree',
+        onClick: function onClick() {
+          return alert();
+        }
+      } : _this$props$primaryAc,
+          _this$props$secondary = _this$props.secondaryAction,
+          secondaryAction = _this$props$secondary === void 0 ? {
+        label: 'Cancel',
+        onClick: function onClick() {
+          return alert();
+        }
+      } : _this$props$secondary;
+      var read = this.state.read;
       var rendered = this.state.rendered;
       return rendered ? react_default.a.createElement("div", {
         className: this.getClass()
@@ -2987,8 +3024,23 @@ function (_Component) {
         className: "fas fa-times SNG__dialog--close-button",
         onClick: onClose
       })), children && react_default.a.createElement("div", {
-        className: "SNG__dialog--children"
-      }, children))) : react_default.a.createElement(react["Fragment"], null);
+        className: "SNG__dialog--children",
+        onScroll: enableAfterRead ? function (e) {
+          return _this3.handleScroll(e);
+        } : function () {
+          return null;
+        }
+      }, children), (primaryAction || secondaryAction) && react_default.a.createElement("div", {
+        className: "SNG__dialog--actions"
+      }, primaryAction && react_default.a.createElement(Button_Button_Button, {
+        type: "primary",
+        disabled: enableAfterRead && !read,
+        icon: primaryAction.icon,
+        onClick: primaryAction.onClick
+      }, primaryAction.label), secondaryAction && react_default.a.createElement(Button_Button_Button, {
+        onClick: secondaryAction.onClick,
+        icon: secondaryAction.icon
+      }, secondaryAction.label)))) : react_default.a.createElement(react["Fragment"], null);
     }
   }]);
 
@@ -3002,7 +3054,53 @@ var Dialog_Dialog_Dialog = function Dialog(props) {
 /* harmony default export */ var components_Dialog_Dialog = (Dialog_Dialog_Dialog);
 // CONCATENATED MODULE: ./src/components/Dialog/index.js
 
+// CONCATENATED MODULE: ./src/components/Panel/Panel.js
+function Panel_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Panel_typeof = function _typeof(obj) { return typeof obj; }; } else { Panel_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Panel_typeof(obj); }
+
+function Panel_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function Panel_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function Panel_createClass(Constructor, protoProps, staticProps) { if (protoProps) Panel_defineProperties(Constructor.prototype, protoProps); if (staticProps) Panel_defineProperties(Constructor, staticProps); return Constructor; }
+
+function Panel_possibleConstructorReturn(self, call) { if (call && (Panel_typeof(call) === "object" || typeof call === "function")) { return call; } return Panel_assertThisInitialized(self); }
+
+function Panel_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function Panel_getPrototypeOf(o) { Panel_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return Panel_getPrototypeOf(o); }
+
+function Panel_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) Panel_setPrototypeOf(subClass, superClass); }
+
+function Panel_setPrototypeOf(o, p) { Panel_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return Panel_setPrototypeOf(o, p); }
+
+
+
+var Panel_Panel =
+/*#__PURE__*/
+function (_Component) {
+  Panel_inherits(Panel, _Component);
+
+  function Panel() {
+    Panel_classCallCheck(this, Panel);
+
+    return Panel_possibleConstructorReturn(this, Panel_getPrototypeOf(Panel).apply(this, arguments));
+  }
+
+  Panel_createClass(Panel, [{
+    key: "render",
+    value: function render() {
+      return react_default.a.createElement("div", null, "Panel");
+    }
+  }]);
+
+  return Panel;
+}(react["Component"]);
+
+/* harmony default export */ var components_Panel_Panel = (Panel_Panel);
+// CONCATENATED MODULE: ./src/components/Panel/index.js
+
 // CONCATENATED MODULE: ./src/SingularityUI.js
+
 
 
 
@@ -3013,7 +3111,7 @@ var Dialog_Dialog_Dialog = function Dialog(props) {
 
 var SingularityUI_settings = function settings(setting) {};
 
-var cssReset = "\n    @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,700');\n    @import url('https://use.fontawesome.com/releases/v5.3.1/css/all.css');\n\n    :root {\n        font-size: 10px;\n    }\n    body, html, h1, h2, h3, h4, h5, h6, section{\n        margin: 0;\n        padding: 0;\n        box-sizing: border-box;\n        font-weight: 300;\n    }\n    html {\n      overflow-x: hidden;\n    }\n    div, span {\n      font-weight: inherit;\n    }\n    *,  *::after,  *::before{\n      box-sizing: border-box;\n    }\n    a{\n        text-decoration: none;\n    }\n    body {\n        overflow-x: hidden;\n        background: black;\n        font-family: 'Poppins',sans-serif;\n        color: #eee;\n        font-size: 1.6rem;\n        line-height: 1.5;\n        font-weight: lighter;\n    }\n    .loader-spinner {\n        color: white;\n        display: inline-block;\n        position: relative;\n        margin: 0 auto;\n        vertical-align: middle;\n        width: 20%;\n        height: 100%;\n      }\n      .loader-spinner div {\n        transform-origin: center;\n        animation: loader-spinner 1.2s linear infinite;\n      }\n      .loader-spinner div:after {\n        content: \" \";\n        display: block;\n        position: absolute;\n        top: 0.4rem;\n        left: 0rem;\n        width: 0.2rem;\n        height: 0.8rem;\n        border-radius: 20%;\n        background: #fff;\n      }\n      .loader-spinner div:nth-child(1) {\n        transform: rotate(0deg);\n        animation-delay: -1.1s;\n      }\n      .loader-spinner div:nth-child(2) {\n        transform: rotate(30deg);\n        animation-delay: -1s;\n      }\n      .loader-spinner div:nth-child(3) {\n        transform: rotate(60deg);\n        animation-delay: -0.9s;\n      }\n      .loader-spinner div:nth-child(4) {\n        transform: rotate(90deg);\n        animation-delay: -0.8s;\n      }\n      .loader-spinner div:nth-child(5) {\n        transform: rotate(120deg);\n        animation-delay: -0.7s;\n      }\n      .loader-spinner div:nth-child(6) {\n        transform: rotate(150deg);\n        animation-delay: -0.6s;\n      }\n      .loader-spinner div:nth-child(7) {\n        transform: rotate(180deg);\n        animation-delay: -0.5s;\n      }\n      .loader-spinner div:nth-child(8) {\n        transform: rotate(210deg);\n        animation-delay: -0.4s;\n      }\n      .loader-spinner div:nth-child(9) {\n        transform: rotate(240deg);\n        animation-delay: -0.3s;\n      }\n      .loader-spinner div:nth-child(10) {\n        transform: rotate(270deg);\n        animation-delay: -0.2s;\n      }\n      .loader-spinner div:nth-child(11) {\n        transform: rotate(300deg);\n        animation-delay: -0.1s;\n      }\n      .loader-spinner div:nth-child(12) {\n        transform: rotate(330deg);\n        animation-delay: 0s;\n      }\n      @keyframes loader-spinner {\n        0% {\n          opacity: 1;\n        }\n        100% {\n          opacity: 0;\n        }\n      }\n    @media only screen and (max-width: 480px) {\n        :root {\n            font-size: 7px;\n        } \n    }\n"; // Initial Reset Styling
+var cssReset = "\n    @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,700');\n    @import url('https://use.fontawesome.com/releases/v5.3.1/css/all.css');\n\n    :root {\n        font-size: 10px;\n    }\n    body, html, h1, h2, h3, h4, h5, h6, section{\n        margin: 0;\n        padding: 0;\n        box-sizing: border-box;\n        font-weight: 300;\n    }\n    html {\n      overflow-x: hidden;\n    }\n    div, span {\n      font-weight: inherit;\n    }\n    *,  *::after,  *::before{\n      box-sizing: border-box;\n    }\n    a{\n        text-decoration: none;\n    }\n    body {\n        overflow-x: hidden;\n        background: black;\n        font-family: 'Poppins',sans-serif;\n        color: #eee;\n        font-size: 1.6rem;\n        line-height: 1.5;\n        font-weight: lighter;\n    }\n    .loader-spinner {\n        color: white;\n        display: inline-block;\n        position: relative;\n        margin: 0 auto;\n        vertical-align: middle;\n        width: 20%;\n        height: 100%;\n      }\n      .loader-spinner div {\n        transform-origin: center;\n        animation: loader-spinner 1.2s linear infinite;\n      }\n      .loader-spinner div:after {\n        content: \" \";\n        display: block;\n        position: absolute;\n        top: 0.4rem;\n        left: 0rem;\n        width: 0.2rem;\n        height: 0.8rem;\n        border-radius: 20%;\n        background: #fff;\n      }\n      .loader-spinner div:nth-child(1) {\n        transform: rotate(0deg);\n        animation-delay: -1.1s;\n      }\n      .loader-spinner div:nth-child(2) {\n        transform: rotate(30deg);\n        animation-delay: -1s;\n      }\n      .loader-spinner div:nth-child(3) {\n        transform: rotate(60deg);\n        animation-delay: -0.9s;\n      }\n      .loader-spinner div:nth-child(4) {\n        transform: rotate(90deg);\n        animation-delay: -0.8s;\n      }\n      .loader-spinner div:nth-child(5) {\n        transform: rotate(120deg);\n        animation-delay: -0.7s;\n      }\n      .loader-spinner div:nth-child(6) {\n        transform: rotate(150deg);\n        animation-delay: -0.6s;\n      }\n      .loader-spinner div:nth-child(7) {\n        transform: rotate(180deg);\n        animation-delay: -0.5s;\n      }\n      .loader-spinner div:nth-child(8) {\n        transform: rotate(210deg);\n        animation-delay: -0.4s;\n      }\n      .loader-spinner div:nth-child(9) {\n        transform: rotate(240deg);\n        animation-delay: -0.3s;\n      }\n      .loader-spinner div:nth-child(10) {\n        transform: rotate(270deg);\n        animation-delay: -0.2s;\n      }\n      .loader-spinner div:nth-child(11) {\n        transform: rotate(300deg);\n        animation-delay: -0.1s;\n      }\n      .loader-spinner div:nth-child(12) {\n        transform: rotate(330deg);\n        animation-delay: 0s;\n      }\n      @keyframes loader-spinner {\n        0% {\n          opacity: 1;\n        }\n        100% {\n          opacity: 0;\n        }\n      }\n    @media only screen and (max-width: 480px) {\n        :root {\n            font-size: 8px;\n        } \n    }\n"; // Initial Reset Styling
 
 lib_default()(cssReset);
 // CONCATENATED MODULE: ./src/tools/HalfPic.js
@@ -3039,7 +3137,7 @@ function HalfPic_setPrototypeOf(o, p) { HalfPic_setPrototypeOf = Object.setProto
 
 
 var HalfPic_style = function style() {
-  return "\n.SNG__half--pic {\n    position: absolute;\n    z-index: 4;\n    top: 50%;\n    transform: translateY(-50%) scale(3);\n    pointer-events: none;\n    width: 20vmin;\n    height: 20vmin;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    // border-radius: 50%;\n    \n} \n.SNG__half--pic:before {\n    content: \"\";\n    position: absolute;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    filter: blur(2rem);\n    background-position: right;\n    background: var(--theme-color);\n    z-index: -5;\n    border-radius: 50%;\n}\n.SNG__half--pic:after {\n    content: \"\";\n    position: absolute;\n    background: black;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    z-index: -5;\n    border-radius: 50%;\n\n}\n@media only screen and (max-width: 480px) {\n  .SNG__half--pic {\n      display: none;\n  } \n}\n\n";
+  return "\n.SNG__half--pic {\n    position: absolute;\n    z-index: -1;\n    top: 50%;\n    transform: translateY(-50%) scale(3);\n    pointer-events: none;\n    width: 20vmin;\n    height: 20vmin;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    // border-radius: 50%;\n    \n} \n.SNG__half--pic:before {\n    content: \"\";\n    position: absolute;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    filter: blur(2rem);\n    background-position: right;\n    background: var(--theme-color);\n    z-index: -5;\n    border-radius: 50%;\n}\n.SNG__half--pic:after {\n    content: \"\";\n    position: absolute;\n    background: black;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    z-index: -5;\n    border-radius: 50%;\n\n}\n@media only screen and (max-width: 480px) {\n  .SNG__half--pic {\n      display: none;\n  } \n}\n\n";
 };
 
 var HalfPic_HalfPic =
@@ -3567,7 +3665,7 @@ function (_Component) {
             roundButtons: !roundButtons
           });
         }
-      }, "The right amount of smoothness pleases the eyes."), react_default.a.createElement(Presentor_Presentor_Presentor, {
+      }, react_default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), react_default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), react_default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in")), react_default.a.createElement(Presentor_Presentor_Presentor, {
         settings: {
           type: 'simple',
           full: true
@@ -3602,7 +3700,6 @@ function (_Component) {
         }),
         variant: 'alt'
       }, "Click me"), react_default.a.createElement(Button_Button_Button, {
-        round: true,
         disabled: true
       }, "Disabled"), react_default.a.createElement(Button_Button_Button, {
         soft: true,
@@ -3646,7 +3743,7 @@ function (_Component) {
         type: "spaced",
         align: "center",
         weight: 400
-      }, "Dialog"), react_default.a.createElement(Header_Header_Header, {
+      }, "Dialogs"), react_default.a.createElement(Header_Header_Header, {
         type: "xxlg",
         align: "center",
         weight: 100,
@@ -3657,6 +3754,7 @@ function (_Component) {
         xs: 12,
         sm: 10
       }, react_default.a.createElement(Button_Button_Button, {
+        type: "primary",
         onClick: function onClick() {
           return _this2.setState({
             roundButtons: !roundButtons

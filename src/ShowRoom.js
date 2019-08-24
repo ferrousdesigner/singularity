@@ -64,7 +64,30 @@ export default class ShowRoom extends Component {
           open={roundButtons}
           onClose={() => this.setState({ roundButtons: !roundButtons })}
         >
-          The right amount of smoothness pleases the eyes.
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+          </p>
         </Dialog>
 
         <Presentor settings={{ type: 'simple', full: true }}>
@@ -87,9 +110,7 @@ export default class ShowRoom extends Component {
                 <Button icon={<span className='fa fa-home' />} variant={'alt'}>
                   Click me
                 </Button>
-                <Button round disabled>
-                  Disabled
-                </Button>
+                <Button disabled>Disabled</Button>
                 <Button soft done>
                   Completed
                 </Button>
@@ -117,20 +138,21 @@ export default class ShowRoom extends Component {
             </Row>
           </Grid>
         </Presentor>
-        <Presentor settings={{ type: 'simple'}}>
+        <Presentor settings={{ type: 'simple' }}>
           <Grid>
             <Row middle='xs' center='xs' style={{ marginTop: '4rem' }}>
               <Col xs={12}>
                 <Header type='spaced' align='center' weight={400}>
-                  Dialog
+                  Dialogs
                 </Header>
-                <Header type='xxlg' align='center'  weight={100} capital>
+                <Header type='xxlg' align='center' weight={100} capital>
                   You can't <GradientText weight={100}>avoid</GradientText>
                 </Header>
                 <Spacer />
               </Col>
               <Col xs={12} sm={10}>
                 <Button
+                  type='primary'
                   onClick={() => this.setState({ roundButtons: !roundButtons })}
                 >
                   Open Dialog

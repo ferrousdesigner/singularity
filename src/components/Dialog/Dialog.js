@@ -1,30 +1,38 @@
 import React, { Fragment, Component } from 'react'
 import ReactDOM from 'react-dom'
 import './Dialog.css'
+import { Button } from '../Button'
 
 class MainDialog extends Component {
   constructor (props) {
     super(props)
     this.state = {
       animationClass: '',
-      open: false
+      open: false,
+      read: false
     }
+    this.initialBodyOverflow = ''
   }
 
   componentWillReceiveProps (newProps) {
     console.log(newProps)
     const { open } = newProps
     if (!this.props.open && open) {
-      console.log('>>>')
+      if (this.initialBodyOverflow === '') {
+        this.initialBodyOverflow = document.querySelector(
+          'html'
+        ).style.overflowY
+        document.querySelector('html').style.overflowY = 'hidden'
+      }
       this.setState({ rendered: true, animationClass: 'dialog-show ' })
     } else if (this.props.open && !open) {
-      console.log('>>2')
+      document.querySelector('html').style.overflowY = this.initialBodyOverflow
       this.setState(
         { animationClass: this.state.animationClass + 'dialog-hide' },
         () =>
           setTimeout(
             () => this.setState({ rendered: false, animationClass: '' }),
-            1300
+            500
           )
       )
     }
@@ -33,8 +41,31 @@ class MainDialog extends Component {
     let cS = 'SNG__dialog '
     return cS + this.state.animationClass
   }
+  handleScroll (e) {
+     let { read } = this.state
+    if (e.target.offsetHeight + e.target.scrollTop >= e.target.scrollHeight && !read) {
+     this.setState({
+        read: true
+     })
+    }
+  }
   render () {
-    const { title, onClose, children, showCloseButton } = this.props
+    const {
+      title,
+      onClose,
+      children,
+      showCloseButton,
+      enableAfterRead = true,
+      primaryAction = {
+        label: 'Agree',
+        onClick: () => alert()
+      },
+      secondaryAction = {
+        label: 'Cancel',
+        onClick: () => alert()
+      }
+    } = this.props
+    const { read } = this.state
     const { rendered } = this.state
     return rendered ? (
       <div className={this.getClass()}>
@@ -50,7 +81,38 @@ class MainDialog extends Component {
               )}
             </div>
           )}
-          {children && <div className='SNG__dialog--children'>{children}</div>}
+          {children && (
+            <div
+              className='SNG__dialog--children'
+              onScroll={
+                enableAfterRead ? e => this.handleScroll(e) : () => null
+              }
+            >
+              {children}
+            </div>
+          )}
+          {(primaryAction || secondaryAction) && (
+            <div className='SNG__dialog--actions'>
+              {primaryAction && (
+                <Button
+                  type='primary'
+                  disabled={enableAfterRead && !read}
+                  icon={primaryAction.icon}
+                  onClick={primaryAction.onClick}
+                >
+                  {primaryAction.label}
+                </Button>
+              )}
+              {secondaryAction && (
+                <Button
+                  onClick={secondaryAction.onClick}
+                  icon={secondaryAction.icon}
+                >
+                  {secondaryAction.label}
+                </Button>
+              )}
+            </div>
+          )}
         </div>
       </div>
     ) : (

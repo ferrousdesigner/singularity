@@ -5,7 +5,7 @@ export { Presentor } from './components/Presentor'
 export { Header } from './components/Header'
 export { Spacer } from './components/Spacer'
 export { Dialog } from './components/Dialog'
-
+export { Panel } from './components/Panel'
 const settings = setting => {}
 const cssReset = `
     @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,700');
@@ -123,7 +123,7 @@ const cssReset = `
       }
     @media only screen and (max-width: 480px) {
         :root {
-            font-size: 7px;
+            font-size: 8px;
         } 
     }
 `
