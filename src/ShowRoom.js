@@ -51,6 +51,13 @@ export default class ShowRoom extends Component {
     const { roundButtons } = this.state
     return (
       <div className='SNG__showroom'>
+        <Presentor
+          settings={{
+            type: 'banner',
+            bannerText: 'SINGULARITY',
+            bannerSubText: 'A React UI Component Library'
+          }}
+        />
         <Dialog
           title='Dialog'
           showCloseButton
@@ -82,12 +89,12 @@ export default class ShowRoom extends Component {
                 <Button icon={<span className='fa fa-home' />} variant={'alt'}>
                   I'm a button
                 </Button>
-                <Button busy />
+                <Button disabled>Disabled</Button>
                 <Button done>I'm a button</Button>
               </Col>
               <Col xs={12} sm={10}>
                 <Spacer lg />
-
+                <Spacer lg />
                 <Button to={'#'} type='link'>
                   Play with it
                 </Button>

@@ -72,7 +72,7 @@
     transform: translateX(0%); } }
 
 .SNG__button .done span {
-  font-size: 14px;
+  font-size: 16px;
   color: white;
   margin-left: 5px;
   opacity: 0;
@@ -198,7 +198,7 @@
 .SNG__button:hover::before {
   background: var(--theme-dark-button-background-hover); }
 
-.SNG__button--busy::after, .SNG__button--busy:hover:before {
+.SNG__button--busy::after, .SNG__button--busy:hover:before, .SNG__button--disabled, .SNG__button--disabled::before, .SNG__button--disabled:hover::before {
   background: var(--theme-dark-button-background-disabled);
   cursor: default; }
 

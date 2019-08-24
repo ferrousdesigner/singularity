@@ -54,7 +54,7 @@ let css = `
  */
 export class Button extends Component {
   getClass () {
-    const { round, light, style, type, variant, expandOnMobile, soft, busy } = this.props
+    const { round, light, style, type, variant, expandOnMobile, soft, busy, disabled } = this.props
     let classString = 'SNG__button'
     if (round) classString += ' SNG__button--round'
     if (type === 'link') classString += ' SNG__button--link'
@@ -62,6 +62,7 @@ export class Button extends Component {
     if (variant === 'alt') classString += ' SNG__button--alt'
     if (soft) classString += ' SNG__button--less-round'
     if (busy) classString += ' SNG__button--busy'
+    if (disabled) classString += ' SNG__button--disabled'
     if (expandOnMobile) classString += ' SNG__button--expand-on-mobile'
     return classString
   }

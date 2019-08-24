@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import StyleMaker from 'stylemaker'
 
-let style = `
+let style = () => (`
 .SNG__half--pic {
     position: absolute;
     z-index: 4;
@@ -19,15 +19,13 @@ let style = `
 .SNG__half--pic:before {
     content: "";
     position: absolute;
-    background: -webkit-linear-gradient(transparent, transparent),
-    url(https://assets.pcmag.com/media/images/457693-interstellar-black-hole.jpg?thumb=y&width=810&height=456)
-      repeat;
     left: -10%;
     top: -10%;
     width: 120%;
     height: 120%;
     filter: blur(2rem);
     background-position: right;
+    background: var(--theme-color);
     z-index: -5;
     border-radius: 50%;
     animation: moveBackground 3000s linear infinite;
@@ -49,11 +47,11 @@ let style = `
   } 
 }
 
-`
+`)
 
 class HalfPic extends Component {
   componentWillMount () {
-      StyleMaker(style)
+      StyleMaker(style())
   }
   render () {
     const { right, left, children } = this.props
