@@ -43,12 +43,12 @@ export default class ShowRoom extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      roundButtons: false
+      openDialog: false
     }
   }
 
   render () {
-    const { roundButtons } = this.state
+    const { openDialog } = this.state
     return (
       <div className='SNG__showroom'>
         <Presentor
@@ -61,8 +61,17 @@ export default class ShowRoom extends Component {
         <Dialog
           title='Dialog'
           showCloseButton
-          open={roundButtons}
-          onClose={() => this.setState({ roundButtons: !roundButtons })}
+          persist
+          open={openDialog}
+          primaryAction={{
+            label: 'Agree',
+            onClick: () => alert()
+          }}
+          secondaryAction={{
+            label: 'Agree',
+            onClick: () => alert()
+          }}
+          onClose={() => this.setState({ openDialog: !openDialog })}
         >
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -98,8 +107,8 @@ export default class ShowRoom extends Component {
                   Buttons
                 </Header>
                 <Header type='xxlg' weight={100} capital>
-                  <GradientText weight={100}>Minimal</GradientText> and
-                  intelligent
+                  <GradientText weight={100}>Minimally</GradientText>{' '}
+                  Progressive
                 </Header>
                 <Spacer />
               </Col>
@@ -131,11 +140,9 @@ export default class ShowRoom extends Component {
                 <Button to={'#'} type='link'>
                   See Docs
                 </Button>
-                <HalfPic right>
-                  <Button round>Buttons</Button>
-                </HalfPic>
               </Col>
             </Row>
+            <HalfPic right />
           </Grid>
         </Presentor>
         <Presentor settings={{ type: 'simple' }}>
@@ -153,7 +160,7 @@ export default class ShowRoom extends Component {
               <Col xs={12} sm={10}>
                 <Button
                   type='primary'
-                  onClick={() => this.setState({ roundButtons: !roundButtons })}
+                  onClick={() => this.setState({ openDialog: !openDialog })}
                 >
                   Open Dialog
                 </Button>

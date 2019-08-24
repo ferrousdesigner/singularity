@@ -15,8 +15,8 @@ class MainDialog extends Component {
   }
 
   componentWillReceiveProps (newProps) {
-    console.log(newProps)
-    const { open } = newProps
+    const { open, persist } = newProps
+    let { read } = this.state
     if (!this.props.open && open) {
       if (this.initialBodyOverflow === '') {
         this.initialBodyOverflow = document.querySelector(
@@ -31,7 +31,12 @@ class MainDialog extends Component {
         { animationClass: this.state.animationClass + 'dialog-hide' },
         () =>
           setTimeout(
-            () => this.setState({ rendered: false, animationClass: '' }),
+            () =>
+              this.setState({
+                rendered: false,
+                animationClass: '',
+                read: persist ? read : false
+              }),
             500
           )
       )
@@ -42,11 +47,14 @@ class MainDialog extends Component {
     return cS + this.state.animationClass
   }
   handleScroll (e) {
-     let { read } = this.state
-    if (e.target.offsetHeight + e.target.scrollTop >= e.target.scrollHeight && !read) {
-     this.setState({
+    let { read } = this.state
+    if (
+      e.target.offsetHeight + e.target.scrollTop >= e.target.scrollHeight &&
+      !read
+    ) {
+      this.setState({
         read: true
-     })
+      })
     }
   }
   render () {
@@ -54,16 +62,9 @@ class MainDialog extends Component {
       title,
       onClose,
       children,
-      showCloseButton,
       enableAfterRead = true,
-      primaryAction = {
-        label: 'Agree',
-        onClick: () => alert()
-      },
-      secondaryAction = {
-        label: 'Cancel',
-        onClick: () => alert()
-      }
+      primaryAction,
+      secondaryAction
     } = this.props
     const { read } = this.state
     const { rendered } = this.state
@@ -73,7 +74,7 @@ class MainDialog extends Component {
           {title && (
             <div className='SNG__dialog--title'>
               {title}
-              {showCloseButton && (
+              {onClose && (
                 <button
                   className='fas fa-times SNG__dialog--close-button'
                   onClick={onClose}

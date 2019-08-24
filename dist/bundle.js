@@ -1400,7 +1400,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, ":root {\n  --theme-color: rgb(255, 0, 106);\n  --theme-dark-button-background: #111;\n  --theme-dark-button-background-hover: #00000044;\n  --theme-dark-button-background-disabled: #444444;\n  --theme-dark-button-color-disabled: #666666; }\n\n.SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  font-size: 16px;\n  border: none;\n  height: 40px;\n  padding: 0 35px;\n  min-width: 136px;\n  position: relative;\n  transition: all 0.14s ease;\n  transform-origin: center;\n  z-index: 1;\n  color: #fff;\n  background: transparent;\n  vertical-align: top;\n  box-sizing: border-box;\n  margin: 5px 15px 5px 0;\n  font-weight: normal;\n  position: relative; }\n\n.SNG__button::after {\n  content: \"\";\n  position: absolute;\n  z-index: -2;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: var(--theme-dark-button-background); }\n\n.SNG__button::before {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: transparent;\n  transition: background 0.1s ease-in-out; }\n\n.SNG__button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.SNG__button.SNG__button--primary:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px white; }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 16px;\n  color: white;\n  margin-left: 5px;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out 0.4s forwards; }\n\n.SNG__button--round,\n.SNG__button--round::before,\n.SNG__button--round::after {\n  border-radius: 30px; }\n\n.SNG__button--less-round,\n.SNG__button--less-round::before,\n.SNG__button--less-round::after {\n  border-radius: 5px; }\n\n.SNG__button--primary::after {\n  color: #fff;\n  background: var(--theme-color); }\n\n.SNG__button--alt {\n  border: 2px solid #fff;\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--alt::after {\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--link {\n  padding: 0;\n  height: auto;\n  line-height: 1.5;\n  justify-content: flex-start;\n  min-width: auto;\n  color: #ffffffaa;\n  font-size: 15px;\n  background-color: transparent;\n  background: none;\n  transition: all 0.2s ease;\n  margin-right: 10px; }\n\n.SNG__button--link + .SNG__button--link {\n  margin-left: 10px; }\n\n.SNG__button--link::after {\n  display: none; }\n\n.SNG__button--icon {\n  width: 20px;\n  height: 20px;\n  margin-right: 5px; }\n\n.SNG__button--icon * {\n  fill: inherit;\n  color: inherit; }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%,\n  100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n\n.SNG__loader {\n  border: 16px solid var(--theme-dark-button-background-hover);\n  border-top: 16px solid var(--theme-color);\n  border-radius: 50%;\n  border-width: 4px;\n  width: 25px;\n  height: 25px;\n  animation: spin 1s linear infinite; }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n.SNG__button--link:hover {\n  transform: none;\n  color: #fff;\n  text-decoration: underline; }\n\n.SNG__button:hover::before {\n  background: var(--theme-dark-button-background-hover); }\n\n.SNG__button--busy::after,\n.SNG__button--busy:hover:before,\n.SNG__button--disabled,\n.SNG__button--disabled::before,\n.SNG__button--disabled:hover::before {\n  background: var(--theme-dark-button-background-disabled);\n  cursor: default;\n  color: var(--theme-dark-button-color-disabled); }\n\n.SNG__button--busy:focus,\n.SNG__button--disabled:focus {\n  outline: none;\n  box-shadow: none; }\n\n@media only screen and (max-width: 480px) {\n  .SNG__button.SNG__button--expand-on-mobile {\n    width: 100%;\n    font-size: 14px;\n    margin-right: 0;\n    margin-left: 0;\n    height: 40px; }\n  .SNG__button.SNG__button--link {\n    min-width: auto;\n    width: auto;\n    margin: 5px 10px 5px 0; }\n  .checkmark {\n    width: 20px;\n    height: 20px; } }\n", ""]);
+exports.push([module.i, ":root {\n  --theme-color: rgb(255, 0, 106);\n  --theme-dark-button-background: #111;\n  --theme-dark-button-background-hover: #00000044;\n  --theme-dark-button-background-disabled: #444444;\n  --theme-dark-button-color-disabled: #666666; }\n\n.SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  font-size: 16px;\n  border: none;\n  height: 40px;\n  padding: 0 35px;\n  min-width: 136px;\n  position: relative;\n  transition: all 0.14s ease;\n  transform-origin: center;\n  z-index: 1;\n  color: #fff;\n  background: transparent;\n  vertical-align: top;\n  box-sizing: border-box;\n  margin: 5px 15px 5px 0;\n  font-weight: normal;\n  position: relative; }\n\n.SNG__button::after {\n  content: \"\";\n  position: absolute;\n  z-index: -2;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: var(--theme-dark-button-background); }\n\n.SNG__button::before {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: transparent;\n  transition: background 0.1s ease-in-out; }\n\n.SNG__button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.SNG__button.SNG__button--primary:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px white; }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 16px;\n  color: white;\n  margin-left: 5px;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out 0.4s forwards; }\n\n.SNG__button--round,\n.SNG__button--round::before,\n.SNG__button--round::after {\n  border-radius: 30px; }\n\n.SNG__button--less-round,\n.SNG__button--less-round::before,\n.SNG__button--less-round::after {\n  border-radius: 5px; }\n\n.SNG__button--primary::after {\n  color: #fff;\n  background: var(--theme-color); }\n\n.SNG__button--alt {\n  border: 2px solid #fff;\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--alt::after {\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--link {\n  padding: 0;\n  height: auto;\n  line-height: 1.5;\n  justify-content: flex-start;\n  min-width: auto;\n  color: #ffffffaa;\n  font-size: 15px;\n  background-color: transparent;\n  background: none;\n  transition: all 0.2s ease;\n  margin-right: 10px; }\n\n.SNG__button--link + .SNG__button--link {\n  margin-left: 10px; }\n\n.SNG__button--link::after {\n  display: none; }\n\n.SNG__button--icon {\n  width: 20px;\n  height: 20px;\n  margin-right: 5px; }\n\n.SNG__button--icon * {\n  fill: inherit;\n  color: inherit; }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%,\n  100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n\n.SNG__loader {\n  border: 16px solid var(--theme-dark-button-background-hover);\n  border-top: 16px solid var(--theme-color);\n  border-radius: 50%;\n  border-width: 4px;\n  width: 25px;\n  height: 25px;\n  animation: spin 1s linear infinite; }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n.SNG__button--link:hover {\n  transform: none;\n  color: #fff;\n  text-decoration: underline; }\n\n.SNG__button:hover::before {\n  background: var(--theme-dark-button-background-hover); }\n\n.SNG__button--busy::after,\n.SNG__button--busy:hover:before,\n.SNG__button--disabled,\n.SNG__button--disabled::before,\n.SNG__button--disabled:hover::before {\n  background: var(--theme-dark-button-background-disabled);\n  cursor: default;\n  color: var(--theme-dark-button-color-disabled); }\n\n.SNG__button.SNG__button--busy:focus,\n.SNG__button.SNG__button--disabled:focus {\n  outline: none;\n  box-shadow: none; }\n\n@media only screen and (max-width: 480px) {\n  .SNG__button.SNG__button--expand-on-mobile {\n    width: 100%;\n    font-size: 14px;\n    margin-right: 0;\n    margin-left: 0;\n    height: 40px; }\n  .SNG__button.SNG__button--link {\n    min-width: auto;\n    width: auto;\n    margin: 5px 10px 5px 0; }\n  .checkmark {\n    width: 20px;\n    height: 20px; } }\n", ""]);
 
 // exports
 
@@ -1690,7 +1690,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, ":root {\n  --theme-dark-dialog-content-background: #111;\n  --theme-dark-dialog-header-background: #222;\n  --theme-dark-dialog-background: #000000bb; }\n\n.SNG__dialog {\n  position: fixed;\n  width: 100vw;\n  background: var(--theme-dark-dialog-background);\n  left: 0;\n  top: 0;\n  height: 100vh;\n  font-weight: normal;\n  z-index: 1;\n  perspective: 100vw; }\n\n.SNG__dialog--content {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translateZ(-40px) translateX(-50%) translateY(-50%);\n  transform-style: preserve-3d;\n  transform-origin: center center;\n  width: 50vw;\n  z-index: 3;\n  opacity: 0;\n  background: var(--theme-dark-dialog-content-background);\n  box-shadow: 0 5px 20px #00000099;\n  overflow-y: hidden; }\n\n.SNG__dialog--actions {\n  padding: 10px 15px;\n  background: var(--theme-dark-dialog-header-background);\n  position: relative; }\n\n.SNG__dialog--title {\n  padding: 15px;\n  font-size: 20px;\n  background: var(--theme-dark-dialog-header-background);\n  position: absolute;\n  font-weight: normal;\n  left: 0;\n  width: 100%;\n  z-index: 2;\n  top: 0;\n  height: 60px; }\n\n.SNG__dialog--title::after,\n.SNG__dialog--actions::after {\n  position: absolute;\n  content: \"\";\n  bottom: 0;\n  height: 20px;\n  left: 0;\n  width: 100%;\n  transform: translateY(100%);\n  background: linear-gradient(to bottom, var(--theme-dark-dialog-content-background), transparent); }\n\n.SNG__dialog--actions::after {\n  bottom: unset;\n  top: 0;\n  transform: translateY(-100%);\n  background: linear-gradient(to top, var(--theme-dark-dialog-content-background), transparent); }\n\n.SNG__dialog--children {\n  padding: 15px;\n  opacity: 0; }\n\n.SNG__dialog--title .SNG__dialog--close-button {\n  position: absolute;\n  width: 40px;\n  font-size: 20px;\n  top: 50%;\n  right: 5px;\n  transform: translateY(-50%);\n  cursor: pointer;\n  height: 40px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n  transition: 0.15s;\n  background: transparent;\n  color: #fff;\n  border: none; }\n\n.SNG__dialog--title .SNG__dialog--close-button:hover {\n  background: #ffffff11; }\n\n.SNG__dialog--title .SNG__dialog--close-button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.dialog-show {\n  animation: showDialog 0.3s ease-in-out forwards; }\n\n.dialog-show .SNG__dialog--content {\n  animation: showDialogContent 0.2s ease-in-out 0.3s forwards; }\n\n.dialog-show .SNG__dialog--children {\n  animation: showChildren 0.5s ease-in-out 1s forwards;\n  margin-top: 6rem;\n  max-height: 50vh;\n  overflow-y: auto; }\n\n.dialog-hide {\n  animation: hideDialog 0.3s ease-in-out 0.1s forwards; }\n\n.dialog-hide .SNG__dialog--content {\n  animation: hideDialogContent 0.2s ease-in-out forwards; }\n\n@keyframes showChildren {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialog {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialogContent {\n  from {\n    opacity: 0;\n    transform: translateZ(-40px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); } }\n\n@keyframes hideDialog {\n  from {\n    opacity: 1; }\n  to {\n    opacity: 0; } }\n\n@keyframes hideDialogContent {\n  from {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 0;\n    transform: translateZ(-20px) translateX(-50%) translateY(-50%); } }\n\n@media only screen and (max-width: 480px) {\n  .SNG__dialog--content {\n    width: 90vw; } }\n", ""]);
+exports.push([module.i, ":root {\n  --theme-dark-dialog-content-background: #111;\n  --theme-dark-dialog-header-background: #222;\n  --theme-dark-dialog-background: #000000bb; }\n\n.SNG__dialog {\n  position: fixed;\n  width: 100vw;\n  background: var(--theme-dark-dialog-background);\n  left: 0;\n  top: 0;\n  height: 100vh;\n  font-weight: normal;\n  z-index: 1;\n  perspective: 100vw; }\n\n.SNG__dialog--content {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translateZ(-40px) translateX(-50%) translateY(-50%);\n  transform-style: preserve-3d;\n  transform-origin: center center;\n  width: 50vw;\n  z-index: 3;\n  opacity: 0;\n  background: var(--theme-dark-dialog-content-background);\n  box-shadow: 0 5px 20px #00000099;\n  overflow-y: hidden; }\n\n.SNG__dialog--actions {\n  padding: 10px 15px;\n  background: var(--theme-dark-dialog-header-background);\n  position: relative; }\n\n.SNG__dialog--title {\n  padding: 15px;\n  font-size: 20px;\n  background: var(--theme-dark-dialog-header-background);\n  position: absolute;\n  font-weight: normal;\n  left: 0;\n  width: 100%;\n  z-index: 2;\n  top: 0;\n  height: 60px; }\n\n.SNG__dialog--title::after,\n.SNG__dialog--actions::after {\n  position: absolute;\n  content: \"\";\n  bottom: 0;\n  height: 20px;\n  left: 0;\n  width: 100%;\n  transform: translateY(100%);\n  background: linear-gradient(to bottom, var(--theme-dark-dialog-content-background), transparent); }\n\n.SNG__dialog--actions::after {\n  bottom: unset;\n  top: 0;\n  transform: translateY(-100%);\n  background: linear-gradient(to top, var(--theme-dark-dialog-content-background), transparent); }\n\n.SNG__dialog--children {\n  padding: 15px;\n  opacity: 0; }\n\n.SNG__dialog--title .SNG__dialog--close-button {\n  position: absolute;\n  width: 40px;\n  font-size: 20px;\n  top: 50%;\n  right: 5px;\n  transform: translateY(-50%);\n  cursor: pointer;\n  height: 40px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n  transition: 0.15s;\n  background: transparent;\n  color: #fff;\n  border: none; }\n\n.SNG__dialog--title .SNG__dialog--close-button:hover {\n  background: #ffffff11; }\n\n.SNG__dialog--title .SNG__dialog--close-button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.dialog-show {\n  animation: showDialog 0.3s ease-in-out forwards; }\n\n.dialog-show .SNG__dialog--content {\n  animation: showDialogContent 0.2s ease-in-out 0.3s forwards; }\n\n.dialog-show .SNG__dialog--children {\n  animation: showChildren 0.5s ease-in-out 0.5s forwards;\n  margin-top: 6rem;\n  max-height: 50vh;\n  overflow-y: auto; }\n\n.dialog-hide {\n  animation: hideDialog 0.3s ease-in-out 0.1s forwards; }\n\n.dialog-hide .SNG__dialog--content {\n  animation: hideDialogContent 0.2s ease-in-out forwards; }\n\n@keyframes showChildren {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialog {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialogContent {\n  from {\n    opacity: 0;\n    transform: translateZ(-40px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); } }\n\n@keyframes hideDialog {\n  from {\n    opacity: 1; }\n  to {\n    opacity: 0; } }\n\n@keyframes hideDialogContent {\n  from {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 0;\n    transform: translateZ(-20px) translateX(-50%) translateY(-50%); } }\n\n@media only screen and (max-width: 480px) {\n  .SNG__dialog--content {\n    width: 90vw; } }\n", ""]);
 
 // exports
 
@@ -2942,8 +2942,9 @@ function (_Component) {
     value: function componentWillReceiveProps(newProps) {
       var _this2 = this;
 
-      console.log(newProps);
-      var open = newProps.open;
+      var open = newProps.open,
+          persist = newProps.persist;
+      var read = this.state.read;
 
       if (!this.props.open && open) {
         if (this.initialBodyOverflow === '') {
@@ -2963,7 +2964,8 @@ function (_Component) {
           return setTimeout(function () {
             return _this2.setState({
               rendered: false,
-              animationClass: ''
+              animationClass: '',
+              read: persist ? read : false
             });
           }, 500);
         });
@@ -2995,23 +2997,10 @@ function (_Component) {
           title = _this$props.title,
           onClose = _this$props.onClose,
           children = _this$props.children,
-          showCloseButton = _this$props.showCloseButton,
           _this$props$enableAft = _this$props.enableAfterRead,
           enableAfterRead = _this$props$enableAft === void 0 ? true : _this$props$enableAft,
-          _this$props$primaryAc = _this$props.primaryAction,
-          primaryAction = _this$props$primaryAc === void 0 ? {
-        label: 'Agree',
-        onClick: function onClick() {
-          return alert();
-        }
-      } : _this$props$primaryAc,
-          _this$props$secondary = _this$props.secondaryAction,
-          secondaryAction = _this$props$secondary === void 0 ? {
-        label: 'Cancel',
-        onClick: function onClick() {
-          return alert();
-        }
-      } : _this$props$secondary;
+          primaryAction = _this$props.primaryAction,
+          secondaryAction = _this$props.secondaryAction;
       var read = this.state.read;
       var rendered = this.state.rendered;
       return rendered ? react_default.a.createElement("div", {
@@ -3020,7 +3009,7 @@ function (_Component) {
         className: "SNG__dialog--content"
       }, title && react_default.a.createElement("div", {
         className: "SNG__dialog--title"
-      }, title, showCloseButton && react_default.a.createElement("button", {
+      }, title, onClose && react_default.a.createElement("button", {
         className: "fas fa-times SNG__dialog--close-button",
         onClick: onClose
       })), children && react_default.a.createElement("div", {
@@ -3137,7 +3126,7 @@ function HalfPic_setPrototypeOf(o, p) { HalfPic_setPrototypeOf = Object.setProto
 
 
 var HalfPic_style = function style() {
-  return "\n.SNG__half--pic {\n    position: absolute;\n    z-index: -1;\n    top: 50%;\n    transform: translateY(-50%) scale(3);\n    pointer-events: none;\n    width: 20vmin;\n    height: 20vmin;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    // border-radius: 50%;\n    \n} \n.SNG__half--pic:before {\n    content: \"\";\n    position: absolute;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    filter: blur(2rem);\n    background-position: right;\n    background: var(--theme-color);\n    z-index: -5;\n    border-radius: 50%;\n}\n.SNG__half--pic:after {\n    content: \"\";\n    position: absolute;\n    background: black;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    z-index: -5;\n    border-radius: 50%;\n\n}\n@media only screen and (max-width: 480px) {\n  .SNG__half--pic {\n      display: none;\n  } \n}\n\n";
+  return "\n.SNG__half--pic {\n    position: absolute;\n    z-index: -1;\n    top: 50%;\n    transform: translateY(-50%) scale(3);\n    pointer-events: none;\n    width: 20vmin;\n    height: 20vmin;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    // border-radius: 50%;  \n} \n\n.SNG__half--pic:before {\n    content: \"\";\n    position: absolute;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    filter: blur(2rem);\n    background-position: right;\n    background: var(--theme-color);\n    z-index: -5;\n    border-radius: 50%;\n}\n.SNG__half--pic:after {\n    content: \"\";\n    position: absolute;\n    background: black;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    z-index: -5;\n    border-radius: 50%;\n\n}\n@media only screen and (max-width: 480px) {\n  .SNG__half--pic {\n      display: none;\n  } \n}\n\n";
 };
 
 var HalfPic_HalfPic =
@@ -3637,7 +3626,7 @@ function (_Component) {
 
     _this = Showroom_possibleConstructorReturn(this, Showroom_getPrototypeOf(ShowRoom).call(this, props));
     _this.state = {
-      roundButtons: false
+      openDialog: false
     };
     return _this;
   }
@@ -3647,7 +3636,7 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var roundButtons = this.state.roundButtons;
+      var openDialog = this.state.openDialog;
       return react_default.a.createElement("div", {
         className: "SNG__showroom"
       }, react_default.a.createElement(Presentor_Presentor_Presentor, {
@@ -3659,10 +3648,23 @@ function (_Component) {
       }), react_default.a.createElement(components_Dialog_Dialog, {
         title: "Dialog",
         showCloseButton: true,
-        open: roundButtons,
+        persist: true,
+        open: openDialog,
+        primaryAction: {
+          label: 'Agree',
+          onClick: function onClick() {
+            return alert();
+          }
+        },
+        secondaryAction: {
+          label: 'Agree',
+          onClick: function onClick() {
+            return alert();
+          }
+        },
         onClose: function onClose() {
           return _this2.setState({
-            roundButtons: !roundButtons
+            openDialog: !openDialog
           });
         }
       }, react_default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), react_default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), react_default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in")), react_default.a.createElement(Presentor_Presentor_Presentor, {
@@ -3686,7 +3688,7 @@ function (_Component) {
         capital: true
       }, react_default.a.createElement(Showroom_GradientText, {
         weight: 100
-      }, "Minimal"), " and intelligent"), react_default.a.createElement(components_Spacer_Spacer, null)), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
+      }, "Minimally"), ' ', "Progressive"), react_default.a.createElement(components_Spacer_Spacer, null)), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
         xs: 12,
         sm: 10
       }, react_default.a.createElement(Button_Button_Button, {
@@ -3723,11 +3725,9 @@ function (_Component) {
       }, "Play with it"), react_default.a.createElement(Button_Button_Button, {
         to: '#',
         type: "link"
-      }, "See Docs"), react_default.a.createElement(tools_HalfPic, {
+      }, "See Docs"))), react_default.a.createElement(tools_HalfPic, {
         right: true
-      }, react_default.a.createElement(Button_Button_Button, {
-        round: true
-      }, "Buttons")))))), react_default.a.createElement(Presentor_Presentor_Presentor, {
+      }))), react_default.a.createElement(Presentor_Presentor_Presentor, {
         settings: {
           type: 'simple'
         }
@@ -3757,7 +3757,7 @@ function (_Component) {
         type: "primary",
         onClick: function onClick() {
           return _this2.setState({
-            roundButtons: !roundButtons
+            openDialog: !openDialog
           });
         }
       }, "Open Dialog")), react_default.a.createElement(react_flexbox_grid_lib["Col"], {

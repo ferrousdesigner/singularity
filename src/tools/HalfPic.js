@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import StyleMaker from 'stylemaker'
 
-let style = () => (`
+let style = () => `
 .SNG__half--pic {
     position: absolute;
     z-index: -1;
@@ -13,9 +13,9 @@ let style = () => (`
     display: flex;
     justify-content: center;
     align-items: center;
-    // border-radius: 50%;
-    
+    // border-radius: 50%;  
 } 
+
 .SNG__half--pic:before {
     content: "";
     position: absolute;
@@ -47,11 +47,11 @@ let style = () => (`
   } 
 }
 
-`)
+`
 
 class HalfPic extends Component {
   componentWillMount () {
-      StyleMaker(style())
+    StyleMaker(style())
   }
   render () {
     const { right, left, children } = this.props
@@ -67,4 +67,3 @@ class HalfPic extends Component {
 }
 
 export default HalfPic
-

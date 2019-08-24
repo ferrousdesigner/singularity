@@ -247,8 +247,8 @@ $curve: cubic-bezier(0.65, 0, 0.45, 1);
   cursor: default;
   color: var(--theme-dark-button-color-disabled);
 }
-.SNG__button--busy:focus,
-.SNG__button--disabled:focus {
+.SNG__button.SNG__button--busy:focus,
+.SNG__button.SNG__button--disabled:focus {
   outline: none;
   box-shadow: none;
 }
