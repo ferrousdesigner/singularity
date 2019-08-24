@@ -1,16 +1,12 @@
-import StyleMaker from 'stylemaker';
-export { Button } from './components/Button';
-export { Nav } from  './components/Nav';
-export { Presentor } from './components/Presentor';
-export { Header } from './components/Header';
-export { Spacer } from './components/Spacer';
-export { Dialog } from './components/Dialog';
+import StyleMaker from 'stylemaker'
+export { Button } from './components/Button'
+export { Nav } from './components/Nav'
+export { Presentor } from './components/Presentor'
+export { Header } from './components/Header'
+export { Spacer } from './components/Spacer'
+export { Dialog } from './components/Dialog'
 
-
-
-const settings = (setting) => {
-
-}
+const settings = setting => {}
 const cssReset = `
     @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,700');
     @import url('https://use.fontawesome.com/releases/v5.3.1/css/all.css');
@@ -18,11 +14,17 @@ const cssReset = `
     :root {
         font-size: 10px;
     }
-    body, html, h1, h2, h3, h4, h5, h6, section {
+    body, html, h1, h2, h3, h4, h5, h6, section{
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-weight: 300;
+    }
+    html {
+      overflow-x: hidden;
+    }
+    div, span {
+      font-weight: inherit;
     }
     *,  *::after,  *::before{
       box-sizing: border-box;
@@ -125,5 +127,5 @@ const cssReset = `
         } 
     }
 `
-//Initial Reset Styling 
+// Initial Reset Styling
 StyleMaker(cssReset)

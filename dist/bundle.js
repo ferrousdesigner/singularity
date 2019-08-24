@@ -100,24 +100,6 @@ if (true) {
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (false) { var throwOnDirectAccess, ReactIs; } else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(17)();
-}
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
@@ -157,6 +139,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.Grid = _Grid3.default;
 exports.Row = _Row3.default;
 exports.Col = _Col3.default;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (false) { var throwOnDirectAccess, ReactIs; } else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(17)();
+}
+
 
 /***/ }),
 /* 3 */
@@ -855,7 +855,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ViewportSizeType = exports.ColumnSizeType = undefined;
 
-var _propTypes = __webpack_require__(1);
+var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -1400,7 +1400,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, ":root {\n  --theme-color: rgb(255, 0, 106);\n  --theme-dark-button-background: #222;\n  --theme-dark-button-background-hover: #00000044;\n  --theme-dark-button-background-disabled: #444444; }\n\n.SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  font-size: 16px;\n  border: none;\n  height: 48px;\n  padding: 0 38px;\n  min-width: 136px;\n  position: relative;\n  transition: all 0.14s ease;\n  transform-origin: center;\n  z-index: 1;\n  color: #fff;\n  background: transparent;\n  vertical-align: top;\n  box-sizing: border-box;\n  margin: 5px 10px 5px 0;\n  font-weight: normal;\n  position: relative; }\n\n.SNG__button::after {\n  content: \"\";\n  position: absolute;\n  z-index: -2;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: var(--theme-dark-button-background); }\n\n.SNG__button::before {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: transparent;\n  transition: background 0.1s ease-in-out; }\n\n.SNG__button:focus {\n  outline: var(--theme-color) auto 5px; }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 16px;\n  color: white;\n  margin-left: 5px;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out 0.4s forwards; }\n\n.SNG__button--round,\n.SNG__button--round::before {\n  border-radius: 30px; }\n\n.SNG__button--less-round,\n.SNG__button--less-round::before, .SNG__button--less-round::after {\n  border-radius: 10px; }\n\n.SNG__button--primary::after {\n  color: #fff;\n  background: var(--theme-color); }\n\n.SNG__button--alt {\n  border: 2px solid #fff;\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--alt::after {\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--link {\n  padding: 0;\n  height: auto;\n  line-height: 1.5;\n  justify-content: flex-start;\n  min-width: auto;\n  color: #ffffffaa;\n  font-size: 15px;\n  background-color: transparent;\n  background: none;\n  transition: all 0.2s ease;\n  margin-right: 10px; }\n\n.SNG__button--link + .SNG__button--link {\n  margin-left: 10px; }\n\n.SNG__button--link::after {\n  display: none; }\n\n.SNG__button--icon {\n  width: 20px;\n  height: 20px;\n  margin-right: 5px; }\n\n.SNG__button--icon * {\n  fill: inherit;\n  color: inherit; }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%,\n  100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n\n.SNG__loader {\n  border: 16px solid var(--theme-dark-button-background-hover);\n  border-top: 16px solid var(--theme-color);\n  border-radius: 50%;\n  border-width: 4px;\n  width: 25px;\n  height: 25px;\n  animation: spin 1s linear infinite; }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n.SNG__button--link:hover {\n  transform: none;\n  color: #fff;\n  text-decoration: underline; }\n\n.SNG__button:hover::before {\n  background: var(--theme-dark-button-background-hover); }\n\n.SNG__button--busy::after, .SNG__button--busy:hover:before, .SNG__button--disabled, .SNG__button--disabled::before, .SNG__button--disabled:hover::before {\n  background: var(--theme-dark-button-background-disabled);\n  cursor: default; }\n\n@media only screen and (max-width: 480px) {\n  .SNG__button.SNG__button--expand-on-mobile {\n    width: 100%;\n    margin-right: 0;\n    margin-left: 0; }\n  .SNG__button.SNG__button--link {\n    min-width: auto;\n    width: auto;\n    margin: 5px 10px 5px 0; } }\n", ""]);
+exports.push([module.i, ":root {\n  --theme-color: rgb(255, 0, 106);\n  --theme-dark-button-background: #222;\n  --theme-dark-button-background-hover: #00000044;\n  --theme-dark-button-background-disabled: #444444;\n  --theme-dark-button-color-disabled: #666666; }\n\n.SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  font-size: 16px;\n  border: none;\n  height: 48px;\n  padding: 0 38px;\n  min-width: 136px;\n  position: relative;\n  transition: all 0.14s ease;\n  transform-origin: center;\n  z-index: 1;\n  color: #fff;\n  background: transparent;\n  vertical-align: top;\n  box-sizing: border-box;\n  margin: 5px 10px 5px 0;\n  font-weight: normal;\n  position: relative; }\n\n.SNG__button::after {\n  content: \"\";\n  position: absolute;\n  z-index: -2;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: var(--theme-dark-button-background); }\n\n.SNG__button::before {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: transparent;\n  transition: background 0.1s ease-in-out; }\n\n.SNG__button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.SNG__button.SNG__button--primary:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px white; }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 16px;\n  color: white;\n  margin-left: 5px;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out 0.4s forwards; }\n\n.SNG__button--round,\n.SNG__button--round::before, .SNG__button--round::after {\n  border-radius: 30px; }\n\n.SNG__button--less-round,\n.SNG__button--less-round::before, .SNG__button--less-round::after {\n  border-radius: 5px; }\n\n.SNG__button--primary::after {\n  color: #fff;\n  background: var(--theme-color); }\n\n.SNG__button--alt {\n  border: 2px solid #fff;\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--alt::after {\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--link {\n  padding: 0;\n  height: auto;\n  line-height: 1.5;\n  justify-content: flex-start;\n  min-width: auto;\n  color: #ffffffaa;\n  font-size: 15px;\n  background-color: transparent;\n  background: none;\n  transition: all 0.2s ease;\n  margin-right: 10px; }\n\n.SNG__button--link + .SNG__button--link {\n  margin-left: 10px; }\n\n.SNG__button--link::after {\n  display: none; }\n\n.SNG__button--icon {\n  width: 20px;\n  height: 20px;\n  margin-right: 5px; }\n\n.SNG__button--icon * {\n  fill: inherit;\n  color: inherit; }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%,\n  100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n\n.SNG__loader {\n  border: 16px solid var(--theme-dark-button-background-hover);\n  border-top: 16px solid var(--theme-color);\n  border-radius: 50%;\n  border-width: 4px;\n  width: 25px;\n  height: 25px;\n  animation: spin 1s linear infinite; }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n.SNG__button--link:hover {\n  transform: none;\n  color: #fff;\n  text-decoration: underline; }\n\n.SNG__button:hover::before {\n  background: var(--theme-dark-button-background-hover); }\n\n.SNG__button--busy::after, .SNG__button--busy:hover:before, .SNG__button--disabled, .SNG__button--disabled::before, .SNG__button--disabled:hover::before {\n  background: var(--theme-dark-button-background-disabled);\n  cursor: default;\n  color: var(--theme-dark-button-color-disabled); }\n\n@media only screen and (max-width: 480px) {\n  .SNG__button.SNG__button--expand-on-mobile {\n    width: 100%;\n    font-size: 14px;\n    margin-right: 0;\n    margin-left: 0;\n    height: 40px; }\n  .SNG__button.SNG__button--link {\n    min-width: auto;\n    width: auto;\n    margin: 5px 10px 5px 0; }\n  .checkmark {\n    width: 20px;\n    height: 20px; } }\n", ""]);
 
 // exports
 
@@ -1573,7 +1573,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, ".SNG__presentor {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  animation: appear 5s ease-in-out forwards; }\n\n@keyframes appear {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n.SNG__presentor--banner {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 40rem;\n  margin: calc((100vh - 40rem) / 2) auto;\n  height: 40rem;\n  text-align: center;\n  position: relative;\n  background-color: #000;\n  border-radius: 50%; }\n\n@keyframes float {\n  0% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; }\n  50% {\n    width: 40vmin;\n    margin: calc((100vh - 40vmin) / 2) auto;\n    height: 40vmin; }\n  100% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; } }\n\n.SNG__presentor--banner::before,\n.SNG__presentor--banner::after,\n.SNG__presentor--banner > span {\n  content: \"\";\n  position: absolute;\n  background: -webkit-linear-gradient(transparent, transparent), url(https://assets.pcmag.com/media/images/457693-interstellar-black-hole.jpg?thumb=y&width=810&height=456) repeat;\n  background: -o-linear-gradient(transparent, transparent);\n  left: -25%;\n  top: -25%;\n  width: 150%;\n  height: 150%;\n  filter: blur(5rem);\n  z-index: -3;\n  border-radius: 50%;\n  animation: moveBackground 3000s linear infinite; }\n\n.SNG__presentor--banner::before {\n  filter: blur(1rem);\n  background: white;\n  left: -0.5rem;\n  top: -0.5rem;\n  z-index: -1;\n  width: calc(100% + 1rem);\n  height: calc(100% + 1rem); }\n\n.SNG__presentor--banner > span {\n  transform: skewX(60deg);\n  left: 0;\n  top: 0;\n  width: calc(100%);\n  height: calc(100%);\n  opacity: 1;\n  z-index: 0; }\n\n.SNG__presentor--banner > div:first-child {\n  display: block;\n  width: 100vw;\n  letter-spacing: 4rem;\n  margin-left: 2rem;\n  color: white;\n  z-index: 2;\n  font-weight: 400;\n  font-size: 6vmin;\n  margin-bottom: 1rem;\n  animation: floatText 10s linear infinite; }\n\n.SNG__presentor--scroll {\n  perspective-origin: center;\n  width: 100%; }\n\ndiv[class^=\"SNG__animate--\"] {\n  opacity: 0;\n  transform-origin: center;\n  transform-style: preserve-3d;\n  transition: all 0.3s ease-in-out; }\n\ndiv[class^=\"SNG__animate--right-\"] {\n  transform: rotate(5deg) translateX(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--left-\"] {\n  transform: rotate(-5deg) translateX(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--top-\"] {\n  transform: rotate(-5deg) translateY(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--bottom-\"] {\n  transform: rotate(5deg) translateY(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--back-\"] {\n  transform: rotate(0deg) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--front-\"] {\n  transform: rotate(0deg) translateZ(20rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--\"].animate {\n  opacity: 1;\n  transform: rotate(0deg) translateX(0rem) translateY(0rem) translateZ(0rem) scale(1); }\n\n@keyframes moveBackground {\n  0% {\n    background-position-y: 0; }\n  50% {\n    background-position-y: 10000%; }\n  100% {\n    background-position-y: 0; } }\n\n@keyframes floatText {\n  0% {\n    transform: scale(1); }\n  50% {\n    transform: scale(1.2); }\n  100% {\n    transform: scale(1); } }\n\n.SNG__presentor--banner > div:last-child {\n  font-weight: 300;\n  font-size: 2rem;\n  width: 100vw;\n  z-index: 2; }\n\n.SNG__presentor--simple,\n.SNG__presentor--simple-full {\n  width: 100%;\n  padding: 2rem;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n.SNG__presentor--simple-full {\n  padding: 2rem;\n  height: 100vh;\n  width: 100vw; }\n\ndiv[class^=\"SNG__presentor--smooth-\"] {\n  overflow-y: hidden;\n  width: 100%;\n  transition: height 0.25s ease-in-out; }\n", ""]);
+exports.push([module.i, ".SNG__presentor {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  animation: appear 5s ease-in-out forwards; }\n\n@keyframes appear {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n.SNG__presentor--banner {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 40rem;\n  margin: calc((100vh - 40rem) / 2) auto;\n  height: 40rem;\n  text-align: center;\n  position: relative;\n  background-color: #000;\n  border-radius: 50%; }\n\n@keyframes float {\n  0% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; }\n  50% {\n    width: 40vmin;\n    margin: calc((100vh - 40vmin) / 2) auto;\n    height: 40vmin; }\n  100% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; } }\n\n.SNG__presentor--banner::before,\n.SNG__presentor--banner::after,\n.SNG__presentor--banner > span {\n  content: \"\";\n  position: absolute;\n  background: -webkit-linear-gradient(transparent, transparent), url(https://assets.pcmag.com/media/images/457693-interstellar-black-hole.jpg?thumb=y&width=810&height=456) repeat;\n  background: -o-linear-gradient(transparent, transparent);\n  left: -25%;\n  top: -25%;\n  width: 150%;\n  height: 150%;\n  filter: blur(5rem);\n  z-index: -3;\n  border-radius: 50%;\n  animation: moveBackground 3000s linear infinite; }\n\n.SNG__presentor--banner::before {\n  filter: blur(1rem);\n  background: white;\n  left: -0.5rem;\n  top: -0.5rem;\n  z-index: -1;\n  width: calc(100% + 1rem);\n  height: calc(100% + 1rem); }\n\n.SNG__presentor--banner > span {\n  transform: skewX(60deg);\n  left: 0;\n  top: 0;\n  width: calc(100%);\n  height: calc(100%);\n  opacity: 1;\n  z-index: 0; }\n\n.SNG__presentor--banner > div:first-child {\n  display: block;\n  width: 100vw;\n  letter-spacing: 3rem;\n  margin-left: 2rem;\n  color: white;\n  z-index: 2;\n  font-weight: 400;\n  font-size: 5vmin;\n  margin-bottom: 1rem;\n  animation: floatText 10s linear infinite; }\n\n.SNG__presentor--scroll {\n  perspective-origin: center;\n  width: 100%; }\n\ndiv[class^=\"SNG__animate--\"] {\n  opacity: 0;\n  transform-origin: center;\n  transform-style: preserve-3d;\n  transition: all 0.3s ease-in-out; }\n\ndiv[class^=\"SNG__animate--right-\"] {\n  transform: rotate(5deg) translateX(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--left-\"] {\n  transform: rotate(-5deg) translateX(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--top-\"] {\n  transform: rotate(-5deg) translateY(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--bottom-\"] {\n  transform: rotate(5deg) translateY(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--back-\"] {\n  transform: rotate(0deg) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--front-\"] {\n  transform: rotate(0deg) translateZ(20rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--\"].animate {\n  opacity: 1;\n  transform: rotate(0deg) translateX(0rem) translateY(0rem) translateZ(0rem) scale(1); }\n\n@keyframes moveBackground {\n  0% {\n    background-position-y: 0; }\n  50% {\n    background-position-y: 10000%; }\n  100% {\n    background-position-y: 0; } }\n\n@keyframes floatText {\n  0% {\n    transform: scale(1); }\n  50% {\n    transform: scale(1.2); }\n  100% {\n    transform: scale(1); } }\n\n.SNG__presentor--banner > div:last-child {\n  font-weight: 300;\n  font-size: 2rem;\n  width: 100vw;\n  z-index: 2; }\n\n.SNG__presentor--simple,\n.SNG__presentor--simple-full {\n  width: 100%;\n  padding: 2rem;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n.SNG__presentor--simple-full {\n  padding: 2rem;\n  height: 100vh;\n  width: 100vw; }\n\ndiv[class^=\"SNG__presentor--smooth-\"] {\n  overflow-y: hidden;\n  width: 100%;\n  transition: height 0.25s ease-in-out; }\n\n@media only screen and (max-width: 480px) {\n  body {\n    overflow-x: hidden; }\n  .SNG__presentor--banner {\n    width: 25rem;\n    margin: calc((100vh - 25rem) / 2) auto;\n    height: 25rem; }\n  .SNG__presentor--banner > div:first-child {\n    letter-spacing: 2rem;\n    margin-left: 2rem;\n    font-size: 5vmin; } }\n", ""]);
 
 // exports
 
@@ -1716,7 +1716,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(1);
+var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -1829,7 +1829,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(1);
+var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -1933,7 +1933,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(1);
+var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -2022,7 +2022,7 @@ var lib = __webpack_require__(5);
 var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
 
 // EXTERNAL MODULE: ./node_modules/prop-types/index.js
-var prop_types = __webpack_require__(1);
+var prop_types = __webpack_require__(2);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./src/components/Button/Button.css
@@ -3013,7 +3013,7 @@ var Dialog_Dialog_Dialog = function Dialog(props) {
 
 var SingularityUI_settings = function settings(setting) {};
 
-var cssReset = "\n    @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,700');\n    @import url('https://use.fontawesome.com/releases/v5.3.1/css/all.css');\n\n    :root {\n        font-size: 10px;\n    }\n    body, html, h1, h2, h3, h4, h5, h6, section {\n        margin: 0;\n        padding: 0;\n        box-sizing: border-box;\n        font-weight: 300;\n    }\n    *,  *::after,  *::before{\n      box-sizing: border-box;\n    }\n    a{\n        text-decoration: none;\n    }\n    body {\n        overflow-x: hidden;\n        background: black;\n        font-family: 'Poppins',sans-serif;\n        color: #eee;\n        font-size: 1.6rem;\n        line-height: 1.5;\n        font-weight: lighter;\n    }\n    .loader-spinner {\n        color: white;\n        display: inline-block;\n        position: relative;\n        margin: 0 auto;\n        vertical-align: middle;\n        width: 20%;\n        height: 100%;\n      }\n      .loader-spinner div {\n        transform-origin: center;\n        animation: loader-spinner 1.2s linear infinite;\n      }\n      .loader-spinner div:after {\n        content: \" \";\n        display: block;\n        position: absolute;\n        top: 0.4rem;\n        left: 0rem;\n        width: 0.2rem;\n        height: 0.8rem;\n        border-radius: 20%;\n        background: #fff;\n      }\n      .loader-spinner div:nth-child(1) {\n        transform: rotate(0deg);\n        animation-delay: -1.1s;\n      }\n      .loader-spinner div:nth-child(2) {\n        transform: rotate(30deg);\n        animation-delay: -1s;\n      }\n      .loader-spinner div:nth-child(3) {\n        transform: rotate(60deg);\n        animation-delay: -0.9s;\n      }\n      .loader-spinner div:nth-child(4) {\n        transform: rotate(90deg);\n        animation-delay: -0.8s;\n      }\n      .loader-spinner div:nth-child(5) {\n        transform: rotate(120deg);\n        animation-delay: -0.7s;\n      }\n      .loader-spinner div:nth-child(6) {\n        transform: rotate(150deg);\n        animation-delay: -0.6s;\n      }\n      .loader-spinner div:nth-child(7) {\n        transform: rotate(180deg);\n        animation-delay: -0.5s;\n      }\n      .loader-spinner div:nth-child(8) {\n        transform: rotate(210deg);\n        animation-delay: -0.4s;\n      }\n      .loader-spinner div:nth-child(9) {\n        transform: rotate(240deg);\n        animation-delay: -0.3s;\n      }\n      .loader-spinner div:nth-child(10) {\n        transform: rotate(270deg);\n        animation-delay: -0.2s;\n      }\n      .loader-spinner div:nth-child(11) {\n        transform: rotate(300deg);\n        animation-delay: -0.1s;\n      }\n      .loader-spinner div:nth-child(12) {\n        transform: rotate(330deg);\n        animation-delay: 0s;\n      }\n      @keyframes loader-spinner {\n        0% {\n          opacity: 1;\n        }\n        100% {\n          opacity: 0;\n        }\n      }\n    @media only screen and (max-width: 480px) {\n        :root {\n            font-size: 7px;\n        } \n    }\n"; //Initial Reset Styling 
+var cssReset = "\n    @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,700');\n    @import url('https://use.fontawesome.com/releases/v5.3.1/css/all.css');\n\n    :root {\n        font-size: 10px;\n    }\n    body, html, h1, h2, h3, h4, h5, h6, section{\n        margin: 0;\n        padding: 0;\n        box-sizing: border-box;\n        font-weight: 300;\n    }\n    html {\n      overflow-x: hidden;\n    }\n    div, span {\n      font-weight: inherit;\n    }\n    *,  *::after,  *::before{\n      box-sizing: border-box;\n    }\n    a{\n        text-decoration: none;\n    }\n    body {\n        overflow-x: hidden;\n        background: black;\n        font-family: 'Poppins',sans-serif;\n        color: #eee;\n        font-size: 1.6rem;\n        line-height: 1.5;\n        font-weight: lighter;\n    }\n    .loader-spinner {\n        color: white;\n        display: inline-block;\n        position: relative;\n        margin: 0 auto;\n        vertical-align: middle;\n        width: 20%;\n        height: 100%;\n      }\n      .loader-spinner div {\n        transform-origin: center;\n        animation: loader-spinner 1.2s linear infinite;\n      }\n      .loader-spinner div:after {\n        content: \" \";\n        display: block;\n        position: absolute;\n        top: 0.4rem;\n        left: 0rem;\n        width: 0.2rem;\n        height: 0.8rem;\n        border-radius: 20%;\n        background: #fff;\n      }\n      .loader-spinner div:nth-child(1) {\n        transform: rotate(0deg);\n        animation-delay: -1.1s;\n      }\n      .loader-spinner div:nth-child(2) {\n        transform: rotate(30deg);\n        animation-delay: -1s;\n      }\n      .loader-spinner div:nth-child(3) {\n        transform: rotate(60deg);\n        animation-delay: -0.9s;\n      }\n      .loader-spinner div:nth-child(4) {\n        transform: rotate(90deg);\n        animation-delay: -0.8s;\n      }\n      .loader-spinner div:nth-child(5) {\n        transform: rotate(120deg);\n        animation-delay: -0.7s;\n      }\n      .loader-spinner div:nth-child(6) {\n        transform: rotate(150deg);\n        animation-delay: -0.6s;\n      }\n      .loader-spinner div:nth-child(7) {\n        transform: rotate(180deg);\n        animation-delay: -0.5s;\n      }\n      .loader-spinner div:nth-child(8) {\n        transform: rotate(210deg);\n        animation-delay: -0.4s;\n      }\n      .loader-spinner div:nth-child(9) {\n        transform: rotate(240deg);\n        animation-delay: -0.3s;\n      }\n      .loader-spinner div:nth-child(10) {\n        transform: rotate(270deg);\n        animation-delay: -0.2s;\n      }\n      .loader-spinner div:nth-child(11) {\n        transform: rotate(300deg);\n        animation-delay: -0.1s;\n      }\n      .loader-spinner div:nth-child(12) {\n        transform: rotate(330deg);\n        animation-delay: 0s;\n      }\n      @keyframes loader-spinner {\n        0% {\n          opacity: 1;\n        }\n        100% {\n          opacity: 0;\n        }\n      }\n    @media only screen and (max-width: 480px) {\n        :root {\n            font-size: 7px;\n        } \n    }\n"; // Initial Reset Styling
 
 lib_default()(cssReset);
 // CONCATENATED MODULE: ./src/tools/HalfPic.js
@@ -3039,7 +3039,7 @@ function HalfPic_setPrototypeOf(o, p) { HalfPic_setPrototypeOf = Object.setProto
 
 
 var HalfPic_style = function style() {
-  return "\n.SNG__half--pic {\n    position: absolute;\n    z-index: 4;\n    top: 50%;\n    transform: translateY(-50%) scale(4);\n    pointer-events: none;\n    width: 20vmin;\n    height: 20vmin;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    // border-radius: 50%;\n    \n} \n.SNG__half--pic:before {\n    content: \"\";\n    position: absolute;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    filter: blur(2rem);\n    background-position: right;\n    background: var(--theme-color);\n    z-index: -5;\n    border-radius: 50%;\n    animation: moveBackground 3000s linear infinite;\n}\n.SNG__half--pic:after {\n    content: \"\";\n    position: absolute;\n    background: black;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    z-index: -5;\n    border-radius: 50%;\n}\n@media only screen and (max-width: 480px) {\n  .SNG__half--pic {\n      display: none;\n  } \n}\n\n";
+  return "\n.SNG__half--pic {\n    position: absolute;\n    z-index: 4;\n    top: 50%;\n    transform: translateY(-50%) scale(3);\n    pointer-events: none;\n    width: 20vmin;\n    height: 20vmin;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    // border-radius: 50%;\n    \n} \n.SNG__half--pic:before {\n    content: \"\";\n    position: absolute;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    filter: blur(2rem);\n    background-position: right;\n    background: var(--theme-color);\n    z-index: -5;\n    border-radius: 50%;\n}\n.SNG__half--pic:after {\n    content: \"\";\n    position: absolute;\n    background: black;\n    left: -10%;\n    top: -10%;\n    width: 120%;\n    height: 120%;\n    z-index: -5;\n    border-radius: 50%;\n\n}\n@media only screen and (max-width: 480px) {\n  .SNG__half--pic {\n      display: none;\n  } \n}\n\n";
 };
 
 var HalfPic_HalfPic =
@@ -3080,7 +3080,7 @@ function (_Component) {
 
 /* harmony default export */ var tools_HalfPic = (HalfPic_HalfPic);
 // EXTERNAL MODULE: ./node_modules/react-flexbox-grid/lib/index.js
-var react_flexbox_grid_lib = __webpack_require__(2);
+var react_flexbox_grid_lib = __webpack_require__(1);
 
 // EXTERNAL MODULE: ./src/tools/ComponentDisplayer/ComponentDisplayer.css
 var ComponentDisplayer_ComponentDisplayer = __webpack_require__(37);
@@ -3567,13 +3567,7 @@ function (_Component) {
             roundButtons: !roundButtons
           });
         }
-      }, "This is dialog"), react_default.a.createElement(Button_Button_Button, {
-        onClick: function onClick() {
-          return _this2.setState({
-            roundButtons: !roundButtons
-          });
-        }
-      }, "Change"), react_default.a.createElement(Presentor_Presentor_Presentor, {
+      }, "The right amount of smoothness pleases the eyes."), react_default.a.createElement(Presentor_Presentor_Presentor, {
         settings: {
           type: 'simple',
           full: true
@@ -3588,11 +3582,13 @@ function (_Component) {
       }, react_default.a.createElement(Header_Header_Header, {
         type: "spaced",
         weight: 400
-      }, "New Age"), react_default.a.createElement(Header_Header_Header, {
+      }, "Buttons"), react_default.a.createElement(Header_Header_Header, {
         type: "xxlg",
         weight: 100,
         capital: true
-      }, react_default.a.createElement(Showroom_GradientText, null, "Minimal"), " buttons."), react_default.a.createElement(components_Spacer_Spacer, null)), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
+      }, react_default.a.createElement(Showroom_GradientText, {
+        weight: 100
+      }, "Minimal"), " and intelligent"), react_default.a.createElement(components_Spacer_Spacer, null)), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
         xs: 12,
         sm: 10
       }, react_default.a.createElement(Button_Button_Button, {
@@ -3600,16 +3596,24 @@ function (_Component) {
         icon: react_default.a.createElement("span", {
           className: "fa fa-home"
         })
-      }, "I'm a button"), react_default.a.createElement(Button_Button_Button, {
+      }, "Click me"), react_default.a.createElement(Button_Button_Button, {
         icon: react_default.a.createElement("span", {
           className: "fa fa-home"
         }),
         variant: 'alt'
-      }, "I'm a button"), react_default.a.createElement(Button_Button_Button, {
+      }, "Click me"), react_default.a.createElement(Button_Button_Button, {
+        round: true,
         disabled: true
       }, "Disabled"), react_default.a.createElement(Button_Button_Button, {
+        soft: true,
         done: true
-      }, "I'm a button")), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
+      }, "Completed"), react_default.a.createElement(Button_Button_Button, {
+        soft: true,
+        type: 'primary',
+        icon: react_default.a.createElement("span", {
+          className: "fa fa-home"
+        })
+      }, "Soft Button")), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
         xs: 12,
         sm: 10
       }, react_default.a.createElement(components_Spacer_Spacer, {
@@ -3626,7 +3630,52 @@ function (_Component) {
         right: true
       }, react_default.a.createElement(Button_Button_Button, {
         round: true
-      }, "Buttons")))))), react_default.a.createElement("div", {
+      }, "Buttons")))))), react_default.a.createElement(Presentor_Presentor_Presentor, {
+        settings: {
+          type: 'simple'
+        }
+      }, react_default.a.createElement(react_flexbox_grid_lib["Grid"], null, react_default.a.createElement(react_flexbox_grid_lib["Row"], {
+        middle: "xs",
+        center: "xs",
+        style: {
+          marginTop: '4rem'
+        }
+      }, react_default.a.createElement(react_flexbox_grid_lib["Col"], {
+        xs: 12
+      }, react_default.a.createElement(Header_Header_Header, {
+        type: "spaced",
+        align: "center",
+        weight: 400
+      }, "Dialog"), react_default.a.createElement(Header_Header_Header, {
+        type: "xxlg",
+        align: "center",
+        weight: 100,
+        capital: true
+      }, "You can't ", react_default.a.createElement(Showroom_GradientText, {
+        weight: 100
+      }, "avoid")), react_default.a.createElement(components_Spacer_Spacer, null)), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
+        xs: 12,
+        sm: 10
+      }, react_default.a.createElement(Button_Button_Button, {
+        onClick: function onClick() {
+          return _this2.setState({
+            roundButtons: !roundButtons
+          });
+        }
+      }, "Open Dialog")), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
+        xs: 12,
+        sm: 10
+      }, react_default.a.createElement(components_Spacer_Spacer, {
+        lg: true
+      }), react_default.a.createElement(components_Spacer_Spacer, {
+        lg: true
+      }), react_default.a.createElement(Button_Button_Button, {
+        to: '#',
+        type: "link"
+      }, "Play with it"), react_default.a.createElement(Button_Button_Button, {
+        to: '#',
+        type: "link"
+      }, "See Docs"))))), react_default.a.createElement("div", {
         style: {
           marginTop: '10rem',
           background: 'linear-gradient(315deg, rgb(81, 81, 81) 0%, rgb(52, 52, 52) 59%, rgb(42, 42, 42) 100%)',
@@ -3638,7 +3687,6 @@ function (_Component) {
         }
       }, react_default.a.createElement("div", {
         style: {
-          fontWeight: 'lighter',
           fontSize: '2rem',
           marginLeft: '1rem'
         }

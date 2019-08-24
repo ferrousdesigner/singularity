@@ -6,7 +6,7 @@ let style = () => (`
     position: absolute;
     z-index: 4;
     top: 50%;
-    transform: translateY(-50%) scale(4);
+    transform: translateY(-50%) scale(3);
     pointer-events: none;
     width: 20vmin;
     height: 20vmin;
@@ -28,7 +28,6 @@ let style = () => (`
     background: var(--theme-color);
     z-index: -5;
     border-radius: 50%;
-    animation: moveBackground 3000s linear infinite;
 }
 .SNG__half--pic:after {
     content: "";
@@ -40,6 +39,7 @@ let style = () => (`
     height: 120%;
     z-index: -5;
     border-radius: 50%;
+
 }
 @media only screen and (max-width: 480px) {
   .SNG__half--pic {

@@ -64,33 +64,42 @@ export default class ShowRoom extends Component {
           open={roundButtons}
           onClose={() => this.setState({ roundButtons: !roundButtons })}
         >
-          This is dialog
+          The right amount of smoothness pleases the eyes.
         </Dialog>
-        <Button onClick={() => this.setState({ roundButtons: !roundButtons })}>
-          Change
-        </Button>
 
         <Presentor settings={{ type: 'simple', full: true }}>
           <Grid>
             <Row middle='xs' style={{ marginTop: '4rem' }}>
               <Col xs={12}>
                 <Header type='spaced' weight={400}>
-                  New Age
+                  Buttons
                 </Header>
                 <Header type='xxlg' weight={100} capital>
-                  <GradientText>Minimal</GradientText> buttons.
+                  <GradientText weight={100}>Minimal</GradientText> and
+                  intelligent
                 </Header>
                 <Spacer />
               </Col>
               <Col xs={12} sm={10}>
                 <Button type={'primary'} icon={<span className='fa fa-home' />}>
-                  I'm a button
+                  Click me
                 </Button>
                 <Button icon={<span className='fa fa-home' />} variant={'alt'}>
-                  I'm a button
+                  Click me
                 </Button>
-                <Button disabled>Disabled</Button>
-                <Button done>I'm a button</Button>
+                <Button round disabled>
+                  Disabled
+                </Button>
+                <Button soft done>
+                  Completed
+                </Button>
+                <Button
+                  soft
+                  type={'primary'}
+                  icon={<span className='fa fa-home' />}
+                >
+                  Soft Button
+                </Button>
               </Col>
               <Col xs={12} sm={10}>
                 <Spacer lg />
@@ -104,6 +113,38 @@ export default class ShowRoom extends Component {
                 <HalfPic right>
                   <Button round>Buttons</Button>
                 </HalfPic>
+              </Col>
+            </Row>
+          </Grid>
+        </Presentor>
+        <Presentor settings={{ type: 'simple'}}>
+          <Grid>
+            <Row middle='xs' center='xs' style={{ marginTop: '4rem' }}>
+              <Col xs={12}>
+                <Header type='spaced' align='center' weight={400}>
+                  Dialog
+                </Header>
+                <Header type='xxlg' align='center'  weight={100} capital>
+                  You can't <GradientText weight={100}>avoid</GradientText>
+                </Header>
+                <Spacer />
+              </Col>
+              <Col xs={12} sm={10}>
+                <Button
+                  onClick={() => this.setState({ roundButtons: !roundButtons })}
+                >
+                  Open Dialog
+                </Button>
+              </Col>
+              <Col xs={12} sm={10}>
+                <Spacer lg />
+                <Spacer lg />
+                <Button to={'#'} type='link'>
+                  Play with it
+                </Button>
+                <Button to={'#'} type='link'>
+                  See Docs
+                </Button>
               </Col>
             </Row>
           </Grid>
@@ -122,7 +163,6 @@ export default class ShowRoom extends Component {
         >
           <div
             style={{
-              fontWeight: 'lighter',
               fontSize: '2rem',
               marginLeft: '1rem'
             }}

@@ -2,7 +2,8 @@
   --theme-color: rgb(255, 0, 106);
   --theme-dark-button-background: #222;
   --theme-dark-button-background-hover: #00000044;
-  --theme-dark-button-background-disabled: #444444; }
+  --theme-dark-button-background-disabled: #444444;
+  --theme-dark-button-color-disabled: #666666; }
 
 .SNG__button {
   display: inline-flex;
@@ -56,7 +57,12 @@
   transition: background 0.1s ease-in-out; }
 
 .SNG__button:focus {
-  outline: var(--theme-color) auto 5px; }
+  outline: none;
+  box-shadow: 0 0px 0px 2px var(--theme-color); }
+
+.SNG__button.SNG__button--primary:focus {
+  outline: none;
+  box-shadow: 0 0px 0px 2px white; }
 
 .SNG__button .done {
   display: flex;
@@ -79,12 +85,12 @@
   animation: slide-in 0.2s ease-in-out 0.4s forwards; }
 
 .SNG__button--round,
-.SNG__button--round::before {
+.SNG__button--round::before, .SNG__button--round::after {
   border-radius: 30px; }
 
 .SNG__button--less-round,
 .SNG__button--less-round::before, .SNG__button--less-round::after {
-  border-radius: 10px; }
+  border-radius: 5px; }
 
 .SNG__button--primary::after {
   color: #fff;
@@ -200,14 +206,20 @@
 
 .SNG__button--busy::after, .SNG__button--busy:hover:before, .SNG__button--disabled, .SNG__button--disabled::before, .SNG__button--disabled:hover::before {
   background: var(--theme-dark-button-background-disabled);
-  cursor: default; }
+  cursor: default;
+  color: var(--theme-dark-button-color-disabled); }
 
 @media only screen and (max-width: 480px) {
   .SNG__button.SNG__button--expand-on-mobile {
     width: 100%;
+    font-size: 14px;
     margin-right: 0;
-    margin-left: 0; }
+    margin-left: 0;
+    height: 40px; }
   .SNG__button.SNG__button--link {
     min-width: auto;
     width: auto;
-    margin: 5px 10px 5px 0; } }
+    margin: 5px 10px 5px 0; }
+  .checkmark {
+    width: 20px;
+    height: 20px; } }

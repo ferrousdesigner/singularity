@@ -86,12 +86,12 @@
 .SNG__presentor--banner > div:first-child {
   display: block;
   width: 100vw;
-  letter-spacing: 4rem;
+  letter-spacing: 3rem;
   margin-left: 2rem;
   color: rgb(255, 255, 255);
   z-index: 2;
   font-weight: 400;
-  font-size: 6vmin;
+  font-size: 5vmin;
   margin-bottom: 1rem;
   animation: floatText 10s linear infinite;
 }
@@ -178,5 +178,16 @@ div[class^="SNG__presentor--smooth-"] {
 }
 @media only screen and (max-width: 480px) {
   body {
+    overflow-x: hidden;
+  }
+  .SNG__presentor--banner {
+    width: 25rem;
+    margin: calc((100vh - 25rem) / 2) auto;
+    height: 25rem;
+  }
+  .SNG__presentor--banner > div:first-child {
+    letter-spacing: 2rem;
+    margin-left: 2rem;
+    font-size: 5vmin;
   }
 }
