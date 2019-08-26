@@ -1400,7 +1400,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, ":root {\n  --theme-color: rgb(255, 0, 106);\n  --theme-dark-button-background: #111;\n  --theme-dark-button-background-hover: #00000044;\n  --theme-dark-button-background-disabled: #444444;\n  --theme-dark-button-color-disabled: #666666; }\n\n.SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  font-size: 16px;\n  border: none;\n  height: 40px;\n  padding: 0 35px;\n  min-width: 136px;\n  position: relative;\n  transition: all 0.14s ease;\n  transform-origin: center;\n  z-index: 1;\n  color: #fff;\n  background: transparent;\n  vertical-align: top;\n  box-sizing: border-box;\n  margin: 5px 15px 5px 0;\n  font-weight: normal;\n  position: relative; }\n\n.SNG__button::after {\n  content: \"\";\n  position: absolute;\n  z-index: -2;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: var(--theme-dark-button-background); }\n\n.SNG__button::before {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: transparent;\n  transition: background 0.1s ease-in-out; }\n\n.SNG__button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.SNG__button.SNG__button--primary:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px white; }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 16px;\n  color: white;\n  margin-left: 5px;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out 0.4s forwards; }\n\n.SNG__button--round,\n.SNG__button--round::before,\n.SNG__button--round::after {\n  border-radius: 30px; }\n\n.SNG__button--less-round,\n.SNG__button--less-round::before,\n.SNG__button--less-round::after {\n  border-radius: 5px; }\n\n.SNG__button--primary::after {\n  color: #fff;\n  background: var(--theme-color); }\n\n.SNG__button--alt {\n  border: 2px solid #fff;\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--alt::after {\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--link {\n  padding: 0;\n  height: auto;\n  line-height: 1.5;\n  justify-content: flex-start;\n  min-width: auto;\n  color: #ffffffaa;\n  font-size: 15px;\n  background-color: transparent;\n  background: none;\n  transition: all 0.2s ease;\n  margin-right: 10px; }\n\n.SNG__button--link + .SNG__button--link {\n  margin-left: 10px; }\n\n.SNG__button--link::after {\n  display: none; }\n\n.SNG__button--icon {\n  width: 20px;\n  height: 20px;\n  margin-right: 5px; }\n\n.SNG__button--icon * {\n  fill: inherit;\n  color: inherit; }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%,\n  100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n\n.SNG__loader {\n  border: 16px solid var(--theme-dark-button-background-hover);\n  border-top: 16px solid var(--theme-color);\n  border-radius: 50%;\n  border-width: 4px;\n  width: 25px;\n  height: 25px;\n  animation: spin 1s linear infinite; }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n.SNG__button--link:hover {\n  transform: none;\n  color: #fff;\n  text-decoration: underline; }\n\n.SNG__button:hover::before {\n  background: var(--theme-dark-button-background-hover); }\n\n.SNG__button--busy::after,\n.SNG__button--busy:hover:before,\n.SNG__button--disabled,\n.SNG__button--disabled::before,\n.SNG__button--disabled:hover::before {\n  background: var(--theme-dark-button-background-disabled);\n  cursor: default;\n  color: var(--theme-dark-button-color-disabled); }\n\n.SNG__button.SNG__button--busy:focus,\n.SNG__button.SNG__button--disabled:focus {\n  outline: none;\n  box-shadow: none; }\n\n@media only screen and (max-width: 480px) {\n  .SNG__button.SNG__button--expand-on-mobile {\n    width: 100%;\n    font-size: 14px;\n    margin-right: 0;\n    margin-left: 0;\n    height: 40px; }\n  .SNG__button.SNG__button--link {\n    min-width: auto;\n    width: auto;\n    margin: 5px 10px 5px 0; }\n  .checkmark {\n    width: 20px;\n    height: 20px; } }\n", ""]);
+exports.push([module.i, ":root {\n  --theme-color: rgb(255, 0, 106);\n  --theme-dark-button-background: #111;\n  --theme-dark-button-background-hover: #00000044;\n  --theme-dark-button-background-disabled: #444444;\n  --theme-dark-button-color-disabled: #666666; }\n\n.SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  font-size: 16px;\n  border: 2px solid transparent;\n  height: 40px;\n  padding: 0 35px;\n  min-width: 136px;\n  position: relative;\n  transition: all 0.14s ease;\n  transform-origin: center;\n  z-index: 1;\n  color: #fff;\n  background: transparent;\n  vertical-align: top;\n  box-sizing: border-box;\n  margin: 5px 15px 5px 0;\n  font-weight: normal;\n  position: relative; }\n\n.SNG__button::after {\n  content: \"\";\n  position: absolute;\n  z-index: -2;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: var(--theme-dark-button-background); }\n\n.SNG__button::before {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: transparent;\n  transition: background 0.1s ease-in-out; }\n\n.SNG__button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.SNG__button.SNG__button--primary:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px white; }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 16px;\n  color: white;\n  margin-left: 5px;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out 0.4s forwards; }\n\n.SNG__button--round,\n.SNG__button--round::before,\n.SNG__button--round::after {\n  border-radius: 30px; }\n\n.SNG__button--less-round,\n.SNG__button--less-round::before,\n.SNG__button--less-round::after {\n  border-radius: 5px; }\n\n.SNG__button--primary::after {\n  color: #fff;\n  background: var(--theme-color); }\n\n.SNG__button--alt {\n  border: 2px solid #fff;\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--alt::after {\n  background-color: transparent;\n  background: none; }\n\n.SNG__button--link {\n  padding: 0;\n  height: auto;\n  line-height: 1.5;\n  justify-content: flex-start;\n  min-width: auto;\n  color: #ffffffaa;\n  font-size: 15px;\n  background-color: transparent;\n  background: none;\n  transition: all 0.2s ease;\n  margin-right: 10px; }\n\n.SNG__button--link + .SNG__button--link {\n  margin-left: 10px; }\n\n.SNG__button--link::after {\n  display: none; }\n\n.SNG__button--icon {\n  width: 20px;\n  height: 20px;\n  margin-right: 5px; }\n\n.SNG__button--icon * {\n  fill: inherit;\n  color: inherit; }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%,\n  100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n\n.SNG__loader {\n  border: 16px solid var(--theme-dark-button-background-hover);\n  border-top: 16px solid var(--theme-color);\n  border-radius: 50%;\n  border-width: 4px;\n  width: 25px;\n  height: 25px;\n  animation: spin 1s linear infinite; }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n.SNG__button--link:hover {\n  transform: none;\n  color: #fff;\n  text-decoration: underline; }\n\n.SNG__button:hover::before {\n  background: var(--theme-dark-button-background-hover); }\n\n.SNG__button--busy::after,\n.SNG__button--busy:hover:before,\n.SNG__button--disabled,\n.SNG__button--disabled::before,\n.SNG__button--disabled:hover::before {\n  background: var(--theme-dark-button-background-disabled);\n  cursor: default;\n  color: var(--theme-dark-button-color-disabled); }\n\n.SNG__button.SNG__button--busy:focus,\n.SNG__button.SNG__button--disabled:focus {\n  outline: none;\n  box-shadow: none; }\n\n@media only screen and (max-width: 480px) {\n  .SNG__button.SNG__button--expand-on-mobile {\n    width: 100%;\n    font-size: 14px;\n    margin-right: 0;\n    margin-left: 0;\n    height: 40px; }\n  .SNG__button.SNG__button--link {\n    min-width: auto;\n    width: auto;\n    margin: 5px 10px 5px 0; }\n  .checkmark {\n    width: 20px;\n    height: 20px; } }\n", ""]);
 
 // exports
 
@@ -1690,7 +1690,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, ":root {\n  --theme-dark-dialog-content-background: #111;\n  --theme-dark-dialog-header-background: #222;\n  --theme-dark-dialog-background: #000000bb; }\n\n.SNG__dialog {\n  position: fixed;\n  width: 100vw;\n  background: var(--theme-dark-dialog-background);\n  left: 0;\n  top: 0;\n  height: 100vh;\n  font-weight: normal;\n  z-index: 1;\n  perspective: 100vw; }\n\n.SNG__dialog--content {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translateZ(-40px) translateX(-50%) translateY(-50%);\n  transform-style: preserve-3d;\n  transform-origin: center center;\n  width: 50vw;\n  z-index: 3;\n  opacity: 0;\n  background: var(--theme-dark-dialog-content-background);\n  box-shadow: 0 5px 20px #00000099;\n  overflow-y: hidden; }\n\n.SNG__dialog--actions {\n  padding: 10px 15px;\n  background: var(--theme-dark-dialog-header-background);\n  position: relative; }\n\n.SNG__dialog--title {\n  padding: 15px;\n  font-size: 20px;\n  background: var(--theme-dark-dialog-header-background);\n  position: absolute;\n  font-weight: normal;\n  left: 0;\n  width: 100%;\n  z-index: 2;\n  top: 0;\n  height: 60px; }\n\n.SNG__dialog--title::after,\n.SNG__dialog--actions::after {\n  position: absolute;\n  content: \"\";\n  bottom: 0;\n  height: 20px;\n  left: 0;\n  width: 100%;\n  transform: translateY(100%);\n  background: linear-gradient(to bottom, var(--theme-dark-dialog-content-background), transparent); }\n\n.SNG__dialog--actions::after {\n  bottom: unset;\n  top: 0;\n  transform: translateY(-100%);\n  background: linear-gradient(to top, var(--theme-dark-dialog-content-background), transparent); }\n\n.SNG__dialog--children {\n  padding: 15px;\n  opacity: 0; }\n\n.SNG__dialog--title .SNG__dialog--close-button {\n  position: absolute;\n  width: 40px;\n  font-size: 20px;\n  top: 50%;\n  right: 5px;\n  transform: translateY(-50%);\n  cursor: pointer;\n  height: 40px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n  transition: 0.15s;\n  background: transparent;\n  color: #fff;\n  border: none; }\n\n.SNG__dialog--title .SNG__dialog--close-button:hover {\n  background: #ffffff11; }\n\n.SNG__dialog--title .SNG__dialog--close-button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.dialog-show {\n  animation: showDialog 0.3s ease-in-out forwards; }\n\n.dialog-show .SNG__dialog--content {\n  animation: showDialogContent 0.2s ease-in-out 0.3s forwards; }\n\n.dialog-show .SNG__dialog--children {\n  animation: showChildren 0.5s ease-in-out 0.5s forwards;\n  margin-top: 6rem;\n  max-height: 50vh;\n  overflow-y: auto; }\n\n.dialog-hide {\n  animation: hideDialog 0.3s ease-in-out 0.1s forwards; }\n\n.dialog-hide .SNG__dialog--content {\n  animation: hideDialogContent 0.2s ease-in-out forwards; }\n\n@keyframes showChildren {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialog {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialogContent {\n  from {\n    opacity: 0;\n    transform: translateZ(-40px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); } }\n\n@keyframes hideDialog {\n  from {\n    opacity: 1; }\n  to {\n    opacity: 0; } }\n\n@keyframes hideDialogContent {\n  from {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 0;\n    transform: translateZ(-20px) translateX(-50%) translateY(-50%); } }\n\n@media only screen and (max-width: 480px) {\n  .SNG__dialog--content {\n    width: 90vw; } }\n", ""]);
+exports.push([module.i, ":root {\n  --theme-dark-dialog-content-background: #111;\n  --theme-dark-dialog-header-background: #222;\n  --theme-dark-dialog-background: #000000bb; }\n\n.SNG__dialog {\n  position: fixed;\n  width: 100vw;\n  background: var(--theme-dark-dialog-background);\n  left: 0;\n  top: 0;\n  height: 100vh;\n  font-weight: normal;\n  z-index: 1;\n  perspective: 100vw; }\n\n.SNG__dialog--content {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translateZ(-40px) translateX(-50%) translateY(-50%);\n  transform-style: preserve-3d;\n  transform-origin: center center;\n  max-width: 500px;\n  z-index: 3;\n  opacity: 0;\n  background: var(--theme-dark-dialog-content-background);\n  box-shadow: 0 5px 20px #00000099;\n  overflow-y: hidden; }\n\n.SNG__dialog--actions {\n  padding: 10px 15px;\n  background: var(--theme-dark-dialog-header-background);\n  position: relative; }\n\n.SNG__dialog--title {\n  padding: 15px;\n  font-size: 20px;\n  background: var(--theme-dark-dialog-header-background);\n  position: absolute;\n  font-weight: normal;\n  left: 0;\n  width: 100%;\n  z-index: 2;\n  top: 0;\n  height: 60px; }\n\n.SNG__dialog--title::after,\n.SNG__dialog--actions::after {\n  position: absolute;\n  content: \"\";\n  bottom: 0;\n  height: 20px;\n  left: 0;\n  width: 100%;\n  transform: translateY(100%);\n  background: linear-gradient(to bottom, var(--theme-dark-dialog-content-background), transparent); }\n\n.SNG__dialog--actions::after {\n  bottom: unset;\n  top: 0;\n  transform: translateY(-100%);\n  background: linear-gradient(to top, var(--theme-dark-dialog-content-background), transparent); }\n\n.SNG__dialog--children {\n  padding: 15px;\n  opacity: 0; }\n\n.SNG__dialog--title .SNG__dialog--close-button {\n  position: absolute;\n  width: 40px;\n  font-size: 20px;\n  top: 50%;\n  right: 5px;\n  transform: translateY(-50%);\n  cursor: pointer;\n  height: 40px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n  transition: 0.15s;\n  background: transparent;\n  color: #fff;\n  border: none; }\n\n.SNG__dialog--title .SNG__dialog--close-button:hover {\n  background: #ffffff11; }\n\n.SNG__dialog--title .SNG__dialog--close-button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.dialog-show {\n  animation: showDialog 0.3s ease-in-out forwards; }\n\n.dialog-show .SNG__dialog--content {\n  animation: showDialogContent 0.2s ease-in-out 0.3s forwards; }\n\n.dialog-show .SNG__dialog--children {\n  animation: showChildren 0.5s ease-in-out 0.5s forwards;\n  margin-top: 60px;\n  max-height: 50vh;\n  overflow-y: auto; }\n\n.SNG__dialog.SNG__dialog__full-with-actions .SNG__dialog--children {\n  height: calc(100vh - 130px);\n  max-height: unset; }\n\n.SNG__dialog.SNG__dialog__full .SNG__dialog--children {\n  height: calc(100vh - 60px);\n  max-height: unset; }\n\n.dialog-hide {\n  animation: hideDialog 0.3s ease-in-out 0.1s forwards; }\n\n.dialog-hide .SNG__dialog--content {\n  animation: hideDialogContent 0.2s ease-in-out forwards; }\n\n@keyframes showChildren {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialog {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialogContent {\n  from {\n    opacity: 0;\n    transform: translateZ(-40px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); } }\n\n@keyframes hideDialog {\n  from {\n    opacity: 1; }\n  to {\n    opacity: 0; } }\n\n@keyframes hideDialogContent {\n  from {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 0;\n    transform: translateZ(-20px) translateX(-50%) translateY(-50%); } }\n\n@media only screen and (max-width: 480px) {\n  .SNG__dialog--content {\n    width: 90vw; } }\n", ""]);
 
 // exports
 
@@ -2103,19 +2103,19 @@ function (_Component) {
           light = _this$props.light,
           style = _this$props.style,
           type = _this$props.type,
-          variant = _this$props.variant,
           expandOnMobile = _this$props.expandOnMobile,
           soft = _this$props.soft,
           busy = _this$props.busy,
-          disabled = _this$props.disabled;
+          disabled = _this$props.disabled,
+          done = _this$props.done;
       var classString = 'SNG__button';
       if (round) classString += ' SNG__button--round';
       if (type === 'link') classString += ' SNG__button--link';
       if (type === 'primary') classString += ' SNG__button--primary';
-      if (variant === 'alt') classString += ' SNG__button--alt';
+      if (type === 'alt') classString += ' SNG__button--alt';
       if (soft) classString += ' SNG__button--less-round';
       if (busy) classString += ' SNG__button--busy';
-      if (disabled) classString += ' SNG__button--disabled';
+      if (disabled || done) classString += ' SNG__button--disabled';
       if (expandOnMobile) classString += ' SNG__button--expand-on-mobile';
       return classString;
     }
@@ -2126,6 +2126,7 @@ function (_Component) {
           done = _this$props2.done,
           busy = _this$props2.busy,
           children = _this$props2.children,
+          submit = _this$props2.submit,
           doneMessage = _this$props2.doneMessage,
           style = _this$props2.style,
           icon = _this$props2.icon,
@@ -2137,13 +2138,14 @@ function (_Component) {
         className: this.getClass(),
         style: style,
         onClick: onClick
-      }, icon && react_default.a.createElement("span", {
+      }, icon && !done && !busy && react_default.a.createElement("span", {
         className: "SNG__button--icon"
       }, icon), done ? Button_check(doneMessage) : busy ? Button_loader() : children) : react_default.a.createElement("button", {
         className: this.getClass(),
         style: style,
-        onClick: onClick
-      }, icon && react_default.a.createElement("span", {
+        onClick: onClick,
+        submit: submit ? 'submit' : 'button'
+      }, icon && !done && !busy && react_default.a.createElement("span", {
         className: "SNG__button--icon"
       }, icon), done ? Button_check(doneMessage) : busy ? Button_loader() : children);
     }
@@ -2152,7 +2154,7 @@ function (_Component) {
   return Button;
 }(react["Component"]);
 Button_Button_Button.defaultProps = {
-  type: '',
+  type: 'default',
   label: 'Submit',
   labelColor: '',
   colors: ['purple', 'white', 'blue'],
@@ -2934,6 +2936,7 @@ function (_Component) {
       read: false
     };
     _this.initialBodyOverflow = '';
+    _this.dialogChildren = react_default.a.createRef();
     return _this;
   }
 
@@ -2955,6 +2958,8 @@ function (_Component) {
         this.setState({
           rendered: true,
           animationClass: 'dialog-show '
+        }, function () {
+          _this2.checkScrollHeight();
         });
       } else if (this.props.open && !open) {
         document.querySelector('html').style.overflowY = this.initialBodyOverflow;
@@ -2972,15 +2977,35 @@ function (_Component) {
       }
     }
   }, {
+    key: "checkScrollHeight",
+    value: function checkScrollHeight() {
+      var current = this.dialogChildren.current;
+      var read = this.state.read;
+      var persist = this.props.persist; // Check if the content is not scrollable
+
+      if (current.scrollHeight === current.offsetHeight && persist && !read) {
+        // Setting the read flag true
+        this.setState({
+          read: true
+        });
+      }
+    }
+  }, {
     key: "getClass",
     value: function getClass() {
       var cS = 'SNG__dialog ';
+      var _this$props = this.props,
+          full = _this$props.full,
+          primaryAction = _this$props.primaryAction,
+          secondaryAction = _this$props.secondaryAction;
+      if (full && (primaryAction || secondaryAction)) cS += 'SNG__dialog__full-with-actions ';
+      if (full && !(primaryAction || secondaryAction)) cS += 'SNG__dialog__full ';
       return cS + this.state.animationClass;
     }
   }, {
     key: "handleScroll",
     value: function handleScroll(e) {
-      var read = this.state.read;
+      var read = this.state.read; // Checking if the content is scrolled completely
 
       if (e.target.offsetHeight + e.target.scrollTop >= e.target.scrollHeight && !read) {
         this.setState({
@@ -2993,14 +3018,14 @@ function (_Component) {
     value: function render() {
       var _this3 = this;
 
-      var _this$props = this.props,
-          title = _this$props.title,
-          onClose = _this$props.onClose,
-          children = _this$props.children,
-          _this$props$enableAft = _this$props.enableAfterRead,
-          enableAfterRead = _this$props$enableAft === void 0 ? true : _this$props$enableAft,
-          primaryAction = _this$props.primaryAction,
-          secondaryAction = _this$props.secondaryAction;
+      var _this$props2 = this.props,
+          title = _this$props2.title,
+          onClose = _this$props2.onClose,
+          children = _this$props2.children,
+          _this$props2$enableAf = _this$props2.enableAfterRead,
+          enableAfterRead = _this$props2$enableAf === void 0 ? true : _this$props2$enableAf,
+          primaryAction = _this$props2.primaryAction,
+          secondaryAction = _this$props2.secondaryAction;
       var read = this.state.read;
       var rendered = this.state.rendered;
       return rendered ? react_default.a.createElement("div", {
@@ -3013,6 +3038,7 @@ function (_Component) {
         className: "fas fa-times SNG__dialog--close-button",
         onClick: onClose
       })), children && react_default.a.createElement("div", {
+        ref: this.dialogChildren,
         className: "SNG__dialog--children",
         onScroll: enableAfterRead ? function (e) {
           return _this3.handleScroll(e);
@@ -3626,17 +3652,102 @@ function (_Component) {
 
     _this = Showroom_possibleConstructorReturn(this, Showroom_getPrototypeOf(ShowRoom).call(this, props));
     _this.state = {
-      openDialog: false
+      openDialog: false,
+      buttonProps: {
+        round: true,
+        done: false,
+        busy: false,
+        type: 'primary',
+        soft: false,
+        lastChange: 'type'
+      }
     };
     return _this;
   }
 
   Showroom_createClass(ShowRoom, [{
-    key: "render",
-    value: function render() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.stringPropRotator('button');
+    }
+  }, {
+    key: "booleanPropRotator",
+    value: function booleanPropRotator(component) {
       var _this2 = this;
 
-      var openDialog = this.state.openDialog;
+      console.log('Boolean Called');
+
+      switch (component) {
+        case 'button':
+          var buttonProps = this.state.buttonProps;
+          var tempState = buttonProps;
+          var booleanProps = Object.keys(tempState).filter(function (prop) {
+            return typeof tempState[prop] === 'boolean';
+          });
+          var trueProp = booleanProps.filter(function (prop) {
+            return tempState[prop];
+          })[0];
+          var toBeTrueProp = this.getNextValueFromArray(trueProp, booleanProps);
+          tempState[trueProp] = false;
+          tempState[toBeTrueProp] = true;
+          tempState.lastChange = toBeTrueProp;
+          this.setState({
+            buttonProps: tempState
+          }, function () {
+            var lastChange = buttonProps.lastChange;
+            setTimeout(function () {
+              return _this2.stringPropRotator(component);
+            }, 4000);
+          });
+          break;
+      }
+    }
+  }, {
+    key: "stringPropRotator",
+    value: function stringPropRotator(component) {
+      var _this3 = this;
+
+      switch (component) {
+        case 'button':
+          {
+            var buttonProps = this.state.buttonProps;
+            var tempState = buttonProps;
+            var lastChange = buttonProps.lastChange;
+            var newType = this.getNextValueFromArray(tempState['type'], ['primary', 'alt', 'default']);
+            tempState['type'] = newType;
+            console.log(newType);
+            tempState.lastChange = 'type';
+            this.setState({
+              buttonProps: tempState
+            }, function () {
+              setTimeout(function () {
+                return _this3.booleanPropRotator(component);
+              }, 3000);
+            });
+          }
+      }
+    }
+  }, {
+    key: "getNextValueFromArray",
+    value: function getNextValueFromArray(currentValue, theArray) {
+      var index = theArray.indexOf(currentValue);
+
+      if (index === theArray.length - 1) {
+        index = 0;
+      } else {
+        index += 1;
+      }
+
+      return theArray[index];
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      var _this$state = this.state,
+          openDialog = _this$state.openDialog,
+          buttonProps = _this$state.buttonProps;
       return react_default.a.createElement("div", {
         className: "SNG__showroom"
       }, react_default.a.createElement(Presentor_Presentor_Presentor, {
@@ -3649,25 +3760,28 @@ function (_Component) {
         title: "Dialog",
         showCloseButton: true,
         persist: true,
+        full: true,
         open: openDialog,
         primaryAction: {
           label: 'Agree',
           onClick: function onClick() {
-            return alert();
+            return alert('Yes!!');
           }
         },
         secondaryAction: {
-          label: 'Agree',
+          label: 'Cancel',
           onClick: function onClick() {
-            return alert();
+            return _this4.setState({
+              openDialog: !openDialog
+            });
           }
         },
         onClose: function onClose() {
-          return _this2.setState({
+          return _this4.setState({
             openDialog: !openDialog
           });
         }
-      }, react_default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), react_default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), react_default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in")), react_default.a.createElement(Presentor_Presentor_Presentor, {
+      }, react_default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), react_default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), react_default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), react_default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")), react_default.a.createElement(Presentor_Presentor_Presentor, {
         settings: {
           type: 'simple',
           full: true
@@ -3692,27 +3806,15 @@ function (_Component) {
         xs: 12,
         sm: 10
       }, react_default.a.createElement(Button_Button_Button, {
-        type: 'primary',
+        type: buttonProps.type,
+        round: buttonProps.round,
+        soft: buttonProps.soft,
+        busy: buttonProps.busy,
+        done: buttonProps.done,
         icon: react_default.a.createElement("span", {
           className: "fa fa-home"
         })
-      }, "Click me"), react_default.a.createElement(Button_Button_Button, {
-        icon: react_default.a.createElement("span", {
-          className: "fa fa-home"
-        }),
-        variant: 'alt'
-      }, "Click me"), react_default.a.createElement(Button_Button_Button, {
-        disabled: true
-      }, "Disabled"), react_default.a.createElement(Button_Button_Button, {
-        soft: true,
-        done: true
-      }, "Completed"), react_default.a.createElement(Button_Button_Button, {
-        soft: true,
-        type: 'primary',
-        icon: react_default.a.createElement("span", {
-          className: "fa fa-home"
-        })
-      }, "Soft Button")), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
+      }, "Click me")), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
         xs: 12,
         sm: 10
       }, react_default.a.createElement(components_Spacer_Spacer, {
@@ -3756,7 +3858,7 @@ function (_Component) {
       }, react_default.a.createElement(Button_Button_Button, {
         type: "primary",
         onClick: function onClick() {
-          return _this2.setState({
+          return _this4.setState({
             openDialog: !openDialog
           });
         }
