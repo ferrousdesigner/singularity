@@ -21,7 +21,7 @@
   transform: translateZ(-40px) translateX(-50%) translateY(-50%);
   transform-style: preserve-3d;
   transform-origin: center center;
-  width: 50vw;
+  max-width: 500px;
   z-index: 3;
   opacity: 0;
   background: var(--theme-dark-dialog-content-background);
@@ -99,9 +99,17 @@
 
 .dialog-show .SNG__dialog--children {
   animation: showChildren 0.5s ease-in-out 0.5s forwards;
-  margin-top: 6rem;
+  margin-top: 60px;
   max-height: 50vh;
   overflow-y: auto; }
+
+.SNG__dialog.SNG__dialog__full-with-actions .SNG__dialog--children {
+  height: calc(100vh - 130px);
+  max-height: unset; }
+
+.SNG__dialog.SNG__dialog__full .SNG__dialog--children {
+  height: calc(100vh - 60px);
+  max-height: unset; }
 
 .dialog-hide {
   animation: hideDialog 0.3s ease-in-out 0.1s forwards; }

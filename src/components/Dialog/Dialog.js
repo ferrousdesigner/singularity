@@ -12,6 +12,7 @@ class MainDialog extends Component {
       read: false
     }
     this.initialBodyOverflow = ''
+    this.dialogChildren = React.createRef()
   }
 
   componentWillReceiveProps (newProps) {
@@ -24,7 +25,9 @@ class MainDialog extends Component {
         ).style.overflowY
         document.querySelector('html').style.overflowY = 'hidden'
       }
-      this.setState({ rendered: true, animationClass: 'dialog-show ' })
+      this.setState({ rendered: true, animationClass: 'dialog-show ' }, () => {
+        this.checkScrollHeight()
+      })
     } else if (this.props.open && !open) {
       document.querySelector('html').style.overflowY = this.initialBodyOverflow
       this.setState(
@@ -42,12 +45,26 @@ class MainDialog extends Component {
       )
     }
   }
+  checkScrollHeight () {
+    const { current } = this.dialogChildren
+    const { read } = this.state
+    const { persist } = this.props
+    // Check if the content is not scrollable
+    if(current.scrollHeight === current.offsetHeight && persist && !read ) {
+      // Setting the read flag true
+      this.setState({read: true})
+    }
+  }
   getClass () {
     let cS = 'SNG__dialog '
+    const { full, primaryAction, secondaryAction } = this.props
+    if(full && (primaryAction || secondaryAction)) cS += 'SNG__dialog__full-with-actions '
+    if(full && !(primaryAction || secondaryAction)) cS += 'SNG__dialog__full '
     return cS + this.state.animationClass
   }
   handleScroll (e) {
     let { read } = this.state
+    // Checking if the content is scrolled completely
     if (
       e.target.offsetHeight + e.target.scrollTop >= e.target.scrollHeight &&
       !read
@@ -84,6 +101,7 @@ class MainDialog extends Component {
           )}
           {children && (
             <div
+              ref={this.dialogChildren}
               className='SNG__dialog--children'
               onScroll={
                 enableAfterRead ? e => this.handleScroll(e) : () => null

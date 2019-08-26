@@ -43,12 +43,74 @@ export default class ShowRoom extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      openDialog: false
+      openDialog: false,
+      buttonProps: {
+        round: true,
+        done: false,
+        busy: false,
+        type: 'primary',
+        soft: false,
+        lastChange: 'type'
+      }
     }
   }
+  componentDidMount () {
+    this.stringPropRotator('button')
+  }
+  booleanPropRotator (component) {
+    console.log('Boolean Called')
 
+    switch (component) {
+      case 'button':
+        const { buttonProps } = this.state
+        let tempState = buttonProps
+        let booleanProps = Object.keys(tempState).filter(
+          prop => typeof tempState[prop] === 'boolean'
+        )
+        let trueProp = booleanProps.filter(prop => tempState[prop])[0]
+        let toBeTrueProp = this.getNextValueFromArray(trueProp, booleanProps)
+        tempState[trueProp] = false
+        tempState[toBeTrueProp] = true
+        tempState.lastChange = toBeTrueProp
+
+        this.setState({ buttonProps: tempState }, () => {
+          let { lastChange } = buttonProps
+          setTimeout(() => this.stringPropRotator(component), 4000)
+        })
+        break
+    }
+  }
+  stringPropRotator (component) {
+    switch (component) {
+      case 'button': {
+        const { buttonProps } = this.state
+        let tempState = buttonProps
+        let { lastChange } = buttonProps
+        let newType = this.getNextValueFromArray(tempState['type'], [
+          'primary',
+          'alt',
+          'default'
+        ])
+        tempState['type'] = newType
+        console.log(newType)
+        tempState.lastChange = 'type'
+        this.setState({ buttonProps: tempState }, () => {
+          setTimeout(() => this.booleanPropRotator(component), 3000)
+        })
+      }
+    }
+  }
+  getNextValueFromArray (currentValue, theArray) {
+    let index = theArray.indexOf(currentValue)
+    if (index === theArray.length - 1) {
+      index = 0
+    } else {
+      index += 1
+    }
+    return theArray[index]
+  }
   render () {
-    const { openDialog } = this.state
+    const { openDialog, buttonProps } = this.state
     return (
       <div className='SNG__showroom'>
         <Presentor
@@ -62,14 +124,15 @@ export default class ShowRoom extends Component {
           title='Dialog'
           showCloseButton
           persist
+          full
           open={openDialog}
           primaryAction={{
             label: 'Agree',
-            onClick: () => alert()
+            onClick: () => alert('Yes!!')
           }}
           secondaryAction={{
-            label: 'Agree',
-            onClick: () => alert()
+            label: 'Cancel',
+            onClick: () => this.setState({ openDialog: !openDialog })
           }}
           onClose={() => this.setState({ openDialog: !openDialog })}
         >
@@ -96,6 +159,18 @@ export default class ShowRoom extends Component {
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
           </p>
         </Dialog>
 
@@ -113,22 +188,15 @@ export default class ShowRoom extends Component {
                 <Spacer />
               </Col>
               <Col xs={12} sm={10}>
-                <Button type={'primary'} icon={<span className='fa fa-home' />}>
-                  Click me
-                </Button>
-                <Button icon={<span className='fa fa-home' />} variant={'alt'}>
-                  Click me
-                </Button>
-                <Button disabled>Disabled</Button>
-                <Button soft done>
-                  Completed
-                </Button>
                 <Button
-                  soft
-                  type={'primary'}
+                  type={buttonProps.type}
+                  round={buttonProps.round}
+                  soft={buttonProps.soft}
+                  busy={buttonProps.busy}
+                  done={buttonProps.done}
                   icon={<span className='fa fa-home' />}
                 >
-                  Soft Button
+                  Click me
                 </Button>
               </Col>
               <Col xs={12} sm={10}>

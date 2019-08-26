@@ -19,7 +19,7 @@
   -ms-user-select: none;
   user-select: none;
   font-size: 16px;
-  border: none;
+  border: 2px solid transparent;
   height: 40px;
   padding: 0 35px;
   min-width: 136px;
