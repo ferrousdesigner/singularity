@@ -4,7 +4,6 @@
   align-items: center;
   position: relative;
   animation: appear 5s ease-in-out forwards;
-
 }
 @keyframes appear {
   0% {
@@ -189,5 +188,14 @@ div[class^="SNG__presentor--smooth-"] {
     letter-spacing: 2rem;
     margin-left: 2rem;
     font-size: 5vmin;
+  }
+  .SNG__presentor--banner::after,
+  .SNG__presentor--banner > span {
+    content: "";
+    left: -50%;
+    top: -50%;
+    width: 200%;
+    height: 200%;
+
   }
 }
