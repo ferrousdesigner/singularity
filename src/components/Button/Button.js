@@ -54,15 +54,27 @@ let css = `
  */
 export class Button extends Component {
   getClass () {
-    const { round, light, style, type, expandOnMobile, soft, busy, disabled, done } = this.props
+    const {
+      round,
+      light,
+      style,
+      type,
+      expandOnMobile,
+      soft,
+      done,
+      busy,
+      disabled,
+    } = this.props
     let classString = 'SNG__button'
     if (round) classString += ' SNG__button--round'
     if (type === 'link') classString += ' SNG__button--link'
     if (type === 'primary') classString += ' SNG__button--primary'
+    if (type === 'default') classString += ' SNG__button--default'
     if (type === 'alt') classString += ' SNG__button--alt'
     if (soft) classString += ' SNG__button--less-round'
-    if (busy) classString += ' SNG__button--busy'
-    if (disabled || done) classString += ' SNG__button--disabled'
+    if (busy && !disabled) classString += ' SNG__button--busy'
+    if (done) classString += ' SNG__button--done'
+    if (disabled) classString += ' SNG__button--disabled'
     if (expandOnMobile) classString += ' SNG__button--expand-on-mobile'
     return classString
   }
@@ -76,18 +88,30 @@ export class Button extends Component {
       style,
       icon,
       onClick,
+      disabled,
       type,
       to
     } = this.props
     return type === 'link' ? (
       <a href={to} className={this.getClass()} style={style} onClick={onClick}>
-        {icon && (!done && !busy) && <span className='SNG__button--icon'>{icon}</span>}
-        {done ? check(doneMessage) : busy ? loader() : children}
+        <span className='SNG__button--overlay' />
+          {icon && (!done && !busy) && (
+            <span className='SNG__button--icon'>{icon}</span>
+          )}
+          {done ? check(doneMessage) : (busy && !disabled) ? loader() : children}
       </a>
     ) : (
-      <button className={this.getClass()} style={style} onClick={onClick} submit={submit ? 'submit' : 'button'}>
-        {icon && (!done && !busy) && <span className='SNG__button--icon'>{icon}</span>}
-        {done ? check(doneMessage) : busy ? loader() : children}
+      <button
+        className={this.getClass()}
+        style={style}
+        onClick={onClick}
+        submit={submit ? 'submit' : 'button'}
+      >
+        <span className='SNG__button--overlay' />
+          {icon && (!done && !busy) && (
+            <span className='SNG__button--icon'>{icon}</span>
+          )}
+          {done ? check(doneMessage) : (busy && !disabled) ? loader() : children}
       </button>
     )
   }
@@ -99,12 +123,11 @@ Button.defaultProps = {
   colors: ['purple', 'white', 'blue'],
   round: false,
   disabled: false,
-  doing: false,
+  busy: false,
   done: false,
   doneMessage: 'Done',
   icon: null,
   children: 'No Label',
-  variant: '',
   expandOnMobile: true
 }
 Button.propTypes = {
@@ -112,12 +135,11 @@ Button.propTypes = {
   label: PropTypes.string,
   labelColor: PropTypes.string,
   colors: PropTypes.array,
-  doing: PropTypes.bool,
+  busy: PropTypes.bool,
   done: PropTypes.bool,
   doneMessage: PropTypes.string,
   round: PropTypes.bool,
   disabled: PropTypes.bool,
   icon: PropTypes.node,
-  variant: PropTypes.string,
   expandOnMobile: PropTypes.bool
 }

@@ -45,10 +45,10 @@ export default class ShowRoom extends Component {
     this.state = {
       openDialog: false,
       buttonProps: {
-        round: true,
+        round: false,
         done: false,
-        busy: false,
-        type: 'primary',
+        busy: true,
+        type: 'default',
         soft: false,
         lastChange: 'type'
       }
@@ -75,7 +75,7 @@ export default class ShowRoom extends Component {
 
         this.setState({ buttonProps: tempState }, () => {
           let { lastChange } = buttonProps
-          setTimeout(() => this.stringPropRotator(component), 4000)
+          setTimeout(() => this.stringPropRotator(component), 2000)
         })
         break
     }
@@ -95,7 +95,7 @@ export default class ShowRoom extends Component {
         console.log(newType)
         tempState.lastChange = 'type'
         this.setState({ buttonProps: tempState }, () => {
-          setTimeout(() => this.booleanPropRotator(component), 3000)
+          setTimeout(() => this.booleanPropRotator(component), 2000)
         })
       }
     }
