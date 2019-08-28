@@ -179,6 +179,16 @@ div[class^="SNG__presentor--smooth-"] {
   body {
     overflow-x: hidden;
   }
+  .SNG__presentor--banner:before {
+    background: #ff0b0b;
+    left: -6.5rem;
+    top: -15.5rem;
+    z-index: -1;
+    width: calc(100% + 50rem);
+    height: calc(100% + 34rem);
+    filter: blur(16rem);
+    animation: none;
+  }
   .SNG__presentor--banner {
     width: 25rem;
     margin: calc((100vh - 25rem) / 2) auto;
@@ -188,14 +198,19 @@ div[class^="SNG__presentor--smooth-"] {
     letter-spacing: 2rem;
     margin-left: 2rem;
     font-size: 5vmin;
+    animation: floatText 4s cubic-bezier(0.55, 0.09, 0.68, 0.53) infinite
   }
   .SNG__presentor--banner::after,
   .SNG__presentor--banner > span {
+    display: none;
     content: "";
     left: -50%;
     top: -50%;
     width: 200%;
     height: 200%;
-
+    animation: none;
+  }
+  .SNG__presentor--banner > div:last-child {
+    font-size: 10px;
   }
 }

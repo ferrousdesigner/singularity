@@ -1,0 +1,27 @@
+.SNG__toggle {
+  width: 8rem;
+  height: 3rem;
+  background: var(--toggle-background);
+  border-radius: 1.5rem;
+  padding: 0.5rem;
+  position: relative;
+  transition: all 0.2s ease-out;
+  border: none;
+  cursor: pointer;
+}
+.SNG__toggle > div {
+  width: 4rem;
+  height: 4rem;
+  background: var(--toggle-background-nob);
+  border-radius: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  box-shadow: 0 4px 10px black;
+  transition: all 0.2s ease-out;
+}
+.SNG__toggle.SNG__toggle--active > div {
+  background: var(--theme-color);
+  transform: translateY(-50%) translateX(100%);
+}

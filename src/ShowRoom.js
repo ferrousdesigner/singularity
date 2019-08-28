@@ -47,15 +47,15 @@ export default class ShowRoom extends Component {
       buttonProps: {
         round: false,
         done: false,
-        busy: true,
-        type: 'default',
-        soft: false,
+        busy: false,
+        type: 'secondary',
+        soft: true,
         lastChange: 'type'
       }
     }
   }
   componentDidMount () {
-    this.stringPropRotator('button')
+    // this.stringPropRotator('button')
   }
   booleanPropRotator (component) {
     console.log('Boolean Called')
@@ -123,8 +123,6 @@ export default class ShowRoom extends Component {
         <Dialog
           title='Dialog'
           showCloseButton
-          persist
-          full
           open={openDialog}
           primaryAction={{
             label: 'Agree',
@@ -227,6 +225,7 @@ export default class ShowRoom extends Component {
               </Col>
               <Col xs={12} sm={10}>
                 <Button
+                  soft
                   type='primary'
                   onClick={() => this.setState({ openDialog: !openDialog })}
                 >

@@ -36,3 +36,7 @@
 
 .SNG__text--gradient-animated {
   animation: moveBackground 10s ease-in-out infinite; }
+
+@media only screen and (max-width: 480px) {
+  .SNG__header--xxlg {
+    font-size: 5rem; } }
