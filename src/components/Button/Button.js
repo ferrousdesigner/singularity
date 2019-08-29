@@ -53,6 +53,10 @@ let css = `
  * A button with the touch of humanity.
  */
 export class Button extends Component {
+  handleClick(e, callBack) {
+    e.preventDefault()
+    if(callBack) callBack()
+  }
   getClass () {
     const {
       round,
@@ -68,7 +72,7 @@ export class Button extends Component {
     if (round) classString += ' SNG__button--round'
     if (type === 'link') classString += ' SNG__button--link'
     if (type === 'primary') classString += ' SNG__button--primary'
-    if (type === 'default' || !type) classString += ' SNG__button--default'
+    if (type === 'default' || !type || !['link', 'primary', 'default', 'seconadary'].includes(type)) classString += ' SNG__button--default'
     if (type === 'secondary') classString += ' SNG__button--secondary'
     if (big) classString += ' SNG__button--big'
     if (soft) classString += ' SNG__button--less-round'
@@ -90,10 +94,11 @@ export class Button extends Component {
       onClick,
       disabled,
       type,
-      to
+      to,
+      className
     } = this.props
     return type === 'link' ? (
-      <a href={to} className={this.getClass()} style={style} onClick={onClick}>
+      <a href={to} className={this.getClass() + (className ? ' ' + className : '')} style={style} onClick={(e) => this.handleClick(e, onClick)}>
         <span className='SNG__button--overlay' />
         {icon && (!done && !busy) && (
           <span className='SNG__button--icon'>{icon}</span>

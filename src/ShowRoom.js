@@ -1,33 +1,33 @@
 import React, { Component } from 'react'
 import { Button, Nav, Presentor, Header, Spacer, Dialog } from './SingularityUI'
-import { HalfPic, ComponentDisplayer } from './tools'
+import { HalfPic, ComponentDisplayer, Zoomer } from './tools'
 import { Row, Col, Grid } from 'react-flexbox-grid'
 
-const ButtonProps = {
-  colors: [['red', 'blue', 'green'], ['purple', 'lightblue', 'green']],
-  disabled: [true, false],
-  doing: [true, false],
-  done: [true, false],
-  doneMessage: ['Completed', 'Done!'],
-  icon: ['Icon'],
-  label: ["I'm good button", "I'm a great button"],
-  labelColor: ['white', 'black'],
-  round: [true, false],
-  type: ['primary', 'success', 'info', 'warning', 'danger', 'modern', 'clear']
-}
-const ButtonPropsDesc = {
-  colors:
-    'An array of colors which make a animated gradient background. Note: Please choose button `type` props as `modern` to enable gradient.',
-  disabled: 'A boolean prop used to disable the button',
-  doing: 'A boolean props which indicates processing',
-  done: 'A boolean props which indicates process is completed',
-  icon: 'A react child which can be used as an icon.',
-  doneMessage: 'A small string prop to convey completion message.',
-  label: 'A string prop which makes the label of the button',
-  labelColor: 'A string prop for the color of label text',
-  round: 'A boolen prop which makes the button corners round',
-  type: 'A string prop which defines the type of the button'
-}
+// const ButtonProps = {
+//   colors: [['red', 'blue', 'green'], ['purple', 'lightblue', 'green']],
+//   disabled: [true, false],
+//   doing: [true, false],
+//   done: [true, false],
+//   doneMessage: ['Completed', 'Done!'],
+//   icon: ['Icon'],
+//   label: ["I'm good button", "I'm a great button"],
+//   labelColor: ['white', 'black'],
+//   round: [true, false],
+//   type: ['primary', 'success', 'info', 'warning', 'danger', 'modern', 'clear']
+// }
+// const ButtonPropsDesc = {
+//   colors:
+//     'An array of colors which make a animated gradient background. Note: Please choose button `type` props as `modern` to enable gradient.',
+//   disabled: 'A boolean prop used to disable the button',
+//   doing: 'A boolean props which indicates processing',
+//   done: 'A boolean props which indicates process is completed',
+//   icon: 'A react child which can be used as an icon.',
+//   doneMessage: 'A small string prop to convey completion message.',
+//   label: 'A string prop which makes the label of the button',
+//   labelColor: 'A string prop for the color of label text',
+//   round: 'A boolen prop which makes the button corners round',
+//   type: 'A string prop which defines the type of the button'
+// }
 const GradientText = props => {
   return (
     <span
@@ -43,6 +43,7 @@ export default class ShowRoom extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      buttonZoomed: true,
       openDialog: false,
       buttonProps: {
         round: false,
@@ -50,7 +51,7 @@ export default class ShowRoom extends Component {
         busy: false,
         type: 'secondary',
         soft: true,
-        lastChange: 'type'
+        lastChange: 'type',
       }
     }
   }
@@ -74,8 +75,7 @@ export default class ShowRoom extends Component {
         tempState.lastChange = toBeTrueProp
 
         this.setState({ buttonProps: tempState }, () => {
-          let { lastChange } = buttonProps
-          setTimeout(() => this.stringPropRotator(component), 2000)
+          setTimeout(() => this.stringPropRotator(component), 1000)
         })
         break
     }
@@ -88,14 +88,14 @@ export default class ShowRoom extends Component {
         let { lastChange } = buttonProps
         let newType = this.getNextValueFromArray(tempState['type'], [
           'primary',
-          'alt',
+          'secondary',
           'default'
         ])
         tempState['type'] = newType
         console.log(newType)
         tempState.lastChange = 'type'
         this.setState({ buttonProps: tempState }, () => {
-          setTimeout(() => this.booleanPropRotator(component), 2000)
+          setTimeout(() => this.booleanPropRotator(component), 1000)
         })
       }
     }
@@ -110,7 +110,7 @@ export default class ShowRoom extends Component {
     return theArray[index]
   }
   render () {
-    const { openDialog, buttonProps } = this.state
+    const { openDialog, buttonProps, buttonZoomed } = this.state
     return (
       <div className='SNG__showroom'>
         <Presentor
@@ -174,28 +174,30 @@ export default class ShowRoom extends Component {
 
         <Presentor settings={{ type: 'simple', full: true }}>
           <Grid>
-            <Row middle='xs' style={{ marginTop: '4rem' }}>
+            <Row middle='xs' center='xs' style={{ marginTop: '4rem' }}>
               <Col xs={12}>
-                <Header type='spaced' weight={400}>
+                <Header type='spaced' align='center' weight={400}>
                   Buttons
                 </Header>
-                <Header type='xxlg' weight={100} capital>
+                <Header type='xxlg' align='center' weight={100} capital>
                   <GradientText weight={100}>Minimally</GradientText>{' '}
                   Progressive
                 </Header>
                 <Spacer />
               </Col>
               <Col xs={12} sm={10}>
-                <Button
-                  type={buttonProps.type}
-                  round={buttonProps.round}
-                  soft={buttonProps.soft}
-                  busy={buttonProps.busy}
-                  done={buttonProps.done}
-                  icon={<span className='fa fa-home' />}
-                >
-                  Click me
-                </Button>
+                <Zoomer zoomed={buttonZoomed}>
+                  <Button
+                    type={buttonProps.type}
+                    round={buttonProps.round}
+                    soft={buttonProps.soft}
+                    busy={buttonProps.busy}
+                    done={buttonProps.done}
+                    icon={<span className='fa fa-home' />}
+                  >
+                    Click me
+                  </Button>
+                </Zoomer>
               </Col>
               <Col xs={12} sm={10}>
                 <Spacer lg />
@@ -204,7 +206,10 @@ export default class ShowRoom extends Component {
                   Play with it
                 </Button>
                 <Button to={'#'} type='link'>
-                  See Docs
+                  See docs
+                </Button>
+                <Button className='zoomer-trigger' type='link' onClick={() => this.setState({buttonZoomed: !buttonZoomed})}>
+                  {buttonZoomed ? 'Actual size' : 'Make it large'}
                 </Button>
               </Col>
             </Row>

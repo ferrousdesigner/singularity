@@ -24,6 +24,9 @@
 .SNG__button * {
   box-sizing: border-box;
 }
+.SNG__button > * {
+  transition: all 0.2s ease-in-out;
+}
 .SNG__button {
   display: inline-flex;
   justify-content: center;
@@ -43,6 +46,7 @@
   padding: 0 24px;
   min-width: 136px;
   position: relative;
+  line-height: 0;
   transition: all 0.25s ease;
   transform-origin: center;
   z-index: 1;
@@ -50,9 +54,15 @@
   background: transparent;
   vertical-align: top;
   box-sizing: border-box;
-  margin: 5px 15px 5px 0;
+  margin: 5px 0px 5px 0;
   font-weight: normal;
   position: relative;
+}
+.SNG__button:active {
+  transform: scale(0.97);
+}
+.SNG__button:not(:first-child) {
+  margin-left: 15px;
 }
 .SNG__button--big {
   height: 64px;
@@ -88,6 +98,19 @@
   border-radius: 30px;
 }
 //Colors and background
+.SNG__button.SNG__button--default {
+  background: var(--button__default--background);
+  border: 1px solid var(--button__default--border-color);
+}
+.SNG__button.SNG__button--default.SNG__button--disabled {
+  background: var(--button__default--disabled-background);
+  border-color: var(--button__default--disabled-color);
+  color: var(--button__default--disabled-color);
+  cursor: default;
+}
+.SNG__button.SNG__button--default.SNG__button--disabled .SNG__button--overlay {
+  opacity: 0;
+}
 .SNG__button.SNG__button--primary {
   border-color: var(--theme__color);
   background: var(--theme__color);
@@ -109,19 +132,6 @@
   color: var(--button-color-disabled);
   cursor: default;
 }
-.SNG__button.SNG__button--default {
-  background: var(--button__default--background);
-  border: 1px solid var(--button__default--border-color);
-}
-.SNG__button.SNG__button--default.SNG__button--disabled {
-  background: var(--button__default--disabled-background);
-  border-color: var(--button__default--disabled-color);
-  color: var(--button__default--disabled-color);
-  cursor: default;
-}
-.SNG__button.SNG__button--default.SNG__button--disabled .SNG__button--overlay {
-  opacity: 0;
-}
 
 .SNG__button.SNG__button--primary.SNG__button--disabled .done span,
 .SNG__button.SNG__button--secondary.SNG__button--disabled .done span {
@@ -142,6 +152,7 @@
 }
 .SNG__button.SNG__button--secondary.SNG__button--done * {
   color: var(--theme__color);
+  transition: all 0.2s ease-in-out;
 }
 .SNG__button.SNG__button--busy:hover,
 .SNG__button.SNG__button--done:hover {
@@ -205,7 +216,10 @@
 .SNG__button--icon {
   width: 20px;
   height: 20px;
+  display: flex;
   margin-right: 5px;
+  align-items: center;
+  justify-content: center;
 }
 .SNG__button--icon * {
   fill: inherit;
@@ -227,7 +241,7 @@
   }
 }
 .SNG__button .done span {
-  font-size: 16px;
+  font-size: 14px;
   color: white;
   margin-left: 5px;
   opacity: 0;
@@ -325,7 +339,7 @@ $curve: cubic-bezier(0.65, 0, 0.45, 1);
     font-size: 14px;
     margin-right: 0;
     margin-left: 0;
-    height: 40px;
+    height: 48px;
   }
   .SNG__button.SNG__button--link {
     min-width: auto;

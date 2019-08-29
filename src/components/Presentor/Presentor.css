@@ -176,7 +176,7 @@ div[class^="SNG__presentor--smooth-"] {
     letter-spacing: 2rem;
     margin-left: 2rem;
     font-size: 5vmin;
-    animation: floatText 4s cubic-bezier(0.55, 0.09, 0.68, 0.53) infinite; }
+    animation: floatText 20s cubic-bezier(0.55, 0.09, 0.68, 0.53) infinite; }
   .SNG__presentor--banner::after,
   .SNG__presentor--banner > span {
     display: none;
