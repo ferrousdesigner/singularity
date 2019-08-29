@@ -51,7 +51,7 @@ export default class ShowRoom extends Component {
         busy: false,
         type: 'secondary',
         soft: true,
-        lastChange: 'type',
+        lastChange: 'type'
       }
     }
   }
@@ -208,7 +208,11 @@ export default class ShowRoom extends Component {
                 <Button to={'#'} type='link'>
                   See docs
                 </Button>
-                <Button className='zoomer-trigger' type='link' onClick={() => this.setState({buttonZoomed: !buttonZoomed})}>
+                <Button
+                  className='zoomer-trigger'
+                  type='link'
+                  onClick={() => this.setState({ buttonZoomed: !buttonZoomed })}
+                >
                   {buttonZoomed ? 'Actual size' : 'Make it large'}
                 </Button>
               </Col>
@@ -253,8 +257,7 @@ export default class ShowRoom extends Component {
         <div
           style={{
             marginTop: '10rem',
-            background:
-              'linear-gradient(315deg, rgb(81, 81, 81) 0%, rgb(52, 52, 52) 59%, rgb(42, 42, 42) 100%)',
+            backgroundColor: 'rgb(255, 0, 106)',
             height: '10rem',
             display: 'flex',
             padding: '0 1rem',
@@ -265,7 +268,8 @@ export default class ShowRoom extends Component {
           <div
             style={{
               fontSize: '2rem',
-              marginLeft: '1rem'
+              marginLeft: '1rem',
+              fontWeight: 'normal'
             }}
           >
             Singularity UI 2018

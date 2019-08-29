@@ -59,7 +59,7 @@
   position: relative;
 }
 .SNG__button:active {
-  transform: scale(0.97);
+  transform: scale(0.95);
 }
 .SNG__button:not(:first-child) {
   margin-left: 15px;
@@ -204,6 +204,10 @@
   box-shadow: 0 0px 0px 2px var(--theme__color);
 }
 .SNG__button.SNG__button--primary:focus {
+  outline: none;
+  box-shadow: 0 0px 0px 2px white;
+}
+.SNG__button.SNG__button--secondary:focus {
   outline: none;
   box-shadow: 0 0px 0px 2px white;
 }
