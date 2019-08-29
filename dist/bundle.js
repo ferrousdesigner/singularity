@@ -160,6 +160,26 @@ if (false) { var throwOnDirectAccess, ReactIs; } else {
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _StyleMaker = _interopRequireDefault(__webpack_require__(16));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = _StyleMaker.default;
+exports.default = _default;
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports) {
 
 /*
@@ -241,7 +261,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -642,26 +662,6 @@ function updateLink (link, options, obj) {
 
 	if(oldSrc) URL.revokeObjectURL(oldSrc);
 }
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _StyleMaker = _interopRequireDefault(__webpack_require__(16));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _default = _StyleMaker.default;
-exports.default = _default;
 
 
 /***/ }),
@@ -1385,7 +1385,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1395,12 +1395,12 @@ if(false) {}
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".dark {\n  --theme__color: rgb(255, 0, 106);\n  --button-background: #222;\n  --button-color: #fff;\n  --button-background-hover: #00000044;\n  --button-background-disabled: #444444;\n  --button-color-disabled: #666666;\n  --button__second--border-color: var(--theme__color);\n  --button__second--background: rgba(255, 0, 106, 0.1);\n  --button__second--disabled-background: #111111;\n  --button__second--disabled-color: #888;\n  --button__default--border-color: #888;\n  --button__default--background: transparent;\n  --button__default--disabled-background: #111111;\n  --button__default--disabled-color: #888; }\n\n.SNG__button * {\n  box-sizing: border-box; }\n\n.SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  font-size: 14px;\n  border: none;\n  height: 48px;\n  padding: 0 24px;\n  min-width: 136px;\n  position: relative;\n  transition: all 0.25s ease;\n  transform-origin: center;\n  z-index: 1;\n  color: #fff;\n  background: transparent;\n  vertical-align: top;\n  box-sizing: border-box;\n  margin: 5px 15px 5px 0;\n  font-weight: normal;\n  position: relative; }\n\n.SNG__button--big {\n  height: 64px;\n  padding: 0 36px;\n  border-radius: 36px;\n  font-size: 16px; }\n\n.SNG__button.SNG__button.SNG__button--busy {\n  opacity: 0.7; }\n\n.SNG__button .SNG__button--overlay {\n  position: absolute;\n  left: 0;\n  top: 0px;\n  width: 100%;\n  height: 100%;\n  background: var(--button-background);\n  opacity: 0;\n  transition: all 0.2s ease;\n  z-index: -2; }\n\n.SNG__button:hover .SNG__button--overlay {\n  opacity: 0.2; }\n\n.SNG__button.SNG__button--less-round,\n.SNG__button.SNG__button--less-round .SNG__button--overlay {\n  border-radius: 8px; }\n\n.SNG__button.SNG__button--round,\n.SNG__button.SNG__button--round .SNG__button--overlay {\n  border-radius: 30px; }\n\n.SNG__button.SNG__button--primary {\n  border-color: var(--theme__color);\n  background: var(--theme__color); }\n\n.SNG__button.SNG__button--primary.SNG__button--disabled {\n  background: var(--button-background);\n  border-color: var(--button-background);\n  color: var(--button-color-disabled);\n  cursor: default; }\n\n.SNG__button.SNG__button--secondary {\n  border-color: var(--button__second--border-color);\n  border: 1px solid;\n  background-color: var(--button__second--background);\n  color: var(--theme__color); }\n\n.SNG__button.SNG__button--secondary.SNG__button--disabled {\n  border-color: var(--button-color-disabled);\n  color: var(--button-color-disabled);\n  cursor: default; }\n\n.SNG__button.SNG__button--default {\n  background: var(--button__default--background);\n  border: 1px solid var(--button__default--border-color); }\n\n.SNG__button.SNG__button--default.SNG__button--disabled {\n  background: var(--button__default--disabled-background);\n  border-color: var(--button__default--disabled-color);\n  color: var(--button__default--disabled-color);\n  cursor: default; }\n\n.SNG__button.SNG__button--default.SNG__button--disabled .SNG__button--overlay {\n  opacity: 0; }\n\n.SNG__button.SNG__button--primary.SNG__button--disabled .done span,\n.SNG__button.SNG__button--secondary.SNG__button--disabled .done span {\n  color: var(--button-color-disabled); }\n\n.SNG__button.SNG__button--busy .SNG__loader {\n  border-color: var(--button-color-disabled);\n  border-top-color: var(--button-color); }\n\n.SNG__button.SNG__button--primary.SNG__button--busy .SNG__loader {\n  border-color: var(--button-background-hover);\n  border-top-color: var(--button-color); }\n\n.SNG__button.SNG__button--secondary.SNG__button--busy .SNG__loader {\n  border-color: var(--button__default--border-color);\n  border-top-color: var(--theme__color); }\n\n.SNG__button.SNG__button--secondary.SNG__button--done * {\n  color: var(--theme__color); }\n\n.SNG__button.SNG__button--busy:hover,\n.SNG__button.SNG__button--done:hover {\n  cursor: default; }\n\n.SNG__button.SNG__button--busy:hover .SNG__button--overlay,\n.SNG__button.SNG__button--done:hover .SNG__button--overlay {\n  opacity: 0; }\n\n.SNG__button.SNG__button--disabled {\n  color: var(--button-color-disabled);\n  background: var(--button-background);\n  cursor: default; }\n\n.SNG__button.SNG__button--busy:hover {\n  cursor: default; }\n\n.SNG__button.SNG__button--busy:hover {\n  cursor: default; }\n\n.SNG__button--link {\n  padding: 0;\n  height: auto;\n  line-height: 1.5;\n  justify-content: flex-start;\n  min-width: auto;\n  color: #ffffffaa;\n  font-size: 15px;\n  background-color: transparent;\n  background: none;\n  transition: all 0.2s ease;\n  margin-right: 10px;\n  border-color: transparent; }\n\n.SNG__button--link + .SNG__button--link {\n  margin-left: 10px; }\n\n.SNG__button--link:hover {\n  transform: none;\n  color: #fff;\n  text-decoration: underline; }\n\n.SNG__button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme__color); }\n\n.SNG__button.SNG__button--primary:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px white; }\n\n.SNG__button.SNG__button--busy:focus,\n.SNG__button.SNG__button--disabled:focus {\n  outline: none;\n  box-shadow: none; }\n\n.SNG__button--icon {\n  width: 20px;\n  height: 20px;\n  margin-right: 5px; }\n\n.SNG__button--icon * {\n  fill: inherit;\n  color: inherit; }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 16px;\n  color: white;\n  margin-left: 5px;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out 0.4s forwards; }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%,\n  100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n\n.SNG__loader {\n  border: 16px solid var(--button-background-hover);\n  border-top: 16px solid var(--theme__color);\n  border-radius: 50%;\n  border-width: 4px;\n  margin-right: 8px;\n  width: 25px;\n  height: 25px;\n  animation: spin 1s linear infinite; }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n@media only screen and (max-width: 480px) {\n  .SNG__button.SNG__button--expand-on-mobile {\n    width: 100%;\n    font-size: 14px;\n    margin-right: 0;\n    margin-left: 0;\n    height: 40px; }\n  .SNG__button.SNG__button--link {\n    min-width: auto;\n    width: auto;\n    margin: 5px 10px 5px 0; }\n  .checkmark {\n    width: 20px;\n    height: 20px; }\n  .SNG__button:hover .SNG__button--overlay {\n    opacity: 0; } }\n", ""]);
+exports.push([module.i, ".dark {\n  --theme__color: rgb(255, 0, 106);\n  --button-background: #222;\n  --button-color: #fff;\n  --button-background-hover: #00000044;\n  --button-background-disabled: #444444;\n  --button-color-disabled: #666666;\n  --button__second--border-color: var(--theme__color);\n  --button__second--background: rgba(255, 0, 106, 0.1);\n  --button__second--disabled-background: #111111;\n  --button__second--disabled-color: #888;\n  --button__default--border-color: #888;\n  --button__default--background: transparent;\n  --button__default--disabled-background: #111111;\n  --button__default--disabled-color: #888; }\n\n.SNG__button * {\n  box-sizing: border-box; }\n\n.SNG__button > * {\n  transition: all 0.2s ease-in-out; }\n\n.SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  font-size: 14px;\n  border: none;\n  height: 48px;\n  padding: 0 24px;\n  min-width: 136px;\n  position: relative;\n  line-height: 0;\n  transition: all 0.25s ease;\n  transform-origin: center;\n  z-index: 1;\n  color: #fff;\n  background: transparent;\n  vertical-align: top;\n  box-sizing: border-box;\n  margin: 5px 0px 5px 0;\n  font-weight: normal;\n  position: relative; }\n\n.SNG__button:active {\n  transform: scale(0.97); }\n\n.SNG__button:not(:first-child) {\n  margin-left: 15px; }\n\n.SNG__button--big {\n  height: 64px;\n  padding: 0 36px;\n  border-radius: 36px;\n  font-size: 16px; }\n\n.SNG__button.SNG__button.SNG__button--busy {\n  opacity: 0.7; }\n\n.SNG__button .SNG__button--overlay {\n  position: absolute;\n  left: 0;\n  top: 0px;\n  width: 100%;\n  height: 100%;\n  background: var(--button-background);\n  opacity: 0;\n  transition: all 0.2s ease;\n  z-index: -2; }\n\n.SNG__button:hover .SNG__button--overlay {\n  opacity: 0.2; }\n\n.SNG__button.SNG__button--less-round,\n.SNG__button.SNG__button--less-round .SNG__button--overlay {\n  border-radius: 8px; }\n\n.SNG__button.SNG__button--round,\n.SNG__button.SNG__button--round .SNG__button--overlay {\n  border-radius: 30px; }\n\n.SNG__button.SNG__button--default {\n  background: var(--button__default--background);\n  border: 1px solid var(--button__default--border-color); }\n\n.SNG__button.SNG__button--default.SNG__button--disabled {\n  background: var(--button__default--disabled-background);\n  border-color: var(--button__default--disabled-color);\n  color: var(--button__default--disabled-color);\n  cursor: default; }\n\n.SNG__button.SNG__button--default.SNG__button--disabled .SNG__button--overlay {\n  opacity: 0; }\n\n.SNG__button.SNG__button--primary {\n  border-color: var(--theme__color);\n  background: var(--theme__color); }\n\n.SNG__button.SNG__button--primary.SNG__button--disabled {\n  background: var(--button-background);\n  border-color: var(--button-background);\n  color: var(--button-color-disabled);\n  cursor: default; }\n\n.SNG__button.SNG__button--secondary {\n  border-color: var(--button__second--border-color);\n  border: 1px solid;\n  background-color: var(--button__second--background);\n  color: var(--theme__color); }\n\n.SNG__button.SNG__button--secondary.SNG__button--disabled {\n  border-color: var(--button-color-disabled);\n  color: var(--button-color-disabled);\n  cursor: default; }\n\n.SNG__button.SNG__button--primary.SNG__button--disabled .done span,\n.SNG__button.SNG__button--secondary.SNG__button--disabled .done span {\n  color: var(--button-color-disabled); }\n\n.SNG__button.SNG__button--busy .SNG__loader {\n  border-color: var(--button-color-disabled);\n  border-top-color: var(--button-color); }\n\n.SNG__button.SNG__button--primary.SNG__button--busy .SNG__loader {\n  border-color: var(--button-background-hover);\n  border-top-color: var(--button-color); }\n\n.SNG__button.SNG__button--secondary.SNG__button--busy .SNG__loader {\n  border-color: var(--button__default--border-color);\n  border-top-color: var(--theme__color); }\n\n.SNG__button.SNG__button--secondary.SNG__button--done * {\n  color: var(--theme__color);\n  transition: all 0.2s ease-in-out; }\n\n.SNG__button.SNG__button--busy:hover,\n.SNG__button.SNG__button--done:hover {\n  cursor: default; }\n\n.SNG__button.SNG__button--busy:hover .SNG__button--overlay,\n.SNG__button.SNG__button--done:hover .SNG__button--overlay {\n  opacity: 0; }\n\n.SNG__button.SNG__button--disabled {\n  color: var(--button-color-disabled);\n  background: var(--button-background);\n  cursor: default; }\n\n.SNG__button.SNG__button--busy:hover {\n  cursor: default; }\n\n.SNG__button.SNG__button--busy:hover {\n  cursor: default; }\n\n.SNG__button--link {\n  padding: 0;\n  height: auto;\n  line-height: 1.5;\n  justify-content: flex-start;\n  min-width: auto;\n  color: #ffffffaa;\n  font-size: 15px;\n  background-color: transparent;\n  background: none;\n  transition: all 0.2s ease;\n  margin-right: 10px;\n  border-color: transparent; }\n\n.SNG__button--link + .SNG__button--link {\n  margin-left: 10px; }\n\n.SNG__button--link:hover {\n  transform: none;\n  color: #fff;\n  text-decoration: underline; }\n\n.SNG__button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme__color); }\n\n.SNG__button.SNG__button--primary:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px white; }\n\n.SNG__button.SNG__button--busy:focus,\n.SNG__button.SNG__button--disabled:focus {\n  outline: none;\n  box-shadow: none; }\n\n.SNG__button--icon {\n  width: 20px;\n  height: 20px;\n  display: flex;\n  margin-right: 5px;\n  align-items: center;\n  justify-content: center; }\n\n.SNG__button--icon * {\n  fill: inherit;\n  color: inherit; }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 14px;\n  color: white;\n  margin-left: 5px;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out 0.4s forwards; }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%,\n  100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n\n.SNG__loader {\n  border: 16px solid var(--button-background-hover);\n  border-top: 16px solid var(--theme__color);\n  border-radius: 50%;\n  border-width: 4px;\n  margin-right: 8px;\n  width: 25px;\n  height: 25px;\n  animation: spin 1s linear infinite; }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n@media only screen and (max-width: 480px) {\n  .SNG__button.SNG__button--expand-on-mobile {\n    width: 100%;\n    font-size: 14px;\n    margin-right: 0;\n    margin-left: 0;\n    height: 48px; }\n  .SNG__button.SNG__button--link {\n    min-width: auto;\n    width: auto;\n    margin: 5px 10px 5px 0; }\n  .checkmark {\n    width: 20px;\n    height: 20px; }\n  .SNG__button:hover .SNG__button--overlay {\n    opacity: 0; } }\n", ""]);
 
 // exports
 
@@ -1519,7 +1519,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1529,7 +1529,7 @@ if(false) {}
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -1558,7 +1558,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1568,12 +1568,12 @@ if(false) {}
 /* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".SNG__presentor {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  animation: appear 5s ease-in-out forwards; }\n\n@keyframes appear {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n.SNG__presentor--banner {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 40rem;\n  margin: calc((100vh - 40rem) / 2) auto;\n  height: 40rem;\n  text-align: center;\n  position: relative;\n  background-color: #000;\n  border-radius: 50%; }\n\n@keyframes float {\n  0% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; }\n  50% {\n    width: 40vmin;\n    margin: calc((100vh - 40vmin) / 2) auto;\n    height: 40vmin; }\n  100% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; } }\n\n.SNG__presentor--banner::before,\n.SNG__presentor--banner::after,\n.SNG__presentor--banner > span {\n  content: \"\";\n  position: absolute;\n  background: -webkit-linear-gradient(transparent, transparent), url(https://assets.pcmag.com/media/images/457693-interstellar-black-hole.jpg?thumb=y&width=810&height=456) repeat;\n  background: -o-linear-gradient(transparent, transparent);\n  left: -25%;\n  top: -25%;\n  width: 150%;\n  height: 150%;\n  filter: blur(5rem);\n  z-index: -3;\n  border-radius: 50%;\n  animation: moveBackground 3000s linear infinite; }\n\n.SNG__presentor--banner::before {\n  filter: blur(1rem);\n  background: white;\n  left: -0.5rem;\n  top: -0.5rem;\n  z-index: -1;\n  width: calc(100% + 1rem);\n  height: calc(100% + 1rem); }\n\n.SNG__presentor--banner > span {\n  transform: skewX(60deg);\n  left: 0;\n  top: 0;\n  width: calc(100%);\n  height: calc(100%);\n  opacity: 1;\n  z-index: 0; }\n\n.SNG__presentor--banner > div:first-child {\n  display: block;\n  width: 100vw;\n  letter-spacing: 3rem;\n  margin-left: 2rem;\n  color: white;\n  z-index: 2;\n  font-weight: 400;\n  font-size: 5vmin;\n  margin-bottom: 1rem;\n  animation: floatText 10s linear infinite; }\n\n.SNG__presentor--scroll {\n  perspective-origin: center;\n  width: 100%; }\n\ndiv[class^=\"SNG__animate--\"] {\n  opacity: 0;\n  transform-origin: center;\n  transform-style: preserve-3d;\n  transition: all 0.3s ease-in-out; }\n\ndiv[class^=\"SNG__animate--right-\"] {\n  transform: rotate(5deg) translateX(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--left-\"] {\n  transform: rotate(-5deg) translateX(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--top-\"] {\n  transform: rotate(-5deg) translateY(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--bottom-\"] {\n  transform: rotate(5deg) translateY(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--back-\"] {\n  transform: rotate(0deg) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--front-\"] {\n  transform: rotate(0deg) translateZ(20rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--\"].animate {\n  opacity: 1;\n  transform: rotate(0deg) translateX(0rem) translateY(0rem) translateZ(0rem) scale(1); }\n\n@keyframes moveBackground {\n  0% {\n    background-position-y: 0; }\n  50% {\n    background-position-y: 10000%; }\n  100% {\n    background-position-y: 0; } }\n\n@keyframes floatText {\n  0% {\n    transform: scale(1); }\n  50% {\n    transform: scale(1.2); }\n  100% {\n    transform: scale(1); } }\n\n.SNG__presentor--banner > div:last-child {\n  font-weight: 300;\n  font-size: 2rem;\n  width: 100vw;\n  z-index: 2; }\n\n.SNG__presentor--simple,\n.SNG__presentor--simple-full {\n  width: 100%;\n  padding: 2rem;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n.SNG__presentor--simple-full {\n  padding: 2rem;\n  height: 100vh;\n  width: 100vw; }\n\ndiv[class^=\"SNG__presentor--smooth-\"] {\n  overflow-y: hidden;\n  width: 100%;\n  transition: height 0.25s ease-in-out; }\n\n@media only screen and (max-width: 480px) {\n  body {\n    overflow-x: hidden; }\n  .SNG__presentor--banner:before {\n    background: #ff0b0b;\n    left: -6.5rem;\n    top: -15.5rem;\n    z-index: -1;\n    width: calc(100% + 50rem);\n    height: calc(100% + 34rem);\n    filter: blur(16rem);\n    animation: none; }\n  .SNG__presentor--banner {\n    width: 25rem;\n    margin: calc((100vh - 25rem) / 2) auto;\n    height: 25rem; }\n  .SNG__presentor--banner > div:first-child {\n    letter-spacing: 2rem;\n    margin-left: 2rem;\n    font-size: 5vmin;\n    animation: floatText 4s cubic-bezier(0.55, 0.09, 0.68, 0.53) infinite; }\n  .SNG__presentor--banner::after,\n  .SNG__presentor--banner > span {\n    display: none;\n    content: \"\";\n    left: -50%;\n    top: -50%;\n    width: 200%;\n    height: 200%;\n    animation: none; }\n  .SNG__presentor--banner > div:last-child {\n    font-size: 10px; } }\n", ""]);
+exports.push([module.i, ".SNG__presentor {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  animation: appear 5s ease-in-out forwards; }\n\n@keyframes appear {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n.SNG__presentor--banner {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 40rem;\n  margin: calc((100vh - 40rem) / 2) auto;\n  height: 40rem;\n  text-align: center;\n  position: relative;\n  background-color: #000;\n  border-radius: 50%; }\n\n@keyframes float {\n  0% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; }\n  50% {\n    width: 40vmin;\n    margin: calc((100vh - 40vmin) / 2) auto;\n    height: 40vmin; }\n  100% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; } }\n\n.SNG__presentor--banner::before,\n.SNG__presentor--banner::after,\n.SNG__presentor--banner > span {\n  content: \"\";\n  position: absolute;\n  background: -webkit-linear-gradient(transparent, transparent), url(https://assets.pcmag.com/media/images/457693-interstellar-black-hole.jpg?thumb=y&width=810&height=456) repeat;\n  background: -o-linear-gradient(transparent, transparent);\n  left: -25%;\n  top: -25%;\n  width: 150%;\n  height: 150%;\n  filter: blur(5rem);\n  z-index: -3;\n  border-radius: 50%;\n  animation: moveBackground 3000s linear infinite; }\n\n.SNG__presentor--banner::before {\n  filter: blur(1rem);\n  background: white;\n  left: -0.5rem;\n  top: -0.5rem;\n  z-index: -1;\n  width: calc(100% + 1rem);\n  height: calc(100% + 1rem); }\n\n.SNG__presentor--banner > span {\n  transform: skewX(60deg);\n  left: 0;\n  top: 0;\n  width: calc(100%);\n  height: calc(100%);\n  opacity: 1;\n  z-index: 0; }\n\n.SNG__presentor--banner > div:first-child {\n  display: block;\n  width: 100vw;\n  letter-spacing: 3rem;\n  margin-left: 2rem;\n  color: white;\n  z-index: 2;\n  font-weight: 400;\n  font-size: 5vmin;\n  margin-bottom: 1rem;\n  animation: floatText 10s linear infinite; }\n\n.SNG__presentor--scroll {\n  perspective-origin: center;\n  width: 100%; }\n\ndiv[class^=\"SNG__animate--\"] {\n  opacity: 0;\n  transform-origin: center;\n  transform-style: preserve-3d;\n  transition: all 0.3s ease-in-out; }\n\ndiv[class^=\"SNG__animate--right-\"] {\n  transform: rotate(5deg) translateX(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--left-\"] {\n  transform: rotate(-5deg) translateX(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--top-\"] {\n  transform: rotate(-5deg) translateY(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--bottom-\"] {\n  transform: rotate(5deg) translateY(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--back-\"] {\n  transform: rotate(0deg) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--front-\"] {\n  transform: rotate(0deg) translateZ(20rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--\"].animate {\n  opacity: 1;\n  transform: rotate(0deg) translateX(0rem) translateY(0rem) translateZ(0rem) scale(1); }\n\n@keyframes moveBackground {\n  0% {\n    background-position-y: 0; }\n  50% {\n    background-position-y: 10000%; }\n  100% {\n    background-position-y: 0; } }\n\n@keyframes floatText {\n  0% {\n    transform: scale(1); }\n  50% {\n    transform: scale(1.2); }\n  100% {\n    transform: scale(1); } }\n\n.SNG__presentor--banner > div:last-child {\n  font-weight: 300;\n  font-size: 2rem;\n  width: 100vw;\n  z-index: 2; }\n\n.SNG__presentor--simple,\n.SNG__presentor--simple-full {\n  width: 100%;\n  padding: 2rem;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n.SNG__presentor--simple-full {\n  padding: 2rem;\n  height: 100vh;\n  width: 100vw; }\n\ndiv[class^=\"SNG__presentor--smooth-\"] {\n  overflow-y: hidden;\n  width: 100%;\n  transition: height 0.25s ease-in-out; }\n\n@media only screen and (max-width: 480px) {\n  body {\n    overflow-x: hidden; }\n  .SNG__presentor--banner:before {\n    background: #ff0b0b;\n    left: -6.5rem;\n    top: -15.5rem;\n    z-index: -1;\n    width: calc(100% + 50rem);\n    height: calc(100% + 34rem);\n    filter: blur(16rem);\n    animation: none; }\n  .SNG__presentor--banner {\n    width: 25rem;\n    margin: calc((100vh - 25rem) / 2) auto;\n    height: 25rem; }\n  .SNG__presentor--banner > div:first-child {\n    letter-spacing: 2rem;\n    margin-left: 2rem;\n    font-size: 5vmin;\n    animation: floatText 20s cubic-bezier(0.55, 0.09, 0.68, 0.53) infinite; }\n  .SNG__presentor--banner::after,\n  .SNG__presentor--banner > span {\n    display: none;\n    content: \"\";\n    left: -50%;\n    top: -50%;\n    width: 200%;\n    height: 200%;\n    animation: none; }\n  .SNG__presentor--banner > div:last-child {\n    font-size: 10px; } }\n", ""]);
 
 // exports
 
@@ -1597,7 +1597,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1607,7 +1607,7 @@ if(false) {}
 /* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -1636,7 +1636,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1646,7 +1646,7 @@ if(false) {}
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -1675,7 +1675,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1685,7 +1685,7 @@ if(false) {}
 /* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -1792,7 +1792,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1802,7 +1802,7 @@ if(false) {}
 /* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -1982,7 +1982,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(5)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1992,7 +1992,7 @@ if(false) {}
 /* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -2018,7 +2018,7 @@ var react_dom = __webpack_require__(6);
 var react_dom_default = /*#__PURE__*/__webpack_require__.n(react_dom);
 
 // EXTERNAL MODULE: ./node_modules/stylemaker/lib/index.js
-var lib = __webpack_require__(5);
+var lib = __webpack_require__(3);
 var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
 
 // EXTERNAL MODULE: ./node_modules/prop-types/index.js
@@ -2096,6 +2096,12 @@ function (_Component) {
   }
 
   _createClass(Button, [{
+    key: "handleClick",
+    value: function handleClick(e, callBack) {
+      e.preventDefault();
+      if (callBack) callBack();
+    }
+  }, {
     key: "getClass",
     value: function getClass() {
       var _this$props = this.props,
@@ -2111,7 +2117,7 @@ function (_Component) {
       if (round) classString += ' SNG__button--round';
       if (type === 'link') classString += ' SNG__button--link';
       if (type === 'primary') classString += ' SNG__button--primary';
-      if (type === 'default' || !type) classString += ' SNG__button--default';
+      if (type === 'default' || !type || !['link', 'primary', 'default', 'seconadary'].includes(type)) classString += ' SNG__button--default';
       if (type === 'secondary') classString += ' SNG__button--secondary';
       if (big) classString += ' SNG__button--big';
       if (soft) classString += ' SNG__button--less-round';
@@ -2124,6 +2130,8 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       var _this$props2 = this.props,
           done = _this$props2.done,
           busy = _this$props2.busy,
@@ -2132,15 +2140,18 @@ function (_Component) {
           doneMessage = _this$props2.doneMessage,
           style = _this$props2.style,
           icon = _this$props2.icon,
-          onClick = _this$props2.onClick,
+          _onClick = _this$props2.onClick,
           disabled = _this$props2.disabled,
           type = _this$props2.type,
-          to = _this$props2.to;
+          to = _this$props2.to,
+          className = _this$props2.className;
       return type === 'link' ? react_default.a.createElement("a", {
         href: to,
-        className: this.getClass(),
+        className: this.getClass() + (className ? ' ' + className : ''),
         style: style,
-        onClick: onClick
+        onClick: function onClick(e) {
+          return _this.handleClick(e, _onClick);
+        }
       }, react_default.a.createElement("span", {
         className: "SNG__button--overlay"
       }), icon && !done && !busy && react_default.a.createElement("span", {
@@ -2148,7 +2159,7 @@ function (_Component) {
       }, icon), busy && !disabled && !done && Button_loader(), done ? Button_check(doneMessage) : children) : react_default.a.createElement("button", {
         className: this.getClass(),
         style: style,
-        onClick: onClick,
+        onClick: _onClick,
         submit: submit ? 'submit' : 'button'
       }, react_default.a.createElement("span", {
         className: "SNG__button--overlay"
@@ -3590,7 +3601,70 @@ ComponentDisplayer_ComponentDisplayer_ComponentDisplayer.defaultProps = {
 };
 // CONCATENATED MODULE: ./src/tools/ComponentDisplayer/index.js
 
+// CONCATENATED MODULE: ./src/tools/Zoomer.js
+function Zoomer_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Zoomer_typeof = function _typeof(obj) { return typeof obj; }; } else { Zoomer_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Zoomer_typeof(obj); }
+
+function Zoomer_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function Zoomer_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function Zoomer_createClass(Constructor, protoProps, staticProps) { if (protoProps) Zoomer_defineProperties(Constructor.prototype, protoProps); if (staticProps) Zoomer_defineProperties(Constructor, staticProps); return Constructor; }
+
+function Zoomer_possibleConstructorReturn(self, call) { if (call && (Zoomer_typeof(call) === "object" || typeof call === "function")) { return call; } return Zoomer_assertThisInitialized(self); }
+
+function Zoomer_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function Zoomer_getPrototypeOf(o) { Zoomer_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return Zoomer_getPrototypeOf(o); }
+
+function Zoomer_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) Zoomer_setPrototypeOf(subClass, superClass); }
+
+function Zoomer_setPrototypeOf(o, p) { Zoomer_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return Zoomer_setPrototypeOf(o, p); }
+
+
+
+var Zoomer_css = "\n.zoomer-default {\n    transition: all 0.2s ease;\n    transform: scale(1);\n    margin:0;\n}\n\n.zoomer-default.zoomed {\n    transform: scale(3);\n    margin: 12% 0 10% 0;\n}\n\n@media only screen and (max-width: 480px) {\n    .zoomer-default.zoomed {\n        transform: scale(1);\n        margin: 0;\n    }\n    .zoomer-trigger {\n        display: none;\n    }\n}\n";
+
+var Zoomer_Zoomer =
+/*#__PURE__*/
+function (_Component) {
+  Zoomer_inherits(Zoomer, _Component);
+
+  function Zoomer() {
+    Zoomer_classCallCheck(this, Zoomer);
+
+    return Zoomer_possibleConstructorReturn(this, Zoomer_getPrototypeOf(Zoomer).apply(this, arguments));
+  }
+
+  Zoomer_createClass(Zoomer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      lib_default()(Zoomer_css);
+    }
+  }, {
+    key: "getClass",
+    value: function getClass(zoomed) {
+      var cS = 'zoomer-default';
+      if (zoomed) cS += ' zoomed';
+      return cS;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          zoomed = _this$props.zoomed,
+          children = _this$props.children;
+      return react_default.a.createElement("div", {
+        className: this.getClass(zoomed)
+      }, children);
+    }
+  }]);
+
+  return Zoomer;
+}(react["Component"]);
+
+/* harmony default export */ var tools_Zoomer = (Zoomer_Zoomer);
 // CONCATENATED MODULE: ./src/tools/index.js
+
 
 
 // CONCATENATED MODULE: ./src/Showroom.js
@@ -3615,31 +3689,31 @@ function Showroom_setPrototypeOf(o, p) { Showroom_setPrototypeOf = Object.setPro
 
 
 
-
-var ButtonProps = {
-  colors: [['red', 'blue', 'green'], ['purple', 'lightblue', 'green']],
-  disabled: [true, false],
-  doing: [true, false],
-  done: [true, false],
-  doneMessage: ['Completed', 'Done!'],
-  icon: ['Icon'],
-  label: ["I'm good button", "I'm a great button"],
-  labelColor: ['white', 'black'],
-  round: [true, false],
-  type: ['primary', 'success', 'info', 'warning', 'danger', 'modern', 'clear']
-};
-var ButtonPropsDesc = {
-  colors: 'An array of colors which make a animated gradient background. Note: Please choose button `type` props as `modern` to enable gradient.',
-  disabled: 'A boolean prop used to disable the button',
-  doing: 'A boolean props which indicates processing',
-  done: 'A boolean props which indicates process is completed',
-  icon: 'A react child which can be used as an icon.',
-  doneMessage: 'A small string prop to convey completion message.',
-  label: 'A string prop which makes the label of the button',
-  labelColor: 'A string prop for the color of label text',
-  round: 'A boolen prop which makes the button corners round',
-  type: 'A string prop which defines the type of the button'
-};
+ // const ButtonProps = {
+//   colors: [['red', 'blue', 'green'], ['purple', 'lightblue', 'green']],
+//   disabled: [true, false],
+//   doing: [true, false],
+//   done: [true, false],
+//   doneMessage: ['Completed', 'Done!'],
+//   icon: ['Icon'],
+//   label: ["I'm good button", "I'm a great button"],
+//   labelColor: ['white', 'black'],
+//   round: [true, false],
+//   type: ['primary', 'success', 'info', 'warning', 'danger', 'modern', 'clear']
+// }
+// const ButtonPropsDesc = {
+//   colors:
+//     'An array of colors which make a animated gradient background. Note: Please choose button `type` props as `modern` to enable gradient.',
+//   disabled: 'A boolean prop used to disable the button',
+//   doing: 'A boolean props which indicates processing',
+//   done: 'A boolean props which indicates process is completed',
+//   icon: 'A react child which can be used as an icon.',
+//   doneMessage: 'A small string prop to convey completion message.',
+//   label: 'A string prop which makes the label of the button',
+//   labelColor: 'A string prop for the color of label text',
+//   round: 'A boolen prop which makes the button corners round',
+//   type: 'A string prop which defines the type of the button'
+// }
 
 var Showroom_GradientText = function GradientText(props) {
   return react_default.a.createElement("span", {
@@ -3659,6 +3733,7 @@ function (_Component) {
 
     _this = Showroom_possibleConstructorReturn(this, Showroom_getPrototypeOf(ShowRoom).call(this, props));
     _this.state = {
+      buttonZoomed: true,
       openDialog: false,
       buttonProps: {
         round: false,
@@ -3700,10 +3775,9 @@ function (_Component) {
           this.setState({
             buttonProps: tempState
           }, function () {
-            var lastChange = buttonProps.lastChange;
             setTimeout(function () {
               return _this2.stringPropRotator(component);
-            }, 2000);
+            }, 1000);
           });
           break;
       }
@@ -3719,7 +3793,7 @@ function (_Component) {
             var buttonProps = this.state.buttonProps;
             var tempState = buttonProps;
             var lastChange = buttonProps.lastChange;
-            var newType = this.getNextValueFromArray(tempState['type'], ['primary', 'alt', 'default']);
+            var newType = this.getNextValueFromArray(tempState['type'], ['primary', 'secondary', 'default']);
             tempState['type'] = newType;
             console.log(newType);
             tempState.lastChange = 'type';
@@ -3728,7 +3802,7 @@ function (_Component) {
             }, function () {
               setTimeout(function () {
                 return _this3.booleanPropRotator(component);
-              }, 2000);
+              }, 1000);
             });
           }
       }
@@ -3753,7 +3827,8 @@ function (_Component) {
 
       var _this$state = this.state,
           openDialog = _this$state.openDialog,
-          buttonProps = _this$state.buttonProps;
+          buttonProps = _this$state.buttonProps,
+          buttonZoomed = _this$state.buttonZoomed;
       return react_default.a.createElement("div", {
         className: "SNG__showroom"
       }, react_default.a.createElement(Presentor_Presentor_Presentor, {
@@ -3792,6 +3867,7 @@ function (_Component) {
         }
       }, react_default.a.createElement(react_flexbox_grid_lib["Grid"], null, react_default.a.createElement(react_flexbox_grid_lib["Row"], {
         middle: "xs",
+        center: "xs",
         style: {
           marginTop: '4rem'
         }
@@ -3799,9 +3875,11 @@ function (_Component) {
         xs: 12
       }, react_default.a.createElement(Header_Header_Header, {
         type: "spaced",
+        align: "center",
         weight: 400
       }, "Buttons"), react_default.a.createElement(Header_Header_Header, {
         type: "xxlg",
+        align: "center",
         weight: 100,
         capital: true
       }, react_default.a.createElement(Showroom_GradientText, {
@@ -3809,6 +3887,8 @@ function (_Component) {
       }, "Minimally"), ' ', "Progressive"), react_default.a.createElement(components_Spacer_Spacer, null)), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
         xs: 12,
         sm: 10
+      }, react_default.a.createElement(tools_Zoomer, {
+        zoomed: buttonZoomed
       }, react_default.a.createElement(Button_Button_Button, {
         type: buttonProps.type,
         round: buttonProps.round,
@@ -3818,7 +3898,7 @@ function (_Component) {
         icon: react_default.a.createElement("span", {
           className: "fa fa-home"
         })
-      }, "Click me")), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
+      }, "Click me"))), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
         xs: 12,
         sm: 10
       }, react_default.a.createElement(components_Spacer_Spacer, {
@@ -3831,7 +3911,15 @@ function (_Component) {
       }, "Play with it"), react_default.a.createElement(Button_Button_Button, {
         to: '#',
         type: "link"
-      }, "See Docs"))), react_default.a.createElement(tools_HalfPic, {
+      }, "See docs"), react_default.a.createElement(Button_Button_Button, {
+        className: "zoomer-trigger",
+        type: "link",
+        onClick: function onClick() {
+          return _this4.setState({
+            buttonZoomed: !buttonZoomed
+          });
+        }
+      }, buttonZoomed ? 'Actual size' : 'Make it large'))), react_default.a.createElement(tools_HalfPic, {
         right: true
       }))), react_default.a.createElement(Presentor_Presentor_Presentor, {
         settings: {
