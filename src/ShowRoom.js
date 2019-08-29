@@ -56,7 +56,7 @@ export default class ShowRoom extends Component {
     }
   }
   componentDidMount () {
-    // this.stringPropRotator('button')
+    this.stringPropRotator('button')
   }
   booleanPropRotator (component) {
     console.log('Boolean Called')

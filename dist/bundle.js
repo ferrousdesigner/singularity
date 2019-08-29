@@ -3749,7 +3749,8 @@ function (_Component) {
 
   Showroom_createClass(ShowRoom, [{
     key: "componentDidMount",
-    value: function componentDidMount() {// this.stringPropRotator('button')
+    value: function componentDidMount() {
+      this.stringPropRotator('button');
     }
   }, {
     key: "booleanPropRotator",
