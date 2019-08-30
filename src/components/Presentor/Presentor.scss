@@ -179,26 +179,14 @@ div[class^="SNG__presentor--smooth-"] {
   body {
     overflow-x: hidden;
   }
-  .SNG__presentor--banner:before {
-    background: #ff0b0b;
-    left: -6.5rem;
-    top: -15.5rem;
-    z-index: -1;
-    width: calc(100% + 50rem);
-    height: calc(100% + 34rem);
-    filter: blur(8rem);
-    animation: none;
-  }
-  .SNG__presentor--banner {
-    width: 25rem;
-    margin: calc((100vh - 25rem) / 2) auto;
-    height: 25rem;
-  }
+
   .SNG__presentor--banner > div:first-child {
     letter-spacing: 2rem;
     margin-left: 2rem;
     font-size: 5vmin;
-    animation: floatText 20s cubic-bezier(0.55, 0.09, 0.68, 0.53) infinite
+    animation: floatText 20s cubic-bezier(0.55, 0.09, 0.68, 0.53) infinite;
+    margin-top: 25rem;
+    z-index: 5;
   }
   .SNG__presentor--banner::after,
   .SNG__presentor--banner > span {
@@ -209,8 +197,119 @@ div[class^="SNG__presentor--smooth-"] {
     width: 200%;
     height: 200%;
     animation: none;
+    z-index: 5;
   }
   .SNG__presentor--banner > div:last-child {
     font-size: 10px;
+    z-index: 5;
+  }
+  .SNG__presentor--banner:before {
+    background: rgb(255, 0, 106);
+    left: 0rem;
+    top: -20rem;
+    z-index: -1;
+    width: calc(400%);
+    height: calc(400%);
+    animation: none;
+    filter: none;
+    box-shadow: 0 0 40vw 40px rgb(255, 0, 106);
+    animation: moveSun 10s linear infinite;
+  }
+  @keyframes moveSun {
+    0% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
+  }
+  .SNG__presentor--banner > .planet-shadow {
+    height: 733px;
+    background: #000000fa;
+    position: relative;
+    width: 100%;
+    display: inline-flex;
+    position: absolute;
+    left: 0;
+    z-index: 3;
+    top: 50%;
+    transform: perspective(80px) rotateX(86deg) skewX(40deg);
+    transform-origin: top;
+    animation: moveShadow 10s ease-in-out infinite;
+  }
+
+  @keyframes moveShadow {
+    0% {
+      transform: perspective(80px) rotateX(86deg) skewX(40deg);
+      opacity: 0;
+    }
+    25% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 0;
+    }
+    100% {
+      transform: perspective(80px) rotateX(86deg) skewX(-40deg);
+      opacity: 0;
+    }
+  }
+
+  .SNG__presentor--banner {
+    width: 10rem;
+    margin: calc((100vh - 10rem) / 2) auto;
+    height: 10rem;
+    animation: changePlanetGlow 10s linear 5s infinite;
+  }
+  @keyframes changePlanetGlow {
+    0% {
+      box-shadow: 0 0 0px 0px rgba(255, 0, 106, 0);
+    }
+    50% {
+      box-shadow: 0 0 20px 0px rgba(255, 0, 106, 1);
+    }
+    100% {
+      box-shadow: 0 0 0px 0px rgba(255, 0, 106, 0);
+    }
+  }
+  .SNG__presentor--banner .planet-glow {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    position: absolute;
+    left: 0%;
+    // background: rgb(255, 0, 106);
+    top: 0%;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  .SNG__presentor--banner .planet-glow::after {
+    z-index: 1;
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    position: absolute;
+    left: 0%;
+    background: rgb(255, 0, 106);
+    top: 0%;
+    overflow: hidden;
+    border-radius: 50%;
+    transform: translateX(200%);
+    box-shadow: 0 0 50px 50px rgb(255, 0, 106);
+    animation: movePlanetGlow 10s linear 5s infinite;
+  }
+  @keyframes movePlanetGlow {
+    0% {
+      transform: translateX(200%);
+      border-radius: 50%;
+    }
+    100% {
+      transform: translateX(-200%);
+      border-radius: 50%;
+    }
   }
 }

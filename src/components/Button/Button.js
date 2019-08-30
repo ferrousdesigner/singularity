@@ -95,6 +95,7 @@ export class Button extends Component {
       disabled,
       type,
       to,
+      busyMessage,
       className
     } = this.props
     return type === 'link' ? (
@@ -104,7 +105,7 @@ export class Button extends Component {
           <span className='SNG__button--icon'>{icon}</span>
         )}
         {(busy && !disabled && !done) && loader()}
-        {done ? check(doneMessage) : children}
+        {done ? check(doneMessage) : (busy && busyMessage ? busyMessage : children)}
       </a>
     ) : (
       <button
@@ -118,7 +119,7 @@ export class Button extends Component {
           <span className='SNG__button--icon'>{icon}</span>
         )}
         {(busy && !disabled && !done) && loader()}
-        {done ? check(doneMessage) : children}
+        {done ? check(doneMessage) : (busy && busyMessage ? busyMessage : children)}
       </button>
     )
   }

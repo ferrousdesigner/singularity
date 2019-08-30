@@ -64,7 +64,7 @@
   font-size: 16px; }
 
 .SNG__button.SNG__button.SNG__button--busy {
-  opacity: 0.7; }
+  opacity: 0.5; }
 
 .SNG__button .SNG__button--overlay {
   position: absolute;
@@ -90,7 +90,8 @@
 
 .SNG__button.SNG__button--default {
   background: var(--button__default--background);
-  border: 1px solid var(--button__default--border-color); }
+  border: 1px solid var(--button__default--border-color);
+  font-weight: 400; }
 
 .SNG__button.SNG__button--default.SNG__button--disabled {
   background: var(--button__default--disabled-background);
@@ -103,7 +104,8 @@
 
 .SNG__button.SNG__button--primary {
   border-color: var(--theme__color);
-  background: var(--theme__color); }
+  background: var(--theme__color);
+  font-weight: 700; }
 
 .SNG__button.SNG__button--primary.SNG__button--disabled {
   background: var(--button-background);
@@ -115,7 +117,8 @@
   border-color: var(--button__second--border-color);
   border: 1px solid;
   background-color: var(--button__second--background);
-  color: var(--theme__color); }
+  color: var(--theme__color);
+  font-weight: 600; }
 
 .SNG__button.SNG__button--secondary.SNG__button--disabled {
   border-color: var(--button-color-disabled);
@@ -302,7 +305,7 @@
     font-size: 14px;
     margin-right: 0;
     margin-left: 0;
-    height: 48px; }
+    height: 60px; }
   .SNG__button.SNG__button--link {
     min-width: auto;
     width: auto;

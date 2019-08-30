@@ -57,9 +57,11 @@ class MainDialog extends Component {
   }
   getClass () {
     let cS = 'SNG__dialog '
-    const { full, primaryAction, secondaryAction } = this.props
+    const { full, primaryAction, secondaryAction, round, soft } = this.props
     if(full && (primaryAction || secondaryAction)) cS += 'SNG__dialog__full-with-actions '
     if(full && !(primaryAction || secondaryAction)) cS += 'SNG__dialog__full '
+    if(soft) cS += 'SNG__dialog__less-round '
+    if(round) cS += 'SNG__dialog__round '
     return cS + this.state.animationClass
   }
   handleScroll (e) {
@@ -81,7 +83,7 @@ class MainDialog extends Component {
       children,
       enableAfterRead = true,
       primaryAction,
-      secondaryAction
+      secondaryAction,
     } = this.props
     const { read } = this.state
     const { rendered } = this.state
@@ -118,6 +120,7 @@ class MainDialog extends Component {
                   disabled={enableAfterRead && !read}
                   icon={primaryAction.icon}
                   onClick={primaryAction.onClick}
+                  {...primaryAction.props}
                 >
                   {primaryAction.label}
                 </Button>
@@ -126,6 +129,7 @@ class MainDialog extends Component {
                 <Button
                   onClick={secondaryAction.onClick}
                   icon={secondaryAction.icon}
+                  {...secondaryAction.props}
                 >
                   {secondaryAction.label}
                 </Button>

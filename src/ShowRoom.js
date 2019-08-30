@@ -3,6 +3,7 @@ import { Button, Nav, Presentor, Header, Spacer, Dialog } from './SingularityUI'
 import { HalfPic, ComponentDisplayer, Zoomer } from './tools'
 import { Row, Col, Grid } from 'react-flexbox-grid'
 
+const interval = 1000
 // const ButtonProps = {
 //   colors: [['red', 'blue', 'green'], ['purple', 'lightblue', 'green']],
 //   disabled: [true, false],
@@ -46,21 +47,21 @@ export default class ShowRoom extends Component {
       buttonZoomed: true,
       openDialog: false,
       buttonProps: {
-        round: false,
-        done: false,
-        busy: false,
-        type: 'secondary',
         soft: true,
+        round: false,
+        busy: false,
+        done: false,
+        type: 'default',
+        busyMessage: 'Downloading',
+        doneMessage: 'Video downloaded',
         lastChange: 'type'
       }
     }
   }
   componentDidMount () {
-    this.stringPropRotator('button')
+    setTimeout(() => this.booleanPropRotator('button'), interval)
   }
   booleanPropRotator (component) {
-    console.log('Boolean Called')
-
     switch (component) {
       case 'button':
         const { buttonProps } = this.state
@@ -73,9 +74,14 @@ export default class ShowRoom extends Component {
         tempState[trueProp] = false
         tempState[toBeTrueProp] = true
         tempState.lastChange = toBeTrueProp
-
         this.setState({ buttonProps: tempState }, () => {
-          setTimeout(() => this.stringPropRotator(component), 1000)
+          setTimeout(
+            () =>
+              tempState[booleanProps[booleanProps.length - 1]] !== true
+                ? this.booleanPropRotator(component)
+                : this.stringPropRotator(component),
+            1000
+          )
         })
         break
     }
@@ -85,17 +91,15 @@ export default class ShowRoom extends Component {
       case 'button': {
         const { buttonProps } = this.state
         let tempState = buttonProps
-        let { lastChange } = buttonProps
         let newType = this.getNextValueFromArray(tempState['type'], [
           'primary',
           'secondary',
           'default'
         ])
         tempState['type'] = newType
-        console.log(newType)
         tempState.lastChange = 'type'
         this.setState({ buttonProps: tempState }, () => {
-          setTimeout(() => this.booleanPropRotator(component), 1000)
+          setTimeout(() => this.booleanPropRotator(component), interval)
         })
       }
     }
@@ -123,14 +127,17 @@ export default class ShowRoom extends Component {
         <Dialog
           title='Dialog'
           showCloseButton
+          soft
           open={openDialog}
           primaryAction={{
             label: 'Agree',
-            onClick: () => alert('Yes!!')
+            onClick: () => alert('Yes!!'),
+            props: { soft: true }
           }}
           secondaryAction={{
             label: 'Cancel',
-            onClick: () => this.setState({ openDialog: !openDialog })
+            onClick: () => this.setState({ openDialog: !openDialog }),
+            props: { soft: true }
           }}
           onClose={() => this.setState({ openDialog: !openDialog })}
         >
@@ -193,9 +200,11 @@ export default class ShowRoom extends Component {
                     soft={buttonProps.soft}
                     busy={buttonProps.busy}
                     done={buttonProps.done}
-                    icon={<span className='fa fa-home' />}
+                    busyMessage={buttonProps.busyMessage}
+                    doneMessage={buttonProps.doneMessage}
+                    icon={<span className='fa fa-download' />}
                   >
-                    Click me
+                    Download video
                   </Button>
                 </Zoomer>
               </Col>
