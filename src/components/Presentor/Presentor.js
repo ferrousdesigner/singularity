@@ -16,7 +16,7 @@ export class Presentor extends Component {
               <div>{settings.bannerText}</div>
               <span />
               <div className='planet-shadow' />
-              <div className='planet-glow' />
+              <div className='planet-glow'><span className='fa fa-infinity'/></div>
               <div>{settings.bannerSubText}</div>
             </div>
           )
