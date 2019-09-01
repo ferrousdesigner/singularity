@@ -60,6 +60,11 @@ export default class ShowRoom extends Component {
   }
   componentDidMount () {
     setTimeout(() => this.booleanPropRotator('button'), interval)
+    const colorArray = ['#ff0000', '#ff8700', '#47e000', '#00c2e6', '#004de6', '#b64cff', '#ff009f', '#ff0000']
+    let color = colorArray[Math.floor(Math.random() * colorArray.length)]
+
+    document.documentElement.style.setProperty('--theme-color', color)
+
   }
   booleanPropRotator (component) {
     switch (component) {

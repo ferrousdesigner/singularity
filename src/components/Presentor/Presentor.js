@@ -15,7 +15,7 @@ class Stars extends Component {
   render () {
     let i = 0
     let stars = []
-    let widthArray = [1, 3, 4]
+    let widthArray = [1, 2, 3]
     while (i < 100) {
       stars.push(i)
       i++
@@ -30,7 +30,7 @@ class Stars extends Component {
             <span
               key={k}
               style={{
-                animationDuration: (((Math.random() * 30)) + 1)+ 's',
+                animationDuration: (((Math.random() * 10)) + 1)+ 's',
                 opacity: Math.random(),
                 width: width,
                 height: width,
