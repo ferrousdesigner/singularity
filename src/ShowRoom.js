@@ -3,7 +3,7 @@ import { Button, Nav, Presentor, Header, Spacer, Dialog } from './SingularityUI'
 import { HalfPic, ComponentDisplayer, Zoomer } from './tools'
 import { Row, Col, Grid } from 'react-flexbox-grid'
 
-const interval = 1000
+const interval = 2000
 // const ButtonProps = {
 //   colors: [['red', 'blue', 'green'], ['purple', 'lightblue', 'green']],
 //   disabled: [true, false],
@@ -80,7 +80,7 @@ export default class ShowRoom extends Component {
               tempState[booleanProps[booleanProps.length - 1]] !== true
                 ? this.booleanPropRotator(component)
                 : this.stringPropRotator(component),
-            1000
+                interval
           )
         })
         break
@@ -226,7 +226,6 @@ export default class ShowRoom extends Component {
                 </Button>
               </Col>
             </Row>
-            <HalfPic right />
           </Grid>
         </Presentor>
         <Presentor settings={{ type: 'simple' }}>
@@ -249,6 +248,34 @@ export default class ShowRoom extends Component {
                 >
                   Open Dialog
                 </Button>
+              </Col>
+              <Col xs={12} sm={10}>
+                <Spacer lg />
+                <Spacer lg />
+                <Button to={'#'} type='link'>
+                  Play with it
+                </Button>
+                <Button to={'#'} type='link'>
+                  See Docs
+                </Button>
+              </Col>
+            </Row>
+          </Grid>
+        </Presentor>
+        <Presentor settings={{ type: 'sticky', stickHeight: '200vh' }}>
+          <Grid>
+            <Row middle='xs' center='xs' style={{ marginTop: '4rem' }}>
+              <Col xs={12}>
+                <Header type='spaced' align='center' weight={400}>
+                  Navigation
+                </Header>
+                <Header type='xxlg' align='center' weight={100} capital>
+                  You will <GradientText weight={100}>never</GradientText> forget
+                </Header>
+                <Spacer />
+              </Col>
+              <Col xs={12} sm={10}>
+                <Nav />
               </Col>
               <Col xs={12} sm={10}>
                 <Spacer lg />

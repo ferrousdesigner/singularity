@@ -2,7 +2,7 @@
   //Types of button
 
   // Primary
-  --theme__color: rgb(255, 0, 106);
+  --theme-color: rgb(255, 0, 106);
   --button-background: #222;
   --button-color: #fff;
   --button-background-hover: #00000044;
@@ -10,7 +10,7 @@
   --button-color-disabled: #666666;
 
   //Secondary
-  --button__second--border-color: var(--theme__color);
+  --button__second--border-color: var(--theme-color);
   --button__second--background: rgba(255, 0, 106, 0.1);
   --button__second--disabled-background: #111111;
   --button__second--disabled-color: #888;
@@ -42,6 +42,7 @@
   user-select: none;
   font-size: 14px;
   border: none;
+  overflow: hidden;
   height: 48px;
   padding: 0 24px;
   min-width: 136px;
@@ -113,8 +114,8 @@
   opacity: 0;
 }
 .SNG__button.SNG__button--primary {
-  border-color: var(--theme__color);
-  background: var(--theme__color);
+  border-color: var(--theme-color);
+  background: var(--theme-color);
   font-weight: 700;
 }
 .SNG__button.SNG__button--primary.SNG__button--disabled {
@@ -127,7 +128,7 @@
   border-color: var(--button__second--border-color);
   border: 1px solid;
   background-color: var(--button__second--background);
-  color: var(--theme__color);
+  color: var(--theme-color);
   font-weight: 600;
 }
 .SNG__button.SNG__button--secondary.SNG__button--disabled {
@@ -151,10 +152,10 @@
 }
 .SNG__button.SNG__button--secondary.SNG__button--busy .SNG__loader {
   border-color: var(--button__default--border-color);
-  border-top-color: var(--theme__color);
+  border-top-color: var(--theme-color);
 }
 .SNG__button.SNG__button--secondary.SNG__button--done * {
-  color: var(--theme__color);
+  color: var(--theme-color);
   transition: all 0.2s ease-in-out;
 }
 .SNG__button.SNG__button--busy:hover,
@@ -204,7 +205,7 @@
 
 .SNG__button:focus {
   outline: none;
-  box-shadow: 0 0px 0px 2px var(--theme__color);
+  box-shadow: 0 0px 0px 2px var(--theme-color);
 }
 .SNG__button.SNG__button--primary:focus {
   outline: none;
@@ -322,7 +323,7 @@ $curve: cubic-bezier(0.65, 0, 0.45, 1);
 
 .SNG__loader {
   border: 16px solid var(--button-background-hover);
-  border-top: 16px solid var(--theme__color);
+  border-top: 16px solid var(--theme-color);
   border-radius: 50%;
   border-width: 4px;
   margin-right: 8px;

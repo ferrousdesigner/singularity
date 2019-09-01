@@ -1,25 +1,32 @@
+.dark {
+    --link-default-color: #ffffffaa;
+    --link-hover-color: #fff;
+    --link-active-color: #fff;
+}
+
 .SNG__nav > nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
-    font-weight: 100;
+    font-weight: normal;
     max-width: 98rem;
     margin: 0 auto;
-    background: rgba($color: #000000, $alpha: 0.9);
+    background: #111;
     z-index: 9999;
 }
 .SNG__nav .SNG__nav--logo{
     padding: 1rem;
     font-size: 2rem;
-    font-weight: 100;
-    color: rgb(255, 255, 255);
+    font-weight: normal;
+    color: var(--link-default-color);
 }
 .SNG__nav .SNG__nav--logo a{
-    color: #fff;
+    color: var(--link-default-color);
+    transition: 0.12s;
 }
 .SNG__nav .SNG__nav--links a:link{
-    color: #fff;
+    color: var(--link-default-color);
     padding: 0.5rem 0;
     margin: 0 1rem;
     position: relative;
@@ -27,15 +34,15 @@
     z-index: 10001;
 }
 .SNG__nav .SNG__nav--links a:hover{
-    color: #fff;
+    color: var(--link-hover-color);
 }
 .SNG__nav .SNG__nav--links a:active{
-    color: #fff;
+    color: var(--link-active-color);
 }
 .SNG__nav .SNG__nav--links a:visited{
-    color: #fff;
+    color: var(--link-default-color);
 }
-.SNG__nav .SNG__nav--links a::before, .SNG__nav .SNG__nav--links a::after{
+ .SNG__nav .SNG__nav--links a::after{
     content: "";
     position: absolute;
     bottom: -0.2rem;
@@ -46,15 +53,11 @@
     height: 0.1rem;
     transform: scaleX(0.1);
     transform-origin: right;
-    background: #fff;
+    background: var(--link-default-color);
     transition: transform 200ms ease-in, opacity 200ms ease-in;
     z-index: -1;
 }
-.SNG__nav .SNG__nav--links a::before {
-    transform-origin: left;
-    right: 0;
-    top: -0.2rem;
-}
+
 .SNG__nav .SNG__nav--links a:hover::after{
     transform-origin: left;
     transform: scale(1.0);
@@ -64,4 +67,9 @@
     transform-origin: right;
     transform: scale(1.0);
     opacity: 1;
+}
+.singularity-logo {
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: 1rem;
 }

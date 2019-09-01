@@ -20,13 +20,19 @@ export class Nav extends Component {
             {label: 'Components', link: '/#components'},
             {label: 'Documentation', link: '/#docs'}
         ]
+        let { a } = this.props
+        const getClass = () => {
+            let cS = 'SNG__nav'
+
+            return cS
+        }
         return (
-            <div className='SNG__nav'>
+            <div className={getClass()}>
                 <nav>
                     <div className='SNG__nav--logo'>
                         <a href={'/'}>
                             {logoSrc.length > 0 ?
-                                <img src={logoSrc} alt={logoAlt} /> : <div>{brandName}</div>
+                                <img src={logoSrc} alt={logoAlt} /> : <div className='singularity-logo'>{brandName}</div>
 
                             }
                         </a>
