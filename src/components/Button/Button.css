@@ -83,7 +83,7 @@
 
 .SNG__button.SNG__button--less-round,
 .SNG__button.SNG__button--less-round .SNG__button--overlay {
-  border-radius: 8px; }
+  border-radius: 5px; }
 
 .SNG__button.SNG__button--round,
 .SNG__button.SNG__button--round .SNG__button--overlay {
@@ -208,7 +208,7 @@
   width: 20px;
   height: 20px;
   display: flex;
-  margin-right: 5px;
+  margin-right: 3px;
   align-items: center;
   justify-content: center; }
 
@@ -306,7 +306,7 @@
     font-size: 14px;
     margin-right: 0;
     margin-left: 0;
-    height: 60px; }
+    height: 48px; }
   .SNG__button.SNG__button--link {
     min-width: auto;
     width: auto;

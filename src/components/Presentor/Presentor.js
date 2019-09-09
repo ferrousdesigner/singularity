@@ -9,8 +9,24 @@ import './Presentor.css'
 
 
 class Stars extends Component {
+  constructor (props) {
+    super(props)
+    this.scroll = 0
+  }
   shouldComponentUpdate() {
     return false
+  }
+  componentDidMount () {
+    window.addEventListener('scroll', this.handleScroll.bind(this))
+  }
+  componentWillUnmount () {
+    window.removeEventListener('scroll', this.handleScroll.bind(this))
+  }
+  handleScroll (e) {
+    console.log('>>>>>')
+    console.log(e)
+    let nextScroll = window.scrollY
+    document.querySelector('.SNG__stars').style.top = '-' + (nextScroll / 30) + 'px'
   }
   render () {
     let i = 0

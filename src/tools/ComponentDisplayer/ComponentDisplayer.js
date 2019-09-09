@@ -4,7 +4,7 @@ import { Button, Presentor } from '../../SingularityUI'
 import './ComponentDisplayer.css'
 import Code from './Code'
 
-export default class ComponentDisplayer extends React.Component {
+class ComponentDisplayer extends React.Component {
     constructor (props) {
         super(props)
         this.state = {selectedProp: 'No prop selected' , selectedValue: 'Select a prop first', scale: 1.5, appliedProps: {}, showCode: false}
@@ -143,3 +143,5 @@ export default class ComponentDisplayer extends React.Component {
 ComponentDisplayer.defaultProps = {
     scale: [1, 1.5, 2]
 }
+
+export default ComponentDisplayer

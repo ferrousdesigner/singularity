@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 39);
+/******/ 	return __webpack_require__(__webpack_require__.s = 47);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -92,7 +92,7 @@
 
 
 if (true) {
-  module.exports = __webpack_require__(11);
+  module.exports = __webpack_require__(18);
 } else {}
 
 
@@ -108,7 +108,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getColumnProps = exports.Col = exports.getRowProps = exports.Row = exports.Grid = undefined;
 
-var _Row2 = __webpack_require__(32);
+var _Row2 = __webpack_require__(40);
 
 Object.defineProperty(exports, 'getRowProps', {
   enumerable: true,
@@ -117,7 +117,7 @@ Object.defineProperty(exports, 'getRowProps', {
   }
 });
 
-var _Col2 = __webpack_require__(35);
+var _Col2 = __webpack_require__(43);
 
 Object.defineProperty(exports, 'getColumnProps', {
   enumerable: true,
@@ -126,7 +126,7 @@ Object.defineProperty(exports, 'getColumnProps', {
   }
 });
 
-var _Grid2 = __webpack_require__(36);
+var _Grid2 = __webpack_require__(44);
 
 var _Grid3 = _interopRequireDefault(_Grid2);
 
@@ -154,7 +154,7 @@ exports.Col = _Col3.default;
 if (false) { var throwOnDirectAccess, ReactIs; } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(17)();
+  module.exports = __webpack_require__(23)();
 }
 
 
@@ -170,7 +170,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _StyleMaker = _interopRequireDefault(__webpack_require__(16));
+var _StyleMaker = _interopRequireDefault(__webpack_require__(22));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -330,7 +330,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(21);
+var	fixUrls = __webpack_require__(27);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -694,12 +694,13 @@ if (true) {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(12);
+  module.exports = __webpack_require__(19);
 } else {}
 
 
 /***/ }),
-/* 7 */
+/* 7 */,
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -710,7 +711,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = getClass;
 
-var _flexboxgrid = __webpack_require__(33);
+var _flexboxgrid = __webpack_require__(41);
 
 var _flexboxgrid2 = _interopRequireDefault(_flexboxgrid);
 
@@ -721,7 +722,7 @@ function getClass(className) {
 }
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -747,7 +748,451 @@ function createProps(propTypes, props, classNames) {
 }
 
 /***/ }),
-/* 9 */
+/* 10 */
+/***/ (function(module, exports) {
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+module.exports = _inheritsLoose;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isarray = __webpack_require__(28)
+
+/**
+ * Expose `pathToRegexp`.
+ */
+module.exports = pathToRegexp
+module.exports.parse = parse
+module.exports.compile = compile
+module.exports.tokensToFunction = tokensToFunction
+module.exports.tokensToRegExp = tokensToRegExp
+
+/**
+ * The main path matching regexp utility.
+ *
+ * @type {RegExp}
+ */
+var PATH_REGEXP = new RegExp([
+  // Match escaped characters that would otherwise appear in future matches.
+  // This allows the user to escape special characters that won't transform.
+  '(\\\\.)',
+  // Match Express-style parameters and un-named parameters with a prefix
+  // and optional suffixes. Matches appear as:
+  //
+  // "/:test(\\d+)?" => ["/", "test", "\d+", undefined, "?", undefined]
+  // "/route(\\d+)"  => [undefined, undefined, undefined, "\d+", undefined, undefined]
+  // "/*"            => ["/", undefined, undefined, undefined, undefined, "*"]
+  '([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^\\\\()])+)\\))?|\\(((?:\\\\.|[^\\\\()])+)\\))([+*?])?|(\\*))'
+].join('|'), 'g')
+
+/**
+ * Parse a string for the raw tokens.
+ *
+ * @param  {string}  str
+ * @param  {Object=} options
+ * @return {!Array}
+ */
+function parse (str, options) {
+  var tokens = []
+  var key = 0
+  var index = 0
+  var path = ''
+  var defaultDelimiter = options && options.delimiter || '/'
+  var res
+
+  while ((res = PATH_REGEXP.exec(str)) != null) {
+    var m = res[0]
+    var escaped = res[1]
+    var offset = res.index
+    path += str.slice(index, offset)
+    index = offset + m.length
+
+    // Ignore already escaped sequences.
+    if (escaped) {
+      path += escaped[1]
+      continue
+    }
+
+    var next = str[index]
+    var prefix = res[2]
+    var name = res[3]
+    var capture = res[4]
+    var group = res[5]
+    var modifier = res[6]
+    var asterisk = res[7]
+
+    // Push the current path onto the tokens.
+    if (path) {
+      tokens.push(path)
+      path = ''
+    }
+
+    var partial = prefix != null && next != null && next !== prefix
+    var repeat = modifier === '+' || modifier === '*'
+    var optional = modifier === '?' || modifier === '*'
+    var delimiter = res[2] || defaultDelimiter
+    var pattern = capture || group
+
+    tokens.push({
+      name: name || key++,
+      prefix: prefix || '',
+      delimiter: delimiter,
+      optional: optional,
+      repeat: repeat,
+      partial: partial,
+      asterisk: !!asterisk,
+      pattern: pattern ? escapeGroup(pattern) : (asterisk ? '.*' : '[^' + escapeString(delimiter) + ']+?')
+    })
+  }
+
+  // Match any characters still remaining.
+  if (index < str.length) {
+    path += str.substr(index)
+  }
+
+  // If the path exists, push it onto the end.
+  if (path) {
+    tokens.push(path)
+  }
+
+  return tokens
+}
+
+/**
+ * Compile a string to a template function for the path.
+ *
+ * @param  {string}             str
+ * @param  {Object=}            options
+ * @return {!function(Object=, Object=)}
+ */
+function compile (str, options) {
+  return tokensToFunction(parse(str, options))
+}
+
+/**
+ * Prettier encoding of URI path segments.
+ *
+ * @param  {string}
+ * @return {string}
+ */
+function encodeURIComponentPretty (str) {
+  return encodeURI(str).replace(/[\/?#]/g, function (c) {
+    return '%' + c.charCodeAt(0).toString(16).toUpperCase()
+  })
+}
+
+/**
+ * Encode the asterisk parameter. Similar to `pretty`, but allows slashes.
+ *
+ * @param  {string}
+ * @return {string}
+ */
+function encodeAsterisk (str) {
+  return encodeURI(str).replace(/[?#]/g, function (c) {
+    return '%' + c.charCodeAt(0).toString(16).toUpperCase()
+  })
+}
+
+/**
+ * Expose a method for transforming tokens into the path function.
+ */
+function tokensToFunction (tokens) {
+  // Compile all the tokens into regexps.
+  var matches = new Array(tokens.length)
+
+  // Compile all the patterns before compilation.
+  for (var i = 0; i < tokens.length; i++) {
+    if (typeof tokens[i] === 'object') {
+      matches[i] = new RegExp('^(?:' + tokens[i].pattern + ')$')
+    }
+  }
+
+  return function (obj, opts) {
+    var path = ''
+    var data = obj || {}
+    var options = opts || {}
+    var encode = options.pretty ? encodeURIComponentPretty : encodeURIComponent
+
+    for (var i = 0; i < tokens.length; i++) {
+      var token = tokens[i]
+
+      if (typeof token === 'string') {
+        path += token
+
+        continue
+      }
+
+      var value = data[token.name]
+      var segment
+
+      if (value == null) {
+        if (token.optional) {
+          // Prepend partial segment prefixes.
+          if (token.partial) {
+            path += token.prefix
+          }
+
+          continue
+        } else {
+          throw new TypeError('Expected "' + token.name + '" to be defined')
+        }
+      }
+
+      if (isarray(value)) {
+        if (!token.repeat) {
+          throw new TypeError('Expected "' + token.name + '" to not repeat, but received `' + JSON.stringify(value) + '`')
+        }
+
+        if (value.length === 0) {
+          if (token.optional) {
+            continue
+          } else {
+            throw new TypeError('Expected "' + token.name + '" to not be empty')
+          }
+        }
+
+        for (var j = 0; j < value.length; j++) {
+          segment = encode(value[j])
+
+          if (!matches[i].test(segment)) {
+            throw new TypeError('Expected all "' + token.name + '" to match "' + token.pattern + '", but received `' + JSON.stringify(segment) + '`')
+          }
+
+          path += (j === 0 ? token.prefix : token.delimiter) + segment
+        }
+
+        continue
+      }
+
+      segment = token.asterisk ? encodeAsterisk(value) : encode(value)
+
+      if (!matches[i].test(segment)) {
+        throw new TypeError('Expected "' + token.name + '" to match "' + token.pattern + '", but received "' + segment + '"')
+      }
+
+      path += token.prefix + segment
+    }
+
+    return path
+  }
+}
+
+/**
+ * Escape a regular expression string.
+ *
+ * @param  {string} str
+ * @return {string}
+ */
+function escapeString (str) {
+  return str.replace(/([.+*?=^!:${}()[\]|\/\\])/g, '\\$1')
+}
+
+/**
+ * Escape the capturing group by escaping special characters and meaning.
+ *
+ * @param  {string} group
+ * @return {string}
+ */
+function escapeGroup (group) {
+  return group.replace(/([=!:$\/()])/g, '\\$1')
+}
+
+/**
+ * Attach the keys as a property of the regexp.
+ *
+ * @param  {!RegExp} re
+ * @param  {Array}   keys
+ * @return {!RegExp}
+ */
+function attachKeys (re, keys) {
+  re.keys = keys
+  return re
+}
+
+/**
+ * Get the flags for a regexp from the options.
+ *
+ * @param  {Object} options
+ * @return {string}
+ */
+function flags (options) {
+  return options.sensitive ? '' : 'i'
+}
+
+/**
+ * Pull out keys from a regexp.
+ *
+ * @param  {!RegExp} path
+ * @param  {!Array}  keys
+ * @return {!RegExp}
+ */
+function regexpToRegexp (path, keys) {
+  // Use a negative lookahead to match only capturing groups.
+  var groups = path.source.match(/\((?!\?)/g)
+
+  if (groups) {
+    for (var i = 0; i < groups.length; i++) {
+      keys.push({
+        name: i,
+        prefix: null,
+        delimiter: null,
+        optional: false,
+        repeat: false,
+        partial: false,
+        asterisk: false,
+        pattern: null
+      })
+    }
+  }
+
+  return attachKeys(path, keys)
+}
+
+/**
+ * Transform an array into a regexp.
+ *
+ * @param  {!Array}  path
+ * @param  {Array}   keys
+ * @param  {!Object} options
+ * @return {!RegExp}
+ */
+function arrayToRegexp (path, keys, options) {
+  var parts = []
+
+  for (var i = 0; i < path.length; i++) {
+    parts.push(pathToRegexp(path[i], keys, options).source)
+  }
+
+  var regexp = new RegExp('(?:' + parts.join('|') + ')', flags(options))
+
+  return attachKeys(regexp, keys)
+}
+
+/**
+ * Create a path regexp from string input.
+ *
+ * @param  {string}  path
+ * @param  {!Array}  keys
+ * @param  {!Object} options
+ * @return {!RegExp}
+ */
+function stringToRegexp (path, keys, options) {
+  return tokensToRegExp(parse(path, options), keys, options)
+}
+
+/**
+ * Expose a function for taking tokens and returning a RegExp.
+ *
+ * @param  {!Array}          tokens
+ * @param  {(Array|Object)=} keys
+ * @param  {Object=}         options
+ * @return {!RegExp}
+ */
+function tokensToRegExp (tokens, keys, options) {
+  if (!isarray(keys)) {
+    options = /** @type {!Object} */ (keys || options)
+    keys = []
+  }
+
+  options = options || {}
+
+  var strict = options.strict
+  var end = options.end !== false
+  var route = ''
+
+  // Iterate over the tokens and create our regexp string.
+  for (var i = 0; i < tokens.length; i++) {
+    var token = tokens[i]
+
+    if (typeof token === 'string') {
+      route += escapeString(token)
+    } else {
+      var prefix = escapeString(token.prefix)
+      var capture = '(?:' + token.pattern + ')'
+
+      keys.push(token)
+
+      if (token.repeat) {
+        capture += '(?:' + prefix + capture + ')*'
+      }
+
+      if (token.optional) {
+        if (!token.partial) {
+          capture = '(?:' + prefix + '(' + capture + '))?'
+        } else {
+          capture = prefix + '(' + capture + ')?'
+        }
+      } else {
+        capture = prefix + '(' + capture + ')'
+      }
+
+      route += capture
+    }
+  }
+
+  var delimiter = escapeString(options.delimiter || '/')
+  var endsWithDelimiter = route.slice(-delimiter.length) === delimiter
+
+  // In non-strict mode we allow a slash at the end of match. If the path to
+  // match already ends with a slash, we remove it for consistency. The slash
+  // is valid at the end of a path match, not in the middle. This is important
+  // in non-ending mode, where "/test/" shouldn't match "/test//route".
+  if (!strict) {
+    route = (endsWithDelimiter ? route.slice(0, -delimiter.length) : route) + '(?:' + delimiter + '(?=$))?'
+  }
+
+  if (end) {
+    route += '$'
+  } else {
+    // In non-ending mode, we need the capturing groups to match as much as
+    // possible by using a positive lookahead to the end or next path segment.
+    route += strict && endsWithDelimiter ? '' : '(?=' + delimiter + '|$)'
+  }
+
+  return attachKeys(new RegExp('^' + route, flags(options)), keys)
+}
+
+/**
+ * Normalize the given path string, returning a regular expression.
+ *
+ * An empty array can be passed in for the keys, which will hold the
+ * placeholder key descriptions. For example, using `/user/:id`, `keys` will
+ * contain `[{ name: 'id', delimiter: '/', optional: false, repeat: false }]`.
+ *
+ * @param  {(string|RegExp|Array)} path
+ * @param  {(Array|Object)=}       keys
+ * @param  {Object=}               options
+ * @return {!RegExp}
+ */
+function pathToRegexp (path, keys, options) {
+  if (!isarray(keys)) {
+    options = /** @type {!Object} */ (keys || options)
+    keys = []
+  }
+
+  options = options || {}
+
+  if (path instanceof RegExp) {
+    return regexpToRegexp(path, /** @type {!Array} */ (keys))
+  }
+
+  if (isarray(path)) {
+    return arrayToRegexp(/** @type {!Array} */ (path), /** @type {!Array} */ (keys), options)
+  }
+
+  return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
+}
+
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -844,7 +1289,45 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 10 */
+/* 13 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+if (true) {
+  module.exports = __webpack_require__(29);
+} else {}
+
+
+/***/ }),
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -865,7 +1348,133 @@ var ColumnSizeType = exports.ColumnSizeType = _propTypes2.default.oneOfType([_pr
 var ViewportSizeType = exports.ViewportSizeType = _propTypes2.default.oneOf(['xs', 'sm', 'md', 'lg', 'xl']);
 
 /***/ }),
-/* 11 */
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {// @flow
+
+
+var key = '__global_unique_id__';
+
+module.exports = function() {
+  return global[key] = (global[key] || 0) + 1;
+};
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(13)))
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Copyright 2015, Yahoo! Inc.
+ * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+ */
+var ReactIs = __webpack_require__(14);
+var REACT_STATICS = {
+    childContextTypes: true,
+    contextType: true,
+    contextTypes: true,
+    defaultProps: true,
+    displayName: true,
+    getDefaultProps: true,
+    getDerivedStateFromError: true,
+    getDerivedStateFromProps: true,
+    mixins: true,
+    propTypes: true,
+    type: true
+};
+
+var KNOWN_STATICS = {
+    name: true,
+    length: true,
+    prototype: true,
+    caller: true,
+    callee: true,
+    arguments: true,
+    arity: true
+};
+
+var FORWARD_REF_STATICS = {
+    '$$typeof': true,
+    render: true,
+    defaultProps: true,
+    displayName: true,
+    propTypes: true
+};
+
+var MEMO_STATICS = {
+    '$$typeof': true,
+    compare: true,
+    defaultProps: true,
+    displayName: true,
+    propTypes: true,
+    type: true
+};
+
+var TYPE_STATICS = {};
+TYPE_STATICS[ReactIs.ForwardRef] = FORWARD_REF_STATICS;
+
+function getStatics(component) {
+    if (ReactIs.isMemo(component)) {
+        return MEMO_STATICS;
+    }
+    return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
+}
+
+var defineProperty = Object.defineProperty;
+var getOwnPropertyNames = Object.getOwnPropertyNames;
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var getPrototypeOf = Object.getPrototypeOf;
+var objectPrototype = Object.prototype;
+
+function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
+    if (typeof sourceComponent !== 'string') {
+        // don't hoist over string (html) components
+
+        if (objectPrototype) {
+            var inheritedComponent = getPrototypeOf(sourceComponent);
+            if (inheritedComponent && inheritedComponent !== objectPrototype) {
+                hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
+            }
+        }
+
+        var keys = getOwnPropertyNames(sourceComponent);
+
+        if (getOwnPropertySymbols) {
+            keys = keys.concat(getOwnPropertySymbols(sourceComponent));
+        }
+
+        var targetStatics = getStatics(targetComponent);
+        var sourceStatics = getStatics(sourceComponent);
+
+        for (var i = 0; i < keys.length; ++i) {
+            var key = keys[i];
+            if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
+                var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
+                try {
+                    // Avoid failures from read-only properties
+                    defineProperty(targetComponent, key, descriptor);
+                } catch (e) {}
+            }
+        }
+
+        return targetComponent;
+    }
+
+    return targetComponent;
+}
+
+module.exports = hoistNonReactStatics;
+
+
+/***/ }),
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -878,7 +1487,7 @@ var ViewportSizeType = exports.ViewportSizeType = _propTypes2.default.oneOf(['xs
  * LICENSE file in the root directory of this source tree.
  */
 
-var k=__webpack_require__(9),n="function"===typeof Symbol&&Symbol.for,p=n?Symbol.for("react.element"):60103,q=n?Symbol.for("react.portal"):60106,r=n?Symbol.for("react.fragment"):60107,t=n?Symbol.for("react.strict_mode"):60108,u=n?Symbol.for("react.profiler"):60114,v=n?Symbol.for("react.provider"):60109,w=n?Symbol.for("react.context"):60110,x=n?Symbol.for("react.concurrent_mode"):60111,y=n?Symbol.for("react.forward_ref"):60112,z=n?Symbol.for("react.suspense"):60113,aa=n?Symbol.for("react.memo"):
+var k=__webpack_require__(12),n="function"===typeof Symbol&&Symbol.for,p=n?Symbol.for("react.element"):60103,q=n?Symbol.for("react.portal"):60106,r=n?Symbol.for("react.fragment"):60107,t=n?Symbol.for("react.strict_mode"):60108,u=n?Symbol.for("react.profiler"):60114,v=n?Symbol.for("react.provider"):60109,w=n?Symbol.for("react.context"):60110,x=n?Symbol.for("react.concurrent_mode"):60111,y=n?Symbol.for("react.forward_ref"):60112,z=n?Symbol.for("react.suspense"):60113,aa=n?Symbol.for("react.memo"):
 60115,ba=n?Symbol.for("react.lazy"):60116,A="function"===typeof Symbol&&Symbol.iterator;function ca(a,b,d,c,e,g,h,f){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[d,c,e,g,h,f],m=0;a=Error(b.replace(/%s/g,function(){return l[m++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
 function B(a){for(var b=arguments.length-1,d="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=0;c<b;c++)d+="&args[]="+encodeURIComponent(arguments[c+1]);ca(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",d)}var C={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},D={};
 function E(a,b,d){this.props=a;this.context=b;this.refs=D;this.updater=d||C}E.prototype.isReactComponent={};E.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?B("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};E.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};function F(){}F.prototype=E.prototype;function G(a,b,d){this.props=a;this.context=b;this.refs=D;this.updater=d||C}var H=G.prototype=new F;
@@ -897,7 +1506,7 @@ unstable_ConcurrentMode:x,unstable_Profiler:u,__SECRET_INTERNALS_DO_NOT_USE_OR_Y
 
 
 /***/ }),
-/* 12 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -913,7 +1522,7 @@ unstable_ConcurrentMode:x,unstable_Profiler:u,__SECRET_INTERNALS_DO_NOT_USE_OR_Y
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0),n=__webpack_require__(9),r=__webpack_require__(13);function ba(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[c,d,e,f,g,h],k=0;a=Error(b.replace(/%s/g,function(){return l[k++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
+var aa=__webpack_require__(0),n=__webpack_require__(12),r=__webpack_require__(20);function ba(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[c,d,e,f,g,h],k=0;a=Error(b.replace(/%s/g,function(){return l[k++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
 function x(a){for(var b=arguments.length-1,c="https://reactjs.org/docs/error-decoder.html?invariant="+a,d=0;d<b;d++)c+="&args[]="+encodeURIComponent(arguments[d+1]);ba(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",c)}aa?void 0:x("227");function ca(a,b,c,d,e,f,g,h,l){var k=Array.prototype.slice.call(arguments,3);try{b.apply(c,k)}catch(m){this.onError(m)}}
 var da=!1,ea=null,fa=!1,ha=null,ia={onError:function(a){da=!0;ea=a}};function ja(a,b,c,d,e,f,g,h,l){da=!1;ea=null;ca.apply(ia,arguments)}function ka(a,b,c,d,e,f,g,h,l){ja.apply(this,arguments);if(da){if(da){var k=ea;da=!1;ea=null}else x("198"),k=void 0;fa||(fa=!0,ha=k)}}var la=null,ma={};
 function na(){if(la)for(var a in ma){var b=ma[a],c=la.indexOf(a);-1<c?void 0:x("96",a);if(!oa[c]){b.extractEvents?void 0:x("97",a);oa[c]=b;c=b.eventTypes;for(var d in c){var e=void 0;var f=c[d],g=b,h=d;pa.hasOwnProperty(h)?x("99",h):void 0;pa[h]=f;var l=f.phasedRegistrationNames;if(l){for(e in l)l.hasOwnProperty(e)&&qa(l[e],g,h);e=!0}else f.registrationName?(qa(f.registrationName,g,h),e=!0):e=!1;e?void 0:x("98",d,a)}}}}
@@ -1173,19 +1782,19 @@ X;X=!0;try{ki(a)}finally{(X=b)||W||Yh(1073741823,!1)}},__SECRET_INTERNALS_DO_NOT
 
 
 /***/ }),
-/* 13 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 if (true) {
-  module.exports = __webpack_require__(14);
+  module.exports = __webpack_require__(21);
 } else {}
 
 
 /***/ }),
-/* 14 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1211,36 +1820,10 @@ exports.unstable_scheduleCallback=function(a,b){var c=-1!==k?k:exports.unstable_
 b=c.previous;b.next=c.previous=a;a.next=c;a.previous=b}return a};exports.unstable_cancelCallback=function(a){var b=a.next;if(null!==b){if(b===a)d=null;else{a===d&&(d=b);var c=a.previous;c.next=b;b.previous=c}a.next=a.previous=null}};exports.unstable_wrapCallback=function(a){var b=g;return function(){var c=g,f=k;g=b;k=exports.unstable_now();try{return a.apply(this,arguments)}finally{g=c,k=f,v()}}};exports.unstable_getCurrentPriorityLevel=function(){return g};
 exports.unstable_shouldYield=function(){return!e&&(null!==d&&d.expirationTime<l||w())};exports.unstable_continueExecution=function(){null!==d&&p()};exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNode=function(){return d};
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(15)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(13)))
 
 /***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 16 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1277,7 +1860,7 @@ exports.default = _default;
 
 
 /***/ }),
-/* 17 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1290,7 +1873,7 @@ exports.default = _default;
 
 
 
-var ReactPropTypesSecret = __webpack_require__(18);
+var ReactPropTypesSecret = __webpack_require__(24);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -1348,7 +1931,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 18 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1367,11 +1950,11 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 19 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(20);
+var content = __webpack_require__(26);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1392,7 +1975,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 20 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -1400,13 +1983,13 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, ":root {\n  --theme-color: rgb(255, 0, 106);\n  --button-background: #222;\n  --button-color: #fff;\n  --button-background-hover: #00000044;\n  --button-background-disabled: #444444;\n  --button-color-disabled: #666666;\n  --button__second--border-color: var(--theme-color);\n  --button__second--background: rgba(255, 0, 106, 0.1);\n  --button__second--disabled-background: #111111;\n  --button__second--disabled-color: #888;\n  --button__default--border-color: #888;\n  --button__default--background: transparent;\n  --button__default--disabled-background: #111111;\n  --button__default--disabled-color: #888; }\n\n.SNG__button * {\n  box-sizing: border-box; }\n\n.SNG__button > * {\n  transition: all 0.2s ease-in-out; }\n\n.SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  font-size: 14px;\n  border: none;\n  overflow: hidden;\n  height: 48px;\n  padding: 0 24px;\n  min-width: 136px;\n  position: relative;\n  line-height: 0;\n  transition: all 0.25s ease;\n  transform-origin: center;\n  z-index: 1;\n  color: #fff;\n  background: transparent;\n  vertical-align: top;\n  box-sizing: border-box;\n  margin: 5px 0px 5px 0;\n  font-weight: normal;\n  position: relative; }\n\n.SNG__button:active {\n  transform: scale(0.95); }\n\n.SNG__button:not(:first-child) {\n  margin-left: 15px; }\n\n.SNG__button--big {\n  height: 64px;\n  padding: 0 36px;\n  border-radius: 36px;\n  font-size: 16px; }\n\n.SNG__button.SNG__button.SNG__button--busy {\n  opacity: 0.5; }\n\n.SNG__button .SNG__button--overlay {\n  position: absolute;\n  left: 0;\n  top: 0px;\n  width: 100%;\n  height: 100%;\n  background: var(--button-background);\n  opacity: 0;\n  transition: all 0.2s ease;\n  z-index: -2; }\n\n.SNG__button:hover .SNG__button--overlay {\n  opacity: 0.2; }\n\n.SNG__button.SNG__button--less-round,\n.SNG__button.SNG__button--less-round .SNG__button--overlay {\n  border-radius: 8px; }\n\n.SNG__button.SNG__button--round,\n.SNG__button.SNG__button--round .SNG__button--overlay {\n  border-radius: 30px; }\n\n.SNG__button.SNG__button--default {\n  background: var(--button__default--background);\n  border: 1px solid var(--button__default--border-color);\n  font-weight: 400; }\n\n.SNG__button.SNG__button--default.SNG__button--disabled {\n  background: var(--button__default--disabled-background);\n  border-color: var(--button__default--disabled-color);\n  color: var(--button__default--disabled-color);\n  cursor: default; }\n\n.SNG__button.SNG__button--default.SNG__button--disabled .SNG__button--overlay {\n  opacity: 0; }\n\n.SNG__button.SNG__button--primary {\n  border-color: var(--theme-color);\n  background: var(--theme-color);\n  font-weight: 700; }\n\n.SNG__button.SNG__button--primary.SNG__button--disabled {\n  background: var(--button-background);\n  border-color: var(--button-background);\n  color: var(--button-color-disabled);\n  cursor: default; }\n\n.SNG__button.SNG__button--secondary {\n  border-color: var(--button__second--border-color);\n  border: 1px solid;\n  background-color: var(--button__second--background);\n  color: var(--theme-color);\n  font-weight: 600; }\n\n.SNG__button.SNG__button--secondary.SNG__button--disabled {\n  border-color: var(--button-color-disabled);\n  color: var(--button-color-disabled);\n  cursor: default; }\n\n.SNG__button.SNG__button--primary.SNG__button--disabled .done span,\n.SNG__button.SNG__button--secondary.SNG__button--disabled .done span {\n  color: var(--button-color-disabled); }\n\n.SNG__button.SNG__button--busy .SNG__loader {\n  border-color: var(--button-color-disabled);\n  border-top-color: var(--button-color); }\n\n.SNG__button.SNG__button--primary.SNG__button--busy .SNG__loader {\n  border-color: var(--button-background-hover);\n  border-top-color: var(--button-color); }\n\n.SNG__button.SNG__button--secondary.SNG__button--busy .SNG__loader {\n  border-color: var(--button__default--border-color);\n  border-top-color: var(--theme-color); }\n\n.SNG__button.SNG__button--secondary.SNG__button--done * {\n  color: var(--theme-color);\n  transition: all 0.2s ease-in-out; }\n\n.SNG__button.SNG__button--busy:hover,\n.SNG__button.SNG__button--done:hover {\n  cursor: default; }\n\n.SNG__button.SNG__button--busy:hover .SNG__button--overlay,\n.SNG__button.SNG__button--done:hover .SNG__button--overlay {\n  opacity: 0; }\n\n.SNG__button.SNG__button--disabled {\n  color: var(--button-color-disabled);\n  background: var(--button-background);\n  cursor: default; }\n\n.SNG__button.SNG__button--busy:hover {\n  cursor: default; }\n\n.SNG__button.SNG__button--busy:hover {\n  cursor: default; }\n\n.SNG__button--link {\n  padding: 0;\n  height: auto;\n  line-height: 1.5;\n  justify-content: flex-start;\n  min-width: auto;\n  color: #ffffffaa;\n  font-size: 15px;\n  background-color: transparent;\n  background: none;\n  transition: all 0.2s ease;\n  margin-right: 10px;\n  border-color: transparent; }\n\n.SNG__button--link + .SNG__button--link {\n  margin-left: 10px; }\n\n.SNG__button--link:hover {\n  transform: none;\n  color: #fff;\n  text-decoration: underline; }\n\n.SNG__button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.SNG__button.SNG__button--primary:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px white; }\n\n.SNG__button.SNG__button--secondary:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px white; }\n\n.SNG__button.SNG__button--busy:focus,\n.SNG__button.SNG__button--disabled:focus {\n  outline: none;\n  box-shadow: none; }\n\n.SNG__button--icon {\n  width: 20px;\n  height: 20px;\n  display: flex;\n  margin-right: 5px;\n  align-items: center;\n  justify-content: center; }\n\n.SNG__button--icon * {\n  fill: inherit;\n  color: inherit; }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 14px;\n  color: white;\n  margin-left: 5px;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out 0.4s forwards; }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%,\n  100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n\n.SNG__loader {\n  border: 16px solid var(--button-background-hover);\n  border-top: 16px solid var(--theme-color);\n  border-radius: 50%;\n  border-width: 4px;\n  margin-right: 8px;\n  width: 25px;\n  height: 25px;\n  animation: spin 1s linear infinite; }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n@media only screen and (max-width: 480px) {\n  .SNG__button.SNG__button--expand-on-mobile {\n    width: 100%;\n    font-size: 14px;\n    margin-right: 0;\n    margin-left: 0;\n    height: 60px; }\n  .SNG__button.SNG__button--link {\n    min-width: auto;\n    width: auto;\n    margin: 5px 10px 5px 0; }\n  .checkmark {\n    width: 20px;\n    height: 20px; }\n  .SNG__button:hover .SNG__button--overlay {\n    opacity: 0; } }\n", ""]);
+exports.push([module.i, ":root {\n  --theme-color: rgb(255, 0, 106);\n  --button-background: #222;\n  --button-color: #fff;\n  --button-background-hover: #00000044;\n  --button-background-disabled: #444444;\n  --button-color-disabled: #666666;\n  --button__second--border-color: var(--theme-color);\n  --button__second--background: rgba(255, 0, 106, 0.1);\n  --button__second--disabled-background: #111111;\n  --button__second--disabled-color: #888;\n  --button__default--border-color: #888;\n  --button__default--background: transparent;\n  --button__default--disabled-background: #111111;\n  --button__default--disabled-color: #888; }\n\n.SNG__button * {\n  box-sizing: border-box; }\n\n.SNG__button > * {\n  transition: all 0.2s ease-in-out; }\n\n.SNG__button {\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0;\n  white-space: nowrap;\n  -ms-touch-action: manipulation;\n  touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  font-size: 14px;\n  border: none;\n  overflow: hidden;\n  height: 48px;\n  padding: 0 24px;\n  min-width: 136px;\n  position: relative;\n  line-height: 0;\n  transition: all 0.25s ease;\n  transform-origin: center;\n  z-index: 1;\n  color: #fff;\n  background: transparent;\n  vertical-align: top;\n  box-sizing: border-box;\n  margin: 5px 0px 5px 0;\n  font-weight: normal;\n  position: relative; }\n\n.SNG__button:active {\n  transform: scale(0.95); }\n\n.SNG__button:not(:first-child) {\n  margin-left: 15px; }\n\n.SNG__button--big {\n  height: 64px;\n  padding: 0 36px;\n  border-radius: 36px;\n  font-size: 16px; }\n\n.SNG__button.SNG__button.SNG__button--busy {\n  opacity: 0.5; }\n\n.SNG__button .SNG__button--overlay {\n  position: absolute;\n  left: 0;\n  top: 0px;\n  width: 100%;\n  height: 100%;\n  background: var(--button-background);\n  opacity: 0;\n  transition: all 0.2s ease;\n  z-index: -2; }\n\n.SNG__button:hover .SNG__button--overlay {\n  opacity: 0.2; }\n\n.SNG__button.SNG__button--less-round,\n.SNG__button.SNG__button--less-round .SNG__button--overlay {\n  border-radius: 5px; }\n\n.SNG__button.SNG__button--round,\n.SNG__button.SNG__button--round .SNG__button--overlay {\n  border-radius: 30px; }\n\n.SNG__button.SNG__button--default {\n  background: var(--button__default--background);\n  border: 1px solid var(--button__default--border-color);\n  font-weight: 400; }\n\n.SNG__button.SNG__button--default.SNG__button--disabled {\n  background: var(--button__default--disabled-background);\n  border-color: var(--button__default--disabled-color);\n  color: var(--button__default--disabled-color);\n  cursor: default; }\n\n.SNG__button.SNG__button--default.SNG__button--disabled .SNG__button--overlay {\n  opacity: 0; }\n\n.SNG__button.SNG__button--primary {\n  border-color: var(--theme-color);\n  background: var(--theme-color);\n  font-weight: 700; }\n\n.SNG__button.SNG__button--primary.SNG__button--disabled {\n  background: var(--button-background);\n  border-color: var(--button-background);\n  color: var(--button-color-disabled);\n  cursor: default; }\n\n.SNG__button.SNG__button--secondary {\n  border-color: var(--button__second--border-color);\n  border: 1px solid;\n  background-color: var(--button__second--background);\n  color: var(--theme-color);\n  font-weight: 600; }\n\n.SNG__button.SNG__button--secondary.SNG__button--disabled {\n  border-color: var(--button-color-disabled);\n  color: var(--button-color-disabled);\n  cursor: default; }\n\n.SNG__button.SNG__button--primary.SNG__button--disabled .done span,\n.SNG__button.SNG__button--secondary.SNG__button--disabled .done span {\n  color: var(--button-color-disabled); }\n\n.SNG__button.SNG__button--busy .SNG__loader {\n  border-color: var(--button-color-disabled);\n  border-top-color: var(--button-color); }\n\n.SNG__button.SNG__button--primary.SNG__button--busy .SNG__loader {\n  border-color: var(--button-background-hover);\n  border-top-color: var(--button-color); }\n\n.SNG__button.SNG__button--secondary.SNG__button--busy .SNG__loader {\n  border-color: var(--button__default--border-color);\n  border-top-color: var(--theme-color); }\n\n.SNG__button.SNG__button--secondary.SNG__button--done * {\n  color: var(--theme-color);\n  transition: all 0.2s ease-in-out; }\n\n.SNG__button.SNG__button--busy:hover,\n.SNG__button.SNG__button--done:hover {\n  cursor: default; }\n\n.SNG__button.SNG__button--busy:hover .SNG__button--overlay,\n.SNG__button.SNG__button--done:hover .SNG__button--overlay {\n  opacity: 0; }\n\n.SNG__button.SNG__button--disabled {\n  color: var(--button-color-disabled);\n  background: var(--button-background);\n  cursor: default; }\n\n.SNG__button.SNG__button--busy:hover {\n  cursor: default; }\n\n.SNG__button.SNG__button--busy:hover {\n  cursor: default; }\n\n.SNG__button--link {\n  padding: 0;\n  height: auto;\n  line-height: 1.5;\n  justify-content: flex-start;\n  min-width: auto;\n  color: #ffffffaa;\n  font-size: 15px;\n  background-color: transparent;\n  background: none;\n  transition: all 0.2s ease;\n  margin-right: 10px;\n  border-color: transparent; }\n\n.SNG__button--link + .SNG__button--link {\n  margin-left: 10px; }\n\n.SNG__button--link:hover {\n  transform: none;\n  color: #fff;\n  text-decoration: underline; }\n\n.SNG__button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.SNG__button.SNG__button--primary:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px white; }\n\n.SNG__button.SNG__button--secondary:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px white; }\n\n.SNG__button.SNG__button--busy:focus,\n.SNG__button.SNG__button--disabled:focus {\n  outline: none;\n  box-shadow: none; }\n\n.SNG__button--icon {\n  width: 20px;\n  height: 20px;\n  display: flex;\n  margin-right: 3px;\n  align-items: center;\n  justify-content: center; }\n\n.SNG__button--icon * {\n  fill: inherit;\n  color: inherit; }\n\n.SNG__button .done {\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    transform: translateX(50%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0%); } }\n\n.SNG__button .done span {\n  font-size: 14px;\n  color: white;\n  margin-left: 5px;\n  opacity: 0;\n  animation: slide-in 0.2s ease-in-out 0.4s forwards; }\n\n.checkmark__circle {\n  stroke-dasharray: 166;\n  stroke-dashoffset: 166;\n  stroke-width: 2;\n  stroke-miterlimit: 10;\n  stroke: transparent;\n  fill: none;\n  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }\n\n.checkmark {\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  display: block;\n  stroke-width: 5;\n  stroke: #fff;\n  stroke-miterlimit: 10;\n  animation: fill 0.2s ease-in-out 0.2s forwards, scale 0.2s ease-in-out 0.4s both; }\n\n.checkmark__check {\n  transform-origin: 50% 50%;\n  stroke-dasharray: 48;\n  stroke-dashoffset: 48;\n  animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }\n\n@keyframes stroke {\n  100% {\n    stroke-dashoffset: 0; } }\n\n@keyframes scale {\n  0%,\n  100% {\n    transform: none; }\n  50% {\n    transform: scale3d(1.1, 1.1, 1); } }\n\n@keyframes fill {\n  100% {\n    box-shadow: inset 0px 0px 0px 30px #ffffff55; } }\n\n@keyframes animate-background {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(-50%, 0); }\n  100% {\n    transform: translate(0, 0); } }\n\n.SNG__loader {\n  border: 16px solid var(--button-background-hover);\n  border-top: 16px solid var(--theme-color);\n  border-radius: 50%;\n  border-width: 4px;\n  margin-right: 8px;\n  width: 25px;\n  height: 25px;\n  animation: spin 1s linear infinite; }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n@media only screen and (max-width: 480px) {\n  .SNG__button.SNG__button--expand-on-mobile {\n    width: 100%;\n    font-size: 14px;\n    margin-right: 0;\n    margin-left: 0;\n    height: 48px; }\n  .SNG__button.SNG__button--link {\n    min-width: auto;\n    width: auto;\n    margin: 5px 10px 5px 0; }\n  .checkmark {\n    width: 20px;\n    height: 20px; }\n  .SNG__button:hover .SNG__button--overlay {\n    opacity: 0; } }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 21 */
+/* 27 */
 /***/ (function(module, exports) {
 
 
@@ -1501,159 +2084,34 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(23);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(5)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(4)(false);
-// imports
-
-
-// module
-exports.push([module.i, ".dark {\n  --link-default-color: #ffffffaa;\n  --link-hover-color: #fff;\n  --link-active-color: #fff; }\n\n.SNG__nav > nav {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 1rem;\n  font-weight: normal;\n  max-width: 98rem;\n  margin: 0 auto;\n  background: #111;\n  z-index: 9999; }\n\n.SNG__nav .SNG__nav--logo {\n  padding: 1rem;\n  font-size: 2rem;\n  font-weight: normal;\n  color: var(--link-default-color); }\n\n.SNG__nav .SNG__nav--logo a {\n  color: var(--link-default-color);\n  transition: 0.12s; }\n\n.SNG__nav .SNG__nav--links a:link {\n  color: var(--link-default-color);\n  padding: 0.5rem 0;\n  margin: 0 1rem;\n  position: relative;\n  overflow-x: hidden;\n  z-index: 10001; }\n\n.SNG__nav .SNG__nav--links a:hover {\n  color: var(--link-hover-color); }\n\n.SNG__nav .SNG__nav--links a:active {\n  color: var(--link-active-color); }\n\n.SNG__nav .SNG__nav--links a:visited {\n  color: var(--link-default-color); }\n\n.SNG__nav .SNG__nav--links a::after {\n  content: \"\";\n  position: absolute;\n  bottom: -0.2rem;\n  left: 0%;\n  width: 100%;\n  overflow: hidden;\n  opacity: 0;\n  height: 0.1rem;\n  transform: scaleX(0.1);\n  transform-origin: right;\n  background: var(--link-default-color);\n  transition: transform 200ms ease-in, opacity 200ms ease-in;\n  z-index: -1; }\n\n.SNG__nav .SNG__nav--links a:hover::after {\n  transform-origin: left;\n  transform: scale(1);\n  opacity: 1; }\n\n.SNG__nav .SNG__nav--links a:hover::before {\n  transform-origin: right;\n  transform: scale(1);\n  opacity: 1; }\n\n.singularity-logo {\n  text-transform: uppercase;\n  font-size: 2rem;\n  letter-spacing: 1rem; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(25);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(5)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(4)(false);
-// imports
-
-
-// module
-exports.push([module.i, ".SNG__presentor {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  animation: appear 5s ease-in-out forwards; }\n\n@keyframes appear {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n.SNG__presentor--banner {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 40rem;\n  margin: calc((100vh - 40rem) / 2) auto;\n  height: 40rem;\n  text-align: center;\n  position: relative;\n  background-color: #000;\n  border-radius: 50%; }\n\n@keyframes float {\n  0% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; }\n  50% {\n    width: 40vmin;\n    margin: calc((100vh - 40vmin) / 2) auto;\n    height: 40vmin; }\n  100% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; } }\n\n.SNG__presentor--banner::before,\n.SNG__presentor--banner::after,\n.SNG__presentor--banner > span {\n  content: \"\";\n  position: absolute;\n  background: -webkit-linear-gradient(transparent, transparent), url(https://assets.pcmag.com/media/images/457693-interstellar-black-hole.jpg?thumb=y&width=810&height=456) repeat;\n  background: -o-linear-gradient(transparent, transparent);\n  left: -25%;\n  top: -25%;\n  width: 150%;\n  height: 150%;\n  filter: blur(5rem);\n  z-index: -3;\n  border-radius: 50%;\n  animation: moveBackground 3000s linear infinite; }\n\n.SNG__presentor--banner::before {\n  filter: blur(1rem);\n  background: white;\n  left: -0.5rem;\n  top: -0.5rem;\n  z-index: -1;\n  width: calc(100% + 1rem);\n  height: calc(100% + 1rem); }\n\n.SNG__presentor--banner > span {\n  transform: skewX(60deg);\n  left: 0;\n  top: 0;\n  width: calc(100%);\n  height: calc(100%);\n  opacity: 1;\n  z-index: 0; }\n\n.SNG__presentor--banner > div:first-child {\n  display: block;\n  width: 100vw;\n  letter-spacing: 3rem;\n  margin-left: 2rem;\n  color: white;\n  z-index: 2;\n  font-weight: 400;\n  font-size: 5vmin;\n  margin-bottom: 1rem;\n  animation: floatText 10s linear infinite; }\n\n.SNG__presentor--scroll {\n  perspective-origin: center;\n  width: 100%; }\n\ndiv[class^=\"SNG__animate--\"] {\n  opacity: 0;\n  transform-origin: center;\n  transform-style: preserve-3d;\n  transition: all 0.3s ease-in-out; }\n\ndiv[class^=\"SNG__animate--right-\"] {\n  transform: rotate(5deg) translateX(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--left-\"] {\n  transform: rotate(-5deg) translateX(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--top-\"] {\n  transform: rotate(-5deg) translateY(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--bottom-\"] {\n  transform: rotate(5deg) translateY(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--back-\"] {\n  transform: rotate(0deg) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--front-\"] {\n  transform: rotate(0deg) translateZ(20rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--\"].animate {\n  opacity: 1;\n  transform: rotate(0deg) translateX(0rem) translateY(0rem) translateZ(0rem) scale(1); }\n\n@keyframes moveBackground {\n  0% {\n    background-position-y: 0; }\n  50% {\n    background-position-y: 10000%; }\n  100% {\n    background-position-y: 0; } }\n\n@keyframes floatText {\n  0% {\n    transform: scale(1); }\n  50% {\n    transform: scale(1.2); }\n  100% {\n    transform: scale(1); } }\n\n.SNG__presentor--banner > div:last-child {\n  font-weight: 300;\n  font-size: 2rem;\n  width: 100vw;\n  z-index: 2; }\n\n.SNG__presentor--simple,\n.SNG__presentor--simple-full {\n  width: 100%;\n  padding: 2rem;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n.SNG__presentor--simple-full {\n  padding: 2rem;\n  height: 100vh;\n  width: 100vw; }\n\ndiv[class^=\"SNG__presentor--smooth-\"] {\n  overflow-y: hidden;\n  width: 100%;\n  transition: height 0.25s ease-in-out; }\n\n.SNG__presentor .SNG__sticky > .SNG__sticky--children {\n  position: sticky;\n  top: 0; }\n\n.SNG__stars {\n  display: block;\n  background: transparent;\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  z-index: -5;\n  animation: starsHide 10s linear infinite; }\n\n.SNG__stars > span {\n  border-radius: 50%;\n  background: white;\n  position: absolute;\n  animation: starsBox 3s linear infinite; }\n\n@keyframes starsBox {\n  0% {\n    opacity: 0; }\n  50% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n\n@keyframes starsHide {\n  0% {\n    opacity: 1; }\n  50% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@media only screen and (max-width: 480px) {\n  .SNG__stars {\n    display: block;\n    background: transparent;\n    position: fixed;\n    width: 100%;\n    height: 100%;\n    z-index: -5; }\n  .SNG__stars > span {\n    border-radius: 50%;\n    background: white;\n    position: absolute; }\n  body {\n    overflow-x: hidden; }\n  .SNG__presentor--banner > div:first-child {\n    letter-spacing: 1rem;\n    margin-left: 2rem;\n    font-size: 5vmin;\n    animation: floatText 20s cubic-bezier(0.55, 0.09, 0.68, 0.53) infinite;\n    margin-top: 25rem;\n    z-index: 5; }\n  .SNG__presentor--banner::after,\n  .SNG__presentor--banner > span {\n    display: none;\n    content: \"\";\n    left: -50%;\n    top: -50%;\n    width: 200%;\n    height: 200%;\n    animation: none;\n    z-index: 5; }\n  .SNG__presentor--banner > div:last-child {\n    font-size: 10px;\n    z-index: 5; }\n  .SNG__presentor--banner:before {\n    background: var(--theme-color);\n    left: 0rem;\n    top: -20rem;\n    z-index: -1;\n    width: calc(600%);\n    height: calc(600%);\n    animation: none;\n    filter: none;\n    box-shadow: 0 0 100vh 80px var(--theme-color);\n    animation: moveSun 10s ease-in-out infinite; }\n  @keyframes moveSun {\n    0% {\n      transform: translateX(-200%); }\n    100% {\n      transform: translateX(200%); } }\n  .SNG__presentor--banner > .planet-shadow {\n    height: 733px;\n    background: #000000fa;\n    position: relative;\n    width: 100%;\n    display: inline-flex;\n    position: absolute;\n    left: 0;\n    z-index: 3;\n    top: 50%;\n    transform: perspective(80px) rotateX(86deg) skewX(40deg);\n    transform-origin: top;\n    animation: moveShadow 10s ease-in-out infinite; }\n  @keyframes moveShadow {\n    0% {\n      transform: perspective(80px) rotateX(86deg) skewX(40deg);\n      opacity: 0; }\n    25% {\n      opacity: 0; }\n    50% {\n      opacity: 1; }\n    75% {\n      opacity: 0; }\n    100% {\n      transform: perspective(80px) rotateX(86deg) skewX(-40deg);\n      opacity: 0; } }\n  .SNG__presentor--banner {\n    width: 10rem;\n    margin: calc((100vh - 20rem) / 2) auto;\n    height: 10rem;\n    animation: changePlanetGlow 10s linear 5s infinite; }\n  @keyframes changePlanetGlow {\n    0% {\n      box-shadow: 0 0 0px 0px rgba(255, 0, 106, 0); }\n    20% {\n      box-shadow: 0 0 0px 0px rgba(255, 0, 106, 0); }\n    50% {\n      box-shadow: 0 0 40px 5px var(--theme-color); }\n    80% {\n      box-shadow: 0 0 0px 0px rgba(255, 0, 106, 0); }\n    100% {\n      box-shadow: 0 0 0px 0px rgba(255, 0, 106, 0); } }\n  .SNG__presentor--banner .planet-glow {\n    width: 100%;\n    height: 100%;\n    display: inline-flex;\n    position: absolute;\n    left: 0%;\n    top: 0%;\n    display: flex;\n    overflow: hidden;\n    border-radius: 50%;\n    justify-content: center;\n    align-items: center;\n    font-size: 4rem;\n    z-index: 3;\n    color: #00000091; }\n  .SNG__presentor--banner .planet-glow::after {\n    z-index: -1;\n    content: \"\";\n    width: 100%;\n    height: 100%;\n    display: inline-flex;\n    position: absolute;\n    left: 0%;\n    background: var(--theme-color);\n    top: 0%;\n    overflow: hidden;\n    border-radius: 50%;\n    transform: translateX(200%);\n    box-shadow: 0 0 50px 50px var(--theme-color);\n    animation: movePlanetGlow 10s linear 5s infinite; }\n  @keyframes movePlanetGlow {\n    0% {\n      transform: translateX(200%);\n      border-radius: 50%; }\n    100% {\n      transform: translateX(-200%);\n      border-radius: 50%; } } }\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(27);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(5)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(4)(false);
-// imports
-
-
-// module
-exports.push([module.i, ".SNG__header {\n  margin: 1rem 0;\n  cursor: default; }\n\n.SNG__header--xxlg {\n  font-size: 7rem; }\n\n.SNG__header--xlg {\n  font-size: 5rem; }\n\n.SNG__header--lg {\n  font-size: 4rem; }\n\n.SNG__header--md {\n  font-size: 3rem; }\n\n.SNG__header--sm {\n  font-size: 2rem; }\n\n.SNG__header--xs {\n  font-size: 1.8rem; }\n\n.SNG__header--spaced {\n  font-size: 2.8rem;\n  margin: 1rem 0;\n  text-transform: uppercase;\n  letter-spacing: 1rem; }\n\n.SNG__text--gradient, .SNG__text--gradient-animated {\n  color: white;\n  -webkit-text-fill-color: transparent;\n  background: -webkit-linear-gradient(#888, #111) repeat;\n  background: -o-linear-gradient(transparent, transparent);\n  -webkit-background-clip: text;\n  letter-spacing: 0.2rem; }\n\n.SNG__text--gradient-animated {\n  animation: moveBackground 10s ease-in-out infinite; }\n\n@media only screen and (max-width: 480px) {\n  .SNG__header--xxlg {\n    font-size: 5rem; } }\n", ""]);
-
-// exports
-
-
-/***/ }),
 /* 28 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
+module.exports = Array.isArray || function (arr) {
+  return Object.prototype.toString.call(arr) == '[object Array]';
+};
 
-var content = __webpack_require__(29);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(5)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
-// imports
+"use strict";
+/** @license React v16.9.0
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
-
-// module
-exports.push([module.i, ".SNG__spacer {\n  height: 2rem; }\n\n.SNG__spacer--lg {\n  height: 4rem; }\n\n.SNG__spacer--md {\n  height: 2rem; }\n\n.SNG__spacer--sm {\n  height: 1rem; }\n\n.SNG__spacer--xs {\n  height: 0.5rem; }\n", ""]);
-
-// exports
+Object.defineProperty(exports,"__esModule",{value:!0});
+var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h=b?Symbol.for("react.provider"):60109,k=b?Symbol.for("react.context"):60110,l=b?Symbol.for("react.async_mode"):60111,m=b?Symbol.for("react.concurrent_mode"):60111,n=b?Symbol.for("react.forward_ref"):60112,p=b?Symbol.for("react.suspense"):60113,q=b?Symbol.for("react.suspense_list"):
+60120,r=b?Symbol.for("react.memo"):60115,t=b?Symbol.for("react.lazy"):60116,v=b?Symbol.for("react.fundamental"):60117,w=b?Symbol.for("react.responder"):60118;function x(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case h:return a;default:return u}}case t:case r:case d:return u}}}function y(a){return x(a)===m}exports.typeOf=x;exports.AsyncMode=l;
+exports.ConcurrentMode=m;exports.ContextConsumer=k;exports.ContextProvider=h;exports.Element=c;exports.ForwardRef=n;exports.Fragment=e;exports.Lazy=t;exports.Memo=r;exports.Portal=d;exports.Profiler=g;exports.StrictMode=f;exports.Suspense=p;
+exports.isValidElementType=function(a){return"string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===v||a.$$typeof===w)};exports.isAsyncMode=function(a){return y(a)||x(a)===l};exports.isConcurrentMode=y;exports.isContextConsumer=function(a){return x(a)===k};exports.isContextProvider=function(a){return x(a)===h};
+exports.isElement=function(a){return"object"===typeof a&&null!==a&&a.$$typeof===c};exports.isForwardRef=function(a){return x(a)===n};exports.isFragment=function(a){return x(a)===e};exports.isLazy=function(a){return x(a)===t};exports.isMemo=function(a){return x(a)===r};exports.isPortal=function(a){return x(a)===d};exports.isProfiler=function(a){return x(a)===g};exports.isStrictMode=function(a){return x(a)===f};exports.isSuspense=function(a){return x(a)===p};
 
 
 /***/ }),
@@ -1690,13 +2148,169 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, ":root {\n  --theme-dark-dialog-content-background: #111;\n  --theme-dark-dialog-header-background: #333;\n  --theme-dark-dialog-background: #000000bb; }\n\n.SNG__dialog {\n  position: fixed;\n  width: 100vw;\n  background: var(--theme-dark-dialog-background);\n  left: 0;\n  top: 0;\n  height: 100vh;\n  font-weight: normal;\n  z-index: 1;\n  perspective: 100vw; }\n\n.SNG__dialog--content {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translateZ(-40px) translateX(-50%) translateY(-50%);\n  transform-style: preserve-3d;\n  transform-origin: center center;\n  max-width: 500px;\n  z-index: 3;\n  opacity: 0;\n  background: var(--theme-dark-dialog-content-background);\n  box-shadow: 0 5px 20px #00000099;\n  overflow-y: hidden; }\n\n.SNG__dialog--actions {\n  padding: 10px 15px;\n  background: var(--theme-dark-dialog-header-background);\n  position: relative; }\n\n.SNG__dialog--title {\n  padding: 15px;\n  font-size: 20px;\n  background: var(--theme-dark-dialog-header-background);\n  position: absolute;\n  font-weight: normal;\n  left: 0;\n  width: 100%;\n  z-index: 2;\n  top: 0;\n  height: 60px; }\n\n.SNG__dialog--title::after,\n.SNG__dialog--actions::after {\n  position: absolute;\n  content: \"\";\n  bottom: 0;\n  height: 20px;\n  left: 0;\n  width: 100%;\n  transform: translateY(100%);\n  background: linear-gradient(to bottom, var(--theme-dark-dialog-content-background), transparent); }\n\n.SNG__dialog--actions::after {\n  bottom: unset;\n  top: 0;\n  transform: translateY(-100%);\n  background: linear-gradient(to top, var(--theme-dark-dialog-content-background), transparent); }\n\n.SNG__dialog--children {\n  padding: 15px;\n  opacity: 0; }\n\n.SNG__dialog--title .SNG__dialog--close-button {\n  position: absolute;\n  width: 40px;\n  font-size: 20px;\n  top: 50%;\n  right: 5px;\n  transform: translateY(-50%);\n  cursor: pointer;\n  height: 40px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n  transition: 0.15s;\n  background: transparent;\n  color: #fff;\n  border: none; }\n\n.SNG__dialog--title .SNG__dialog--close-button:hover {\n  background: #ffffff11; }\n\n.SNG__dialog--title .SNG__dialog--close-button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.dialog-show {\n  animation: showDialog 0.3s ease-in-out forwards; }\n\n.dialog-show .SNG__dialog--content {\n  animation: showDialogContent 0.2s ease-in-out 0.3s forwards; }\n\n.dialog-show .SNG__dialog--children {\n  animation: showChildren 0.5s ease-in-out 0.5s forwards;\n  margin-top: 60px;\n  max-height: 50vh;\n  overflow-y: auto; }\n\n.SNG__dialog.SNG__dialog__full-with-actions .SNG__dialog--children {\n  height: calc(100vh - 130px);\n  max-height: unset; }\n\n.SNG__dialog.SNG__dialog__full .SNG__dialog--children {\n  height: calc(100vh - 60px);\n  max-height: unset; }\n\n.dialog-hide {\n  animation: hideDialog 0.3s ease-in-out 0.1s forwards; }\n\n.dialog-hide .SNG__dialog--content {\n  animation: hideDialogContent 0.2s ease-in-out forwards; }\n\n@keyframes showChildren {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialog {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialogContent {\n  from {\n    opacity: 0;\n    transform: translateZ(-40px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); } }\n\n@keyframes hideDialog {\n  from {\n    opacity: 1; }\n  to {\n    opacity: 0; } }\n\n@keyframes hideDialogContent {\n  from {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 0;\n    transform: translateZ(-20px) translateX(-50%) translateY(-50%); } }\n\n@media only screen and (max-width: 480px) {\n  .SNG__dialog--content {\n    width: 90vw; }\n  .SNG__dialog.SNG__dialog__full-with-actions .SNG__dialog--children {\n    height: calc(100vh - 216px);\n    max-height: unset; } }\n", ""]);
+exports.push([module.i, ":root {\n  --link-default-color: #ffffffaa;\n  --link-hover-color: #fff;\n  --link-active-color: #fff;\n  --link-background-color: #222; }\n\n.SNG__nav > nav {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 1rem;\n  font-weight: normal;\n  max-width: 98rem;\n  margin: 0 auto;\n  background: #111;\n  z-index: 9999; }\n\n.SNG__nav .SNG__nav--logo {\n  padding: 1rem;\n  font-size: 2rem;\n  font-weight: normal;\n  color: var(--link-default-color); }\n\n.SNG__nav .SNG__nav--logo a {\n  color: var(--link-default-color);\n  transition: 0.12s; }\n\n.SNG__nav .SNG__nav--links a {\n  color: var(--link-default-color);\n  padding: 0.5rem 0;\n  margin: 0 1rem;\n  position: relative;\n  overflow-x: hidden;\n  z-index: 10001; }\n\n.SNG__nav .SNG__nav--links a:hover {\n  color: var(--link-hover-color); }\n\n.SNG__nav .SNG__nav--links a:active {\n  color: var(--link-active-color); }\n\n.SNG__nav .SNG__nav--links a:visited {\n  color: var(--link-default-color); }\n\n.SNG__nav .SNG__nav--links a::after {\n  content: \"\";\n  position: absolute;\n  bottom: -0.2rem;\n  left: 0%;\n  width: 100%;\n  overflow: hidden;\n  opacity: 0;\n  height: 0.1rem;\n  transform: scaleX(0.1);\n  transform-origin: right;\n  background: var(--link-default-color);\n  transition: transform 200ms ease-in, opacity 200ms ease-in;\n  z-index: -1; }\n\n.SNG__nav .SNG__nav--links a:hover::after {\n  transform-origin: left;\n  transform: scale(1);\n  opacity: 1; }\n\n.SNG__nav .SNG__nav--links a:hover::before {\n  transform-origin: right;\n  transform: scale(1);\n  opacity: 1; }\n\n.singularity-logo {\n  text-transform: uppercase;\n  font-size: 2rem;\n  letter-spacing: 1rem; }\n\n.SNG__nav--links .SNG__nav--links-brand {\n  display: none; }\n\n.SNG__nav--links-primary-action-mobile {\n  display: none; }\n\n.SNG__nav--links .SNG__nav--links-close-button {\n  display: none; }\n\n.SNG__nav--logo-mobile {\n  display: none; }\n\n.SNG__nav--links .SNG__nav--close-button, .SNG__nav--open-button {\n  display: none; }\n\n@media only screen and (max-width: 1024px) {\n  .SNG__nav > nav {\n    position: fixed;\n    bottom: 0;\n    left: 0;\n    width: 100%;\n    height: 65px;\n    background: linear-gradient(to top, black, #0404048f);\n    display: flex;\n    font-size: 20px;\n    padding: 0 5%;\n    justify-content: space-between; }\n  .SNG__nav > nav .SNG__nav--logo {\n    display: none; }\n  .SNG__nav--logo-mobile {\n    display: inline-flex; }\n  .SNG__nav--links {\n    position: fixed;\n    z-index: 5;\n    left: 0;\n    height: 100vh;\n    top: 0;\n    width: 100vw;\n    background: var(--link-background-color);\n    display: flex;\n    flex-direction: column;\n    justify-content: flex-end;\n    align-items: flex-start;\n    padding: 5%;\n    padding-bottom: 20%;\n    font-size: 18px;\n    z-index: 9999;\n    transform: translateY(100%);\n    transition: all 0.5s ease-in-out; }\n  .SNG__nav--links .SNG__nav--links-brand {\n    position: absolute;\n    display: block;\n    left: 50%;\n    top: 5%;\n    transform: translateX(-50%); }\n  .SNG__nav .SNG__nav--links a {\n    display: flex;\n    display: flex;\n    width: 80%;\n    padding: 2rem 0;\n    margin: 0 auto; }\n  .SNG__nav--links-primary-action-desktop {\n    display: none; }\n  .SNG__nav--links-primary-action-mobile {\n    width: 100%;\n    margin-top: 10%;\n    display: block;\n    margin-bottom: 15%; }\n  .SNG__nav--links .SNG__nav--links-close-button {\n    display: block; }\n  .SNG__nav--links .SNG__nav--close-button {\n    position: absolute;\n    display: block;\n    left: 50%;\n    bottom: 3%;\n    width: 50px;\n    height: 50px;\n    color: var(--link-default-color);\n    transform: translateX(-50%);\n    background: transparent;\n    border: none;\n    font-size: 24px;\n    border-radius: 50%;\n    border: 4px solid; }\n  .SNG__nav--open-button {\n    position: absolute;\n    display: block;\n    left: 50%;\n    bottom: 50%;\n    width: 50px;\n    height: 50px;\n    color: var(--link-default-color);\n    transform: translateX(-50%) translateY(50%);\n    background: transparent;\n    border: none;\n    font-size: 24px;\n    border-radius: 50%;\n    border: 4px solid; }\n  .SNG__nav--links .SNG__nav--close-button:focus,\n  .SNG__nav--open-button:focus {\n    outline: none; }\n  .SNG__nav .SNG__nav--drawer-open .SNG__nav--links {\n    transform: translateX(0); } }\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(33);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(5)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".SNG__presentor {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  animation: appear 5s ease-in-out forwards; }\n\n@keyframes appear {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n.SNG__presentor--banner {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 40rem;\n  margin: calc((100vh - 40rem) / 2) auto;\n  height: 40rem;\n  text-align: center;\n  position: relative;\n  background-color: #000;\n  border-radius: 50%; }\n\n@keyframes float {\n  0% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; }\n  50% {\n    width: 40vmin;\n    margin: calc((100vh - 40vmin) / 2) auto;\n    height: 40vmin; }\n  100% {\n    width: 60vmin;\n    margin: calc((100vh - 60vmin) / 2) auto;\n    height: 60vmin; } }\n\n.SNG__presentor--banner::before,\n.SNG__presentor--banner::after,\n.SNG__presentor--banner > span {\n  content: \"\";\n  position: absolute;\n  background: -webkit-linear-gradient(transparent, transparent), url(https://assets.pcmag.com/media/images/457693-interstellar-black-hole.jpg?thumb=y&width=810&height=456) repeat;\n  background: -o-linear-gradient(transparent, transparent);\n  left: -25%;\n  top: -25%;\n  width: 150%;\n  height: 150%;\n  filter: blur(5rem);\n  z-index: -3;\n  border-radius: 50%;\n  animation: moveBackground 3000s linear infinite; }\n\n.SNG__presentor--banner::before {\n  filter: blur(1rem);\n  background: white;\n  left: -0.5rem;\n  top: -0.5rem;\n  z-index: -1;\n  width: calc(100% + 1rem);\n  height: calc(100% + 1rem); }\n\n.SNG__presentor--banner > span {\n  transform: skewX(60deg);\n  left: 0;\n  top: 0;\n  width: calc(100%);\n  height: calc(100%);\n  opacity: 1;\n  z-index: 0; }\n\n.SNG__presentor--banner > div:first-child {\n  display: block;\n  width: 100vw;\n  letter-spacing: 3rem;\n  margin-left: 2rem;\n  color: white;\n  z-index: 2;\n  font-weight: 400;\n  font-size: 5vmin;\n  margin-bottom: 1rem;\n  animation: floatText 10s linear infinite; }\n\n.SNG__presentor--scroll {\n  perspective-origin: center;\n  width: 100%; }\n\ndiv[class^=\"SNG__animate--\"] {\n  opacity: 0;\n  transform-origin: center;\n  transform-style: preserve-3d;\n  transition: all 0.3s ease-in-out; }\n\ndiv[class^=\"SNG__animate--right-\"] {\n  transform: rotate(5deg) translateX(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--left-\"] {\n  transform: rotate(-5deg) translateX(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--top-\"] {\n  transform: rotate(-5deg) translateY(-6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--bottom-\"] {\n  transform: rotate(5deg) translateY(6rem) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--back-\"] {\n  transform: rotate(0deg) translateZ(-10rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--front-\"] {\n  transform: rotate(0deg) translateZ(20rem) scale(0.9); }\n\ndiv[class^=\"SNG__animate--\"].animate {\n  opacity: 1;\n  transform: rotate(0deg) translateX(0rem) translateY(0rem) translateZ(0rem) scale(1); }\n\n@keyframes moveBackground {\n  0% {\n    background-position-y: 0; }\n  50% {\n    background-position-y: 10000%; }\n  100% {\n    background-position-y: 0; } }\n\n@keyframes floatText {\n  0% {\n    transform: scale(1); }\n  50% {\n    transform: scale(1.2); }\n  100% {\n    transform: scale(1); } }\n\n.SNG__presentor--banner > div:last-child {\n  font-weight: 300;\n  font-size: 2rem;\n  width: 100vw;\n  z-index: 2; }\n\n.SNG__presentor--simple,\n.SNG__presentor--simple-full {\n  width: 100%;\n  padding: 2rem;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n.SNG__presentor--simple-full {\n  padding: 2rem;\n  height: 100vh;\n  width: 100vw; }\n\ndiv[class^=\"SNG__presentor--smooth-\"] {\n  overflow-y: hidden;\n  width: 100%;\n  transition: height 0.25s ease-in-out; }\n\n.SNG__presentor .SNG__sticky > .SNG__sticky--children {\n  position: sticky;\n  top: 0; }\n\n.SNG__stars {\n  display: block;\n  background: transparent;\n  position: fixed;\n  width: 200%;\n  height: 150%;\n  z-index: -5;\n  animation: starsHide 10s linear infinite; }\n\n.SNG__stars > span {\n  border-radius: 50%;\n  background: white;\n  position: absolute;\n  animation: starsBox 3s linear infinite; }\n\n@keyframes starsBox {\n  0% {\n    opacity: 0; }\n  50% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n\n@keyframes starsHide {\n  0% {\n    opacity: 1; }\n  50% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@media only screen and (max-width: 480px) {\n  .SNG__stars {\n    display: block;\n    background: transparent;\n    position: fixed;\n    width: 100%;\n    height: 100%;\n    z-index: -5; }\n  .SNG__stars > span {\n    border-radius: 50%;\n    background: white;\n    position: absolute; }\n  body {\n    overflow-x: hidden; }\n  .SNG__presentor--banner > div:first-child {\n    letter-spacing: 1rem;\n    margin-left: 2rem;\n    font-size: 5vmin;\n    animation: floatText 20s cubic-bezier(0.55, 0.09, 0.68, 0.53) infinite;\n    margin-top: 25rem;\n    z-index: 5; }\n  .SNG__presentor--banner::after,\n  .SNG__presentor--banner > span {\n    display: none;\n    content: \"\";\n    left: -50%;\n    top: -50%;\n    width: 200%;\n    height: 200%;\n    animation: none;\n    z-index: 5; }\n  .SNG__presentor--banner > div:last-child {\n    font-size: 10px;\n    z-index: 5; }\n  .SNG__presentor--banner:before {\n    background: var(--theme-color);\n    left: 0rem;\n    top: -20rem;\n    z-index: -1;\n    width: calc(600%);\n    height: calc(600%);\n    animation: none;\n    filter: none;\n    box-shadow: 0 0 100vh 80px var(--theme-color);\n    animation: moveSun 10s linear infinite; }\n  @keyframes moveSun {\n    0% {\n      transform: translateX(-200%); }\n    100% {\n      transform: translateX(200%); } }\n  .SNG__presentor--banner > .planet-shadow {\n    height: 733px;\n    background: #000000fa;\n    position: relative;\n    width: 100%;\n    display: inline-flex;\n    position: absolute;\n    left: 0;\n    z-index: 3;\n    top: 50%;\n    transform: perspective(80px) rotateX(86deg) skewX(40deg);\n    transform-origin: top;\n    animation: moveShadow 10s ease-in-out infinite; }\n  @keyframes moveShadow {\n    0% {\n      transform: perspective(80px) rotateX(86deg) skewX(40deg);\n      opacity: 0; }\n    25% {\n      opacity: 0; }\n    50% {\n      opacity: 1; }\n    75% {\n      opacity: 0; }\n    100% {\n      transform: perspective(80px) rotateX(86deg) skewX(-40deg);\n      opacity: 0; } }\n  .SNG__presentor--banner {\n    width: 10rem;\n    margin: calc((100vh - 20rem) / 2) auto;\n    height: 10rem;\n    animation: changePlanetGlow 10s linear 5s infinite; }\n  @keyframes changePlanetGlow {\n    0% {\n      box-shadow: 0 0 0px 0px rgba(255, 0, 106, 0); }\n    20% {\n      box-shadow: 0 0 0px 0px rgba(255, 0, 106, 0); }\n    50% {\n      box-shadow: 0 0 40px 5px var(--theme-color); }\n    80% {\n      box-shadow: 0 0 0px 0px rgba(255, 0, 106, 0); }\n    100% {\n      box-shadow: 0 0 0px 0px rgba(255, 0, 106, 0); } }\n  .SNG__presentor--banner .planet-glow {\n    width: 100%;\n    height: 100%;\n    display: inline-flex;\n    position: absolute;\n    left: 0%;\n    top: 0%;\n    display: flex;\n    overflow: hidden;\n    border-radius: 50%;\n    justify-content: center;\n    align-items: center;\n    font-size: 4rem;\n    z-index: 3;\n    color: #00000091; }\n  .SNG__presentor--banner .planet-glow::after {\n    z-index: -1;\n    content: \"\";\n    width: 100%;\n    height: 100%;\n    display: inline-flex;\n    position: absolute;\n    left: 0%;\n    background: var(--theme-color);\n    top: 0%;\n    overflow: hidden;\n    border-radius: 50%;\n    transform: translateX(200%);\n    box-shadow: 0 0 50px 50px var(--theme-color);\n    animation: movePlanetGlow 10s linear 5s infinite; }\n  @keyframes movePlanetGlow {\n    0% {\n      transform: translateX(200%);\n      border-radius: 50%; }\n    100% {\n      transform: translateX(-200%);\n      border-radius: 50%; } } }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(35);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(5)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".SNG__header {\n  margin: 1rem 0;\n  cursor: default; }\n\n.SNG__header--xxlg {\n  font-size: 7rem; }\n\n.SNG__header--xlg {\n  font-size: 5rem; }\n\n.SNG__header--lg {\n  font-size: 4rem; }\n\n.SNG__header--md {\n  font-size: 3rem; }\n\n.SNG__header--sm {\n  font-size: 2rem; }\n\n.SNG__header--xs {\n  font-size: 1.8rem; }\n\n.SNG__header--spaced {\n  font-size: 2.8rem;\n  margin: 1rem 0;\n  text-transform: uppercase;\n  letter-spacing: 1rem; }\n\n.SNG__text--gradient, .SNG__text--gradient-animated {\n  color: white;\n  -webkit-text-fill-color: transparent;\n  background: -webkit-linear-gradient(#888, #111) repeat;\n  background: -o-linear-gradient(transparent, transparent);\n  -webkit-background-clip: text;\n  letter-spacing: 0.2rem; }\n\n.SNG__text--gradient-animated {\n  animation: moveBackground 10s ease-in-out infinite; }\n\n@media only screen and (max-width: 480px) {\n  .SNG__header--xxlg {\n    font-size: 5rem; } }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(37);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(5)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".SNG__spacer {\n  height: 2rem; }\n\n.SNG__spacer--lg {\n  height: 4rem; }\n\n.SNG__spacer--md {\n  height: 2rem; }\n\n.SNG__spacer--sm {\n  height: 1rem; }\n\n.SNG__spacer--xs {\n  height: 0.5rem; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(39);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(5)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, ":root {\n  --theme-dark-dialog-content-background: #111;\n  --theme-dark-dialog-header-background: #333;\n  --theme-dark-dialog-background: #000000bb; }\n\n.SNG__dialog {\n  position: fixed;\n  width: 100vw;\n  background: var(--theme-dark-dialog-background);\n  left: 0;\n  top: 0;\n  height: 100vh;\n  font-weight: normal;\n  z-index: 1;\n  perspective: 100vw; }\n\n.SNG__dialog--content {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translateZ(-40px) translateX(-50%) translateY(-50%);\n  transform-style: preserve-3d;\n  transform-origin: center center;\n  max-width: 500px;\n  z-index: 3;\n  opacity: 0;\n  background: var(--theme-dark-dialog-content-background);\n  box-shadow: 0 5px 20px #00000099;\n  overflow-y: hidden; }\n\n.SNG__dialog--actions {\n  padding: 10px 15px;\n  background: var(--theme-dark-dialog-header-background);\n  position: relative; }\n\n.SNG__dialog--title {\n  padding: 15px;\n  font-size: 20px;\n  background: var(--theme-dark-dialog-header-background);\n  position: absolute;\n  font-weight: normal;\n  left: 0;\n  width: 100%;\n  z-index: 2;\n  top: 0;\n  height: 60px; }\n\n.SNG__dialog--title::after,\n.SNG__dialog--actions::after {\n  position: absolute;\n  content: \"\";\n  bottom: 0;\n  height: 20px;\n  left: 0;\n  width: 100%;\n  transform: translateY(100%);\n  background: linear-gradient(to bottom, var(--theme-dark-dialog-content-background), transparent); }\n\n.SNG__dialog--actions::after {\n  bottom: unset;\n  top: 0;\n  transform: translateY(-100%);\n  background: linear-gradient(to top, var(--theme-dark-dialog-content-background), transparent); }\n\n.SNG__dialog--children {\n  padding: 15px;\n  opacity: 0; }\n\n.SNG__dialog--title .SNG__dialog--close-button {\n  position: absolute;\n  width: 40px;\n  font-size: 20px;\n  top: 50%;\n  right: 5px;\n  transform: translateY(-50%);\n  cursor: pointer;\n  height: 40px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n  transition: 0.15s;\n  background: transparent;\n  color: #fff;\n  border: none; }\n\n.SNG__dialog--title .SNG__dialog--close-button:hover {\n  background: #ffffff11; }\n\n.SNG__dialog--title .SNG__dialog--close-button:focus {\n  outline: none;\n  box-shadow: 0 0px 0px 2px var(--theme-color); }\n\n.dialog-show {\n  animation: showDialog 0.3s ease-in-out forwards; }\n\n.dialog-show .SNG__dialog--content {\n  animation: showDialogContent 0.2s ease-in-out 0.3s forwards; }\n\n.dialog-show .SNG__dialog--children {\n  animation: showChildren 0.5s ease-in-out 0.5s forwards;\n  margin-top: 60px;\n  max-height: 50vh;\n  overflow-y: auto; }\n\n.SNG__dialog.SNG__dialog__full-with-actions .SNG__dialog--children {\n  height: calc(100vh - 130px);\n  max-height: unset; }\n\n.SNG__dialog.SNG__dialog__full .SNG__dialog--children {\n  height: calc(100vh - 60px);\n  max-height: unset; }\n\n.dialog-hide {\n  animation: hideDialog 0.3s ease-in-out 0.1s forwards; }\n\n.dialog-hide .SNG__dialog--content {\n  animation: hideDialogContent 0.2s ease-in-out forwards; }\n\n@keyframes showChildren {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialog {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes showDialogContent {\n  from {\n    opacity: 0;\n    transform: translateZ(-40px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); } }\n\n@keyframes hideDialog {\n  from {\n    opacity: 1; }\n  to {\n    opacity: 0; } }\n\n@keyframes hideDialogContent {\n  from {\n    opacity: 1;\n    transform: translateZ(0px) translateX(-50%) translateY(-50%); }\n  to {\n    opacity: 0;\n    transform: translateZ(-20px) translateX(-50%) translateY(-50%); } }\n\n@media only screen and (max-width: 480px) {\n  .dialog-show .SNG__dialog--children {\n    max-height: 60vh; }\n  .SNG__dialog--content {\n    width: 90vw; }\n  .SNG__dialog.SNG__dialog__full-with-actions .SNG__dialog--children {\n    height: calc(100vh - 216px);\n    max-height: unset; } }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1708,7 +2322,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.getRowProps = getRowProps;
 exports.default = Row;
 
-var _classNames = __webpack_require__(7);
+var _classNames = __webpack_require__(8);
 
 var _classNames2 = _interopRequireDefault(_classNames);
 
@@ -1720,11 +2334,11 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _createProps = __webpack_require__(8);
+var _createProps = __webpack_require__(9);
 
 var _createProps2 = _interopRequireDefault(_createProps);
 
-var _types = __webpack_require__(10);
+var _types = __webpack_require__(15);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1774,11 +2388,11 @@ function Row(props) {
 Row.propTypes = propTypes;
 
 /***/ }),
-/* 33 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(34);
+var content = __webpack_require__(42);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1799,7 +2413,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 34 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -1813,7 +2427,7 @@ exports.push([module.i, ".container {\n  box-sizing: border-box;\n  margin-left:
 
 
 /***/ }),
-/* 35 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1833,15 +2447,15 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _createProps = __webpack_require__(8);
+var _createProps = __webpack_require__(9);
 
 var _createProps2 = _interopRequireDefault(_createProps);
 
-var _classNames = __webpack_require__(7);
+var _classNames = __webpack_require__(8);
 
 var _classNames2 = _interopRequireDefault(_classNames);
 
-var _types = __webpack_require__(10);
+var _types = __webpack_require__(15);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1918,7 +2532,7 @@ function Col(props) {
 Col.propTypes = propTypes;
 
 /***/ }),
-/* 36 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1937,11 +2551,11 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _createProps = __webpack_require__(8);
+var _createProps = __webpack_require__(9);
 
 var _createProps2 = _interopRequireDefault(_createProps);
 
-var _classNames = __webpack_require__(7);
+var _classNames = __webpack_require__(8);
 
 var _classNames2 = _interopRequireDefault(_classNames);
 
@@ -1964,11 +2578,11 @@ function Grid(props) {
 Grid.propTypes = propTypes;
 
 /***/ }),
-/* 37 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(38);
+var content = __webpack_require__(46);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1989,7 +2603,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 38 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -2003,7 +2617,7 @@ exports.push([module.i, ".key-selector, .value-selector {\n  width: 100%;\n  hei
 
 
 /***/ }),
-/* 39 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2026,10 +2640,2102 @@ var prop_types = __webpack_require__(2);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./src/components/Button/Button.css
-var Button_Button = __webpack_require__(19);
+var Button_Button = __webpack_require__(25);
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/inheritsLoose.js
+var inheritsLoose = __webpack_require__(10);
+var inheritsLoose_default = /*#__PURE__*/__webpack_require__.n(inheritsLoose);
+
+// EXTERNAL MODULE: ./node_modules/gud/index.js
+var gud = __webpack_require__(16);
+var gud_default = /*#__PURE__*/__webpack_require__.n(gud);
+
+// CONCATENATED MODULE: ./node_modules/mini-create-react-context/dist/esm/index.js
+
+
+
+
+
+
+var MAX_SIGNED_31_BIT_INT = 1073741823;
+
+function objectIs(x, y) {
+  if (x === y) {
+    return x !== 0 || 1 / x === 1 / y;
+  } else {
+    return x !== x && y !== y;
+  }
+}
+
+function createEventEmitter(value) {
+  var handlers = [];
+  return {
+    on: function on(handler) {
+      handlers.push(handler);
+    },
+    off: function off(handler) {
+      handlers = handlers.filter(function (h) {
+        return h !== handler;
+      });
+    },
+    get: function get() {
+      return value;
+    },
+    set: function set(newValue, changedBits) {
+      value = newValue;
+      handlers.forEach(function (handler) {
+        return handler(value, changedBits);
+      });
+    }
+  };
+}
+
+function onlyChild(children) {
+  return Array.isArray(children) ? children[0] : children;
+}
+
+function createReactContext(defaultValue, calculateChangedBits) {
+  var _Provider$childContex, _Consumer$contextType;
+
+  var contextProp = '__create-react-context-' + gud_default()() + '__';
+
+  var Provider =
+  /*#__PURE__*/
+  function (_Component) {
+    inheritsLoose_default()(Provider, _Component);
+
+    function Provider() {
+      var _this;
+
+      _this = _Component.apply(this, arguments) || this;
+      _this.emitter = createEventEmitter(_this.props.value);
+      return _this;
+    }
+
+    var _proto = Provider.prototype;
+
+    _proto.getChildContext = function getChildContext() {
+      var _ref;
+
+      return _ref = {}, _ref[contextProp] = this.emitter, _ref;
+    };
+
+    _proto.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+      if (this.props.value !== nextProps.value) {
+        var oldValue = this.props.value;
+        var newValue = nextProps.value;
+        var changedBits;
+
+        if (objectIs(oldValue, newValue)) {
+          changedBits = 0;
+        } else {
+          changedBits = typeof calculateChangedBits === 'function' ? calculateChangedBits(oldValue, newValue) : MAX_SIGNED_31_BIT_INT;
+
+          if (false) {}
+
+          changedBits |= 0;
+
+          if (changedBits !== 0) {
+            this.emitter.set(nextProps.value, changedBits);
+          }
+        }
+      }
+    };
+
+    _proto.render = function render() {
+      return this.props.children;
+    };
+
+    return Provider;
+  }(react["Component"]);
+
+  Provider.childContextTypes = (_Provider$childContex = {}, _Provider$childContex[contextProp] = prop_types_default.a.object.isRequired, _Provider$childContex);
+
+  var Consumer =
+  /*#__PURE__*/
+  function (_Component2) {
+    inheritsLoose_default()(Consumer, _Component2);
+
+    function Consumer() {
+      var _this2;
+
+      _this2 = _Component2.apply(this, arguments) || this;
+      _this2.state = {
+        value: _this2.getValue()
+      };
+
+      _this2.onUpdate = function (newValue, changedBits) {
+        var observedBits = _this2.observedBits | 0;
+
+        if ((observedBits & changedBits) !== 0) {
+          _this2.setState({
+            value: _this2.getValue()
+          });
+        }
+      };
+
+      return _this2;
+    }
+
+    var _proto2 = Consumer.prototype;
+
+    _proto2.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+      var observedBits = nextProps.observedBits;
+      this.observedBits = observedBits === undefined || observedBits === null ? MAX_SIGNED_31_BIT_INT : observedBits;
+    };
+
+    _proto2.componentDidMount = function componentDidMount() {
+      if (this.context[contextProp]) {
+        this.context[contextProp].on(this.onUpdate);
+      }
+
+      var observedBits = this.props.observedBits;
+      this.observedBits = observedBits === undefined || observedBits === null ? MAX_SIGNED_31_BIT_INT : observedBits;
+    };
+
+    _proto2.componentWillUnmount = function componentWillUnmount() {
+      if (this.context[contextProp]) {
+        this.context[contextProp].off(this.onUpdate);
+      }
+    };
+
+    _proto2.getValue = function getValue() {
+      if (this.context[contextProp]) {
+        return this.context[contextProp].get();
+      } else {
+        return defaultValue;
+      }
+    };
+
+    _proto2.render = function render() {
+      return onlyChild(this.props.children)(this.state.value);
+    };
+
+    return Consumer;
+  }(react["Component"]);
+
+  Consumer.contextTypes = (_Consumer$contextType = {}, _Consumer$contextType[contextProp] = prop_types_default.a.object, _Consumer$contextType);
+  return {
+    Provider: Provider,
+    Consumer: Consumer
+  };
+}
+
+var esm_index = react_default.a.createContext || createReactContext;
+
+/* harmony default export */ var esm = (esm_index);
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+// CONCATENATED MODULE: ./node_modules/resolve-pathname/index.js
+function isAbsolute(pathname) {
+  return pathname.charAt(0) === '/';
+}
+
+// About 1.5x faster than the two-arg version of Array#splice()
+function spliceOne(list, index) {
+  for (var i = index, k = i + 1, n = list.length; k < n; i += 1, k += 1) {
+    list[i] = list[k];
+  }
+
+  list.pop();
+}
+
+// This implementation is based heavily on node's url.parse
+function resolvePathname(to) {
+  var from = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+  var toParts = to && to.split('/') || [];
+  var fromParts = from && from.split('/') || [];
+
+  var isToAbs = to && isAbsolute(to);
+  var isFromAbs = from && isAbsolute(from);
+  var mustEndAbs = isToAbs || isFromAbs;
+
+  if (to && isAbsolute(to)) {
+    // to is absolute
+    fromParts = toParts;
+  } else if (toParts.length) {
+    // to is relative, drop the filename
+    fromParts.pop();
+    fromParts = fromParts.concat(toParts);
+  }
+
+  if (!fromParts.length) return '/';
+
+  var hasTrailingSlash = void 0;
+  if (fromParts.length) {
+    var last = fromParts[fromParts.length - 1];
+    hasTrailingSlash = last === '.' || last === '..' || last === '';
+  } else {
+    hasTrailingSlash = false;
+  }
+
+  var up = 0;
+  for (var i = fromParts.length; i >= 0; i--) {
+    var part = fromParts[i];
+
+    if (part === '.') {
+      spliceOne(fromParts, i);
+    } else if (part === '..') {
+      spliceOne(fromParts, i);
+      up++;
+    } else if (up) {
+      spliceOne(fromParts, i);
+      up--;
+    }
+  }
+
+  if (!mustEndAbs) for (; up--; up) {
+    fromParts.unshift('..');
+  }if (mustEndAbs && fromParts[0] !== '' && (!fromParts[0] || !isAbsolute(fromParts[0]))) fromParts.unshift('');
+
+  var result = fromParts.join('/');
+
+  if (hasTrailingSlash && result.substr(-1) !== '/') result += '/';
+
+  return result;
+}
+
+/* harmony default export */ var resolve_pathname = (resolvePathname);
+// CONCATENATED MODULE: ./node_modules/value-equal/index.js
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function valueEqual(a, b) {
+  if (a === b) return true;
+
+  if (a == null || b == null) return false;
+
+  if (Array.isArray(a)) {
+    return Array.isArray(b) && a.length === b.length && a.every(function (item, index) {
+      return valueEqual(item, b[index]);
+    });
+  }
+
+  var aType = typeof a === 'undefined' ? 'undefined' : _typeof(a);
+  var bType = typeof b === 'undefined' ? 'undefined' : _typeof(b);
+
+  if (aType !== bType) return false;
+
+  if (aType === 'object') {
+    var aValue = a.valueOf();
+    var bValue = b.valueOf();
+
+    if (aValue !== a || bValue !== b) return valueEqual(aValue, bValue);
+
+    var aKeys = Object.keys(a);
+    var bKeys = Object.keys(b);
+
+    if (aKeys.length !== bKeys.length) return false;
+
+    return aKeys.every(function (key) {
+      return valueEqual(a[key], b[key]);
+    });
+  }
+
+  return false;
+}
+
+/* harmony default export */ var value_equal = (valueEqual);
+// CONCATENATED MODULE: ./node_modules/tiny-invariant/dist/tiny-invariant.esm.js
+var isProduction = "production" === 'production';
+var prefix = 'Invariant failed';
+function invariant(condition, message) {
+  if (condition) {
+    return;
+  }
+
+  if (isProduction) {
+    throw new Error(prefix);
+  } else {
+    throw new Error(prefix + ": " + (message || ''));
+  }
+}
+
+/* harmony default export */ var tiny_invariant_esm = (invariant);
+
+// CONCATENATED MODULE: ./node_modules/history/esm/history.js
+
+
+
+
+
+
+function addLeadingSlash(path) {
+  return path.charAt(0) === '/' ? path : '/' + path;
+}
+function stripLeadingSlash(path) {
+  return path.charAt(0) === '/' ? path.substr(1) : path;
+}
+function hasBasename(path, prefix) {
+  return new RegExp('^' + prefix + '(\\/|\\?|#|$)', 'i').test(path);
+}
+function stripBasename(path, prefix) {
+  return hasBasename(path, prefix) ? path.substr(prefix.length) : path;
+}
+function stripTrailingSlash(path) {
+  return path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path;
+}
+function parsePath(path) {
+  var pathname = path || '/';
+  var search = '';
+  var hash = '';
+  var hashIndex = pathname.indexOf('#');
+
+  if (hashIndex !== -1) {
+    hash = pathname.substr(hashIndex);
+    pathname = pathname.substr(0, hashIndex);
+  }
+
+  var searchIndex = pathname.indexOf('?');
+
+  if (searchIndex !== -1) {
+    search = pathname.substr(searchIndex);
+    pathname = pathname.substr(0, searchIndex);
+  }
+
+  return {
+    pathname: pathname,
+    search: search === '?' ? '' : search,
+    hash: hash === '#' ? '' : hash
+  };
+}
+function createPath(location) {
+  var pathname = location.pathname,
+      search = location.search,
+      hash = location.hash;
+  var path = pathname || '/';
+  if (search && search !== '?') path += search.charAt(0) === '?' ? search : "?" + search;
+  if (hash && hash !== '#') path += hash.charAt(0) === '#' ? hash : "#" + hash;
+  return path;
+}
+
+function createLocation(path, state, key, currentLocation) {
+  var location;
+
+  if (typeof path === 'string') {
+    // Two-arg form: push(path, state)
+    location = parsePath(path);
+    location.state = state;
+  } else {
+    // One-arg form: push(location)
+    location = _extends({}, path);
+    if (location.pathname === undefined) location.pathname = '';
+
+    if (location.search) {
+      if (location.search.charAt(0) !== '?') location.search = '?' + location.search;
+    } else {
+      location.search = '';
+    }
+
+    if (location.hash) {
+      if (location.hash.charAt(0) !== '#') location.hash = '#' + location.hash;
+    } else {
+      location.hash = '';
+    }
+
+    if (state !== undefined && location.state === undefined) location.state = state;
+  }
+
+  try {
+    location.pathname = decodeURI(location.pathname);
+  } catch (e) {
+    if (e instanceof URIError) {
+      throw new URIError('Pathname "' + location.pathname + '" could not be decoded. ' + 'This is likely caused by an invalid percent-encoding.');
+    } else {
+      throw e;
+    }
+  }
+
+  if (key) location.key = key;
+
+  if (currentLocation) {
+    // Resolve incomplete/relative pathname relative to current location.
+    if (!location.pathname) {
+      location.pathname = currentLocation.pathname;
+    } else if (location.pathname.charAt(0) !== '/') {
+      location.pathname = resolve_pathname(location.pathname, currentLocation.pathname);
+    }
+  } else {
+    // When there is no prior location and pathname is empty, set it to /
+    if (!location.pathname) {
+      location.pathname = '/';
+    }
+  }
+
+  return location;
+}
+function locationsAreEqual(a, b) {
+  return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && value_equal(a.state, b.state);
+}
+
+function createTransitionManager() {
+  var prompt = null;
+
+  function setPrompt(nextPrompt) {
+     false ? undefined : void 0;
+    prompt = nextPrompt;
+    return function () {
+      if (prompt === nextPrompt) prompt = null;
+    };
+  }
+
+  function confirmTransitionTo(location, action, getUserConfirmation, callback) {
+    // TODO: If another transition starts while we're still confirming
+    // the previous one, we may end up in a weird state. Figure out the
+    // best way to handle this.
+    if (prompt != null) {
+      var result = typeof prompt === 'function' ? prompt(location, action) : prompt;
+
+      if (typeof result === 'string') {
+        if (typeof getUserConfirmation === 'function') {
+          getUserConfirmation(result, callback);
+        } else {
+           false ? undefined : void 0;
+          callback(true);
+        }
+      } else {
+        // Return false from a transition hook to cancel the transition.
+        callback(result !== false);
+      }
+    } else {
+      callback(true);
+    }
+  }
+
+  var listeners = [];
+
+  function appendListener(fn) {
+    var isActive = true;
+
+    function listener() {
+      if (isActive) fn.apply(void 0, arguments);
+    }
+
+    listeners.push(listener);
+    return function () {
+      isActive = false;
+      listeners = listeners.filter(function (item) {
+        return item !== listener;
+      });
+    };
+  }
+
+  function notifyListeners() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    listeners.forEach(function (listener) {
+      return listener.apply(void 0, args);
+    });
+  }
+
+  return {
+    setPrompt: setPrompt,
+    confirmTransitionTo: confirmTransitionTo,
+    appendListener: appendListener,
+    notifyListeners: notifyListeners
+  };
+}
+
+var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+function getConfirmation(message, callback) {
+  callback(window.confirm(message)); // eslint-disable-line no-alert
+}
+/**
+ * Returns true if the HTML5 history API is supported. Taken from Modernizr.
+ *
+ * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
+ * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
+ * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
+ */
+
+function supportsHistory() {
+  var ua = window.navigator.userAgent;
+  if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) return false;
+  return window.history && 'pushState' in window.history;
+}
+/**
+ * Returns true if browser fires popstate on hash change.
+ * IE10 and IE11 do not.
+ */
+
+function supportsPopStateOnHashChange() {
+  return window.navigator.userAgent.indexOf('Trident') === -1;
+}
+/**
+ * Returns false if using go(n) with hash history causes a full page reload.
+ */
+
+function supportsGoWithoutReloadUsingHash() {
+  return window.navigator.userAgent.indexOf('Firefox') === -1;
+}
+/**
+ * Returns true if a given popstate event is an extraneous WebKit event.
+ * Accounts for the fact that Chrome on iOS fires real popstate events
+ * containing undefined state when pressing the back button.
+ */
+
+function isExtraneousPopstateEvent(event) {
+  event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
+}
+
+var PopStateEvent = 'popstate';
+var HashChangeEvent = 'hashchange';
+
+function getHistoryState() {
+  try {
+    return window.history.state || {};
+  } catch (e) {
+    // IE 11 sometimes throws when accessing window.history.state
+    // See https://github.com/ReactTraining/history/pull/289
+    return {};
+  }
+}
+/**
+ * Creates a history object that uses the HTML5 history API including
+ * pushState, replaceState, and the popstate event.
+ */
+
+
+function createBrowserHistory(props) {
+  if (props === void 0) {
+    props = {};
+  }
+
+  !canUseDOM ?  false ? undefined : tiny_invariant_esm(false) : void 0;
+  var globalHistory = window.history;
+  var canUseHistory = supportsHistory();
+  var needsHashChangeListener = !supportsPopStateOnHashChange();
+  var _props = props,
+      _props$forceRefresh = _props.forceRefresh,
+      forceRefresh = _props$forceRefresh === void 0 ? false : _props$forceRefresh,
+      _props$getUserConfirm = _props.getUserConfirmation,
+      getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm,
+      _props$keyLength = _props.keyLength,
+      keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
+  var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
+
+  function getDOMLocation(historyState) {
+    var _ref = historyState || {},
+        key = _ref.key,
+        state = _ref.state;
+
+    var _window$location = window.location,
+        pathname = _window$location.pathname,
+        search = _window$location.search,
+        hash = _window$location.hash;
+    var path = pathname + search + hash;
+     false ? undefined : void 0;
+    if (basename) path = stripBasename(path, basename);
+    return createLocation(path, state, key);
+  }
+
+  function createKey() {
+    return Math.random().toString(36).substr(2, keyLength);
+  }
+
+  var transitionManager = createTransitionManager();
+
+  function setState(nextState) {
+    _extends(history, nextState);
+
+    history.length = globalHistory.length;
+    transitionManager.notifyListeners(history.location, history.action);
+  }
+
+  function handlePopState(event) {
+    // Ignore extraneous popstate events in WebKit.
+    if (isExtraneousPopstateEvent(event)) return;
+    handlePop(getDOMLocation(event.state));
+  }
+
+  function handleHashChange() {
+    handlePop(getDOMLocation(getHistoryState()));
+  }
+
+  var forceNextPop = false;
+
+  function handlePop(location) {
+    if (forceNextPop) {
+      forceNextPop = false;
+      setState();
+    } else {
+      var action = 'POP';
+      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+        if (ok) {
+          setState({
+            action: action,
+            location: location
+          });
+        } else {
+          revertPop(location);
+        }
+      });
+    }
+  }
+
+  function revertPop(fromLocation) {
+    var toLocation = history.location; // TODO: We could probably make this more reliable by
+    // keeping a list of keys we've seen in sessionStorage.
+    // Instead, we just default to 0 for keys we don't know.
+
+    var toIndex = allKeys.indexOf(toLocation.key);
+    if (toIndex === -1) toIndex = 0;
+    var fromIndex = allKeys.indexOf(fromLocation.key);
+    if (fromIndex === -1) fromIndex = 0;
+    var delta = toIndex - fromIndex;
+
+    if (delta) {
+      forceNextPop = true;
+      go(delta);
+    }
+  }
+
+  var initialLocation = getDOMLocation(getHistoryState());
+  var allKeys = [initialLocation.key]; // Public interface
+
+  function createHref(location) {
+    return basename + createPath(location);
+  }
+
+  function push(path, state) {
+     false ? undefined : void 0;
+    var action = 'PUSH';
+    var location = createLocation(path, state, createKey(), history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      var href = createHref(location);
+      var key = location.key,
+          state = location.state;
+
+      if (canUseHistory) {
+        globalHistory.pushState({
+          key: key,
+          state: state
+        }, null, href);
+
+        if (forceRefresh) {
+          window.location.href = href;
+        } else {
+          var prevIndex = allKeys.indexOf(history.location.key);
+          var nextKeys = allKeys.slice(0, prevIndex === -1 ? 0 : prevIndex + 1);
+          nextKeys.push(location.key);
+          allKeys = nextKeys;
+          setState({
+            action: action,
+            location: location
+          });
+        }
+      } else {
+         false ? undefined : void 0;
+        window.location.href = href;
+      }
+    });
+  }
+
+  function replace(path, state) {
+     false ? undefined : void 0;
+    var action = 'REPLACE';
+    var location = createLocation(path, state, createKey(), history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      var href = createHref(location);
+      var key = location.key,
+          state = location.state;
+
+      if (canUseHistory) {
+        globalHistory.replaceState({
+          key: key,
+          state: state
+        }, null, href);
+
+        if (forceRefresh) {
+          window.location.replace(href);
+        } else {
+          var prevIndex = allKeys.indexOf(history.location.key);
+          if (prevIndex !== -1) allKeys[prevIndex] = location.key;
+          setState({
+            action: action,
+            location: location
+          });
+        }
+      } else {
+         false ? undefined : void 0;
+        window.location.replace(href);
+      }
+    });
+  }
+
+  function go(n) {
+    globalHistory.go(n);
+  }
+
+  function goBack() {
+    go(-1);
+  }
+
+  function goForward() {
+    go(1);
+  }
+
+  var listenerCount = 0;
+
+  function checkDOMListeners(delta) {
+    listenerCount += delta;
+
+    if (listenerCount === 1 && delta === 1) {
+      window.addEventListener(PopStateEvent, handlePopState);
+      if (needsHashChangeListener) window.addEventListener(HashChangeEvent, handleHashChange);
+    } else if (listenerCount === 0) {
+      window.removeEventListener(PopStateEvent, handlePopState);
+      if (needsHashChangeListener) window.removeEventListener(HashChangeEvent, handleHashChange);
+    }
+  }
+
+  var isBlocked = false;
+
+  function block(prompt) {
+    if (prompt === void 0) {
+      prompt = false;
+    }
+
+    var unblock = transitionManager.setPrompt(prompt);
+
+    if (!isBlocked) {
+      checkDOMListeners(1);
+      isBlocked = true;
+    }
+
+    return function () {
+      if (isBlocked) {
+        isBlocked = false;
+        checkDOMListeners(-1);
+      }
+
+      return unblock();
+    };
+  }
+
+  function listen(listener) {
+    var unlisten = transitionManager.appendListener(listener);
+    checkDOMListeners(1);
+    return function () {
+      checkDOMListeners(-1);
+      unlisten();
+    };
+  }
+
+  var history = {
+    length: globalHistory.length,
+    action: 'POP',
+    location: initialLocation,
+    createHref: createHref,
+    push: push,
+    replace: replace,
+    go: go,
+    goBack: goBack,
+    goForward: goForward,
+    block: block,
+    listen: listen
+  };
+  return history;
+}
+
+var HashChangeEvent$1 = 'hashchange';
+var HashPathCoders = {
+  hashbang: {
+    encodePath: function encodePath(path) {
+      return path.charAt(0) === '!' ? path : '!/' + stripLeadingSlash(path);
+    },
+    decodePath: function decodePath(path) {
+      return path.charAt(0) === '!' ? path.substr(1) : path;
+    }
+  },
+  noslash: {
+    encodePath: stripLeadingSlash,
+    decodePath: addLeadingSlash
+  },
+  slash: {
+    encodePath: addLeadingSlash,
+    decodePath: addLeadingSlash
+  }
+};
+
+function getHashPath() {
+  // We can't use window.location.hash here because it's not
+  // consistent across browsers - Firefox will pre-decode it!
+  var href = window.location.href;
+  var hashIndex = href.indexOf('#');
+  return hashIndex === -1 ? '' : href.substring(hashIndex + 1);
+}
+
+function pushHashPath(path) {
+  window.location.hash = path;
+}
+
+function replaceHashPath(path) {
+  var hashIndex = window.location.href.indexOf('#');
+  window.location.replace(window.location.href.slice(0, hashIndex >= 0 ? hashIndex : 0) + '#' + path);
+}
+
+function createHashHistory(props) {
+  if (props === void 0) {
+    props = {};
+  }
+
+  !canUseDOM ?  false ? undefined : tiny_invariant_esm(false) : void 0;
+  var globalHistory = window.history;
+  var canGoWithoutReload = supportsGoWithoutReloadUsingHash();
+  var _props = props,
+      _props$getUserConfirm = _props.getUserConfirmation,
+      getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm,
+      _props$hashType = _props.hashType,
+      hashType = _props$hashType === void 0 ? 'slash' : _props$hashType;
+  var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
+  var _HashPathCoders$hashT = HashPathCoders[hashType],
+      encodePath = _HashPathCoders$hashT.encodePath,
+      decodePath = _HashPathCoders$hashT.decodePath;
+
+  function getDOMLocation() {
+    var path = decodePath(getHashPath());
+     false ? undefined : void 0;
+    if (basename) path = stripBasename(path, basename);
+    return createLocation(path);
+  }
+
+  var transitionManager = createTransitionManager();
+
+  function setState(nextState) {
+    _extends(history, nextState);
+
+    history.length = globalHistory.length;
+    transitionManager.notifyListeners(history.location, history.action);
+  }
+
+  var forceNextPop = false;
+  var ignorePath = null;
+
+  function handleHashChange() {
+    var path = getHashPath();
+    var encodedPath = encodePath(path);
+
+    if (path !== encodedPath) {
+      // Ensure we always have a properly-encoded hash.
+      replaceHashPath(encodedPath);
+    } else {
+      var location = getDOMLocation();
+      var prevLocation = history.location;
+      if (!forceNextPop && locationsAreEqual(prevLocation, location)) return; // A hashchange doesn't always == location change.
+
+      if (ignorePath === createPath(location)) return; // Ignore this change; we already setState in push/replace.
+
+      ignorePath = null;
+      handlePop(location);
+    }
+  }
+
+  function handlePop(location) {
+    if (forceNextPop) {
+      forceNextPop = false;
+      setState();
+    } else {
+      var action = 'POP';
+      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+        if (ok) {
+          setState({
+            action: action,
+            location: location
+          });
+        } else {
+          revertPop(location);
+        }
+      });
+    }
+  }
+
+  function revertPop(fromLocation) {
+    var toLocation = history.location; // TODO: We could probably make this more reliable by
+    // keeping a list of paths we've seen in sessionStorage.
+    // Instead, we just default to 0 for paths we don't know.
+
+    var toIndex = allPaths.lastIndexOf(createPath(toLocation));
+    if (toIndex === -1) toIndex = 0;
+    var fromIndex = allPaths.lastIndexOf(createPath(fromLocation));
+    if (fromIndex === -1) fromIndex = 0;
+    var delta = toIndex - fromIndex;
+
+    if (delta) {
+      forceNextPop = true;
+      go(delta);
+    }
+  } // Ensure the hash is encoded properly before doing anything else.
+
+
+  var path = getHashPath();
+  var encodedPath = encodePath(path);
+  if (path !== encodedPath) replaceHashPath(encodedPath);
+  var initialLocation = getDOMLocation();
+  var allPaths = [createPath(initialLocation)]; // Public interface
+
+  function createHref(location) {
+    return '#' + encodePath(basename + createPath(location));
+  }
+
+  function push(path, state) {
+     false ? undefined : void 0;
+    var action = 'PUSH';
+    var location = createLocation(path, undefined, undefined, history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      var path = createPath(location);
+      var encodedPath = encodePath(basename + path);
+      var hashChanged = getHashPath() !== encodedPath;
+
+      if (hashChanged) {
+        // We cannot tell if a hashchange was caused by a PUSH, so we'd
+        // rather setState here and ignore the hashchange. The caveat here
+        // is that other hash histories in the page will consider it a POP.
+        ignorePath = path;
+        pushHashPath(encodedPath);
+        var prevIndex = allPaths.lastIndexOf(createPath(history.location));
+        var nextPaths = allPaths.slice(0, prevIndex === -1 ? 0 : prevIndex + 1);
+        nextPaths.push(path);
+        allPaths = nextPaths;
+        setState({
+          action: action,
+          location: location
+        });
+      } else {
+         false ? undefined : void 0;
+        setState();
+      }
+    });
+  }
+
+  function replace(path, state) {
+     false ? undefined : void 0;
+    var action = 'REPLACE';
+    var location = createLocation(path, undefined, undefined, history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      var path = createPath(location);
+      var encodedPath = encodePath(basename + path);
+      var hashChanged = getHashPath() !== encodedPath;
+
+      if (hashChanged) {
+        // We cannot tell if a hashchange was caused by a REPLACE, so we'd
+        // rather setState here and ignore the hashchange. The caveat here
+        // is that other hash histories in the page will consider it a POP.
+        ignorePath = path;
+        replaceHashPath(encodedPath);
+      }
+
+      var prevIndex = allPaths.indexOf(createPath(history.location));
+      if (prevIndex !== -1) allPaths[prevIndex] = path;
+      setState({
+        action: action,
+        location: location
+      });
+    });
+  }
+
+  function go(n) {
+     false ? undefined : void 0;
+    globalHistory.go(n);
+  }
+
+  function goBack() {
+    go(-1);
+  }
+
+  function goForward() {
+    go(1);
+  }
+
+  var listenerCount = 0;
+
+  function checkDOMListeners(delta) {
+    listenerCount += delta;
+
+    if (listenerCount === 1 && delta === 1) {
+      window.addEventListener(HashChangeEvent$1, handleHashChange);
+    } else if (listenerCount === 0) {
+      window.removeEventListener(HashChangeEvent$1, handleHashChange);
+    }
+  }
+
+  var isBlocked = false;
+
+  function block(prompt) {
+    if (prompt === void 0) {
+      prompt = false;
+    }
+
+    var unblock = transitionManager.setPrompt(prompt);
+
+    if (!isBlocked) {
+      checkDOMListeners(1);
+      isBlocked = true;
+    }
+
+    return function () {
+      if (isBlocked) {
+        isBlocked = false;
+        checkDOMListeners(-1);
+      }
+
+      return unblock();
+    };
+  }
+
+  function listen(listener) {
+    var unlisten = transitionManager.appendListener(listener);
+    checkDOMListeners(1);
+    return function () {
+      checkDOMListeners(-1);
+      unlisten();
+    };
+  }
+
+  var history = {
+    length: globalHistory.length,
+    action: 'POP',
+    location: initialLocation,
+    createHref: createHref,
+    push: push,
+    replace: replace,
+    go: go,
+    goBack: goBack,
+    goForward: goForward,
+    block: block,
+    listen: listen
+  };
+  return history;
+}
+
+function clamp(n, lowerBound, upperBound) {
+  return Math.min(Math.max(n, lowerBound), upperBound);
+}
+/**
+ * Creates a history object that stores locations in memory.
+ */
+
+
+function createMemoryHistory(props) {
+  if (props === void 0) {
+    props = {};
+  }
+
+  var _props = props,
+      getUserConfirmation = _props.getUserConfirmation,
+      _props$initialEntries = _props.initialEntries,
+      initialEntries = _props$initialEntries === void 0 ? ['/'] : _props$initialEntries,
+      _props$initialIndex = _props.initialIndex,
+      initialIndex = _props$initialIndex === void 0 ? 0 : _props$initialIndex,
+      _props$keyLength = _props.keyLength,
+      keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
+  var transitionManager = createTransitionManager();
+
+  function setState(nextState) {
+    _extends(history, nextState);
+
+    history.length = history.entries.length;
+    transitionManager.notifyListeners(history.location, history.action);
+  }
+
+  function createKey() {
+    return Math.random().toString(36).substr(2, keyLength);
+  }
+
+  var index = clamp(initialIndex, 0, initialEntries.length - 1);
+  var entries = initialEntries.map(function (entry) {
+    return typeof entry === 'string' ? createLocation(entry, undefined, createKey()) : createLocation(entry, undefined, entry.key || createKey());
+  }); // Public interface
+
+  var createHref = createPath;
+
+  function push(path, state) {
+     false ? undefined : void 0;
+    var action = 'PUSH';
+    var location = createLocation(path, state, createKey(), history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      var prevIndex = history.index;
+      var nextIndex = prevIndex + 1;
+      var nextEntries = history.entries.slice(0);
+
+      if (nextEntries.length > nextIndex) {
+        nextEntries.splice(nextIndex, nextEntries.length - nextIndex, location);
+      } else {
+        nextEntries.push(location);
+      }
+
+      setState({
+        action: action,
+        location: location,
+        index: nextIndex,
+        entries: nextEntries
+      });
+    });
+  }
+
+  function replace(path, state) {
+     false ? undefined : void 0;
+    var action = 'REPLACE';
+    var location = createLocation(path, state, createKey(), history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      history.entries[history.index] = location;
+      setState({
+        action: action,
+        location: location
+      });
+    });
+  }
+
+  function go(n) {
+    var nextIndex = clamp(history.index + n, 0, history.entries.length - 1);
+    var action = 'POP';
+    var location = history.entries[nextIndex];
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (ok) {
+        setState({
+          action: action,
+          location: location,
+          index: nextIndex
+        });
+      } else {
+        // Mimic the behavior of DOM histories by
+        // causing a render after a cancelled POP.
+        setState();
+      }
+    });
+  }
+
+  function goBack() {
+    go(-1);
+  }
+
+  function goForward() {
+    go(1);
+  }
+
+  function canGo(n) {
+    var nextIndex = history.index + n;
+    return nextIndex >= 0 && nextIndex < history.entries.length;
+  }
+
+  function block(prompt) {
+    if (prompt === void 0) {
+      prompt = false;
+    }
+
+    return transitionManager.setPrompt(prompt);
+  }
+
+  function listen(listener) {
+    return transitionManager.appendListener(listener);
+  }
+
+  var history = {
+    length: entries.length,
+    action: 'POP',
+    location: entries[index],
+    index: index,
+    entries: entries,
+    createHref: createHref,
+    push: push,
+    replace: replace,
+    go: go,
+    goBack: goBack,
+    goForward: goForward,
+    canGo: canGo,
+    block: block,
+    listen: listen
+  };
+  return history;
+}
+
+
+
+// EXTERNAL MODULE: ./node_modules/react-router/node_modules/path-to-regexp/index.js
+var path_to_regexp = __webpack_require__(11);
+var path_to_regexp_default = /*#__PURE__*/__webpack_require__.n(path_to_regexp);
+
+// EXTERNAL MODULE: ./node_modules/react-is/index.js
+var react_is = __webpack_require__(14);
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+// EXTERNAL MODULE: ./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js
+var hoist_non_react_statics_cjs = __webpack_require__(17);
+var hoist_non_react_statics_cjs_default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics_cjs);
+
+// CONCATENATED MODULE: ./node_modules/react-router/esm/react-router.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+// TODO: Replace with React.createContext once we can assume React 16+
+
+var react_router_createNamedContext = function createNamedContext(name) {
+  var context = esm();
+  context.displayName = name;
+  return context;
+};
+
+var react_router_context =
+/*#__PURE__*/
+react_router_createNamedContext("Router");
+
+/**
+ * The public API for putting history on context.
+ */
+
+var react_router_Router =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(Router, _React$Component);
+
+  Router.computeRootMatch = function computeRootMatch(pathname) {
+    return {
+      path: "/",
+      url: "/",
+      params: {},
+      isExact: pathname === "/"
+    };
+  };
+
+  function Router(props) {
+    var _this;
+
+    _this = _React$Component.call(this, props) || this;
+    _this.state = {
+      location: props.history.location
+    }; // This is a bit of a hack. We have to start listening for location
+    // changes here in the constructor in case there are any <Redirect>s
+    // on the initial render. If there are, they will replace/push when
+    // they mount and since cDM fires in children before parents, we may
+    // get a new location before the <Router> is mounted.
+
+    _this._isMounted = false;
+    _this._pendingLocation = null;
+
+    if (!props.staticContext) {
+      _this.unlisten = props.history.listen(function (location) {
+        if (_this._isMounted) {
+          _this.setState({
+            location: location
+          });
+        } else {
+          _this._pendingLocation = location;
+        }
+      });
+    }
+
+    return _this;
+  }
+
+  var _proto = Router.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    this._isMounted = true;
+
+    if (this._pendingLocation) {
+      this.setState({
+        location: this._pendingLocation
+      });
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.unlisten) this.unlisten();
+  };
+
+  _proto.render = function render() {
+    return react_default.a.createElement(react_router_context.Provider, {
+      children: this.props.children || null,
+      value: {
+        history: this.props.history,
+        location: this.state.location,
+        match: Router.computeRootMatch(this.state.location.pathname),
+        staticContext: this.props.staticContext
+      }
+    });
+  };
+
+  return Router;
+}(react_default.a.Component);
+
+if (false) {}
+
+/**
+ * The public API for a <Router> that stores location in memory.
+ */
+
+var react_router_MemoryRouter =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(MemoryRouter, _React$Component);
+
+  function MemoryRouter() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+    _this.history = createMemoryHistory(_this.props);
+    return _this;
+  }
+
+  var _proto = MemoryRouter.prototype;
+
+  _proto.render = function render() {
+    return react_default.a.createElement(react_router_Router, {
+      history: this.history,
+      children: this.props.children
+    });
+  };
+
+  return MemoryRouter;
+}(react_default.a.Component);
+
+if (false) {}
+
+var react_router_Lifecycle =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(Lifecycle, _React$Component);
+
+  function Lifecycle() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = Lifecycle.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    if (this.props.onMount) this.props.onMount.call(this, this);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.props.onUpdate) this.props.onUpdate.call(this, this, prevProps);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.props.onUnmount) this.props.onUnmount.call(this, this);
+  };
+
+  _proto.render = function render() {
+    return null;
+  };
+
+  return Lifecycle;
+}(react_default.a.Component);
+
+/**
+ * The public API for prompting the user before navigating away from a screen.
+ */
+
+function Prompt(_ref) {
+  var message = _ref.message,
+      _ref$when = _ref.when,
+      when = _ref$when === void 0 ? true : _ref$when;
+  return react_default.a.createElement(react_router_context.Consumer, null, function (context$$1) {
+    !context$$1 ?  false ? undefined : tiny_invariant_esm(false) : void 0;
+    if (!when || context$$1.staticContext) return null;
+    var method = context$$1.history.block;
+    return react_default.a.createElement(react_router_Lifecycle, {
+      onMount: function onMount(self) {
+        self.release = method(message);
+      },
+      onUpdate: function onUpdate(self, prevProps) {
+        if (prevProps.message !== message) {
+          self.release();
+          self.release = method(message);
+        }
+      },
+      onUnmount: function onUnmount(self) {
+        self.release();
+      },
+      message: message
+    });
+  });
+}
+
+if (false) { var messageType; }
+
+var cache = {};
+var cacheLimit = 10000;
+var cacheCount = 0;
+
+function compilePath(path) {
+  if (cache[path]) return cache[path];
+  var generator = path_to_regexp_default.a.compile(path);
+
+  if (cacheCount < cacheLimit) {
+    cache[path] = generator;
+    cacheCount++;
+  }
+
+  return generator;
+}
+/**
+ * Public API for generating a URL pathname from a path and parameters.
+ */
+
+
+function generatePath(path, params) {
+  if (path === void 0) {
+    path = "/";
+  }
+
+  if (params === void 0) {
+    params = {};
+  }
+
+  return path === "/" ? path : compilePath(path)(params, {
+    pretty: true
+  });
+}
+
+/**
+ * The public API for navigating programmatically with a component.
+ */
+
+function Redirect(_ref) {
+  var computedMatch = _ref.computedMatch,
+      to = _ref.to,
+      _ref$push = _ref.push,
+      push = _ref$push === void 0 ? false : _ref$push;
+  return react_default.a.createElement(react_router_context.Consumer, null, function (context$$1) {
+    !context$$1 ?  false ? undefined : tiny_invariant_esm(false) : void 0;
+    var history = context$$1.history,
+        staticContext = context$$1.staticContext;
+    var method = push ? history.push : history.replace;
+    var location = createLocation(computedMatch ? typeof to === "string" ? generatePath(to, computedMatch.params) : _extends({}, to, {
+      pathname: generatePath(to.pathname, computedMatch.params)
+    }) : to); // When rendering in a static context,
+    // set the new location immediately.
+
+    if (staticContext) {
+      method(location);
+      return null;
+    }
+
+    return react_default.a.createElement(react_router_Lifecycle, {
+      onMount: function onMount() {
+        method(location);
+      },
+      onUpdate: function onUpdate(self, prevProps) {
+        var prevLocation = createLocation(prevProps.to);
+
+        if (!locationsAreEqual(prevLocation, _extends({}, location, {
+          key: prevLocation.key
+        }))) {
+          method(location);
+        }
+      },
+      to: to
+    });
+  });
+}
+
+if (false) {}
+
+var cache$1 = {};
+var cacheLimit$1 = 10000;
+var cacheCount$1 = 0;
+
+function compilePath$1(path, options) {
+  var cacheKey = "" + options.end + options.strict + options.sensitive;
+  var pathCache = cache$1[cacheKey] || (cache$1[cacheKey] = {});
+  if (pathCache[path]) return pathCache[path];
+  var keys = [];
+  var regexp = path_to_regexp_default()(path, keys, options);
+  var result = {
+    regexp: regexp,
+    keys: keys
+  };
+
+  if (cacheCount$1 < cacheLimit$1) {
+    pathCache[path] = result;
+    cacheCount$1++;
+  }
+
+  return result;
+}
+/**
+ * Public API for matching a URL pathname to a path.
+ */
+
+
+function matchPath(pathname, options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  if (typeof options === "string") options = {
+    path: options
+  };
+  var _options = options,
+      path = _options.path,
+      _options$exact = _options.exact,
+      exact = _options$exact === void 0 ? false : _options$exact,
+      _options$strict = _options.strict,
+      strict = _options$strict === void 0 ? false : _options$strict,
+      _options$sensitive = _options.sensitive,
+      sensitive = _options$sensitive === void 0 ? false : _options$sensitive;
+  var paths = [].concat(path);
+  return paths.reduce(function (matched, path) {
+    if (!path) return null;
+    if (matched) return matched;
+
+    var _compilePath = compilePath$1(path, {
+      end: exact,
+      strict: strict,
+      sensitive: sensitive
+    }),
+        regexp = _compilePath.regexp,
+        keys = _compilePath.keys;
+
+    var match = regexp.exec(pathname);
+    if (!match) return null;
+    var url = match[0],
+        values = match.slice(1);
+    var isExact = pathname === url;
+    if (exact && !isExact) return null;
+    return {
+      path: path,
+      // the path used to match
+      url: path === "/" && url === "" ? "/" : url,
+      // the matched portion of the URL
+      isExact: isExact,
+      // whether or not we matched exactly
+      params: keys.reduce(function (memo, key, index) {
+        memo[key.name] = values[index];
+        return memo;
+      }, {})
+    };
+  }, null);
+}
+
+function isEmptyChildren(children) {
+  return react_default.a.Children.count(children) === 0;
+}
+/**
+ * The public API for matching a single path and rendering.
+ */
+
+
+var react_router_Route =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(Route, _React$Component);
+
+  function Route() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = Route.prototype;
+
+  _proto.render = function render() {
+    var _this = this;
+
+    return react_default.a.createElement(react_router_context.Consumer, null, function (context$$1) {
+      !context$$1 ?  false ? undefined : tiny_invariant_esm(false) : void 0;
+      var location = _this.props.location || context$$1.location;
+      var match = _this.props.computedMatch ? _this.props.computedMatch // <Switch> already computed the match for us
+      : _this.props.path ? matchPath(location.pathname, _this.props) : context$$1.match;
+
+      var props = _extends({}, context$$1, {
+        location: location,
+        match: match
+      });
+
+      var _this$props = _this.props,
+          children = _this$props.children,
+          component = _this$props.component,
+          render = _this$props.render; // Preact uses an empty array as children by
+      // default, so use null if that's the case.
+
+      if (Array.isArray(children) && children.length === 0) {
+        children = null;
+      }
+
+      if (typeof children === "function") {
+        children = children(props);
+
+        if (children === undefined) {
+          if (false) { var path; }
+
+          children = null;
+        }
+      }
+
+      return react_default.a.createElement(react_router_context.Provider, {
+        value: props
+      }, children && !isEmptyChildren(children) ? children : props.match ? component ? react_default.a.createElement(component, props) : render ? render(props) : null : null);
+    });
+  };
+
+  return Route;
+}(react_default.a.Component);
+
+if (false) {}
+
+function react_router_addLeadingSlash(path) {
+  return path.charAt(0) === "/" ? path : "/" + path;
+}
+
+function addBasename(basename, location) {
+  if (!basename) return location;
+  return _extends({}, location, {
+    pathname: react_router_addLeadingSlash(basename) + location.pathname
+  });
+}
+
+function react_router_stripBasename(basename, location) {
+  if (!basename) return location;
+  var base = react_router_addLeadingSlash(basename);
+  if (location.pathname.indexOf(base) !== 0) return location;
+  return _extends({}, location, {
+    pathname: location.pathname.substr(base.length)
+  });
+}
+
+function createURL(location) {
+  return typeof location === "string" ? location : createPath(location);
+}
+
+function staticHandler(methodName) {
+  return function () {
+     false ? undefined : tiny_invariant_esm(false);
+  };
+}
+
+function noop() {}
+/**
+ * The public top-level API for a "static" <Router>, so-called because it
+ * can't actually change the current location. Instead, it just records
+ * location changes in a context object. Useful mainly in testing and
+ * server-rendering scenarios.
+ */
+
+
+var react_router_StaticRouter =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(StaticRouter, _React$Component);
+
+  function StaticRouter() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+
+    _this.handlePush = function (location) {
+      return _this.navigateTo(location, "PUSH");
+    };
+
+    _this.handleReplace = function (location) {
+      return _this.navigateTo(location, "REPLACE");
+    };
+
+    _this.handleListen = function () {
+      return noop;
+    };
+
+    _this.handleBlock = function () {
+      return noop;
+    };
+
+    return _this;
+  }
+
+  var _proto = StaticRouter.prototype;
+
+  _proto.navigateTo = function navigateTo(location, action) {
+    var _this$props = this.props,
+        _this$props$basename = _this$props.basename,
+        basename = _this$props$basename === void 0 ? "" : _this$props$basename,
+        _this$props$context = _this$props.context,
+        context = _this$props$context === void 0 ? {} : _this$props$context;
+    context.action = action;
+    context.location = addBasename(basename, createLocation(location));
+    context.url = createURL(context.location);
+  };
+
+  _proto.render = function render() {
+    var _this$props2 = this.props,
+        _this$props2$basename = _this$props2.basename,
+        basename = _this$props2$basename === void 0 ? "" : _this$props2$basename,
+        _this$props2$context = _this$props2.context,
+        context = _this$props2$context === void 0 ? {} : _this$props2$context,
+        _this$props2$location = _this$props2.location,
+        location = _this$props2$location === void 0 ? "/" : _this$props2$location,
+        rest = _objectWithoutPropertiesLoose(_this$props2, ["basename", "context", "location"]);
+
+    var history = {
+      createHref: function createHref(path) {
+        return react_router_addLeadingSlash(basename + createURL(path));
+      },
+      action: "POP",
+      location: react_router_stripBasename(basename, createLocation(location)),
+      push: this.handlePush,
+      replace: this.handleReplace,
+      go: staticHandler("go"),
+      goBack: staticHandler("goBack"),
+      goForward: staticHandler("goForward"),
+      listen: this.handleListen,
+      block: this.handleBlock
+    };
+    return react_default.a.createElement(react_router_Router, _extends({}, rest, {
+      history: history,
+      staticContext: context
+    }));
+  };
+
+  return StaticRouter;
+}(react_default.a.Component);
+
+if (false) {}
+
+/**
+ * The public API for rendering the first <Route> that matches.
+ */
+
+var react_router_Switch =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(Switch, _React$Component);
+
+  function Switch() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = Switch.prototype;
+
+  _proto.render = function render() {
+    var _this = this;
+
+    return react_default.a.createElement(react_router_context.Consumer, null, function (context$$1) {
+      !context$$1 ?  false ? undefined : tiny_invariant_esm(false) : void 0;
+      var location = _this.props.location || context$$1.location;
+      var element, match; // We use React.Children.forEach instead of React.Children.toArray().find()
+      // here because toArray adds keys to all child elements and we do not want
+      // to trigger an unmount/remount for two <Route>s that render the same
+      // component at different URLs.
+
+      react_default.a.Children.forEach(_this.props.children, function (child) {
+        if (match == null && react_default.a.isValidElement(child)) {
+          element = child;
+          var path = child.props.path || child.props.from;
+          match = path ? matchPath(location.pathname, _extends({}, child.props, {
+            path: path
+          })) : context$$1.match;
+        }
+      });
+      return match ? react_default.a.cloneElement(element, {
+        location: location,
+        computedMatch: match
+      }) : null;
+    });
+  };
+
+  return Switch;
+}(react_default.a.Component);
+
+if (false) {}
+
+/**
+ * A public higher-order component to access the imperative API
+ */
+
+function withRouter(Component) {
+  var displayName = "withRouter(" + (Component.displayName || Component.name) + ")";
+
+  var C = function C(props) {
+    var wrappedComponentRef = props.wrappedComponentRef,
+        remainingProps = _objectWithoutPropertiesLoose(props, ["wrappedComponentRef"]);
+
+    return react_default.a.createElement(react_router_context.Consumer, null, function (context$$1) {
+      !context$$1 ?  false ? undefined : tiny_invariant_esm(false) : void 0;
+      return react_default.a.createElement(Component, _extends({}, remainingProps, context$$1, {
+        ref: wrappedComponentRef
+      }));
+    });
+  };
+
+  C.displayName = displayName;
+  C.WrappedComponent = Component;
+
+  if (false) {}
+
+  return hoist_non_react_statics_cjs_default()(C, Component);
+}
+
+if (false) { var secondaryBuildName, initialBuildName, buildNames, react_router_key, global; }
+
+
+
+// CONCATENATED MODULE: ./node_modules/react-router-dom/esm/react-router-dom.js
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * The public API for a <Router> that uses HTML5 history.
+ */
+
+var react_router_dom_BrowserRouter =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(BrowserRouter, _React$Component);
+
+  function BrowserRouter() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+    _this.history = createBrowserHistory(_this.props);
+    return _this;
+  }
+
+  var _proto = BrowserRouter.prototype;
+
+  _proto.render = function render() {
+    return react_default.a.createElement(react_router_Router, {
+      history: this.history,
+      children: this.props.children
+    });
+  };
+
+  return BrowserRouter;
+}(react_default.a.Component);
+
+if (false) {}
+
+/**
+ * The public API for a <Router> that uses window.location.hash.
+ */
+
+var react_router_dom_HashRouter =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(HashRouter, _React$Component);
+
+  function HashRouter() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+    _this.history = createHashHistory(_this.props);
+    return _this;
+  }
+
+  var _proto = HashRouter.prototype;
+
+  _proto.render = function render() {
+    return react_default.a.createElement(react_router_Router, {
+      history: this.history,
+      children: this.props.children
+    });
+  };
+
+  return HashRouter;
+}(react_default.a.Component);
+
+if (false) {}
+
+function isModifiedEvent(event) {
+  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
+}
+/**
+ * The public API for rendering a history-aware <a>.
+ */
+
+
+var react_router_dom_Link =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(Link, _React$Component);
+
+  function Link() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+
+  var _proto = Link.prototype;
+
+  _proto.handleClick = function handleClick(event, history) {
+    try {
+      if (this.props.onClick) this.props.onClick(event);
+    } catch (ex) {
+      event.preventDefault();
+      throw ex;
+    }
+
+    if (!event.defaultPrevented && // onClick prevented default
+    event.button === 0 && ( // ignore everything but left clicks
+    !this.props.target || this.props.target === "_self") && // let browser handle "target=_blank" etc.
+    !isModifiedEvent(event) // ignore clicks with modifier keys
+    ) {
+        event.preventDefault();
+        var method = this.props.replace ? history.replace : history.push;
+        method(this.props.to);
+      }
+  };
+
+  _proto.render = function render() {
+    var _this = this;
+
+    var _this$props = this.props,
+        innerRef = _this$props.innerRef,
+        replace = _this$props.replace,
+        to = _this$props.to,
+        rest = _objectWithoutPropertiesLoose(_this$props, ["innerRef", "replace", "to"]); // eslint-disable-line no-unused-vars
+
+
+    return react_default.a.createElement(react_router_context.Consumer, null, function (context) {
+      !context ?  false ? undefined : tiny_invariant_esm(false) : void 0;
+      var location = typeof to === "string" ? createLocation(to, null, null, context.location) : to;
+      var href = location ? context.history.createHref(location) : "";
+      return react_default.a.createElement("a", _extends({}, rest, {
+        onClick: function onClick(event) {
+          return _this.handleClick(event, context.history);
+        },
+        href: href,
+        ref: innerRef
+      }));
+    });
+  };
+
+  return Link;
+}(react_default.a.Component);
+
+if (false) { var innerRefType, toType; }
+
+function joinClassnames() {
+  for (var _len = arguments.length, classnames = new Array(_len), _key = 0; _key < _len; _key++) {
+    classnames[_key] = arguments[_key];
+  }
+
+  return classnames.filter(function (i) {
+    return i;
+  }).join(" ");
+}
+/**
+ * A <Link> wrapper that knows if it's "active" or not.
+ */
+
+
+function NavLink(_ref) {
+  var _ref$ariaCurrent = _ref["aria-current"],
+      ariaCurrent = _ref$ariaCurrent === void 0 ? "page" : _ref$ariaCurrent,
+      _ref$activeClassName = _ref.activeClassName,
+      activeClassName = _ref$activeClassName === void 0 ? "active" : _ref$activeClassName,
+      activeStyle = _ref.activeStyle,
+      classNameProp = _ref.className,
+      exact = _ref.exact,
+      isActiveProp = _ref.isActive,
+      locationProp = _ref.location,
+      strict = _ref.strict,
+      styleProp = _ref.style,
+      to = _ref.to,
+      rest = _objectWithoutPropertiesLoose(_ref, ["aria-current", "activeClassName", "activeStyle", "className", "exact", "isActive", "location", "strict", "style", "to"]);
+
+  var path = typeof to === "object" ? to.pathname : to; // Regex taken from: https://github.com/pillarjs/path-to-regexp/blob/master/index.js#L202
+
+  var escapedPath = path && path.replace(/([.+*?=^!:${}()[\]|/\\])/g, "\\$1");
+  return react_default.a.createElement(react_router_context.Consumer, null, function (context) {
+    !context ?  false ? undefined : tiny_invariant_esm(false) : void 0;
+    var pathToMatch = locationProp ? locationProp.pathname : context.location.pathname;
+    var match = escapedPath ? matchPath(pathToMatch, {
+      path: escapedPath,
+      exact: exact,
+      strict: strict
+    }) : null;
+    var isActive = !!(isActiveProp ? isActiveProp(match, context.location) : match);
+    var className = isActive ? joinClassnames(classNameProp, activeClassName) : classNameProp;
+    var style = isActive ? _extends({}, styleProp, activeStyle) : styleProp;
+    return react_default.a.createElement(react_router_dom_Link, _extends({
+      "aria-current": isActive && ariaCurrent || null,
+      className: className,
+      style: style,
+      to: to
+    }, rest));
+  });
+}
+
+if (false) { var ariaCurrentType; }
+
+
 
 // CONCATENATED MODULE: ./src/components/Button/Button.js
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function Button_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Button_typeof = function _typeof(obj) { return typeof obj; }; } else { Button_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Button_typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2037,7 +4743,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _possibleConstructorReturn(self, call) { if (call && (Button_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
@@ -2046,6 +4752,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2134,8 +4841,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
-
       var _this$props2 = this.props,
           done = _this$props2.done,
           busy = _this$props2.busy,
@@ -2144,19 +4849,18 @@ function (_Component) {
           doneMessage = _this$props2.doneMessage,
           style = _this$props2.style,
           icon = _this$props2.icon,
-          _onClick = _this$props2.onClick,
+          onClick = _this$props2.onClick,
           disabled = _this$props2.disabled,
           type = _this$props2.type,
           to = _this$props2.to,
+          target = _this$props2.target,
           busyMessage = _this$props2.busyMessage,
           className = _this$props2.className;
-      return type === 'link' ? react_default.a.createElement("a", {
-        href: to,
+      return to ? react_default.a.createElement(react_router_dom_Link, {
+        to: to,
+        target: target,
         className: this.getClass() + (className ? ' ' + className : ''),
-        style: style,
-        onClick: function onClick(e) {
-          return _this.handleClick(e, _onClick);
-        }
+        style: style
       }, react_default.a.createElement("span", {
         className: "SNG__button--overlay"
       }), icon && !done && !busy && react_default.a.createElement("span", {
@@ -2164,7 +4868,7 @@ function (_Component) {
       }, icon), busy && !disabled && !done && Button_loader(), done ? Button_check(doneMessage) : busy && busyMessage ? busyMessage : children) : react_default.a.createElement("button", {
         className: this.getClass(),
         style: style,
-        onClick: busy || disabled || done ? null : _onClick,
+        onClick: busy || disabled || done ? null : onClick,
         submit: submit ? 'submit' : 'button'
       }, react_default.a.createElement("span", {
         className: "SNG__button--overlay"
@@ -2209,7 +4913,7 @@ Button_Button_Button.propTypes = {
 
 
 // EXTERNAL MODULE: ./src/components/Nav/Nav.css
-var Nav_Nav = __webpack_require__(22);
+var Nav_Nav = __webpack_require__(30);
 
 // CONCATENATED MODULE: ./src/components/Nav/Nav.js
 function Nav_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Nav_typeof = function _typeof(obj) { return typeof obj; }; } else { Nav_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Nav_typeof(obj); }
@@ -2233,69 +4937,123 @@ function Nav_setPrototypeOf(o, p) { Nav_setPrototypeOf = Object.setPrototypeOf |
 
 
 
- // StyleMaker(css)
+
+
+ // console.log(RRD, '>>>')
+// StyleMaker(css)
 
 var Nav_Nav_Nav =
 /*#__PURE__*/
 function (_Component) {
   Nav_inherits(Nav, _Component);
 
-  function Nav() {
+  function Nav(props) {
+    var _this;
+
     Nav_classCallCheck(this, Nav);
 
-    return Nav_possibleConstructorReturn(this, Nav_getPrototypeOf(Nav).apply(this, arguments));
+    _this = Nav_possibleConstructorReturn(this, Nav_getPrototypeOf(Nav).call(this, props));
+    _this.state = {
+      open: false
+    };
+    return _this;
   }
 
   Nav_createClass(Nav, [{
     key: "renderLinks",
     value: function renderLinks(links) {
-      return links.map(function (link, key) {
-        return react_default.a.createElement("a", {
-          key: key,
-          href: link.link
-        }, link.label);
+      var _this2 = this;
+
+      return links.map(function (_ref, key) {
+        var to = _ref.to,
+            label = _ref.label,
+            target = _ref.target;
+
+        var isActive = _this2.isLinkActive(to);
+
+        return react_default.a.createElement(react_router_dom_Link, {
+          to: to,
+          target: target,
+          className: isActive ? 'active' : ''
+        }, label);
+      });
+    }
+  }, {
+    key: "isLinkActive",
+    value: function isLinkActive(path) {
+      return window.location.pathname === path;
+    }
+  }, {
+    key: "handleToggle",
+    value: function handleToggle() {
+      this.setState({
+        open: !this.state.open
       });
     }
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var logoSrc = '';
       var brandName = 'Singularity';
       var logoAlt = 'SNG_logo';
-      var links = [{
-        label: 'Home',
-        link: '/'
-      }, {
-        label: 'Why Singularity UI',
-        link: '/#why_us'
-      }, {
-        label: 'Components',
-        link: '/#components'
-      }, {
-        label: 'Documentation',
-        link: '/#docs'
-      }];
-      var a = this.props.a;
+      var _this$props = this.props,
+          links = _this$props.links,
+          primaryLink = _this$props.primaryLink,
+          brand = _this$props.brand,
+          logo = _this$props.logo;
+      var open = this.state.open;
 
       var getClass = function getClass() {
         var cS = 'SNG__nav';
         return cS;
       };
 
+      var primaryAction = function primaryAction() {
+        return react_default.a.createElement(Button_Button_Button, {
+          soft: true,
+          link: true,
+          icon: primaryLink.icon,
+          type: "primary",
+          to: primaryLink.to
+        }, primaryLink.label);
+      };
+
       return react_default.a.createElement("div", {
         className: getClass()
-      }, react_default.a.createElement("nav", null, react_default.a.createElement("div", {
+      }, react_default.a.createElement("nav", {
+        className: open ? 'SNG__nav--drawer-open' : ''
+      },  false && false, react_default.a.createElement("button", {
+        className: "SNG__nav--open-button",
+        onClick: function onClick() {
+          return _this3.handleToggle();
+        }
+      }, react_default.a.createElement("span", {
+        className: "fas fa-bars"
+      })), react_default.a.createElement("div", {
         className: "SNG__nav--logo"
       }, react_default.a.createElement("a", {
         href: '/'
       }, logoSrc.length > 0 ? react_default.a.createElement("img", {
         src: logoSrc,
         alt: logoAlt
-      }) : react_default.a.createElement("div", {
-        className: "singularity-logo"
-      }, brandName))), react_default.a.createElement("div", {
+      }) : brand)), react_default.a.createElement("div", {
         className: "SNG__nav--links"
-      }, this.renderLinks(links))));
+      }, this.renderLinks(links), primaryLink && react_default.a.createElement("div", {
+        className: "SNG__nav--links-primary-action-mobile"
+      }, primaryAction()), react_default.a.createElement("button", {
+        className: "SNG__nav--close-button",
+        onClick: function onClick() {
+          return _this3.handleToggle();
+        }
+      }, react_default.a.createElement("span", {
+        className: "fas fa-times"
+      })), brand && react_default.a.createElement("div", {
+        className: "SNG__nav--links-brand"
+      }, brand)), primaryLink && react_default.a.createElement("div", {
+        className: "SNG__nav--links-primary-action-desktop"
+      }, primaryAction())));
     }
   }]);
 
@@ -2666,7 +5424,7 @@ function (_Component) {
 
 /* harmony default export */ var SubComponents_StickyContainer = (StickyContainer_StickyContainer);
 // EXTERNAL MODULE: ./src/components/Presentor/Presentor.css
-var Presentor_Presentor = __webpack_require__(24);
+var Presentor_Presentor = __webpack_require__(32);
 
 // CONCATENATED MODULE: ./src/components/Presentor/Presentor.js
 function Presentor_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Presentor_typeof = function _typeof(obj) { return typeof obj; }; } else { Presentor_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Presentor_typeof(obj); }
@@ -2700,16 +5458,38 @@ var Presentor_Stars =
 function (_Component) {
   Presentor_inherits(Stars, _Component);
 
-  function Stars() {
+  function Stars(props) {
+    var _this;
+
     Presentor_classCallCheck(this, Stars);
 
-    return Presentor_possibleConstructorReturn(this, Presentor_getPrototypeOf(Stars).apply(this, arguments));
+    _this = Presentor_possibleConstructorReturn(this, Presentor_getPrototypeOf(Stars).call(this, props));
+    _this.scroll = 0;
+    return _this;
   }
 
   Presentor_createClass(Stars, [{
     key: "shouldComponentUpdate",
     value: function shouldComponentUpdate() {
       return false;
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      window.addEventListener('scroll', this.handleScroll.bind(this));
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      window.removeEventListener('scroll', this.handleScroll.bind(this));
+    }
+  }, {
+    key: "handleScroll",
+    value: function handleScroll(e) {
+      console.log('>>>>>');
+      console.log(e);
+      var nextScroll = window.scrollY;
+      document.querySelector('.SNG__stars').style.top = '-' + nextScroll / 30 + 'px';
     }
   }, {
     key: "render",
@@ -2827,7 +5607,7 @@ function (_Component2) {
 
 
 // EXTERNAL MODULE: ./src/components/Header/Header.css
-var Header_Header = __webpack_require__(26);
+var Header_Header = __webpack_require__(34);
 
 // CONCATENATED MODULE: ./src/components/Header/Header.js
 function Header_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Header_typeof = function _typeof(obj) { return typeof obj; }; } else { Header_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Header_typeof(obj); }
@@ -2987,7 +5767,7 @@ Header_Header_Header.defaultProps = {
 
 
 // EXTERNAL MODULE: ./src/components/Spacer/Spacer.css
-var Spacer_Spacer = __webpack_require__(28);
+var Spacer_Spacer = __webpack_require__(36);
 
 // CONCATENATED MODULE: ./src/components/Spacer/Spacer.js
 function Spacer_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Spacer_typeof = function _typeof(obj) { return typeof obj; }; } else { Spacer_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Spacer_typeof(obj); }
@@ -3049,12 +5829,12 @@ function (_Component) {
 // CONCATENATED MODULE: ./src/components/Spacer/index.js
 
 // EXTERNAL MODULE: ./src/components/Dialog/Dialog.css
-var Dialog_Dialog = __webpack_require__(30);
+var Dialog_Dialog = __webpack_require__(38);
 
 // CONCATENATED MODULE: ./src/components/Dialog/Dialog.js
 function Dialog_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Dialog_typeof = function _typeof(obj) { return typeof obj; }; } else { Dialog_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Dialog_typeof(obj); }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function Dialog_extends() { Dialog_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Dialog_extends.apply(this, arguments); }
 
 function Dialog_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3209,12 +5989,12 @@ function (_Component) {
         }
       }, children), (primaryAction || secondaryAction) && react_default.a.createElement("div", {
         className: "SNG__dialog--actions"
-      }, primaryAction && react_default.a.createElement(Button_Button_Button, _extends({
+      }, primaryAction && react_default.a.createElement(Button_Button_Button, Dialog_extends({
         type: "primary",
         disabled: enableAfterRead && !read,
         icon: primaryAction.icon,
         onClick: primaryAction.onClick
-      }, primaryAction.props), primaryAction.label), secondaryAction && react_default.a.createElement(Button_Button_Button, _extends({
+      }, primaryAction.props), primaryAction.label), secondaryAction && react_default.a.createElement(Button_Button_Button, Dialog_extends({
         onClick: secondaryAction.onClick,
         icon: secondaryAction.icon
       }, secondaryAction.props), secondaryAction.label)))) : react_default.a.createElement(react["Fragment"], null);
@@ -3358,7 +6138,7 @@ function (_Component) {
 var react_flexbox_grid_lib = __webpack_require__(1);
 
 // EXTERNAL MODULE: ./src/tools/ComponentDisplayer/ComponentDisplayer.css
-var ComponentDisplayer_ComponentDisplayer = __webpack_require__(37);
+var ComponentDisplayer_ComponentDisplayer = __webpack_require__(45);
 
 // CONCATENATED MODULE: ./src/tools/ComponentDisplayer/Code.js
 function Code_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Code_typeof = function _typeof(obj) { return typeof obj; }; } else { Code_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Code_typeof(obj); }
@@ -3739,10 +6519,10 @@ function (_React$Component) {
   return ComponentDisplayer;
 }(react_default.a.Component);
 
-
 ComponentDisplayer_ComponentDisplayer_ComponentDisplayer.defaultProps = {
   scale: [1, 1.5, 2]
 };
+/* harmony default export */ var tools_ComponentDisplayer_ComponentDisplayer = (ComponentDisplayer_ComponentDisplayer_ComponentDisplayer);
 // CONCATENATED MODULE: ./src/tools/ComponentDisplayer/index.js
 
 // CONCATENATED MODULE: ./src/tools/Zoomer.js
@@ -4151,9 +6931,35 @@ function (_Component) {
       }, "You will ", react_default.a.createElement(Showroom_GradientText, {
         weight: 100
       }, "never"), " forget"), react_default.a.createElement(components_Spacer_Spacer, null)), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
-        xs: 12,
-        sm: 10
-      }, react_default.a.createElement(Nav_Nav_Nav, null)), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
+        xs: 12
+      }, react_default.a.createElement(Nav_Nav_Nav, {
+        logo: react_default.a.createElement("span", {
+          className: "fas fa-infinity"
+        }),
+        brand: react_default.a.createElement("div", {
+          className: "singularity-logo"
+        }, 'Singularity'),
+        links: [{
+          label: 'Home',
+          to: '/'
+        }, {
+          label: 'Why Singularity UI',
+          to: '/#why_us'
+        }, {
+          label: 'Components',
+          to: '/#components'
+        }, {
+          label: 'Documentation',
+          to: '/#docs'
+        }],
+        primaryLink: {
+          label: 'Login',
+          to: '/#login',
+          icon: react_default.a.createElement("span", {
+            className: "fas fa-sign-in-alt"
+          })
+        }
+      })), react_default.a.createElement(react_flexbox_grid_lib["Col"], {
         xs: 12,
         sm: 10
       }, react_default.a.createElement(components_Spacer_Spacer, {
@@ -4224,7 +7030,17 @@ function (_Component) {
 
 
 
-react_dom_default.a.render(react_default.a.createElement(Showroom_ShowRoom, null), document.getElementById('root'));
+
+
+var src_App = function App() {
+  return react_default.a.createElement(react_router_dom_BrowserRouter, null, react_default.a.createElement(react_router_Route, {
+    path: "/",
+    exact: true,
+    component: Showroom_ShowRoom
+  }));
+};
+
+react_dom_default.a.render(react_default.a.createElement(src_App, null), document.getElementById('root'));
 
 /***/ })
 /******/ ]);

@@ -36,6 +36,7 @@
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-flexbox-grid": "^2.1.2",
+    "react-router-dom": "^5.0.1",
     "stylemaker": "0.0.4-beta-1"
   }
 }

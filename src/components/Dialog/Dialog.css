@@ -152,6 +152,8 @@
     transform: translateZ(-20px) translateX(-50%) translateY(-50%); } }
 
 @media only screen and (max-width: 480px) {
+  .dialog-show .SNG__dialog--children {
+    max-height: 60vh; }
   .SNG__dialog--content {
     width: 90vw; }
   .SNG__dialog.SNG__dialog__full-with-actions .SNG__dialog--children {

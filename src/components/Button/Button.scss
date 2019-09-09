@@ -92,7 +92,7 @@
 
 .SNG__button.SNG__button--less-round,
 .SNG__button.SNG__button--less-round .SNG__button--overlay {
-  border-radius: 8px;
+  border-radius: 5px;
 }
 .SNG__button.SNG__button--round,
 .SNG__button.SNG__button--round .SNG__button--overlay {
@@ -225,7 +225,7 @@
   width: 20px;
   height: 20px;
   display: flex;
-  margin-right: 5px;
+  margin-right: 3px;
   align-items: center;
   justify-content: center;
 }
@@ -277,7 +277,7 @@ $curve: cubic-bezier(0.65, 0, 0.45, 1);
   stroke: #fff;
   stroke-miterlimit: 10;
   animation: fill 0.2s ease-in-out 0.2s forwards,
-    scale 0.2s ease-in-out 0.4s both;
+  scale 0.2s ease-in-out 0.4s both;
 }
 
 .checkmark__check {
@@ -347,7 +347,7 @@ $curve: cubic-bezier(0.65, 0, 0.45, 1);
     font-size: 14px;
     margin-right: 0;
     margin-left: 0;
-    height: 60px;
+    height: 48px;
   }
   .SNG__button.SNG__button--link {
     min-width: auto;

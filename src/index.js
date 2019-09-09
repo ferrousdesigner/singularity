@@ -1,5 +1,13 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import Showroom from './Showroom';
+import React from 'react'
+import ReactDom from 'react-dom'
+import Showroom from './Showroom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
-ReactDom.render(<Showroom />, document.getElementById('root'))
+let App = () => {
+  return (
+    <Router>
+      <Route path='/' exact component={Showroom} />
+    </Router>
+  )
+}
+ReactDom.render(<App />, document.getElementById('root'))

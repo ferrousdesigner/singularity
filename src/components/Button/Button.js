@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import StyleMaker from 'stylemaker'
 import './Button.css'
+import { Link } from 'react-router-dom'
 
 const loader = () => {
   return <div className='SNG__loader' />
@@ -99,15 +100,16 @@ export class Button extends Component {
       disabled,
       type,
       to,
+      target,
       busyMessage,
       className
     } = this.props
-    return type === 'link' ? (
-      <a
-        href={to}
+    return to ? (
+      <Link
+        to={to}
+        target={target}
         className={this.getClass() + (className ? ' ' + className : '')}
         style={style}
-        onClick={e => this.handleClick(e, onClick)}
       >
         <span className='SNG__button--overlay' />
         {icon && (!done && !busy) && (
@@ -119,7 +121,7 @@ export class Button extends Component {
           : busy && busyMessage
             ? busyMessage
             : children}
-      </a>
+      </Link>
     ) : (
       <button
         className={this.getClass()}

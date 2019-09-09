@@ -279,8 +279,20 @@ export default class ShowRoom extends Component {
                 </Header>
                 <Spacer />
               </Col>
-              <Col xs={12} sm={10}>
-                <Nav />
+              <Col xs={12}>
+                <Nav 
+                  logo={<span className='fas fa-infinity'></span>}
+                  brand={<div className='singularity-logo'>{'Singularity'}</div>}
+                  links={[
+                  {label: 'Home', to: '/'},
+                  {label: 'Why Singularity UI', to: '/#why_us'},
+                  {label: 'Components', to: '/#components'},
+                  {label: 'Documentation', to: '/#docs'}
+                  ]}
+                  primaryLink={
+                    {label: 'Login', to: '/#login', icon: <span className='fas fa-sign-in-alt' />}
+                  }
+                />
               </Col>
               <Col xs={12} sm={10}>
                 <Spacer lg />

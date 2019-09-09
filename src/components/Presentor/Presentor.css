@@ -164,8 +164,8 @@ div[class^="SNG__presentor--smooth-"] {
   display: block;
   background: transparent;
   position: fixed;
-  width: 100%;
-  height: 100%;
+  width: 200%;
+  height: 150%;
   z-index: -5;
   animation: starsHide 10s linear infinite; }
 
@@ -235,7 +235,7 @@ div[class^="SNG__presentor--smooth-"] {
     animation: none;
     filter: none;
     box-shadow: 0 0 100vh 80px var(--theme-color);
-    animation: moveSun 10s ease-in-out infinite; }
+    animation: moveSun 10s linear infinite; }
   @keyframes moveSun {
     0% {
       transform: translateX(-200%); }
