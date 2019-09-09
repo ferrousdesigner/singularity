@@ -1,1 +1,1 @@
-export { default as ComponentDisplayer } from  './ComponentDisplayer'
+export { ComponentDisplayer } from  './ComponentDisplayer'

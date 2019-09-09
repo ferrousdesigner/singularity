@@ -144,4 +144,4 @@ ComponentDisplayer.defaultProps = {
     scale: [1, 1.5, 2]
 }
 
-export default ComponentDisplayer
+export { ComponentDisplayer }

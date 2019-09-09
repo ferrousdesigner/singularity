@@ -6522,7 +6522,7 @@ function (_React$Component) {
 ComponentDisplayer_ComponentDisplayer_ComponentDisplayer.defaultProps = {
   scale: [1, 1.5, 2]
 };
-/* harmony default export */ var tools_ComponentDisplayer_ComponentDisplayer = (ComponentDisplayer_ComponentDisplayer_ComponentDisplayer);
+
 // CONCATENATED MODULE: ./src/tools/ComponentDisplayer/index.js
 
 // CONCATENATED MODULE: ./src/tools/Zoomer.js
@@ -7034,6 +7034,8 @@ function (_Component) {
 
 var src_App = function App() {
   return react_default.a.createElement(react_router_dom_BrowserRouter, null, react_default.a.createElement(react_router_Route, {
+    component: Showroom_ShowRoom
+  }), react_default.a.createElement(react_router_Route, {
     path: "/",
     exact: true,
     component: Showroom_ShowRoom

@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 let App = () => {
   return (
     <Router>
+        <Route component={Showroom} />
       <Route path='/' exact component={Showroom} />
     </Router>
   )
